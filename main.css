@@ -1,0 +1,186 @@
+body
+{
+    background-color:#333333;
+    color:white;
+}
+.wiekszepole
+{
+    width:260px;
+    height:80px;
+    float:left;
+    border: 4px solid blueviolet;
+}
+.dzialka
+{
+    height:80px;
+    width:130px;
+    background-color: red;
+    border: 4px solid blueviolet;
+    float:left;
+}
+.bocznadzialka
+{
+    height:80px;
+    width:110px;
+    background-color:darkkhaki;
+    border: 4px solid blueviolet;
+    margin-right:650px;
+}
+.bocznanagroda
+{
+    height:80px;
+    width:110px;
+    background-color:honeydew;
+    border: 4px solid blueviolet;
+    margin-right:650px;
+}
+#wienzienie
+{
+    opacity:0.8;
+    background-color:darkgreen;
+}
+.nagroda
+{
+    height:80px;
+    width:130px;
+    background-color:brown; 
+    float:left;
+    border: 4px solid blueviolet;
+}
+.szansa
+{
+    height:80px;
+    width:130px;
+    background-color:forestgreen; 
+    float:left;
+    border: 4px solid blueviolet;
+}
+#start
+{
+    background-color: blue;
+}
+#parking
+{
+    background-color:deeppink;
+}
+#trzecia
+{
+    width:1510px;
+    height:80px;
+}
+.bocznaszansa
+{
+    height:80px;
+    width:110px;
+    background-color:rgb(214, 210, 160);
+    border: 4px solid blueviolet;
+    margin-right:650px;
+}
+#druga
+{
+    width:115px;
+}
+#czwarta
+{
+    width:115px;
+    float:right;
+}
+#pierwsza
+{
+    height:88px;
+    width:1510px;
+}
+.banans
+{
+    width:125px;
+    background-color:aquamarine;
+    border:3px purple solid;
+    display:inline-block;
+    height:35px;
+    margin-left:180px;
+    color:black;
+    text-align:center;
+    font-size:30px;
+}
+.odkrywka
+{
+    width:122px;
+    border:4px purple solid;
+    height:45px;
+    background-color:darkblue;
+    margin-top:12px;
+    font-size:16px;
+    color:black;
+}
+.bocznaodkrywka
+{
+    width:70px;
+    height:70px;
+    background-color:darkblue;
+    border:4px purple solid;
+}
+.cena
+{
+    height:8px;
+    text-align:center;
+}
+.bocznacena
+{
+    text-align:center;
+    font-size:14px;
+    width:30px;
+    float:right;
+    margin-top:5px;
+}
+.gracze
+{
+    width:125px;
+    background-color:aquamarine;
+    border:3px purple solid;
+    display:inline-block;
+    height:35px;
+    margin-left:180px;
+    color:black;
+    text-align:center;
+    font-size:30px;
+}
+.pionek
+{
+    width:30px;
+    height:35px;
+    float:right;
+    background-color:beige;
+    border: burlywood 2px solid;
+    color:black;
+}
+.p1
+{
+    border: darkred 2px solid;
+    opacity:0;
+    width:30px;
+    height:35px;
+    float:right;
+    background-color:beige;
+    color:black;
+}
+#p2
+{
+    border: chartreuse 2px solid;
+}
+#p3
+{
+    border: fuchsia 2px solid;
+}
+#p4
+{
+    border: black 2px solid;
+}
+.domek
+{
+    width:20px;
+    height:20px;
+    background-color:darkgreen;
+    opacity:1;
+    float:left;
+    border: brown 1px solid;
+}
