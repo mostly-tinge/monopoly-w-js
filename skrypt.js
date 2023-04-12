@@ -12,46 +12,45 @@ document.getElementById("b1").innerHTML = balans1;
 document.getElementById("b2").innerHTML = balans2;
 document.getElementById("b3").innerHTML = balans3;
 
-var odkrywki = new Array(22)
-odkrywki[0] = - 1000;
-odkrywki[1] = 2000;
-odkrywki[2] = - 3000;
-odkrywki[3] = 4000;
-odkrywki[4] = - 5000;
-odkrywki[5] = 6000;
-odkrywki[6] = - 7000;
-odkrywki[7] = 8000;
-odkrywki[8] = - 9000;
-odkrywki[9] = 10000;
-odkrywki[10] = - 11000;
-odkrywki[11] = 1200;
-odkrywki[12] = - 13000;
-odkrywki[13] = 14000;
-odkrywki[14] = - 15000;
-odkrywki[15] = 16000;
-odkrywki[16] = - 17000;
-odkrywki[17] = 18000;
-odkrywki[18] = - 19000;
-odkrywki[19] = 20000;
-odkrywki[20] = - 21000;
-odkrywki[21] = 22000;
-odkrywki[22] = - 23000;
-odkrywki[23] = 24000;
-odkrywki[24] = - 25000;
-odkrywki[25] = 26000;
-odkrywki[26] = - 27000;
-odkrywki[27] = 28000;
-odkrywki[28] = - 29000;
-odkrywki[29] = 30000;
-odkrywki[30] = - 31000;
-odkrywki[31] = 32000;
-odkrywki[31] = - 33000;
+var odkrywki = 
+[
+    0,
+    -1000,
+    2000,
+    -3000,
+    4000,
+    -5000,
+    6000,
+    -7000,
+    8000,
+    -9000,
+    10000,
+   -11000,
+    12000,
+    -13000,
+    14000,
+    -15000,
+    16000,
+    -17000,
+    18000,
+    -19000,
+    20000,
+    -21000,
+    22000,
+    -23000,
+    24000,
+    -25000,
+    26000,
+    -27000,
+    28000,
+    -29000,
+    30000,
+    -31000,
+]
 
 odkrywki = odkrywki.sort(() => Math.random() - 0.5);
 
 var liczbaoczek = 0;
-
-var rzutkostkami = Math.floor(Math.random()*10 + 2);
 
 var poziom = 0;
 
@@ -59,6 +58,7 @@ $('#a0').css('opacity', '0');
 
 function tura()
 {
+    let rzutkostkami = Math.floor(Math.random()*10 + 2);
     $('#a'+liczbaoczek).css('opacity', '0')
     document.getElementById("b4").innerHTML = liczbaoczek = liczbaoczek + rzutkostkami;
     if (liczbaoczek > 32)
