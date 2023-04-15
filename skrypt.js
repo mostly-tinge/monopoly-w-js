@@ -52,61 +52,144 @@ odkrywki = odkrywki.sort(() => Math.random() - 0.5);
 
 var liczbaoczek = 0;
 
-var poziom = 0;
+let poziom = 0;
 
 $('#a0').css('opacity', '0');
 
-const domki1 =
-[
-    0,
-    15000,
-    30000,
-    50000,
-    60000,
-]
-
-const domki3 =
-[
-    0,
-    15000,
-    30000,
-    50000,
-    60000,
-]
-
-const domki4 =
-[
-    0,
-    15000,
-    30000,
-    50000,
-    60000,
-]
-
 var targ = document.getElementById("targ");
+
+var kaal = 1;
+
+var kaal2 = 1;
+
+var kaal3 = 1;
+
+var kaal4 = 1;
+
+var kaal5 = 1;
+
+var kaal6 = 1;
+
+var kaal7 = 1;
+
+var kaal8 = 1;
 
 function walter()
 {
-    document.getElementById("b2").innerHTML = balans2 = balans2 - domki1[1];
+    document.getElementById("b2").innerHTML = balans2 = balans2 - 10000;
+    $('#dom'+liczbaoczek+'-'+kaal).css('opacity', '1');
+    kaal++;
+    if(kaal > 5)
+    {
+        document.getElementById("b2").innerHTML = balans2 = balans2 + 10000;
+    }
+}
+
+function walter2()
+{
+    document.getElementById("b2").innerHTML = balans2 = balans2 - 15000;
+    $('#dom'+liczbaoczek+'-'+kaal2).css('opacity', '1');
+    kaal2++;
+    if(kaal2 > 5)
+    {
+        document.getElementById("b2").innerHTML = balans2 = balans2 + 15000;
+    }
+}
+
+function walter3()
+{
+    document.getElementById("b2").innerHTML = balans2 = balans2 - 25000;
+    $('#dom'+liczbaoczek+'-'+kaal3).css('opacity', '1');
+    kaal3++;
+    if(kaal3 > 5)
+    {
+        document.getElementById("b2").innerHTML = balans2 = balans2 + 25000;
+    }
+}
+
+function walter4()
+{
+    document.getElementById("b2").innerHTML = balans2 = balans2 - 30000;
+    $('#dom'+liczbaoczek+'-'+kaal4).css('opacity', '1');
+    kaal4++;
+    if(kaal4 > 5)
+    {
+        document.getElementById("b2").innerHTML = balans2 = balans2 + 30000;
+    }
+}
+
+function walter5()
+{
+    document.getElementById("b2").innerHTML = balans2 = balans2 - 40000;
+    $('#dom'+liczbaoczek+'-'+kaal5).css('opacity', '1');
+    kaal5++;
+    if(kaal5 > 5)
+    {
+        document.getElementById("b2").innerHTML = balans2 = balans2 + 40000;
+    }
+}
+
+function walter6()
+{
+    document.getElementById("b2").innerHTML = balans2 = balans2 - 45000;
+    $('#dom'+liczbaoczek+'-'+kaal6).css('opacity', '1');
+    kaal6++;
+    if(kaal6 > 5)
+    {
+        document.getElementById("b2").innerHTML = balans2 = balans2 + 45000;
+    }
+}
+
+function walter7()
+{
+    document.getElementById("b2").innerHTML = balans2 = balans2 - 55000;
+    $('#dom'+liczbaoczek+'-'+kaal7).css('opacity', '1');
+    kaal7++;
+    if(kaal7 > 5)
+    {
+        document.getElementById("b2").innerHTML = balans2 = balans2 + 55000;
+    }
+}
+
+function walter8()
+{
+    document.getElementById("b2").innerHTML = balans2 = balans2 - 60000;
+    $('#dom'+liczbaoczek+'-'+kaal8).css('opacity', '1');
+    kaal8++;
+    if(kaal8 > 5)
+    {
+        document.getElementById("b2").innerHTML = balans2 = balans2 + 60000;
+    }
 }
 
 function tura()
 {
     let rzutkostkami = Math.floor(Math.random()*10 + 2);
-    $('#a'+liczbaoczek).css('opacity', '0')
+    $('#a'+liczbaoczek).css('opacity', '0');
     document.getElementById("b4").innerHTML = liczbaoczek = liczbaoczek + rzutkostkami;
-    if (liczbaoczek > 32)
-    {
-        liczbaoczek = liczbaoczek - 32;
-    }
     if(liczbaoczek == 32)
     {
         $('#a0').css('opacity', '1');
+        liczbaoczek = 0;
+        $('#targ').html('');
+        document.getElementById("b2").innerHTML = balans2 = balans2 - odkrywki[liczbaoczek];
+    }
+    if (liczbaoczek > 31)
+    {
+        liczbaoczek = liczbaoczek - 31;
     }
     $('#a'+liczbaoczek).css('opacity', '1');
     let opacityValue = $('#a'+liczbaoczek).css('opacity');
     if(opacityValue == 1 )
     {
+        if(liczbaoczek == 16)
+        {
+            $('#targ').html('');
+        }
+        if(liczbaoczek == 24)
+        {
+            $('#targ').html('')
+        }
         let hamza = $('#od'+liczbaoczek).css('opacity');
         if(liczbaoczek < 8)
         {
@@ -117,11 +200,16 @@ function tura()
             $('#od'+liczbaoczek).css('background-color', 'red');
             $('#od'+liczbaoczek).css('border-color', 'red');
             $('#od'+liczbaoczek).css('opacity', '0.99');
-            if( liczbaoczek != 2 && liczbaoczek != 5)
+            if(liczbaoczek != 2 && liczbaoczek != 5)
             {
-                $('#targ').html('Czy chcesz kupić domek?');
-                targ.addEventListener("click", function() {walter();});
-                $('#targ').css('cursor', 'pointer');
+                if(liczbaoczek < 4 && liczbaoczek > 0)
+                {
+                    $('#targ').html('<span id="nazwa" style="cursor:pointer;" onclick="walter()">Czy chcesz kupić domek?</span>');
+                }
+                else if(liczbaoczek >= 4 && liczbaoczek < 8)
+                {
+                    $('#targ').html('<span id="nazwa" style="cursor:pointer;" onclick="walter2()">Czy chcesz kupić domek?</span>');
+                }
             }
             else
             {
@@ -139,7 +227,14 @@ function tura()
             $('#od'+liczbaoczek).css('opacity', '0.99');
             if(liczbaoczek != 13)
             {
-                $('#targ').html('czy chcesz kupić domek?');
+                if(liczbaoczek > 8 && liczbaoczek < 12)
+                {
+                    $('#targ').html('<span id="nazwa" style="cursor:pointer;" onclick="walter3()">Czy chcesz kupić domek?</span>');
+                }
+                else if(liczbaoczek > 11 && liczbaoczek < 16)
+                {
+                    $('#targ').html('<span id="nazwa" style="cursor:pointer;" onclick="walter4()">Czy chcesz kupić domek?</span>');
+                }
             }
             else
             {
@@ -157,7 +252,14 @@ function tura()
             $('#od'+liczbaoczek).css('opacity', '0.99');
             if(liczbaoczek != 18)
             {
-                $('#targ').html('czy chcesz kupić domek?');
+                if(liczbaoczek > 16 && liczbaoczek < 21)
+                {
+                    $('#targ').html('<span id="nazwa" style="cursor:pointer;" onclick="walter5()">Czy chcesz kupić domek?</span>');
+                }
+                else if(liczbaoczek > 20 && liczbaoczek < 24)
+                {
+                    $('#targ').html('<span id="nazwa" style="cursor:pointer;" onclick="walter6()">Czy chcesz kupić domek?</span>');
+                }
             }
             else
             {
@@ -175,7 +277,14 @@ function tura()
             $('#od'+liczbaoczek).css('opacity', '0.99');
             if(liczbaoczek != 27 && liczbaoczek != 29)
             {
-                $('#targ').html('czy chcesz kupić domek?');
+                if(liczbaoczek > 24 && liczbaoczek < 29)
+                {
+                    $('#targ').html('<span id="nazwa" style="cursor:pointer;" onclick="walter7()">Czy chcesz kupić domek?</span>');
+                }
+                else if(liczbaoczek > 28 && liczbaoczek < 32)
+                {
+                    $('#targ').html('<span id="nazwa" style="cursor:pointer;" onclick="walter8()">Czy chcesz kupić domek?</span>');
+                }
             }
             else
             {
