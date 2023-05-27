@@ -18,8 +18,8 @@ var tekstyszansy1 = ["przeprowadzasz świetną transakcję biznesową! od wszyst
 
 var szansy1 = ['', 10000, 30000, 50000];
 
-var tekstyszansy2 = ["Wyścig na prywatnym torze! aby wygrać 100k, wyrzuć", "Rozbij kasyno! aby wygrać 100k, wyrzuć", 
-"Weź udział w wyścigu motorówek! aby wygrać 50k wyrzuć", "Załóż własną firmę! aby zarobić 150k wyrzuć", "Zainwestuj w giełdę! aby zarobić 100k wyrzuć",
+var tekstyszansy2 = ["Weź udział w wyścigu motorówek! aby wygrać 50k wyrzuć","Wyścig na prywatnym torze! aby wygrać 100k, wyrzuć", 
+"Rozbij kasyno! aby wygrać 100k, wyrzuć", "Zainwestuj w giełdę! aby zarobić 100k wyrzuć", "Załóż własną firmę! aby zarobić 150k wyrzuć",
 "Weź udział w wyścigu balonów! aby wygrać 150k wyrzuć"];
 
 var tekstyszansy3 = ["Zabierz przyjaciół w luksusową podróż! płacisz wszystkim pozostałym graczom", 
@@ -52,8 +52,7 @@ var czyja = [0,0,0,0,0,0,0,0,0,/*8*/0,0,0,0,0,0,0,0,/*16*/0,0,0,0,0,0,0,0,/*24*/
 
 var kupiona = [0,0,0,0,0,0,0,0,0,/*8*/0,0,0,0,0,0,0,0,/*16*/0,0,0,0,0,0,0,0,/*24*/0,0,0,0,0,0,0,/*31*/];
 
-function jessie()
-{
+function jessie(){
     $('#dom'+liczbaoczek[licznik]+'-0').css('opacity', '0'); $('#dom'+liczbaoczek[licznik]+'-2').css('opacity', '0');
     $('#dom'+liczbaoczek[licznik]+'-1').css('opacity', '0'); $('#dom'+liczbaoczek[licznik]+'-3').css('opacity', '0');
     $('#h'+liczbaoczek[licznik]).css('opacity', '1');
@@ -67,8 +66,7 @@ function jessie()
 const cenydomow = [0, 10000, 0, 10000, 15000, 0, 15000, 15000, 0, 25000, 25000, 25000, 30000, 0, 30000, 30000, 0, 40000, 0, 40000, 40000, 
 45000, 45000, 45000, 0, 50000, 50000, 0, 50000, 0, 60000, 60000];
 
-function walter()
-{
+function walter(){
     $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] - cenydomow[liczbaoczek[licznik]])
     $('#dom'+liczbaoczek[licznik]+'-'+kaal[liczbaoczek[licznik]]).css('opacity', '1');
     kaal[liczbaoczek[licznik]]++;
@@ -85,14 +83,67 @@ const cenydzialek = [0, 5000, 0, 5000, 11000, 0, 15000, 20000, 0, 35000, 35000, 
 
 var kolorydzialek = ['', 'darkred', 'chartreuse', 'fuchsia', 'navy']
 
-function gus() 
-{
+function gus(){
     $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] - cenydzialek[liczbaoczek[licznik]])
     $('#d'+liczbaoczek[licznik]).css('color', kolorydzialek[licznik]);
     czyja[liczbaoczek[licznik]] = 1;
     kupiona[liczbaoczek[licznik]] = licznik;
     if(kupiona[liczbaoczek[licznik]] = licznik){
         $('#targ').html('<span id="nazwa" style="cursor:pointer;" onclick="walter()">Czy chcesz kupić domek?</span>');
+    }
+}
+
+function rzut(){
+    let sol = Math.floor(Math.random() * 6);
+    if(sol == 0){
+        alert(tekstyszansy2[sol]);
+    }
+    else if(sol > 0 && sol < 4){
+        alert(tekstyszansy2[sol]);
+    }
+    else{
+        alert(tekstyszansy2[sol]);
+    }
+    let wynik = Math.floor(Math.random() * 10 + 2);
+    $('#targ').html(wynik);
+    if(poziom[licznik] == 1 && wynik == 2){
+        alert("wygrałeś!");
+        $('#targ').html(wynik);
+        if(sol == 0){
+            $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] + 50000);
+        }
+        else if(sol > 0 && sol < 4){
+            $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] + 100000);
+        }
+        else{
+            $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] + 150000);
+        } /* Chciałbym aby się nie powtarzało, ale sol musi być w let-cie więc się nie da*/
+    }
+    else if(poziom[licznik] == 2 && wynik > 7 && wynik < 13){
+        alert("wygrałeś!");
+        $('#targ').html(wynik);
+        if(sol == 0){
+            $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] + 50000);
+        }
+        else if(sol > 0 && sol < 4){
+            $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] + 100000);
+        }
+        else{
+            $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] + 150000);
+        } 
+    }
+    else if(poziom[licznik] == 3 && wynik > 4 && wynik < 13){
+        alert("wygrałeś!");
+        $('#targ').html(wynik);
+        if(sol == 0){
+            $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] + 50000);
+        }
+        else if(sol > 0 && sol < 4){
+            $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] + 100000);
+        }
+        else{
+            $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] + 150000);
+        } 
     }
 }
 
@@ -108,7 +159,6 @@ const ceny5 = [35000, 90000, 150000, 230000, 270000, 350000]; const ceny6 = [400
 const ceny7 = [50000, 125000, 210000, 320000, 375000, 485000]; const ceny8 = [65000, 160000, 250000, 370000, 430000, 550000];
 
 var czywwiezieniu = ['',false, false, false, false]; var przejscie = ['', false, false, false, false];
-Math.floor(Math.random()* 10 + 2)
 $('.p1').toggleClass('normalny1'); $('.p2').toggleClass('normalny2'); $('.p3').toggleClass('normalny3'); $('.p4').toggleClass('normalny4');  $('#ba1').toggleClass('klik'); 
 
 function bozo()
@@ -135,8 +185,13 @@ function bozo()
         $('#ba4').toggleClass('klik'); 
     }
 }
-
-if(licznik == 5) {licznik == 1}; if(licznik == 6) {licznik == 2}; if(licznik == 7) {licznik == 3};
+function gog(){
+    alert("dziala");
+    balans1.removeEventListener("click", gog, false);
+    balans2.removeEventListener("click", gog, false);
+    balans3.removeEventListener("click", gog, false);
+    balans4.removeEventListener("click", gog, false);
+}
 
 function tura()
 {
@@ -233,7 +288,7 @@ function tura()
             }
             else if(liczbaoczek[licznik] == 5){
                 $('#targ').html('');
-                let los = Math.floor(Math.random() * 4);
+                let los = 3;
                 let l = licznik + 1; let i = licznik + 2; let c = licznik + 3;
                 if(los == 0){
                     document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + szansy1[poziom[1]] + szansy1[poziom[2]] + szansy1[poziom[3]] + szansy1[poziom[4]] - szansy1[poziom[licznik]];
@@ -249,24 +304,33 @@ function tura()
                     document.getElementById("ba"+c).innerHTML = bilans[c] = bilans[c] + szansy3[poziom[c]];
                     alert(tekstyszansy3[Math.floor(Math.random())]+szansy3[wydaneszanse]* poziom[licznik]);
                 }
-                else if(los == 2)
-                {
-                    alert(tekstyszansy2[Math.floor(Math.random() * 6)]);
-                    function rzut()
-                    {
-                        let wynik = Math.floor(Math.random() * 10 + 2);
-                        $('#targ').html(wynik);
-                        if(poziom[licznik] == 1)
-                        {
-                            
-                        }
-                    }
-                    $('#targ').html('<span id="xD" style="cursor:pointer;" onclick="rzut()">*tekst zastępczy*</span>');
-
+                else if(los == 2){
+                    $('#targ').html('<span id="xD" style="cursor:pointer;" onclick="rzut()">*Później coś wymyśle*</span>');
                 }
-                else if(los == 3)
-                {
-                    alert(tekstyszansy4[Math.floor(Math.random() * 4)]);
+                else if(los == 3){
+                    let kolejnazmienna = 1;
+                    alert(tekstyszansy4[kolejnazmienna]);
+                    if(kolejnazmienna == 0){
+                        $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '0');
+                        liczbaoczek[licznik] = 8;
+                        $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '1');
+                    }
+                    else if(kolejnazmienna == 1){
+                        let fr = document.getElementById("ba"+licznik);
+                        let frr = document.getElementById("ba"+l);                
+                        let frrr = document.getElementById("ba"+i);                
+                        let frrrr = document.getElementById("ba"+c);
+                        if(frrrr == document.getElementById("ba5")){frrrr = document.getElementById("ba1");}
+                        if(frrrr == document.getElementById("ba6")){frrrr = document.getElementById("ba2");}
+                        if(frrrr == document.getElementById("ba7")){frrrr = document.getElementById("ba3");}
+                        if(frrr == document.getElementById("ba5")){frrrr = document.getElementById("ba1");}
+                        if(frrr == document.getElementById("ba6")){frrrr = document.getElementById("ba2");}
+                        if(frr == document.getElementById("ba5")){frrrr = document.getElementById("ba1");}
+                        fr.addEventListener("click", function() {gog(); });
+                        frr.addEventListener("click", function() {gog(); });
+                        frrr.addEventListener("click", function() {gog(); });
+                        frrrr.addEventListener("click", function() {gog(); });
+                    }
                 }
             }
         }
