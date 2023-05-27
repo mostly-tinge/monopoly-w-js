@@ -1,3 +1,5 @@
+alert("Żeby ruszyć pionkami treba kliknąć balans danego pionka.");
+alert("A no i jeżeli chcesz przejść do następnego musisz kliknąć pole pokazujące oczka(nie pytaj czemu ono istnieje ani czemu jest na nim napisane klik)");
 var bilans = ['', 372000, 372000, 372000, 372000];
 
 var balans1 = document.getElementById("ba1"); var balans2 = document.getElementById("ba2"); var balans3 = document.getElementById("ba3");
