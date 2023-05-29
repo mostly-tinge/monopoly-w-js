@@ -5,11 +5,13 @@ var bilans = ['', 372000, 372000, 372000, 372000];
 var balans1 = document.getElementById("ba1"); var balans2 = document.getElementById("ba2"); var balans3 = document.getElementById("ba3");
 var balans4 = document.getElementById("ba4");
 
-var licznik = 1;
+var licznik = 1; var wiekszaszansa = false;
 
 var odkrywki = 
-[0, -1000, 2000, -3000, 4000, -5000, 6000, -7000, 8000, -9000, 10000, -11000, 12000, -13000, 14000, -15000, 16000,-17000, 18000,
+[0, -1000, 2000, -3000, 4000, -5000, 6000, -7000, 8000, -9000, 10000, -11000, 12000, -13000, 14000, -15000, 16000, -17000, 18000,
 20000, -21000, 22000, -23000, 24000, -25000, 26000, -27000, 28000, -29000, 30000, -31000, 32000];
+
+
 
 var nagrody = [25000, 10000, 10000, 25000, 10000, 10000, 25000, 50000, 50000, 50000];
 
@@ -24,7 +26,7 @@ var tekstyszansy2 = ["Weź udział w wyścigu motorówek! aby wygrać 50k wyrzu�
 "Rozbij kasyno! aby wygrać 100k, wyrzuć", "Zainwestuj w giełdę! aby zarobić 100k wyrzuć", "Załóż własną firmę! aby zarobić 150k wyrzuć",
 "Weź udział w wyścigu balonów! aby wygrać 150k wyrzuć"];
 
-var tekstyszansy3 = ["Zabierz przyjaciół w luksusową podróż! płacisz wszystkim pozostałym graczom", 
+var tekstyszansy3 = ["Zabierz przyjaciół w luksusową podróż! płacisz wszystkim pozostałym graczom",
 "Zabierz przyjaciół na wystawny obiad! płacisz wszystkim pozostałym graczom"];
 
 var szansy3 = ['', 5000, 15000, 25000];
@@ -119,7 +121,7 @@ function rzut(){
         }
         else{
             $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] + 150000);
-        } /* Chciałbym aby się nie powtarzało, ale sol musi być w let-cie więc się nie da*/
+        } /* Chciałbym aby się nie powtarzało, ale sol musi być w letie więc się nie da*/
     }
     else if(poziom[licznik] == 2 && wynik > 7 && wynik < 13){
         alert("wygrałeś!");
@@ -151,8 +153,8 @@ function rzut(){
 
 var kosc = document.getElementById("kosc");
 
-balans1.addEventListener("click", function() {tura(); }); balans2.addEventListener("click", function() {tura(); });
-balans3.addEventListener("click", function() {tura(); }); balans4.addEventListener("click", function() {tura(); });
+balans1.addEventListener("click", tura); balans2.addEventListener("click", tura);
+balans3.addEventListener("click", tura); balans4.addEventListener("click", tura);
 kosc.addEventListener("click", function() {bozo(); }); $('#kosc').toggleClass('klik'); $('#kosc').html('klik');
 
 const ceny1 = [7000, 15000, 30000, 50000, 60000, 80000]; const ceny2 = [15000, 30000, 50000, 80000, 95000, 125000];
@@ -163,40 +165,71 @@ const ceny7 = [50000, 125000, 210000, 320000, 375000, 485000]; const ceny8 = [65
 var czywwiezieniu = ['',false, false, false, false]; var przejscie = ['', false, false, false, false];
 $('.p1').toggleClass('normalny1'); $('.p2').toggleClass('normalny2'); $('.p3').toggleClass('normalny3'); $('.p4').toggleClass('normalny4');  $('#ba1').toggleClass('klik'); 
 
-function bozo()
-{
+function bozo(){
     licznik++;
-    if(licznik == 1)
-    {
+    if(licznik == 1){
         $('#ba4').toggleClass('klik'); 
         $('#ba1').toggleClass('klik');
     }
-    else if(licznik == 2)
-    {
+    else if(licznik == 2){
         $('#ba1').toggleClass('klik'); 
         $('#ba2').toggleClass('klik'); 
     }
-    else if(licznik == 3)
-    {
+    else if(licznik == 3){
         $('#ba2').toggleClass('klik'); 
         $('#ba3').toggleClass('klik'); 
     }
-    else if(licznik == 4)
-    {
+    else if(licznik == 4){
         $('#ba3').toggleClass('klik'); 
         $('#ba4').toggleClass('klik'); 
     }
 }
-function gog(){
-    alert("dziala");
-    balans1.removeEventListener("click", gog, false);
-    balans2.removeEventListener("click", gog, false);
-    balans3.removeEventListener("click", gog, false);
-    balans4.removeEventListener("click", gog, false);
+function gog1(){
+    balans1.removeEventListener("click", gog1); balans2.removeEventListener("click", gog2); balans3.removeEventListener("click", gog3); 
+    balans4.removeEventListener("click", gog4); 
+    document.getElementById("ba1").innerHTML = bilans[1] = bilans[1] + 40000;
+    if(wiekszaszansa == true){
+        document.getElementById("ba1").innerHTML = bilans[1] = bilans[1] + 10000;
+        wiekszaszansa = false;
+    }
+    balans1.addEventListener("click", tura); balans2.addEventListener("click", tura); balans3.addEventListener("click", tura);
+    balans4.addEventListener("click", tura);
+}
+function gog2(){
+    balans1.removeEventListener("click", gog1);
+    balans2.removeEventListener("click", gog2); balans3.removeEventListener("click", gog3); balans4.removeEventListener("click", gog4);
+    balans1.addEventListener("click", tura); balans2.addEventListener("click", tura); balans3.addEventListener("click", tura);
+    balans4.addEventListener("click", tura);
+    document.getElementById("ba2").innerHTML = bilans[2] = bilans[2] + 40000;
+    if(wiekszaszansa == true){
+        document.getElementById("ba2").innerHTML = bilans[2] = bilans[2] + 10000;
+        wiekszaszansa = false;
+    }
+}
+function gog3(){
+    balans1.removeEventListener("click", gog1); balans2.removeEventListener("click", gog2); balans3.removeEventListener("click", gog3);
+    balans4.removeEventListener("click", gog4);
+    document.getElementById("ba3").innerHTML = bilans[3] = bilans[3] + 40000;
+    balans1.addEventListener("click", tura); balans2.addEventListener("click", tura); balans3.addEventListener("click", tura);
+    balans4.addEventListener("click", tura);
+    if(wiekszaszansa == true){
+        document.getElementById("ba3").innerHTML = bilans[3] = bilans[3] + 10000;
+        wiekszaszansa = false;
+    }
+}
+function gog4(){
+    balans1.removeEventListener("click", gog1); balans2.removeEventListener("click", gog2); balans3.removeEventListener("click", gog3);
+    balans4.removeEventListener("click", gog4);
+    balans1.addEventListener("click", tura); balans2.addEventListener("click", tura); balans3.addEventListener("click", tura);
+    balans4.addEventListener("click", tura);
+    document.getElementById("ba4").innerHTML = bilans[4] = bilans[4] + 40000;
+    if(wiekszaszansa == true){
+        document.getElementById("ba1").innerHTML = bilans[4] = bilans[4] + 10000;
+        wiekszaszansa = false;
+    }
 }
 
-function tura()
-{
+function tura(){
     if(licznik == 4){licznik = 1;}
     let rzutkostkami = 5;
     $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '0');
@@ -242,10 +275,8 @@ function tura()
             $('#targ').html('');
         }
         let hamza = $('#od'+liczbaoczek[licznik]).css('opacity');
-        if(liczbaoczek[licznik] < 8)
-        {
-            if(hamza != 0.99 && liczbaoczek[licznik] != 2 && liczbaoczek[licznik] != 5)
-            {
+        if(liczbaoczek[licznik] < 8){
+            if(hamza != 0.99 && liczbaoczek[licznik] != 2 && liczbaoczek[licznik] != 5){
                 document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + odkrywki[liczbaoczek[licznik]];
             }
             $('#od'+liczbaoczek[licznik]).css('background-color', 'red');
@@ -310,36 +341,40 @@ function tura()
                     $('#targ').html('<span id="xD" style="cursor:pointer;" onclick="rzut()">*Później coś wymyśle*</span>');
                 }
                 else if(los == 3){
-                    let kolejnazmienna = 1;
+                    let kolejnazmienna = Math.floor(Math.random() * 4);
                     alert(tekstyszansy4[kolejnazmienna]);
                     if(kolejnazmienna == 0){
                         $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '0');
                         liczbaoczek[licznik] = 8;
                         $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '1');
                     }
-                    else if(kolejnazmienna == 1){
-                        let fr = document.getElementById("ba"+licznik);
-                        let frr = document.getElementById("ba"+l);                
-                        let frrr = document.getElementById("ba"+i);                
-                        let frrrr = document.getElementById("ba"+c);
+                    else if(kolejnazmienna > 0 && kolejnazmienna < 3){
+                        let fr = document.getElementById("ba"+licznik); let frr = document.getElementById("ba"+l); 
+                        let frrr = document.getElementById("ba"+i); let frrrr = document.getElementById("ba"+c);
                         if(frrrr == document.getElementById("ba5")){frrrr = document.getElementById("ba1");}
                         if(frrrr == document.getElementById("ba6")){frrrr = document.getElementById("ba2");}
                         if(frrrr == document.getElementById("ba7")){frrrr = document.getElementById("ba3");}
                         if(frrr == document.getElementById("ba5")){frrrr = document.getElementById("ba1");}
                         if(frrr == document.getElementById("ba6")){frrrr = document.getElementById("ba2");}
                         if(frr == document.getElementById("ba5")){frrrr = document.getElementById("ba1");}
-                        fr.addEventListener("click", function() {gog(); });
-                        frr.addEventListener("click", function() {gog(); });
-                        frrr.addEventListener("click", function() {gog(); });
-                        frrrr.addEventListener("click", function() {gog(); });
+                        fr.addEventListener("click", gog1); frr.addEventListener("click", gog2);
+                        frrr.addEventListener("click", gog3); frrrr.addEventListener("click", gog4);
+                        fr.removeEventListener("click", tura); frr.removeEventListener("click", tura);
+                        frrr.removeEventListener("click", tura); frrrr.removeEventListener("click", tura);
+                        if(kolejnazmienna == 2){
+                            wiekszaszansa = true;
+                        }
+                    }
+                    else if(kolejnazmienna == 3){
+                        if(poziom[licznik] > 1){
+                            poziom[licznik] = poziom[licznik] - 1;
+                        }
                     }
                 }
             }
         }
-        else if(liczbaoczek[licznik] > 8 && liczbaoczek[licznik] < 16)
-        {
-            if(hamza != 0.99 && liczbaoczek[licznik] != 13)
-            {
+        else if(liczbaoczek[licznik] > 8 && liczbaoczek[licznik] < 16){
+            if(hamza != 0.99 && liczbaoczek[licznik] != 13){
                 document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + odkrywki[liczbaoczek[licznik]];
             }
             $('#od'+liczbaoczek[licznik]).css('background-color', 'darkkhaki');
@@ -369,8 +404,7 @@ function tura()
                         $('#targ').html('<span id="nazwad" style="cursor:pointer;" onclick="walter()">Czy chcesz kupić domek?</span>');
                     }
                     else if(czyja[liczbaoczek[licznik]] != 0 && czyja[liczbaoczek[licznik]] != licznik){
-                        document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - ceny4[kaal[liczbaoczek[licznik]]];
-                        
+                        document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - ceny4[kaal[liczbaoczek[licznik]]];    
                         document.getElementById("ba"+czyja[liczbaoczek[licznik]]).innerHTML = bilans[czyja[liczbaoczek[licznik]]] = bilans[czyja[liczbaoczek[licznik]]] + ceny4[kaal[liczbaoczek[licznik]]];
                         $('#targ').html('');
                     }
@@ -384,17 +418,14 @@ function tura()
                 $('#targ').html('');
             }
         }
-        else if(liczbaoczek[licznik] > 16 && liczbaoczek[licznik] < 24)
-        {
-            if(hamza != 0.99 && liczbaoczek[licznik] != 18)
-            {
+        else if(liczbaoczek[licznik] > 16 && liczbaoczek[licznik] < 24){
+            if(hamza != 0.99 && liczbaoczek[licznik] != 18){
                 document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + odkrywki[liczbaoczek];
             }
             $('#od'+liczbaoczek[licznik]).css('background-color', 'red');
             $('#od'+liczbaoczek[licznik]).css('border-color', 'red');
             $('#od'+liczbaoczek[licznik]).css('opacity', '0.99');
-            if(liczbaoczek[licznik] != 18)
-            {
+            if(liczbaoczek[licznik] != 18){
                 if(liczbaoczek[licznik] < 21){
                     if(kupiona[liczbaoczek[licznik]] == 0 && czyja[liczbaoczek[licznik]] == 0){
                         $('#targ').html('<span id="nazwap" style="cursor:pointer;" onclick="gus()">Czy chcesz kupić tą działke?</span>');
@@ -403,8 +434,7 @@ function tura()
                         $('#targ').html('<span id="nazwad" style="cursor:pointer;" onclick="walter()">Czy chcesz kupić domek?</span>');
                     }
                     else if(czyja[liczbaoczek[licznik]] != 0 && czyja[liczbaoczek[licznik]] != licznik){
-                        document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - ceny5[kaal[liczbaoczek[licznik]]];
-                        
+                        document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - ceny5[kaal[liczbaoczek[licznik]]];                      
                         document.getElementById("ba"+czyja[liczbaoczek[licznik]]).innerHTML = bilans[czyja[liczbaoczek[licznik]]] = bilans[czyja[liczbaoczek[licznik]]] + ceny5[kaal[liczbaoczek[licznik]]];
                         $('#targ').html('');
                     }
@@ -417,8 +447,7 @@ function tura()
                         $('#targ').html('<span id="nazwad" style="cursor:pointer;" onclick="walter()">Czy chcesz kupić domek?</span>');
                     }
                     else if(czyja[liczbaoczek[licznik]] != 0 && czyja[liczbaoczek[licznik]] != licznik){
-                        document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - ceny6[kaal[liczbaoczek[licznik]]];
-                        
+                        document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - ceny6[kaal[liczbaoczek[licznik]]];                      
                         document.getElementById("ba"+czyja[liczbaoczek[licznik]]).innerHTML = bilans[czyja[liczbaoczek[licznik]]] = bilans[czyja[liczbaoczek[licznik]]] + ceny6[kaal[liczbaoczek[licznik]]];
                         $('#targ').html('');
                     }
@@ -428,17 +457,14 @@ function tura()
                 $('#targ').html('');
             }
         }
-        else if(liczbaoczek[licznik] > 24)
-        { 
-            if(hamza != 0.99 && liczbaoczek[licznik] != 27 && liczbaoczek[licznik] != 29)
-            {
+        else if(liczbaoczek[licznik] > 24){ 
+            if(hamza != 0.99 && liczbaoczek[licznik] != 27 && liczbaoczek[licznik] != 29){
                 document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + odkrywki[liczbaoczek];
             }
             $('#od'+liczbaoczek[licznik]).css('background-color', 'darkkhaki');
             $('#od'+liczbaoczek[licznik]).css('border-color', 'darkkhaki');
             $('#od'+liczbaoczek[licznik]).css('opacity', '0.99');
-            if(liczbaoczek[licznik] != 27 && liczbaoczek[licznik] != 29)
-            {
+            if(liczbaoczek[licznik] != 27 && liczbaoczek[licznik] != 29){
                 if(liczbaoczek[licznik] < 29){
                     if(kupiona[liczbaoczek[licznik]] == 0 && czyja[liczbaoczek[licznik]] == 0){
                         $('#targ').html('<span id="nazwap" style="cursor:pointer;" onclick="gus()">Czy chcesz kupić tą działke?</span>');
@@ -448,7 +474,6 @@ function tura()
                     }
                     else if(czyja[liczbaoczek[licznik]] != 0 && czyja[liczbaoczek[licznik]] != licznik){
                         document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - ceny7[kaal[liczbaoczek[licznik]]];
-                        
                         document.getElementById("ba"+czyja[liczbaoczek[licznik]]).innerHTML = bilans[czyja[liczbaoczek[licznik]]] = bilans[czyja[liczbaoczek[licznik]]] + ceny7[kaal[liczbaoczek[licznik]]];
                         $('#targ').html('');
                     }
