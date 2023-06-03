@@ -3,15 +3,9 @@ alert("A no i jeżeli chcesz przejść do następnego musisz kliknąć pole poka
 var bilans = ['', 372000, 372000, 372000, 372000];
 
 var balans1 = document.getElementById("ba1"); var balans2 = document.getElementById("ba2"); var balans3 = document.getElementById("ba3");
-var balans4 = document.getElementById("ba4");
+var balans4 = document.getElementById("ba4"); var zero = document.getElementById("zero");
 
 var licznik = 1; var wiekszaszansa = false;
-
-var odkrywki = 
-[0, -1000, 2000, -3000, 4000, -5000, 6000, -7000, 8000, -9000, 10000, -11000, 12000, -13000, 14000, -15000, 16000, -17000, 18000,
-20000, -21000, 22000, -23000, 24000, -25000, 26000, -27000, 28000, -29000, 30000, -31000, 32000];
-
-
 
 var nagrody = [25000, 10000, 10000, 25000, 10000, 10000, 25000, 50000, 50000, 50000];
 
@@ -42,11 +36,17 @@ var tekstynagrody = ["Wynajmij swój prywatny odrzutowiec", 'Zdobywasz tytuł "B
 "Otrzymujesz odsetki od swoich milionów", "Sprzedaj swój sportowy samochód", "Sprzedaj jeden ze swoich wakacyjnych domów", 
 'Zdobyłeś tytuł "milionera roku"'];
 
-odkrywki = odkrywki.sort(() => Math.random() - 0.5); nagrody = nagrody.sort(() => Math.random() - 0.5);
-
 var liczbaoczek = ['', 0, 0, 0, 0]; var poziom = ['', 1, 1, 1, 1]; var pionek = ['', "a", "b", "c", "d"];
 
 $('#a0').css('opacity', '1'); $('#b0').css('opacity', '1'); $('#c0').css('opacity', '1'); $('#e0').css('opacity', '1');
+
+var odkrywki = [dom, dom, dom, dom, dom, gest, gest,]; var ktoraodkrywka = 0;
+
+odkrywki = odkrywki.sort(() => Math.random() - 0.5); nagrody = nagrody.sort(() => Math.random() - 0.5);
+
+var liczbadomow = ['', 0, 0, 0, 0]; var darmowedomy = 5; var czydomjestzadarmo = false;
+
+var odmowy = 2; var liczbaodmow = ['', 0, 0, 0, 0];
 
 var targ = document.getElementById("targ");
 
@@ -61,8 +61,8 @@ function jessie(){
     $('#dom'+liczbaoczek[licznik]+'-1').css('opacity', '0'); $('#dom'+liczbaoczek[licznik]+'-3').css('opacity', '0');
     $('#h'+liczbaoczek[licznik]).css('opacity', '1');
     if(kaal[liczbaoczek[licznik]] == 4){
-        $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] - cenydomow[liczbaoczek[licznik]]);
         kaal[liczbaoczek[licznik]]++;
+        $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] - cenydomow[liczbaoczek[licznik]]);
     }
     $('#targ').html('');
 }
@@ -71,7 +71,9 @@ const cenydomow = [0, 10000, 0, 10000, 15000, 0, 15000, 15000, 0, 25000, 25000, 
 45000, 45000, 45000, 0, 50000, 50000, 0, 50000, 0, 60000, 60000];
 
 function walter(){
-    $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] - cenydomow[liczbaoczek[licznik]])
+    if(czydomjestzadarmo == false){
+        $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] - cenydomow[liczbaoczek[licznik]]);
+    }
     $('#dom'+liczbaoczek[licznik]+'-'+kaal[liczbaoczek[licznik]]).css('opacity', '1');
     kaal[liczbaoczek[licznik]]++;
     if(kaal[liczbaoczek[licznik]] == 4){
@@ -80,6 +82,7 @@ function walter(){
     if(kaal[liczbaoczek[licznik]] > 5){
         $('#targ').html('');
     }
+    czydomjestzadarmo = false;
 }
 
 const cenydzialek = [0, 5000, 0, 5000, 11000, 0, 15000, 20000, 0, 35000, 35000, 40000, 55000, 0, 55000, 60000, 0, 80000, 0, 80000, 90000, 
@@ -228,17 +231,50 @@ function gog4(){
         wiekszaszansa = false;
     }
 }
-
+function dom2(){
+    alert("lepiej");
+    zero.removeEventListener("click", dom);
+    $('#zero').toggleClass('klik');
+    $('#zero').toggleClass('zero1');
+    $('#zero').html('');
+    czydomjestzadarmo = true;
+}
+function dom(){
+    liczbadomow[licznik]++
+    if(liczbadomow[licznik] > 0){
+        $('#zero').toggleClass('zero1');
+        $('#zero').toggleClass('klik');
+        zero.addEventListener("click", dom2);
+        $('#zero').html('Czy chcesz wykorzystać darmowy dom?');
+        darmowedomy--;
+    }
+}
+var l = licznik + 1; var i = licznik + 2; var c = licznik + 3;
+function gest(){
+    alert("Masz gest! daj każdemu z pozostałych graczy 20k"); 
+    let oo = bilans[l]; let ooo = bilans[i]; let oooo = bilans[c];
+    if(oooo == bilans[5]){oooo = bilans[1];}
+    if(oooo == bilans[6]){oooo = bilans[2];}
+    if(oooo == bilans[7]){oooo = bilans[3];}
+    if(ooo == bilans[5]){ooo = bilans[1];}
+    if(ooo == bilans[6]){ooo = bilans[2];}
+    if(oo == bilans[5]){oooo = bilans[1];}
+    document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 60000;
+    document.getElementById("ba"+l).innerHTML = oo = oo + 20000;
+    document.getElementById("ba"+i).innerHTML = ooo = ooo + 20000;
+    document.getElementById("ba"+c).innerHTML = oooo = oooo + 20000;
+}
+Math.floor(Math.random() * 8)
 function tura(){
+    let losszans = 1;
     if(licznik == 4){licznik = 1;}
-    let rzutkostkami = 5;
+    let rzutkostkami = 3;
     $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '0');
     document.getElementById("kosc").innerHTML = liczbaoczek[licznik] = liczbaoczek[licznik] + rzutkostkami;
     if(liczbaoczek[licznik] == 32){
         $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '1');
         liczbaoczek[licznik] = 0;
         $('#targ').html('');
-        document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - odkrywki[liczbaoczek[licznik]];
     }
     if(poziom[licznik] == 3 && liczbaoczek[licznik] > 31){
         liczbaoczek[licznik] = liczbaoczek[licznik] - 32;
@@ -277,7 +313,29 @@ function tura(){
         let hamza = $('#od'+liczbaoczek[licznik]).css('opacity');
         if(liczbaoczek[licznik] < 8){
             if(hamza != 0.99 && liczbaoczek[licznik] != 2 && liczbaoczek[licznik] != 5){
-                document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + odkrywki[liczbaoczek[licznik]];
+                if(losszans == 0){dom();}
+                else if(losszans == 1){gest(); bilans[1] = bilans[1] + 10000;}
+                else if(losszans == 2){
+
+                }
+                else if(losszans == 3){
+
+                }
+                else if(losszans == 4){
+
+                }
+                else if(losszans == 5){
+
+                }
+                else if(losszans == 6){
+
+                }
+                else if(losszans == 7){
+
+                }
+                else if(losszans == 8){
+
+                }
             }
             $('#od'+liczbaoczek[licznik]).css('background-color', 'red');
             $('#od'+liczbaoczek[licznik]).css('border-color', 'red');
@@ -322,7 +380,6 @@ function tura(){
             else if(liczbaoczek[licznik] == 5){
                 $('#targ').html('');
                 let los = 3;
-                let l = licznik + 1; let i = licznik + 2; let c = licznik + 3;
                 if(los == 0){
                     document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + szansy1[poziom[1]] + szansy1[poziom[2]] + szansy1[poziom[3]] + szansy1[poziom[4]] - szansy1[poziom[licznik]];
                     document.getElementById("ba"+l).innerHTML = bilans[l] = bilans[l] - szansy1[poziom[l]];                   
@@ -375,7 +432,7 @@ function tura(){
         }
         else if(liczbaoczek[licznik] > 8 && liczbaoczek[licznik] < 16){
             if(hamza != 0.99 && liczbaoczek[licznik] != 13){
-                document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + odkrywki[liczbaoczek[licznik]];
+                
             }
             $('#od'+liczbaoczek[licznik]).css('background-color', 'darkkhaki');
             $('#od'+liczbaoczek[licznik]).css('border-color', 'darkkhaki');
@@ -420,7 +477,7 @@ function tura(){
         }
         else if(liczbaoczek[licznik] > 16 && liczbaoczek[licznik] < 24){
             if(hamza != 0.99 && liczbaoczek[licznik] != 18){
-                document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + odkrywki[liczbaoczek];
+                
             }
             $('#od'+liczbaoczek[licznik]).css('background-color', 'red');
             $('#od'+liczbaoczek[licznik]).css('border-color', 'red');
@@ -459,7 +516,7 @@ function tura(){
         }
         else if(liczbaoczek[licznik] > 24){ 
             if(hamza != 0.99 && liczbaoczek[licznik] != 27 && liczbaoczek[licznik] != 29){
-                document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + odkrywki[liczbaoczek];
+                
             }
             $('#od'+liczbaoczek[licznik]).css('background-color', 'darkkhaki');
             $('#od'+liczbaoczek[licznik]).css('border-color', 'darkkhaki');
