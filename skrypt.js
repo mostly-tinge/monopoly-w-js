@@ -887,7 +887,8 @@ function tura(){
                         $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '1');
                     }
                     else if(kolejnazmienna > 0 && kolejnazmienna < 3){
-                        ceny.forEach((cen) => cen.addEventListener("click", tura));
+                        balans1.addEventListener("click", gog1); balans2.addEventListener("click", gog2);
+                        balans3.addEventListener("click", gog3); balans4.addEventListener("click", gog4);
                         balans1.removeEventListener("click", tura); balans2.removeEventListener("click", tura);
                         balans3.removeEventListener("click", tura); balans4.removeEventListener("click", tura);
                         if(kolejnazmienna == 2){
