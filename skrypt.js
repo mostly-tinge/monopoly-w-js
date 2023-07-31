@@ -3,8 +3,8 @@ function xd(){if(navigator.userAgent.indexOf("Edge") != -1 ){alert("Używasz edg
 alert("A no i jeżeli chcesz przejść do następnego musisz kliknąć pole pokazujące oczka(nie pytaj czemu ono istnieje ani czemu jest na nim napisane klik)");
 let bilans = ['', 372000, 372000, 372000, 372000];
 
-let balans1 = document.getElementById("ba1"); let balans2 = document.getElementById("ba2"); let balans3 = document.getElementById("ba3");
-let balans4 = document.getElementById("ba4");
+const balans1 = document.querySelector("#ba1"); const balans2 = document.querySelector("#ba2"); const balans3 = querySelector("#ba3");
+const balans4 = document.querySelector("#ba4");
 
 let licznik = 1; let wiekszaszansa = false; let czymoznakupic = true; let czynsz = ['', 0, 0, 0, 0];
 
@@ -48,7 +48,7 @@ odkrywki = odkrywki.sort(() => Math.random() - 0.5); nagrody = nagrody.sort(() =
 
 let liczbadomow = ['', 0, 0, 0, 0]; let czydomjestzadarmo = false; let liczbaodmow = ['', 0, 0, 0, 0];
 
-let targ = document.getElementById("targ");
+const targ = document.querySelector("#targ");
 
 let kaal = [0,0,0,0,0,0,0,0,0,/*8*/0,0,0,0,0,0,0,0,/*16*/0,0,0,0,0,0,0,0,/*24*/0,0,0,0,0,0,0,/*31*/];
 
@@ -157,7 +157,7 @@ function rzut(){
     }
 }
 
-let kosc = document.getElementById("kosc");
+const kosc = document.querySelector("#kosc");
 
 balans1.addEventListener("click", tura); balans2.addEventListener("click", tura);
 balans3.addEventListener("click", tura); balans4.addEventListener("click", tura);
@@ -198,10 +198,10 @@ function bozo(){
 function gog1(){
     balans1.removeEventListener("click", gog1); balans2.removeEventListener("click", gog2); balans3.removeEventListener("click", gog3); 
     balans4.removeEventListener("click", gog4); 
-    document.getElementById("ba1").innerHTML = bilans[1] = bilans[1] + 40000;
+    balans1.innerHTML = bilans[1] = bilans[1] + 40000;
     document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 40000;
     if(wiekszaszansa == true){
-        document.getElementById("ba1").innerHTML = bilans[1] = bilans[1] + 10000;
+        balans1.innerHTML = bilans[1] = bilans[1] + 10000;
         document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 10000;
         wiekszaszansa = false;
     }
@@ -794,7 +794,8 @@ function tura(){
                 }
                 else if(liczbaoczek[licznik] > 20){
                     if(kupiona[liczbaoczek[licznik]] == 0 && czyja[liczbaoczek[licznik]] == 0){
-                        $('#targ').html('<span id="nazwap" style="cursor:pointer;" onclick="gus()">Czy chcesz kupić tą działke?</span>');
+                        $('#targ').html('Czy chcesz kupić tą działke?'); targ.addEventListener("click", gus);
+                        $('#targ').toggleClass('klik'); targ.removeEventListener("click", walter);
                     }
                     if(czyja[liczbaoczek[licznik]] == licznik){
                         $('#targ').html('Czy chcesz kupić domek?'); targ.addEventListener("click", walter); targ.removeEventListener("click", gus);
@@ -901,8 +902,7 @@ function tura(){
                   }
             }
          }
-        document.getElementById("ba1").innerHTML = bilans[1]; document.getElementById("ba2").innerHTML = bilans[2];
-        document.getElementById("ba3").innerHTML = bilans[3]; document.getElementById("ba4").innerHTML = bilans[4];
+        balans1.innerHTML = bilans[1]; balans2.innerHTML = bilans[2]; balans3.innerHTML = bilans[3]; balans4.innerHTML = bilans[4];
 }
 document.getElementById("ba1").innerHTML = bilans[1]; document.getElementById("ba2").innerHTML = bilans[2];
 document.getElementById("ba3").innerHTML = bilans[3]; document.getElementById("ba4").innerHTML = bilans[4];
