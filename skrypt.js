@@ -4,7 +4,7 @@ alert("A no i jeżeli chcesz przejść do następnego musisz kliknąć pole poka
 let bilans = ['', 372000, 372000, 372000, 372000];
 
 const balans1 = document.querySelector("#ba1"); const balans2 = document.querySelector("#ba2"); const balans3 = querySelector("#ba3");
-const balans4 = document.querySelector("#ba4");
+const balans4 = document.querySelector("#ba4"); const ceny = document.querySelectorAll(".cena");
 
 let licznik = 1; let wiekszaszansa = false; let czymoznakupic = true; let czynsz = ['', 0, 0, 0, 0];
 
@@ -887,8 +887,7 @@ function tura(){
                         $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '1');
                     }
                     else if(kolejnazmienna > 0 && kolejnazmienna < 3){
-                        balans1.addEventListener("click", gog1); balans2.addEventListener("click", gog2);
-                        balans3.addEventListener("click", gog3); balans4.addEventListener("click", gog4);
+                        ceny.forEach((cen) => cen.addEventListener("click", tura));
                         balans1.removeEventListener("click", tura); balans2.removeEventListener("click", tura);
                         balans3.removeEventListener("click", tura); balans4.removeEventListener("click", tura);
                         if(kolejnazmienna == 2){
@@ -904,5 +903,4 @@ function tura(){
          }
         balans1.innerHTML = bilans[1]; balans2.innerHTML = bilans[2]; balans3.innerHTML = bilans[3]; balans4.innerHTML = bilans[4];
 }
-document.getElementById("ba1").innerHTML = bilans[1]; document.getElementById("ba2").innerHTML = bilans[2];
-document.getElementById("ba3").innerHTML = bilans[3]; document.getElementById("ba4").innerHTML = bilans[4];
+balans1.innerHTML = bilans[1]; balans2.innerHTML = bilans[2]; balans3.innerHTML = bilans[3]; balans4.innerHTML = bilans[4];
