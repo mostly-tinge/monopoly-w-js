@@ -158,9 +158,7 @@ function rzut(){
 }
 
 const kosc = document.querySelector("#kosc");
-
-balans1.addEventListener("click", tura); balans2.addEventListener("click", tura);
-balans3.addEventListener("click", tura); balans4.addEventListener("click", tura);
+ceny.forEach((ele) => ele.addEventListener("click", tura));
 kosc.addEventListener("click", function() {bozo(); }); $('#kosc').toggleClass('klik'); $('#kosc').html('klik');
 
 const ceny1 = [7000, 15000, 30000, 50000, 60000, 80000]; const ceny2 = [15000, 30000, 50000, 80000, 95000, 125000];
@@ -205,14 +203,12 @@ function gog1(){
         document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 10000;
         wiekszaszansa = false;
     }
-    balans1.addEventListener("click", tura); balans2.addEventListener("click", tura); balans3.addEventListener("click", tura);
-    balans4.addEventListener("click", tura);
+    ceny.forEach((ele) => ele.addEventListener("click", tura)); 
 }
 function gog2(){
     balans1.removeEventListener("click", gog1);
     balans2.removeEventListener("click", gog2); balans3.removeEventListener("click", gog3); balans4.removeEventListener("click", gog4);
-    balans1.addEventListener("click", tura); balans2.addEventListener("click", tura); balans3.addEventListener("click", tura);
-    balans4.addEventListener("click", tura);
+    ceny.forEach((ele) => ele.addEventListener("click", tura));
     document.getElementById("ba2").innerHTML = bilans[2] = bilans[2] + 40000;
     document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 40000;
     if(wiekszaszansa == true){
@@ -226,8 +222,7 @@ function gog3(){
     balans4.removeEventListener("click", gog4);
     document.getElementById("ba3").innerHTML = bilans[3] = bilans[3] + 40000;
     document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 40000;
-    balans1.addEventListener("click", tura); balans2.addEventListener("click", tura); balans3.addEventListener("click", tura);
-    balans4.addEventListener("click", tura);
+    ceny.forEach((ele) => ele.addEventListener("click", tura));
     if(wiekszaszansa == true){
         document.getElementById("ba3").innerHTML = bilans[3] = bilans[3] + 10000;
         document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 10000;
@@ -237,8 +232,7 @@ function gog3(){
 function gog4(){
     balans1.removeEventListener("click", gog1); balans2.removeEventListener("click", gog2); balans3.removeEventListener("click", gog3);
     balans4.removeEventListener("click", gog4);
-    balans1.addEventListener("click", tura); balans2.addEventListener("click", tura); balans3.addEventListener("click", tura);
-    balans4.addEventListener("click", tura);
+    ceny.forEach((ele) => ele.addEventListener("click", tura));
     document.getElementById("ba4").innerHTML = bilans[4] = bilans[4] + 40000;
     document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 40000;
     if(wiekszaszansa == true){
