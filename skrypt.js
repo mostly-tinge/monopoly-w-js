@@ -286,38 +286,33 @@ function pozew(){
     alert("pozew! Pobierz 50k od wybranego gracza")
     balans1.addEventListener("click", pozew1); balans2.addEventListener("click", pozew2);
     balans3.addEventListener("click", pozew3); balans4.addEventListener("click", pozew4);
-    balans1.removeEventListener("click", tura); balans2.removeEventListener("click", tura);
-    balans3.removeEventListener("click", tura); balans4.removeEventListener("click", tura);
+    ceny.forEach((ele) => ele.removeEventListener("click", tura));
 }
 function pozew1(){
     balans1.removeEventListener("click", pozew1); balans2.removeEventListener("click", pozew2); balans3.removeEventListener("click", pozew3);
     balans4.removeEventListener("click", pozew4);
-    balans1.addEventListener("click", tura); balans2.addEventListener("click", tura); balans3.addEventListener("click", tura);
-    balans4.addEventListener("click", tura);
+    ceny.forEach((ele) => ele.addEventListener("click", tura));;
     document.getElementById("ba1").innerHTML = bilans[1] = bilans[1] - 50000;
     document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + 50000;
 }
 function pozew2(){
     balans1.removeEventListener("click", pozew1); balans2.removeEventListener("click", pozew2); balans3.removeEventListener("click", pozew3);
     balans4.removeEventListener("click", pozew4);
-    balans1.addEventListener("click", tura); balans2.addEventListener("click", tura); balans3.addEventListener("click", tura);
-    balans4.addEventListener("click", tura);
+    ceny.forEach((ele) => ele.addEventListener("click", tura));
     document.getElementById("ba2").innerHTML = bilans[2] = bilans[2] - 50000;
     document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + 50000;
 }
 function pozew3(){
     balans1.removeEventListener("click", pozew1); balans2.removeEventListener("click", pozew2); balans3.removeEventListener("click", pozew3);
     balans4.removeEventListener("click", pozew4);
-    balans1.addEventListener("click", tura); balans2.addEventListener("click", tura); balans3.addEventListener("click", tura);
-    balans4.addEventListener("click", tura);
+    ceny.forEach((ele) => ele.addEventListener("click", tura));
     document.getElementById("ba3").innerHTML = bilans[3] = bilans[3] - 50000;
     document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + 50000;
 }
 function pozew4(){
     balans1.removeEventListener("click", pozew1); balans2.removeEventListener("click", pozew2); balans3.removeEventListener("click", pozew3);
     balans4.removeEventListener("click", pozew4);
-    balans1.addEventListener("click", tura); balans2.addEventListener("click", tura); balans3.addEventListener("click", tura);
-    balans4.addEventListener("click", tura);
+    ceny.forEach((ele) => ele.addEventListener("click", tura));
     document.getElementById("ba4").innerHTML = bilans[4] = bilans[4] - 50000;
     document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + 50000;
 }
@@ -325,7 +320,7 @@ function mieszkanie(){
     alert("Wynajmujesz swoje mieszkanie przez 3 następne kolejki pobierasz 12k");
     czynsz[licznik] = czynsz[licznik] + 3;
 }
-let czyznalezione = false; let kosc2 = document.getElementById("kosc").value;
+let czyznalezione = false; let kosc2 = document.querySelector("kosc").value;
 function podroz(){
     czyznalezione = false;
     alert("Do przodu! Przejdź do najbliższej wolnej nieruchomości.");
@@ -382,7 +377,7 @@ function podroz(){
         }
     }
 }
-const dzialka20 = document.getElementsByClassName('dzialka2'); const dzialka3 = document.getElementsByClassName('bocznadzialka2');
+const dzialka20 = document.querySelectorAll('dzialka2'); const dzialka3 = document.querySelectorAll('bocznadzialka2');
 const dzialka = ['#d1', '#d2', '#d3', '#d4', '#d5', '#d6', '#d7', '#d8', '#d9', '#d10', '#d11', '#d12', '#d13', '#d14', '#d15', 
 '#d16', '#d17', '#d18', '#d19', '#d20', '#d21', '#d22', '#d23', '#d24', '#d25', '#d26', '#d27', '#d28', '#d29', '#d30', '#d31'];
 const podtr = document.querySelector("#podtran");
@@ -483,8 +478,7 @@ function wybraniecudzego(){
     for(let dz6 of dzialka20){
         dz6.removeEventListener("click", wybraniecudzego);
     }
-    balans1.removeEventListener("click", tura); balans2.removeEventListener("click", tura);
-    balans3.removeEventListener("click", tura); balans4.removeEventListener("click", tura);
+    ceny.forEach((ele) => ele.removeEventListener("click", tura));
     balans1.addEventListener("click", argument1); balans2.addEventListener("click", argument2);
     balans3.addEventListener("click", argument3); balans4.addEventListener("click", argument4);
 }
@@ -700,8 +694,7 @@ function tura(){
                     else if(kolejnazmienna > 0 && kolejnazmienna < 3){
                         balans1.addEventListener("click", gog1); balans2.addEventListener("click", gog2);
                         balans3.addEventListener("click", gog3); balans4.addEventListener("click", gog4);
-                        balans1.removeEventListener("click", tura); balans2.removeEventListener("click", tura);
-                        balans3.removeEventListener("click", tura); balans4.removeEventListener("click", tura);
+                        ceny.forEach((ele) => ele.removeEventListener("click", tura));
                         if(kolejnazmienna == 2){
                             wiekszaszansa = true;
                         }
@@ -883,8 +876,7 @@ function tura(){
                     else if(kolejnazmienna > 0 && kolejnazmienna < 3){
                         balans1.addEventListener("click", gog1); balans2.addEventListener("click", gog2);
                         balans3.addEventListener("click", gog3); balans4.addEventListener("click", gog4);
-                        balans1.removeEventListener("click", tura); balans2.removeEventListener("click", tura);
-                        balans3.removeEventListener("click", tura); balans4.removeEventListener("click", tura);
+                        ceny.forEach((ele) => ele.removeEventListener("click", tura));
                         if(kolejnazmienna == 2){
                             wiekszaszansa = true;
                         }
