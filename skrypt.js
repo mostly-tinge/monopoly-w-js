@@ -1,10 +1,9 @@
  alert("Żeby ruszyć pionkami treba kliknąć balans danego pionka.");
-function xd(){if(navigator.userAgent.indexOf("Edge") != -1 ){alert("Używasz edge");}} //iframe.contentWindow.postMessage("alert");
 alert("A no i jeżeli chcesz przejść do następnego musisz kliknąć pole pokazujące oczka(nie pytaj czemu ono istnieje ani czemu jest na nim napisane klik)");
 let bilans = ['', 372000, 372000, 372000, 372000];
 
 const balans1 = document.querySelector("#ba1"); const balans2 = document.querySelector("#ba2"); const balans3 = querySelector("#ba3");
-const balans4 = document.querySelector("#ba4"); const ceny = document.querySelectorAll(".cena");
+const balans4 = document.querySelector("#ba4"); const ceny = document.querySelectorAll(".cena"); const podtr = document.querySelector("#podtran");
 
 let licznik = 1; let wiekszaszansa = false; let czymoznakupic = true; let czynsz = ['', 0, 0, 0, 0];
 
@@ -46,9 +45,7 @@ przymtran, zestaw, limo, limo, gest, udzialy]; let ktoraodkrywka = 0;
 
 odkrywki = odkrywki.sort(() => Math.random() - 0.5); nagrody = nagrody.sort(() => Math.random() - 0.5);
 
-let liczbadomow = ['', 0, 0, 0, 0]; let czydomjestzadarmo = false; let liczbaodmow = ['', 0, 0, 0, 0];
-
-const targ = document.querySelector("#targ");
+let liczbadomow = ['', 0, 0, 0, 0]; let czydomjestzadarmo = false; let liczbaodmow = ['', 0, 0, 0, 0]; const targ = document.querySelector("#targ");
 
 let kaal = [0,0,0,0,0,0,0,0,0,/*8*/0,0,0,0,0,0,0,0,/*16*/0,0,0,0,0,0,0,0,/*24*/0,0,0,0,0,0,0,/*31*/];
 
@@ -94,9 +91,7 @@ const kolorydzialek = ['', 'darkred', 'chartreuse', 'fuchsia', 'navy']
 function gus(){
     $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] - cenydzialek[liczbaoczek[licznik]]);
     $('#k'+liczbaoczek[licznik]).css('color', kolorydzialek[licznik]);
-    czyja[liczbaoczek[licznik]] = 1;
-    kupiona[liczbaoczek[licznik]] = licznik;
-    targ.removeEventListener("click", gus);
+    czyja[liczbaoczek[licznik]] = 1; kupiona[liczbaoczek[licznik]] = licznik; targ.removeEventListener("click", gus);
     if(kupiona[liczbaoczek[licznik]] = licznik){
         $('#targ').html('Czy chcesz kupić domek?');
         targ.addEventListener("click", walter);
@@ -157,8 +152,7 @@ function rzut(){
     }
 }
 
-const kosc = document.querySelector("#kosc");
-ceny.forEach((ele) => ele.addEventListener("click", tura));
+const kosc = document.querySelector("#kosc"); ceny.forEach((ele) => ele.addEventListener("click", tura));
 kosc.addEventListener("click", function() {bozo(); }); $('#kosc').toggleClass('klik'); $('#kosc').html('klik');
 
 const ceny1 = [7000, 15000, 30000, 50000, 60000, 80000]; const ceny2 = [15000, 30000, 50000, 80000, 95000, 125000];
@@ -243,20 +237,15 @@ function gog4(){
 }
 const domy = document.querySelector("#domy");
 function dom2(){
-    alert("lepiej");
     domy.removeEventListener("click", dom);
-    $('#domy').toggleClass('klik');
-    $('#domy').toggleClass('dom1');
-    $('#domy').html('');
+    $('#domy').toggleClass('klik'); $('#domy').toggleClass('dom1'); $('#domy').html('');
     czydomjestzadarmo = true;
 } 
 function dom(){
     liczbadomow[licznik]++
     if(liczbadomow[licznik] > 0){
-        $('#domy').toggleClass('dom1');
-        $('#domy').toggleClass('klik');
-        domy.addEventListener("click", dom2);
-        $('#domy').html('Czy chcesz wykorzystać darmowy dom?');
+        $('#domy').toggleClass('dom1'); $('#domy').toggleClass('klik');
+        domy.addEventListener("click", dom2); $('#domy').html('Czy chcesz wykorzystać darmowy dom?');
     }
 }
 function gest(){
@@ -345,10 +334,8 @@ function podroz(){
                 $('#od'+liczbaoczek[licznik]).css('background-color', 'darkkhaki');
                 $('#od'+liczbaoczek[licznik]).css('border-color', 'darkkhaki');
             }
-            $('#'+pionek[licznik]+oczka[i]).css('opacity', '1');
-            czyznalezione = true;
-            $('#kosc').html(i);/*document.getElementById("kosc").innerHTML = liczbaoczek[licznik] = i;*/
-            liczbaoczek[licznik] = i;
+            $('#'+pionek[licznik]+oczka[i]).css('opacity', '1'); czyznalezione = true;
+            $('#kosc').html(i); liczbaoczek[licznik] = i;
             $('#od'+liczbaoczek[licznik]).css('opacity', '0.99');
         }
     }
@@ -380,7 +367,6 @@ function podroz(){
 const dzialka20 = document.querySelectorAll('dzialka2'); const dzialka3 = document.querySelectorAll('bocznadzialka2');
 const dzialka = ['#d1', '#d2', '#d3', '#d4', '#d5', '#d6', '#d7', '#d8', '#d9', '#d10', '#d11', '#d12', '#d13', '#d14', '#d15', 
 '#d16', '#d17', '#d18', '#d19', '#d20', '#d21', '#d22', '#d23', '#d24', '#d25', '#d26', '#d27', '#d28', '#d29', '#d30', '#d31'];
-const podtr = document.querySelector("#podtran");
 function akcja(){
     let wlasciciel = this.value;
         for(i = 0; i < 31; i++){
@@ -417,8 +403,7 @@ function ukradniecie(){
 var czysajakiespodtrany = ['', 0, 0, 0, 0];
 function podtran(){
     alert("Podstępna transakcja! Wykradnij nieruchomość od wybranego gracza");
-    $('#podtran').toggleClass('klik');
-    $('#podtran').toggleClass('dom1');
+    $('#podtran').toggleClass('klik'); $('#podtran').toggleClass('dom1');
     podtr.addEventListener("click", ukradniecie)
     $('#podtran').html('Czy chcesz ukraść komuś działkę?');
     czysajakiespodtrany[licznik] = czysajakiespodtrany[licznik] + 1;
@@ -430,8 +415,7 @@ function zlyrating(){
 let czysajakiesprzymtrany = ['', 0, 0, 0, 0]; const przytr = document.querySelector("przymtran");
 function przymtran(){
     alert("Przymusowa transakcja! Zamień nieruchomość z wybranym graczem");
-    $('#przymtran').toggleClass('klik');
-    $('#przymtran').toggleClass('dom1');
+    $('#przymtran').toggleClass('klik'); $('#przymtran').toggleClass('dom1');
     przytr.addEventListener("click", wybranie);
     $('#przymtran').html('Czy chcesz zamienić z kimś działkę?');
     czysajakiesprzymtrany[licznik] = czysajakiesprzymtrany[licznik] + 1;
@@ -451,10 +435,8 @@ function wybranie(){
 function wybranieswojego(){
     let dozamiany = this.value; $('#k'+dozamiany).css("color", kolorydzialek[komuprzekazacdzialke]); alert("jd"); 
     kupiona[dozamiany] = licznik; czyja[dozamiany] = 1;
-    $('#przymtran').toggleClass('klik');
-    $('#przymtran').toggleClass('dom1');
-    przytr.removeEventListener("click", wybranieswojego)
-    $('#przymtran').html('');
+    $('#przymtran').toggleClass('klik'); $('#przymtran').toggleClass('dom1');
+    przytr.removeEventListener("click", wybranieswojego); $('#przymtran').html('');
     for(let dz5 of dzialka3){
         dz5.removeEventListener("click", wybranieswojego); 
     }
@@ -486,7 +468,7 @@ let komuprzekazacdzialke = 0;
 function argument1(){komuprzekazacdzialke = 1}; function argument2(){komuprzekazacdzialke = 2}; 
 function argument3(){komuprzekazacdzialke = 3}; function argument4(){komuprzekazacdzialke = 4};
 function zestaw(){
-    alert("Tym razem nic się nie dzieje, masz pecha!");
+    alert("Tym razem nic się nie dzieje");
 }
 function limo(){
     alert("Przejedź się limuzyną na start");
@@ -507,14 +489,11 @@ function limo(){
         liczbaoczek[licznik] = liczbaoczek[licznik] - 32;
         poziom[licznik] = 2;
         $('.p'+licznik).toggleClass('srebrny');
-        $('.p'+licznik).toggleClass('normalny'+licznik);
-        przejscie[licznik] = true;
-        alert("wół")
+        $('.p'+licznik).toggleClass('normalny'+licznik); przejscie[licznik] = true;
     }
     if(liczbaoczek[licznik] == 32){
         liczbaoczek[licznik] = 0;
-        $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '1');
-        $('#targ').html('');
+        $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '1'); $('#targ').html('');
     }
 }
 let czy0juzbylo = false; let czy1juzbylo = false; let czy2juzbylo = false; let czy3juzbylo = false; let czy4juzbylo = false;
@@ -550,20 +529,17 @@ function losowanie(){
 Math.floor(Math.random() * 10 + 2);
 function tura(){
     if(liczbadomow[licznik] > 0){
-        $('#domy').toggleClass('dom1');
-        $('#domy').toggleClass('klik');
+        $('#domy').toggleClass('dom1'); $('#domy').toggleClass('klik');
         domy.addEventListener("click", dom2);
         $('#domy').html('Czy chcesz wykorzystać darmowy dom?');
     }
     if(czysajakiespodtrany[licznik] == 0){
-        $('#podtran').removeClass('klik');
-        $('#podtran').removeClass('dom1');
+        $('#podtran').removeClass('klik'); $('#podtran').removeClass('dom1');
         podtr.removeEventListener("click", ukradniecie)
         $('#podtran').html('');
     }
     if(czysajakiesprzymtrany[licznik] == 1){
-        $('#przymtran').toggleClass('klik');
-        $('#przymtran').toggleClass('dom1');
+        $('#przymtran').toggleClass('klik'); $('#przymtran').toggleClass('dom1');
         przytr.addEventListener("click", wybranie);
         $('#przymtran').html('Czy chcesz zamienić z kimś działkę?');
     }
@@ -577,16 +553,14 @@ function tura(){
     document.getElementById("kosc").innerHTML = liczbaoczek[licznik] = liczbaoczek[licznik] + rzutkostkami;
     if(liczbaoczek[licznik] == 32){
         $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '1');
-        liczbaoczek[licznik] = 0;
-        $('#targ').html('');
+        liczbaoczek[licznik] = 0; $('#targ').html('');
     }
     if(poziom[licznik] == 3 && liczbaoczek[licznik] > 31){
         liczbaoczek[licznik] = liczbaoczek[licznik] - 32;
         document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + 250000;
     }
     if(poziom[licznik] == 2 && przejscie[licznik] == true && liczbaoczek[licznik] > 31){
-        $('.p'+licznik).toggleClass('srebrny');
-        $('.p'+licznik).toggleClass('zloty');
+        $('.p'+licznik).toggleClass('srebrny'); $('.p'+licznik).toggleClass('zloty');
         poziom[licznik] = 3;
         liczbaoczek[licznik] = liczbaoczek[licznik] - 32;
     }
@@ -657,8 +631,7 @@ function tura(){
             else if(liczbaoczek[licznik] == 2){
                 let losuj2 = Math.floor(Math.random()* 10); 
                 document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + nagrody[wydanenagrody] * poziom[licznik];
-                alert(tekstynagrody[losuj2]+' pobierz: '+nagrody[wydanenagrody]* poziom[licznik]);
-                wydanenagrody++;
+                alert(tekstynagrody[losuj2]+' pobierz: '+nagrody[wydanenagrody]* poziom[licznik]); wydanenagrody++;
                 $('#targ').html('');
             }
             else if(liczbaoczek[licznik] == 5){
@@ -840,8 +813,7 @@ function tura(){
                 let losujr = Math.floor(Math.random()* 10); 
                 document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + nagrody[wydanenagrody] * poziom;
                 alert(tekstynagrody[losujr]+' pobierz: '+nagrody[wydanenagrody]* poziom);
-                wydanenagrody++;
-                $('#targ').html('');
+                wydanenagrody++; $('#targ').html('');
             }
          else if(liczbaoczek[licznik] == 29){
                 $('#targ').html('');
