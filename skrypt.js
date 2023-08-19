@@ -191,10 +191,10 @@ function gog1(){
     balans1.removeEventListener("click", gog1); balans2.removeEventListener("click", gog2); balans3.removeEventListener("click", gog3); 
     balans4.removeEventListener("click", gog4); 
     balans1.innerHTML = bilans[1] = bilans[1] + 40000;
-    document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 40000;
+    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 40000;
     if(wiekszaszansa == true){
         balans1.innerHTML = bilans[1] = bilans[1] + 10000;
-        document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 10000;
+        balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
         wiekszaszansa = false;
     }
     ceny.forEach((ele) => ele.addEventListener("click", tura)); 
@@ -206,8 +206,8 @@ function gog2(){
     document.getElementById("ba2").innerHTML = bilans[2] = bilans[2] + 40000;
     document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 40000;
     if(wiekszaszansa == true){
-        document.getElementById("ba2").innerHTML = bilans[2] = bilans[2] + 10000;
-        document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 10000;
+        balans2.innerHTML = bilans[2] = bilans[2] + 10000;
+        balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
         wiekszaszansa = false;
     }
 }
@@ -218,8 +218,8 @@ function gog3(){
     document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 40000;
     ceny.forEach((ele) => ele.addEventListener("click", tura));
     if(wiekszaszansa == true){
-        document.getElementById("ba3").innerHTML = bilans[3] = bilans[3] + 10000;
-        document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 10000;
+        balans3.innerHTML = bilans[3] = bilans[3] + 10000;
+        balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
         wiekszaszansa = false;
     }
 }
@@ -230,8 +230,8 @@ function gog4(){
     document.getElementById("ba4").innerHTML = bilans[4] = bilans[4] + 40000;
     document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 40000;
     if(wiekszaszansa == true){
-        document.getElementById("ba1").innerHTML = bilans[4] = bilans[4] + 10000;
-        document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 10000;
+        balans4.innerHTML = bilans[4] = bilans[4] + 10000;
+        balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
         wiekszaszansa = false;
     }
 }
@@ -252,7 +252,7 @@ function gest(){
     let s = licznik + 1; let ss = licznik + 2; let sss = licznik + 3;
     alert("Masz gest! daj każdemu z pozostałych graczy 20k");
     if(s == 5){s = 1;} if(ss == 5){ss = 1;} if(ss == 6){ss = 2;} if(sss == 5){sss = 1;} if(sss == 6){sss = 2;} if(sss == 7){sss = 3;}
-    document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 60000;
+    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 60000;
     document.getElementById("ba"+s).innerHTML = bilans[s] = bilans[s] + 20000;
     document.getElementById("ba"+ss).innerHTML = bilans[ss] = bilans[ss] + 20000;
     document.getElementById("ba"+sss).innerHTML = bilans[sss] = bilans[sss] + 20000;
@@ -262,14 +262,14 @@ function prezent(){
     let q = licznik + 1; let qq = licznik + 2; let qqq = licznik + 3;
     alert("Prezent ślubny! pobierz od każdego gracza 20k");
     if(q == 5){q = 1;} if(qq == 5){qq = 1;} if(qq == 6){qq = 2;} if(qqq == 5){qqq = 1;} if(qqq == 6){qqq = 2;} if(qqq == 7){qqq = 3;}
-    document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + 60000;
+    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] + 60000;
     document.getElementById("ba"+q).innerHTML = bilans[q] = bilans[q] - 20000;
     document.getElementById("ba"+qq).innerHTML = bilans[qq] = bilans[qq] - 20000;
     document.getElementById("ba"+qqq).innerHTML = bilans[qqq] = bilans[qqq] - 20000;
 }
 function udzialy(){
     alert("Wystrzałowe udziały! Pobierz 100k")
-    document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + 100000;
+    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] + 100000;
 }
 function pozew(){
     alert("pozew! Pobierz 50k od wybranego gracza")
@@ -281,29 +281,29 @@ function pozew1(){
     balans1.removeEventListener("click", pozew1); balans2.removeEventListener("click", pozew2); balans3.removeEventListener("click", pozew3);
     balans4.removeEventListener("click", pozew4);
     ceny.forEach((ele) => ele.addEventListener("click", tura));;
-    document.getElementById("ba1").innerHTML = bilans[1] = bilans[1] - 50000;
-    document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + 50000;
+    balans1.innerHTML = bilans[1] = bilans[1] - 50000;
+    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] + 50000;
 }
 function pozew2(){
     balans1.removeEventListener("click", pozew1); balans2.removeEventListener("click", pozew2); balans3.removeEventListener("click", pozew3);
     balans4.removeEventListener("click", pozew4);
     ceny.forEach((ele) => ele.addEventListener("click", tura));
-    document.getElementById("ba2").innerHTML = bilans[2] = bilans[2] - 50000;
-    document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + 50000;
+    balans2.innerHTML = bilans[2] = bilans[2] - 50000;
+    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] + 50000;
 }
 function pozew3(){
     balans1.removeEventListener("click", pozew1); balans2.removeEventListener("click", pozew2); balans3.removeEventListener("click", pozew3);
     balans4.removeEventListener("click", pozew4);
     ceny.forEach((ele) => ele.addEventListener("click", tura));
-    document.getElementById("ba3").innerHTML = bilans[3] = bilans[3] - 50000;
-    document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + 50000;
+    balans3.innerHTML = bilans[3] = bilans[3] - 50000;
+    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] + 50000;
 }
 function pozew4(){
     balans1.removeEventListener("click", pozew1); balans2.removeEventListener("click", pozew2); balans3.removeEventListener("click", pozew3);
     balans4.removeEventListener("click", pozew4);
     ceny.forEach((ele) => ele.addEventListener("click", tura));
-    document.getElementById("ba4").innerHTML = bilans[4] = bilans[4] - 50000;
-    document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + 50000;
+    balans4.innerHTML = bilans[4] = bilans[4] - 50000;
+    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] + 50000;
 }
 function mieszkanie(){
     alert("Wynajmujesz swoje mieszkanie przez 3 następne kolejki pobierasz 12k");
@@ -383,11 +383,10 @@ function akcja(){
     $('#k'+wlasciciel).css('color', kolorydzialek[licznik]); kupiona[wlasciciel] = licznik; czyja[wlasciciel] = 1;
 }
 function ukradniecie(){
-    let dz3; 
     for(i = 0; i < 31; i++){
         $(dzialka[i]).toggleClass('klik');
     }
-    for(dz3 of dzialka3){
+    for(let dz3 of dzialka3){
         dz3.addEventListener("click", akcja);
     }
     for(let dz4 of dzialka20){
@@ -477,7 +476,7 @@ function limo(){
     $('#kosc').html(liczbaoczek[licznik]);
     if(poziom[licznik] == 3 && liczbaoczek[licznik] > 31){
         liczbaoczek[licznik] = liczbaoczek[licznik] - 32;
-        document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + 250000;
+        balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] + 250000;
     }
     if(poziom[licznik] == 2 && przejscie[licznik] == true && liczbaoczek[licznik] > 31){
         $('.p'+licznik).toggleClass('srebrny');
@@ -531,7 +530,7 @@ function tura(){
     }
     if(poziom[licznik] == 3 && liczbaoczek[licznik] > 31){
         liczbaoczek[licznik] = liczbaoczek[licznik] - 32;
-        document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] + 250000;
+        balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] + 250000;
     }
     if(poziom[licznik] == 2 && przejscie[licznik] == true && liczbaoczek[licznik] > 31){
         $('.p'+licznik).toggleClass('srebrny'); $('.p'+licznik).toggleClass('zloty');
