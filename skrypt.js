@@ -47,11 +47,11 @@ odkrywki = odkrywki.sort(() => Math.random() - 0.5); nagrody = nagrody.sort(() =
 
 let liczbadomow = ['', 0, 0, 0, 0]; let czydomjestzadarmo = false; let liczbaodmow = ['', 0, 0, 0, 0]; const targ = document.querySelector("#targ");
 
-let kaal = [0,0,0,0,0,0,0,0,0,/*8*/0,0,0,0,0,0,0,0,/*16*/0,0,0,0,0,0,0,0,/*24*/0,0,0,0,0,0,0,/*31*/];
+let kaal = [0, 0, 0, 0, 0, 0, 0, 0 ,0, /*8*/0, 0, 0, 0, 0, 0, 0, 0, /*16*/0, 0, 0, 0, 0, 0, 0, 0, /*24*/0, 0, 0, 0, 0, 0, 0,/*31*/];
 
-let czyja = [0,0,0,0,0,0,0,0,0,/*8*/0,0,0,0,0,0,0,0,/*16*/0,0,0,0,0,0,0,0,/*24*/0,0,0,0,0,0,0,/*31*/];
+let czyja = [0, 0, 0, 0, 0, 0, 0, 0, 0,/*8*/0, 0, 0, 0, 0, 0, 0, 0,/*16*/0, 0, 0, 0, 0, 0, 0, 0,/*24*/0, 0, 0, 0, 0, 0, 0,/*31*/];
 
-let kupiona = [0,0,0,0,0,0,0,0,0,/*8*/0,0,0,0,0,0,0,0,/*16*/0,0,0,0,0,0,0,0,/*24*/0,0,0,0,0,3,/*31*/];
+let kupiona = [0, 0, 0, 0, 0, 0, 0, 0, 0,/*8*/0, 0, 0, 0, 0, 0, 0, 0,/*16*/0, 0, 0, 0, 0, 0, 0, 0,/*24*/0, 0, 0, 0 , 0, 0,/*31*/];
 function jessie(){
     $('#dom'+liczbaoczek[licznik]+'-0').css('opacity', '0'); $('#dom'+liczbaoczek[licznik]+'-2').css('opacity', '0');
     $('#dom'+liczbaoczek[licznik]+'-1').css('opacity', '0'); $('#dom'+liczbaoczek[licznik]+'-3').css('opacity', '0');
@@ -59,7 +59,7 @@ function jessie(){
     if(kaal[liczbaoczek[licznik]] == 4){
         kaal[liczbaoczek[licznik]]++;
         $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] - cenydomow[liczbaoczek[licznik]]);
-        targ.removeEventListener("click", jessie); $('#targ').html('');
+        targ.removeEventListener("click", jessie);
     }
     $('#targ').html('');
 }
@@ -497,9 +497,14 @@ function limo(){
 }
 
 function losowanie(){
-    
+    switch( Math.floor(Math.random() * 22 + 1)){
+     case 1
+      dom();
+      break
+     case 2
+    }
 }
-Math.floor(Math.random() * 10 + 2);
+//Math.floor(Math.random() * 10 + 2);
 function tura(){
     if(liczbadomow[licznik] > 0){
         $('#domy').toggleClass('dom1'); $('#domy').toggleClass('klik');
