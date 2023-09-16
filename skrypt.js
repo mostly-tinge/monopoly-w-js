@@ -399,7 +399,7 @@ function ukradniecie(){
     }
     czysajakiespodtrany[licznik]--;
 }
-var czysajakiespodtrany = ['', 0, 0, 0, 0];
+let czysajakiespodtrany = ['', 0, 0, 0, 0];
 function podtran(){
     alert("Podstępna transakcja! Wykradnij nieruchomość od wybranego gracza");
     $('#podtran').toggleClass('klik'); $('#podtran').toggleClass('dom1');
