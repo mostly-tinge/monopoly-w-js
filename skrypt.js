@@ -40,8 +40,8 @@ let liczbaoczek = ['', 0, 0, 0, 0]; let poziom = ['', 1, 1, 1, 1]; let pionek = 
 
 $('#a0').css('opacity', '1'); $('#b0').css('opacity', '1'); $('#c0').css('opacity', '1'); $('#e0').css('opacity', '1');
 
-let odkrywki = [dom, dom, dom, dom, dom, gest, gest, prezent, pozew, udzialy, podroz, mieszkanie, mieszkanie, zlyrating, podtran, podroz, 
-przymtran, zestaw, limo, limo, gest, udzialy]; let ktoraodkrywka = 0;
+let odkrywki = [dom(), dom(), dom(), dom(), dom(), gest(), gest(), prezent(), pozew(), udzialy(), podroz(), mieszkanie(), mieszkanie(), zlyrating(), 
+podtran(), podroz(), przymtran(), zestaw(), limo(), limo(), gest(), udzialy()]; let ktoraodkrywka = 0;
 
 odkrywki = odkrywki.sort(() => Math.random() - 0.5); nagrody = nagrody.sort(() => Math.random() - 0.5);
 
@@ -497,12 +497,7 @@ function limo(){
 }
 
 function losowanie(){
-    switch( Math.floor(Math.random() * 22 + 1)){
-     case 1
-      dom();
-      break
-     case 2
-    }
+    
 }
 //Math.floor(Math.random() * 10 + 2);
 function tura(){
