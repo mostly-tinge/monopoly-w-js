@@ -497,7 +497,30 @@ function limo(){
 }
 
 function losowanie(){
-    
+    let los = Math.floor(Math.random() * 22);
+    if(los == 0 && czy0juzbylo == false){ czy0juzbylo = true; dom(); } else{los = Math.floor(Math.random() * 22);}
+    if(los == 1 && czy1juzbylo == false){czy1juzbylo = true; dom();} else{los = Math.floor(Math.random() * 22);}
+    if(los == 2 && czy2juzbylo == false){ czy2juzbylo = true; dom(); } else{los = Math.floor(Math.random() * 22);}
+    if(los == 3 && czy3juzbylo == false){czy3juzbylo = true; dom();} else{los = Math.floor(Math.random() * 22);}
+    if(los == 4 && czy4juzbylo == false){ czy4juzbylo = true; dom(); } else{los = Math.floor(Math.random() * 22);}
+    if(los == 5 && czy5juzbylo == false){czy5juzbylo = true; gest();} else{los = Math.floor(Math.random() * 22);}
+    if(los == 6 && czy6juzbylo == false){czy6juzbylo = true; gest();} else{los = Math.floor(Math.random() * 22);}
+    if(los == 7 && czy7juzbylo == false){czy7juzbylo = true; prezent();} else{los = Math.floor(Math.random() * 22);}
+    if(los == 8 && czy8juzbylo == false){ czy8juzbylo = true; pozew(); } else{los = Math.floor(Math.random() * 22);}
+    if(los == 9 && czy9juzbylo == false){czy9juzbylo = true; udzialy();} else{los = Math.floor(Math.random() * 22);}
+    if(los == 10 && czy10juzbylo == false){ czy10juzbylo = true; podroz(); } else{los = Math.floor(Math.random() * 22);}
+    if(los == 11 && czy11juzbylo == false){czy11juzbylo = true; mieszkanie();} else{los = Math.floor(Math.random() * 22);}
+    if(los == 12 && czy12juzbylo == false){ czy12juzbylo = true; mieszkanie(); } else{los = Math.floor(Math.random() * 22);}
+    if(los == 13 && czy13juzbylo == false){czy13juzbylo = true; zlyrating();} else{los = Math.floor(Math.random() * 22);}
+    if(los == 14 && czy14juzbylo == false){czy14juzbylo = true; podtran();} else{los = Math.floor(Math.random() * 22);}
+    if(los == 15 && czy15juzbylo == false){czy15juzbylo = true; podroz();} else{los = Math.floor(Math.random() * 22);}
+    if(los == 16 && czy16juzbylo == false){ czy16juzbylo = true; przymtran(); } else{los = Math.floor(Math.random() * 22);}
+    if(los == 17 && czy17juzbylo == false){czy17juzbylo = true; zestaw();} else{los = Math.floor(Math.random() * 22);}
+    if(los == 18 && czy18juzbylo == false){ czy18juzbylo = true; limo(); } else{los = Math.floor(Math.random() * 22);}
+    if(los == 19 && czy19juzbylo == false){czy19juzbylo = true; limo();} else{los = Math.floor(Math.random() * 22);}
+    if(los == 20 && czy20juzbylo == false){ czy20juzbylo = true; gest(); } else{los = Math.floor(Math.random() * 22);}
+    if(los == 21 && czy21juzbylo == false){czy21juzbylo = true; udzialy();} else{los = Math.floor(Math.random() * 22);}
+
 }
 //Math.floor(Math.random() * 10 + 2);
 function tura(){
