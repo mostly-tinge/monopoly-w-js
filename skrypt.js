@@ -4,7 +4,7 @@ let bilans = ['', 372000, 372000, 372000, 372000];
 
 const balans1 = document.querySelector("#ba1"); const balans2 = document.querySelector("#ba2"); const balans3 = document.querySelector("#ba3");
 const balans4 = document.querySelector("#ba4"); const ceny = document.querySelectorAll(".cena"); const podtr = document.querySelector("#podtran");
-let balansPlusLicznik = doucment.querySelector("#ba"+licznik);
+let balansPlusLicznik = doucment.querySelector("#ba"+licznik); const balanse = document.querySelectorAll("");
 let licznik = 1; let wiekszaszansa = false; let czymoznakupic = true; let czynsz = ['', 0, 0, 0, 0];
 
 let nagrody = [25000, 10000, 10000, 25000, 10000, 10000, 25000, 50000, 50000, 50000]; let transakcje = ['', 0, 0, 0, 0]
@@ -136,13 +136,13 @@ function rzut(){
         alert("wygrałeś!");
         $('#targ').html(wynik);
         if(sol == 0){
-            $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] + 50000);
+            $(balansPlusLicznik).html(bilans[licznik] = bilans[licznik] + 50000);
         }
         else if(sol > 0 && sol < 4){
-            $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] + 100000);
+            $(balansPlusLicznik).html(bilans[licznik] = bilans[licznik] + 100000);
         }
         else{
-            $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] + 150000);
+            $(balansPlusLicznik).html(bilans[licznik] = bilans[licznik] + 150000);
         } 
     }
 }
@@ -198,8 +198,8 @@ function gog2(){
     balans1.removeEventListener("click", gog1);
     balans2.removeEventListener("click", gog2); balans3.removeEventListener("click", gog3); balans4.removeEventListener("click", gog4);
     ceny.forEach((ele) => ele.addEventListener("click", tura));
-    document.getElementById("ba2").innerHTML = bilans[2] = bilans[2] + 40000;
-    document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 40000;
+    balans2.innerHTML = bilans[2] = bilans[2] + 40000;
+    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 40000;
     if(wiekszaszansa == true){
         balans2.innerHTML = bilans[2] = bilans[2] + 10000;
         balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
@@ -209,8 +209,8 @@ function gog2(){
 function gog3(){
     balans1.removeEventListener("click", gog1); balans2.removeEventListener("click", gog2); balans3.removeEventListener("click", gog3);
     balans4.removeEventListener("click", gog4);
-    document.getElementById("ba3").innerHTML = bilans[3] = bilans[3] + 40000;
-    document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 40000;
+    balans3.innerHTML = bilans[3] = bilans[3] + 40000;
+    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 40000;
     ceny.forEach((ele) => ele.addEventListener("click", tura));
     if(wiekszaszansa == true){
         balans3.innerHTML = bilans[3] = bilans[3] + 10000;
@@ -222,8 +222,8 @@ function gog4(){
     balans1.removeEventListener("click", gog1); balans2.removeEventListener("click", gog2); balans3.removeEventListener("click", gog3);
     balans4.removeEventListener("click", gog4);
     ceny.forEach((ele) => ele.addEventListener("click", tura));
-    document.getElementById("ba4").innerHTML = bilans[4] = bilans[4] + 40000;
-    document.getElementById("ba"+licznik).innerHTML = bilans[licznik] = bilans[licznik] - 40000;
+    balans4.innerHTML = bilans[4] = bilans[4] + 40000;
+    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 40000;
     if(wiekszaszansa == true){
         balans4.innerHTML = bilans[4] = bilans[4] + 10000;
         balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
@@ -353,7 +353,7 @@ function podroz(){
             }
             $('#'+pionek[licznik]+oczka[i]).css('opacity', '1');
             czyznalezione = true;
-            $('#kosc').html(i);/*document.getElementById("kosc").innerHTML = liczbaoczek[licznik] = i;*/
+            $('#kosc').html(i);//document.getElementById("kosc").innerHTML = liczbaoczek[licznik] = i;
             liczbaoczek[licznik] = i;
         }
     }
@@ -516,7 +516,6 @@ function losowanie(){
     if(los == 21 && czy21juzbylo == false){czy21juzbylo = true; udzialy();} else{los = Math.floor(Math.random() * 22);}
 
 }
-//Math.floor(Math.random() * 10 + 2);
 function tura(){
     if(liczbadomow[licznik] > 0){
         $('#domy').toggleClass('dom1'); $('#domy').toggleClass('klik');
@@ -538,7 +537,7 @@ function tura(){
         czynsz[licznik]--;
     }
     czymoznakupic = true; let limuzyna = false;
-    let rzutkostkami = 24;
+    let rzutkostkami = Math.floor(Math.random() * 10 + 2);
     $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '0');
     document.getElementById("kosc").innerHTML = liczbaoczek[licznik] = liczbaoczek[licznik] + rzutkostkami;
     if(liczbaoczek[licznik] == 32){
@@ -644,7 +643,7 @@ function tura(){
                     alert(tekstyszansy3[Math.floor(Math.random())]+szansy3[wydaneszanse]* poziom[licznik]);
                 }
                 else if(los == 2){
-                    $('#targ').html('<span id="xD" style="cursor:pointer;" onclick="rzut()">*Później coś wymyśle*</span>');
+                    $('#targ').html('<span id="xD" style="cursor:pointer;" onclick="rzut()">Rzuć kostką i sprawdź czy wygrasz</span>');
                 }
                 else if(los == 3){
                     let kolejnazmienna = 2;
