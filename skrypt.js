@@ -40,11 +40,6 @@ let liczbaoczek = ['', 0, 0, 0, 0]; let poziom = ['', 1, 1, 1, 1]; let pionek = 
 
 $('#a0').css('opacity', '1'); $('#b0').css('opacity', '1'); $('#c0').css('opacity', '1'); $('#e0').css('opacity', '1');
 
-let odkrywki = [dom(), dom(), dom(), dom(), dom(), gest(), gest(), prezent(), pozew(), udzialy(), podroz(), mieszkanie(), mieszkanie(), zlyrating(), 
-podtran(), podroz(), przymtran(), zestaw(), limo(), limo(), gest(), udzialy()]; let ktoraodkrywka = 0;
-
-odkrywki = odkrywki.sort(() => Math.random() - 0.5); nagrody = nagrody.sort(() => Math.random() - 0.5);
-
 let liczbadomow = ['', 0, 0, 0, 0]; let czydomjestzadarmo = false; let liczbaodmow = ['', 0, 0, 0, 0]; const targ = document.querySelector("#targ");
 
 let kaal = [0, 0, 0, 0, 0, 0, 0, 0 ,0, /*8*/0, 0, 0, 0, 0, 0, 0, 0, /*16*/0, 0, 0, 0, 0, 0, 0, 0, /*24*/0, 0, 0, 0, 0, 0, 0,/*31*/];
@@ -153,7 +148,7 @@ function rzut(){
 }
 
 const kosc = document.querySelector("#kosc"); ceny.forEach((ele) => ele.addEventListener("click", tura));
-kosc.addEventListener("click", function() {bozo(); }); $('#kosc').toggleClass('klik'); $('#kosc').html('klik');
+kosc.addEventListener("click", function() {nadajKlik(); }); $('#kosc').toggleClass('klik'); $('#kosc').html('klik');
 
 const ceny1 = [7000, 15000, 30000, 50000, 60000, 80000]; const ceny2 = [15000, 30000, 50000, 80000, 95000, 125000];
 const ceny3 = [20000, 50000, 90000, 140000, 165000, 215000]; const ceny4 = [25000, 65000, 110000, 170000, 200000, 270000];
@@ -163,7 +158,7 @@ const ceny7 = [50000, 125000, 210000, 320000, 375000, 485000]; const ceny8 = [65
 let czywwiezieniu = ['', false, false, false, false]; let przejscie = ['', false, false, false, false];
 $('.p1').toggleClass('normalny1'); $('.p2').toggleClass('normalny2'); $('.p3').toggleClass('normalny3'); $('.p4').toggleClass('normalny4');  $('#ba1').toggleClass('klik'); 
 
-function bozo(){
+function nadajKlik(){
     licznik++;
     if(licznik == 1){
         $('#ba4').toggleClass('klik'); 
@@ -256,7 +251,6 @@ function gest(){
     document.getElementById("ba"+s).innerHTML = bilans[s] = bilans[s] + 20000;
     document.getElementById("ba"+ss).innerHTML = bilans[ss] = bilans[ss] + 20000;
     document.getElementById("ba"+sss).innerHTML = bilans[sss] = bilans[sss] + 20000;
-    alert(bilans[4])
 }
 function prezent(){
     let q = licznik + 1; let qq = licznik + 2; let qqq = licznik + 3;
