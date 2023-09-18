@@ -1,4 +1,5 @@
- alert("Żeby ruszyć pionkami treba kliknąć balans danego pionka.");
+//licznik jest po to, aby program wiedział czyja jest tura
+alert("Żeby ruszyć pionkami treba kliknąć balans danego pionka.");
 alert("A no i jeżeli chcesz przejść do następnego musisz kliknąć pole pokazujące oczka(nie pytaj czemu ono istnieje ani czemu jest na nim napisane klik)");
 let bilans = ['', 372000, 372000, 372000, 372000];
 
