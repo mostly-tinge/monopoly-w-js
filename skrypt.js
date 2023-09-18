@@ -184,7 +184,9 @@ function nadajKlik(){
     }
 }
 function gog(){
-    ceny.forEach(ele => ele.removeEventListener);
+    for(let element of ceny){
+        element.removeEventListener("click", gog);
+    }
     balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 40000
     if(this === ba1){
         balans1.innerHTML = bilans[1] = bilans[1] + 40000;
@@ -215,7 +217,9 @@ function gog(){
         }
     }
     wiekszaszansa = false;
-    ceny.forEach((ele) => ele.addEventListener("click", tura));
+    for(let element of ceny){
+        element.addEventListener("click", tura);
+    }
 }
 const domy = document.querySelector("#domy");
 function dom2(){
@@ -256,11 +260,15 @@ function pozew(){
     alert("pozew! Pobierz 50k od wybranego gracza")
     balans1.addEventListener("click", pozew1); balans2.addEventListener("click", pozew2);
     balans3.addEventListener("click", pozew3); balans4.addEventListener("click", pozew4);
-    ceny.forEach((ele) => ele.removeEventListener("click", tura));
+    for(let element of ceny){
+        element.removeEventListener("click", tura);
+    }
 }
 function pozew(){
-    ceny.forEach(ele => ele.removeEventListener("click", pozew));
-    ceny.forEach(ele => ele.addEventListener("click", tura));
+    for(let element of ceny){
+        element.removeEventListener("click", pozew);
+        element.addEventListener("click", tura);
+    }
     balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] + 50000;
     if(this === ba1){
         balans1.innerHTML = bilans[1] = bilans[1] - 50000;
