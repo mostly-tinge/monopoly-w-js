@@ -183,53 +183,39 @@ function nadajKlik(){
         licznik = 1;
     }
 }
-function gog1(){
-    balans1.removeEventListener("click", gog1); balans2.removeEventListener("click", gog2); balans3.removeEventListener("click", gog3); 
-    balans4.removeEventListener("click", gog4); 
-    balans1.innerHTML = bilans[1] = bilans[1] + 40000;
-    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 40000;
-    if(wiekszaszansa == true){
-        balans1.innerHTML = bilans[1] = bilans[1] + 10000;
-        balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
-        wiekszaszansa = false;
+function gog(){
+    ceny.forEach(ele => ele.removeEventListener);
+    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 40000
+    if(this === ba1){
+        balans1.innerHTML = bilans[1] = bilans[1] + 40000;
+        if(wiekszaszansa === true){
+         balans1.innerHTML = bilans[1] = bilans[1] + 10000;
+         balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
+        }
     }
-    ceny.forEach((ele) => ele.addEventListener("click", tura)); 
-}
-function gog2(){
-    balans1.removeEventListener("click", gog1);
-    balans2.removeEventListener("click", gog2); balans3.removeEventListener("click", gog3); balans4.removeEventListener("click", gog4);
+    else if(this === ba2){
+        balans2.innerHTML = bilans[2] = bilans[2] + 40000;
+        if(wiekszaszansa === true){
+         balans2.innerHTML = bilans[2] = bilans[2] + 10000;
+         balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
+        }
+    }
+    else if(this === ba3){
+        balans3.innerHTML = bilans[3] = bilans[3] + 40000;
+        if(wiekszaszansa === true){
+         balans3.innerHTML = bilans[3] = bilans[3] + 10000;
+         balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
+        }
+    }
+    else if(this === ba4){
+        balans4.innerHTML = bilans[4] = bilans[4] + 40000;
+        if(wiekszaszansa === true){
+         balans4.innerHTML = bilans[4] = bilans[4] + 10000;
+         balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
+        }
+    }
+    wiekszaszansa = false;
     ceny.forEach((ele) => ele.addEventListener("click", tura));
-    balans2.innerHTML = bilans[2] = bilans[2] + 40000;
-    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 40000;
-    if(wiekszaszansa == true){
-        balans2.innerHTML = bilans[2] = bilans[2] + 10000;
-        balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
-        wiekszaszansa = false;
-    }
-}
-function gog3(){
-    balans1.removeEventListener("click", gog1); balans2.removeEventListener("click", gog2); balans3.removeEventListener("click", gog3);
-    balans4.removeEventListener("click", gog4);
-    balans3.innerHTML = bilans[3] = bilans[3] + 40000;
-    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 40000;
-    ceny.forEach((ele) => ele.addEventListener("click", tura));
-    if(wiekszaszansa == true){
-        balans3.innerHTML = bilans[3] = bilans[3] + 10000;
-        balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
-        wiekszaszansa = false;
-    }
-}
-function gog4(){
-    balans1.removeEventListener("click", gog1); balans2.removeEventListener("click", gog2); balans3.removeEventListener("click", gog3);
-    balans4.removeEventListener("click", gog4);
-    ceny.forEach((ele) => ele.addEventListener("click", tura));
-    balans4.innerHTML = bilans[4] = bilans[4] + 40000;
-    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 40000;
-    if(wiekszaszansa == true){
-        balans4.innerHTML = bilans[4] = bilans[4] + 10000;
-        balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
-        wiekszaszansa = false;
-    }
 }
 const domy = document.querySelector("#domy");
 function dom2(){
