@@ -258,33 +258,22 @@ function pozew(){
     balans3.addEventListener("click", pozew3); balans4.addEventListener("click", pozew4);
     ceny.forEach((ele) => ele.removeEventListener("click", tura));
 }
-function pozew1(){
-    balans1.removeEventListener("click", pozew1); balans2.removeEventListener("click", pozew2); balans3.removeEventListener("click", pozew3);
-    balans4.removeEventListener("click", pozew4);
-    ceny.forEach((ele) => ele.addEventListener("click", tura));;
-    balans1.innerHTML = bilans[1] = bilans[1] - 50000;
+function pozew(){
+    ceny.forEach(ele => ele.removeEventListener("click", pozew));
+    ceny.forEach(ele => ele.addEventListener("click", tura));
     balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] + 50000;
-}
-function pozew2(){
-    balans1.removeEventListener("click", pozew1); balans2.removeEventListener("click", pozew2); balans3.removeEventListener("click", pozew3);
-    balans4.removeEventListener("click", pozew4);
-    ceny.forEach((ele) => ele.addEventListener("click", tura));
-    balans2.innerHTML = bilans[2] = bilans[2] - 50000;
-    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] + 50000;
-}
-function pozew3(){
-    balans1.removeEventListener("click", pozew1); balans2.removeEventListener("click", pozew2); balans3.removeEventListener("click", pozew3);
-    balans4.removeEventListener("click", pozew4);
-    ceny.forEach((ele) => ele.addEventListener("click", tura));
-    balans3.innerHTML = bilans[3] = bilans[3] - 50000;
-    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] + 50000;
-}
-function pozew4(){
-    balans1.removeEventListener("click", pozew1); balans2.removeEventListener("click", pozew2); balans3.removeEventListener("click", pozew3);
-    balans4.removeEventListener("click", pozew4);
-    ceny.forEach((ele) => ele.addEventListener("click", tura));
-    balans4.innerHTML = bilans[4] = bilans[4] - 50000;
-    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] + 50000;
+    if(this === ba1){
+        balans1.innerHTML = bilans[1] = bilans[1] - 50000;
+    }
+    else if(this === ba2){
+        balans2.innerHTML = bilans[2] = bilans[2] - 50000;
+    }
+    else if(this === ba3){
+        balans3.innerHTML = bilans[3] = bilans[3] - 50000;
+    }
+    else if(this === ba4){
+        balans4.innerHTML = bilans[4] = bilans[4] - 50000;
+    }
 }
 function mieszkanie(){
     alert("Wynajmujesz swoje mieszkanie przez 3 następne kolejki pobierasz 12k");
@@ -503,6 +492,18 @@ function losowanie(){
     if(los == 21 && czy21juzbylo == false){czy21juzbylo = true; udzialy();} else{los = Math.floor(Math.random() * 22);}
 
 }
+function zmianaKoloru(){
+    if(liczbaoczek[licznik] < 8 || (liczbaoczek[licznik] > 16 && liczbaoczek[licznik] < 24)){
+        $('#od'+liczbaoczek[licznik]).css('background-color', 'red');
+        $('#od'+liczbaoczek[licznik]).css('border-color', 'red');
+        $('#od'+liczbaoczek[licznik]).css('opacity', '0.99');
+    }
+    else{
+        $('#od'+liczbaoczek[licznik]).css('background-color', 'darkkhaki');
+        $('#od'+liczbaoczek[licznik]).css('border-color', 'darkkhaki');
+        $('#od'+liczbaoczek[licznik]).css('opacity', '0.99');
+    }
+}
 function tura(){
     if(liczbadomow[licznik] > 0){
         $('#domy').toggleClass('dom1'); $('#domy').toggleClass('klik');
@@ -569,9 +570,7 @@ function tura(){
             if(hamza != 0.99 && liczbaoczek[licznik] != 2 && liczbaoczek[licznik] != 5){
                 losowanie();
             }
-            $('#od'+liczbaoczek[licznik]).css('background-color', 'red');
-            $('#od'+liczbaoczek[licznik]).css('border-color', 'red');
-            $('#od'+liczbaoczek[licznik]).css('opacity', '0.99');
+              zmianaKoloru();
             if(liczbaoczek[licznik] != 2 && liczbaoczek[licznik] != 5){
                 if(liczbaoczek[licznik] < 4){
                     if(kupiona[liczbaoczek[licznik]] == 0 && czyja[liczbaoczek[licznik]] == 0 && czymoznakupic == true){
@@ -663,9 +662,7 @@ function tura(){
             if(hamza != 0.99 && liczbaoczek[licznik] != 13){
                 losowanie()
             }
-            $('#od'+liczbaoczek[licznik]).css('background-color', 'darkkhaki');
-            $('#od'+liczbaoczek[licznik]).css('border-color', 'darkkhaki');
-            $('#od'+liczbaoczek[licznik]).css('opacity', '0.99');
+            zmianaKoloru();
             if(liczbaoczek[licznik] != 13){
                 if(liczbaoczek[licznik] < 12){
                     if(kupiona[liczbaoczek[licznik]] == 0 && czyja[liczbaoczek[licznik]] == 0){
@@ -710,9 +707,7 @@ function tura(){
             if(hamza != 0.99 && liczbaoczek[licznik] != 18){
                 losowanie();
             }
-            $('#od'+liczbaoczek[licznik]).css('background-color', 'red');
-            $('#od'+liczbaoczek[licznik]).css('border-color', 'red');
-            $('#od'+liczbaoczek[licznik]).css('opacity', '0.99');
+            zmianaKoloru();
             if(liczbaoczek[licznik] != 18){
                 if(liczbaoczek[licznik] < 21){
                     if(kupiona[liczbaoczek[licznik]] == 0 && czyja[liczbaoczek[licznik]] == 0 && czymoznakupic == true){
@@ -751,9 +746,7 @@ function tura(){
             if(hamza != 0.99 && liczbaoczek[licznik] != 27 && liczbaoczek[licznik] != 29){
                 losowanie();
             }
-            $('#od'+liczbaoczek[licznik]).css('background-color', 'darkkhaki');
-            $('#od'+liczbaoczek[licznik]).css('border-color', 'darkkhaki');
-            $('#od'+liczbaoczek[licznik]).css('opacity', '0.99');
+            zmianaKoloru();
             if(liczbaoczek[licznik] != 27 && liczbaoczek[licznik] != 29){
                 if(liczbaoczek[licznik] < 29){
                     if(kupiona[liczbaoczek[licznik]] == 0 && czyja[liczbaoczek[licznik]] == 0){
