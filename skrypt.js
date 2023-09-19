@@ -148,7 +148,10 @@ function rzut(){
     }
 }
 
-const kosc = document.querySelector("#kosc"); ceny.forEach((ele) => ele.addEventListener("click", tura));
+const kosc = document.querySelector("#kosc"); 
+for(let element of ceny){
+    element.addEventListener("click", tura);
+}
 kosc.addEventListener("click", function() {nadajKlik(); }); $('#kosc').toggleClass('klik'); $('#kosc').html('klik');
 
 const ceny1 = [7000, 15000, 30000, 50000, 60000, 80000]; const ceny2 = [15000, 30000, 50000, 80000, 95000, 125000];
@@ -428,16 +431,22 @@ function wybraniecudzego(){
     for(let dz5 of dzialka3){
         dz5.addEventListener("click", wybranieswojego); 
     }
+    
     for(let dz6 of dzialka20){
         dz6.addEventListener("click", wybranieswojego);
     }
+    
     for(let dz5 of dzialka3){
         dz5.removeEventListener("click", wybraniecudzego); 
     }
+    
     for(let dz6 of dzialka20){
         dz6.removeEventListener("click", wybraniecudzego);
     }
-    ceny.forEach((ele) => ele.removeEventListener("click", tura));
+    
+    for(let element of ceny){
+        element.removeEventListener("click", tura);
+    }
     balans1.addEventListener("click", argument1); balans2.addEventListener("click", argument2);
     balans3.addEventListener("click", argument3); balans4.addEventListener("click", argument4);
 }
@@ -650,7 +659,9 @@ function tura(){
                     else if(kolejnazmienna > 0 && kolejnazmienna < 3){
                         balans1.addEventListener("click", gog1); balans2.addEventListener("click", gog2);
                         balans3.addEventListener("click", gog3); balans4.addEventListener("click", gog4);
-                        ceny.forEach((ele) => ele.removeEventListener("click", tura));
+                         for(let element of ceny){
+                            element.removeEventListener("click", tura);
+                        }
                         if(kolejnazmienna == 2){
                             wiekszaszansa = true;
                         }
@@ -824,7 +835,9 @@ function tura(){
                     else if(kolejnazmienna > 0 && kolejnazmienna < 3){
                         balans1.addEventListener("click", gog1); balans2.addEventListener("click", gog2);
                         balans3.addEventListener("click", gog3); balans4.addEventListener("click", gog4);
-                        ceny.forEach((ele) => ele.removeEventListener("click", tura));
+                         for(let element of ceny){
+                            element.removeEventListener("click", tura);
+                            }
                         if(kolejnazmienna == 2){
                             wiekszaszansa = true;
                         }
