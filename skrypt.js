@@ -168,19 +168,19 @@ function nadajKlik(){
         $('#ba4').toggleClass('klik'); 
         $('#ba1').toggleClass('klik');
     }
-    else if(licznik == 2){
+    else if(licznik === 2){
         $('#ba1').toggleClass('klik'); 
         $('#ba2').toggleClass('klik'); 
     }
-    else if(licznik == 3){
+    else if(licznik === 3){
         $('#ba2').toggleClass('klik'); 
         $('#ba3').toggleClass('klik'); 
     }
-    else if(licznik == 4){
+    else if(licznik === 4){
         $('#ba3').toggleClass('klik'); 
         $('#ba4').toggleClass('klik'); 
     }
-    else if(licznik == 5){
+    else if(licznik === 5){
         $('#ba4').toggleClass('klik'); 
         $('#ba1').toggleClass('klik');
         licznik = 1;
@@ -321,7 +321,7 @@ function podroz(){
         }
     }
     for(i = liczbaoczek[licznik]; i > 0; i--){
-        if(czyznalezione == false && czyja[i] == 0 && i < liczbaoczek[licznik] && i != 13 && i != 8 & i != 16 && i != 24 && i != 27 && i != 29 && i != 32){
+        if(czyznalezione === false && czyja[i] === 0 && i < liczbaoczek[licznik] && i != 13 && i != 8 & i != 16 && i != 24 && i != 27 && i != 29 && i != 32){
             if(liczbaoczek[licznik] > 0 && liczbaoczek[licznik] < 8){
                 $('#od'+liczbaoczek[licznik]).css('background-color', 'red');
                 $('#od'+liczbaoczek[licznik]).css('border-color', 'red'); 
