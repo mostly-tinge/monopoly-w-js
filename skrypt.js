@@ -638,7 +638,6 @@ function tura(){
                         balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - ceny1[kaal[liczbaoczek[licznik]]];
                         
                         document.getElementById("ba"+czyja[liczbaoczek[licznik]]).innerHTML = bilans[czyja[liczbaoczek[licznik]]] = bilans[czyja[liczbaoczek[licznik]]] + ceny1[kaal[liczbaoczek[licznik]]];
-                        $('#targ').html('');
                     }
                 }
                 else if(liczbaoczek[licznik] > 3){
@@ -647,9 +646,9 @@ function tura(){
                         balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - ceny2[kaal[liczbaoczek[licznik]]];
                         
                         document.getElementById("ba"+czyja[liczbaoczek[licznik]]).innerHTML = bilans[czyja[liczbaoczek[licznik]]] = bilans[czyja[liczbaoczek[licznik]]] + ceny2[kaal[liczbaoczek[licznik]]];
-                        $('#targ').html('');
                     }
                 }
+                $('#targ').html('')
             }
             else if(liczbaoczek[licznik] === 2){
                 nagroda();
@@ -673,7 +672,6 @@ function tura(){
                         balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - ceny3[kaal[liczbaoczek[licznik]]];
                         
                         document.getElementById("ba"+czyja[liczbaoczek[licznik]]).innerHTML = bilans[czyja[liczbaoczek[licznik]]] = bilans[czyja[liczbaoczek[licznik]]] + ceny3[kaal[liczbaoczek[licznik]]];
-                        $('#targ').html('');
                     }
                 }
             }
@@ -682,7 +680,6 @@ function tura(){
                     if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaoczek[licznik]] !== licznik){
                         balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - ceny4[kaal[liczbaoczek[licznik]]];    
                         document.getElementById("ba"+czyja[liczbaoczek[licznik]]).innerHTML = bilans[czyja[liczbaoczek[licznik]]] = bilans[czyja[liczbaoczek[licznik]]] + ceny4[kaal[liczbaoczek[licznik]]];
-                        $('#targ').html('');
                     }
                 }
             }
