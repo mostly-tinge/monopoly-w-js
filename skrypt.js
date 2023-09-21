@@ -280,10 +280,6 @@ function pozew1(){
     }
 }
 function pozew2(){
-    for(let element of ceny){
-        element.removeEventListener("click", pozew1);
-        element.addEventListener("click", tura);
-    }
     balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] + 50000;
     if(this === ba1){
         balans1.innerHTML = bilans[1] = bilans[1] - 50000;
@@ -296,6 +292,10 @@ function pozew2(){
     }
     else if(this === ba4){
         balans4.innerHTML = bilans[4] = bilans[4] - 50000;
+    }
+     for(let element of ceny){
+        element.removeEventListener("click", pozew2);
+        element.addEventListener("click", tura);
     }
 }
 function mieszkanie(){
@@ -488,7 +488,7 @@ function losowanieDlaPierwszejSzansy(){
 function losowanieDlaDrugiejSzansy(){
     let los = Math.floor(Math.random() * 7);
     if(los == 0 && czy7juzbylo == false){czy7juzbylo = true; prezent();} else{los = Math.floor(Math.random() * 7);}
-    if(los == 1 && czy8juzbylo == false){ czy8juzbylo = true; pozew(); } else{los = Math.floor(Math.random() * 7);}
+    if(los == 1 && czy8juzbylo == false){ czy8juzbylo = true; pozew1(); } else{los = Math.floor(Math.random() * 7);}
     if(los == 2 && czy9juzbylo == false){czy9juzbylo = true; udzialy();} else{los = Math.floor(Math.random() * 7);}
     if(los == 3 && czy10juzbylo == false){ czy10juzbylo = true; podroz(); } else{los = Math.floor(Math.random() * 7);}
     if(los == 4 && czy11juzbylo == false){czy11juzbylo = true; mieszkanie();} else{los = Math.floor(Math.random() * 7);}
