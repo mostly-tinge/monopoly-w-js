@@ -88,13 +88,12 @@ function zmianaKoloru(){
     if(liczbaoczek[licznik] < 8 || (liczbaoczek[licznik] > 16 && liczbaoczek[licznik] < 24)){
         $('#od'+liczbaoczek[licznik]).css('background-color', 'red');
         $('#od'+liczbaoczek[licznik]).css('border-color', 'red');
-        $('#od'+liczbaoczek[licznik]).css('opacity', '0.99');
     }
     else{
         $('#od'+liczbaoczek[licznik]).css('background-color', 'darkkhaki');
         $('#od'+liczbaoczek[licznik]).css('border-color', 'darkkhaki');
-        $('#od'+liczbaoczek[licznik]).css('opacity', '0.99');
     }
+    $('#od'+liczbaoczek[licznik]).css('opacity', '0.99');
 }
 
 function gus(){
@@ -109,15 +108,7 @@ function gus(){
 
 function rzut(){
     let sol = Math.floor(Math.random() * 6);
-    if(sol === 0){
-        alert(tekstyszansy2[sol]);
-    }
-    else if(sol > 0 && sol < 4){
-        alert(tekstyszansy2[sol]);
-    }
-    else{
-        alert(tekstyszansy2[sol]);
-    }
+    alert(tekstyszansy2[sol]);
     let wynik = Math.floor(Math.random() * 10 + 2);
     $('#targ').html(wynik);
     if(poziom[licznik] === 1 && wynik === 2){
