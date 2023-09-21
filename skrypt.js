@@ -250,23 +250,23 @@ function dom(){
         domy.addEventListener("click", dom2); $('#domy').html('Czy chcesz wykorzystać darmowy dom?');
     }
 }
+function danieLubZabranieInnym(ileLacznie, odJednegoGracza){
+    let innyGracz1 = licznik + 1; let innyGracz2 = licznik + 2; let innyGracz3 = licznik + 3;
+     if(innyGracz1 === 5){innyGracz1 = 1;} if(innyGracz2 === 5){innyGracz2 = 1;} if(innyGracz2 === 6){innyGracz2 = 2;} if(innyGracz3 === 5){innyGracz3 = 1;} 
+     if(innyGracz3 === 6){innyGracz3 = 2;} if(innyGracz3 === 7){innyGracz3 = 3;}
+    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - ileLacznie;
+    document.getElementById("ba"+innyGracz1).innerHTML = bilans[innyGracz1] = bilans[innyGracz1] + odJednegoGracza;
+    document.getElementById("ba"+innyGracz2).innerHTML = bilans[innyGracz2] = bilans[innyGracz2] + odJednegoGracza;
+    document.getElementById("ba"+innyGracz3).innerHTML = bilans[innyGracz3] = bilans[innyGracz3] + odJednegoGracza;
+}
+
 function gest(){
-    let s = licznik + 1; let ss = licznik + 2; let sss = licznik + 3;
     alert("Masz gest! daj każdemu z pozostałych graczy 20k");
-    if(s === 5){s = 1;} if(ss === 5){ss = 1;} if(ss === 6){ss = 2;} if(sss === 5){sss = 1;} if(sss === 6){sss = 2;} if(sss === 7){sss = 3;}
-    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 60000;
-    document.getElementById("ba"+s).innerHTML = bilans[s] = bilans[s] + 20000;
-    document.getElementById("ba"+ss).innerHTML = bilans[ss] = bilans[ss] + 20000;
-    document.getElementById("ba"+sss).innerHTML = bilans[sss] = bilans[sss] + 20000;
+    danieLubZabranieInnym(60000, 20000);
 }
 function prezent(){
-    let q = licznik + 1; let qq = licznik + 2; let qqq = licznik + 3;
     alert("Prezent ślubny! pobierz od każdego gracza 20k");
-    if(q === 5){q = 1;} if(qq === 5){qq = 1;} if(qq === 6){qq = 2;} if(qqq === 5){qqq = 1;} if(qqq === 6){qqq = 2;} if(qqq === 7){qqq = 3;}
-    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] + 60000;
-    document.getElementById("ba"+q).innerHTML = bilans[q] = bilans[q] - 20000;
-    document.getElementById("ba"+qq).innerHTML = bilans[qq] = bilans[qq] - 20000;
-    document.getElementById("ba"+qqq).innerHTML = bilans[qqq] = bilans[qqq] - 20000;
+    danieLubZabranieInnym(-60000, -20000);
 }
 function udzialy(){
     alert("Wystrzałowe udziały! Pobierz 100k")
