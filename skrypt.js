@@ -4,9 +4,12 @@ alert("A no i jeżeli chcesz przejść do następnego musisz kliknąć pole poka
 let bilans = ['', 372000, 372000, 372000, 372000]; let komuPrzekazacDzialke = 0;
 
 const balans1 = document.querySelector("#ba1"); const balans2 = document.querySelector("#ba2"); const balans3 = document.querySelector("#ba3");
-const balans4 = document.querySelector("#ba4"); const ceny = document.querySelectorAll(".cena"); const podtr = document.querySelector("#podtran");
-let balansPlusLicznik = document.querySelector("#ba"+licznik);
-let licznik = 1; let wiekszaszansa = false; let czymoznakupic = true; let czynsz = ['', 0, 0, 0, 0];
+const balans4 = document.querySelector("#ba4"); const ceny = [balans1, balans2, balans3, balans4]; const podtr = document.querySelector("#podtran");
+let licznik = 1; let balansPlusLicznik = document.querySelector("#ba"+licznik);
+for(let element of ceny){
+    element.addEventListener("click", tura);
+}
+let wiekszaszansa = false; let czymoznakupic = true; let czynsz = ['', 0, 0, 0, 0];
 
 let nagrody = [25000, 10000, 10000, 25000, 10000, 10000, 25000, 50000, 50000, 50000]; let transakcje = ['', 0, 0, 0, 0]
 
@@ -153,9 +156,6 @@ function rzut(){
 }
 
 const kosc = document.querySelector("#kosc"); 
-for(let element of ceny){
-    element.addEventListener("click", tura);
-}
 kosc.addEventListener("click", function() {nadajKlik(); }); $('#kosc').toggleClass('klik');
 
 const ceny1 = [7000, 15000, 30000, 50000, 60000, 80000]; const ceny2 = [15000, 30000, 50000, 80000, 95000, 125000];
@@ -198,29 +198,29 @@ function gog(){
     if(this === ba1){
         balans1.innerHTML = bilans[1] = bilans[1] + 40000;
         if(wiekszaszansa === true){
-         balans1.innerHTML = bilans[1] = bilans[1] + 10000;
-         balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
+            balans1.innerHTML = bilans[1] = bilans[1] + 10000;
+            balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
         }
     }
     else if(this === ba2){
         balans2.innerHTML = bilans[2] = bilans[2] + 40000;
         if(wiekszaszansa === true){
-         balans2.innerHTML = bilans[2] = bilans[2] + 10000;
-         balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
+            balans2.innerHTML = bilans[2] = bilans[2] + 10000;
+            balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
         }
     }
     else if(this === ba3){
         balans3.innerHTML = bilans[3] = bilans[3] + 40000;
         if(wiekszaszansa === true){
-         balans3.innerHTML = bilans[3] = bilans[3] + 10000;
-         balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
+            balans3.innerHTML = bilans[3] = bilans[3] + 10000;
+            balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
         }
     }
     else if(this === ba4){
         balans4.innerHTML = bilans[4] = bilans[4] + 40000;
         if(wiekszaszansa === true){
-         balans4.innerHTML = bilans[4] = bilans[4] + 10000;
-         balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
+            balans4.innerHTML = bilans[4] = bilans[4] + 10000;
+            balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
         }
     }
     wiekszaszansa = false;
@@ -243,8 +243,8 @@ function dom(){
 }
 function danieLubZabranieInnym(ileLacznie, odJednegoGracza){
     let innyGracz1 = licznik + 1; let innyGracz2 = licznik + 2; let innyGracz3 = licznik + 3;
-     if(innyGracz1 === 5){innyGracz1 = 1;} if(innyGracz2 === 5){innyGracz2 = 1;} if(innyGracz2 === 6){innyGracz2 = 2;} if(innyGracz3 === 5){innyGracz3 = 1;} 
-     if(innyGracz3 === 6){innyGracz3 = 2;} if(innyGracz3 === 7){innyGracz3 = 3;}
+    if(innyGracz1 === 5){innyGracz1 = 1;} if(innyGracz2 === 5){innyGracz2 = 1;} if(innyGracz2 === 6){innyGracz2 = 2;} if(innyGracz3 === 5){innyGracz3 = 1;} 
+    if(innyGracz3 === 6){innyGracz3 = 2;} if(innyGracz3 === 7){innyGracz3 = 3;}
     balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - ileLacznie;
     document.getElementById("ba"+innyGracz1).innerHTML = bilans[innyGracz1] = bilans[innyGracz1] + odJednegoGracza;
     document.getElementById("ba"+innyGracz2).innerHTML = bilans[innyGracz2] = bilans[innyGracz2] + odJednegoGracza;
@@ -293,7 +293,7 @@ function mieszkanie(){
     alert("Wynajmujesz swoje mieszkanie przez 3 następne kolejki pobierasz 12k");
     czynsz[licznik] = czynsz[licznik] + 3;
 }
-let czyznalezione = false; let kosc2 = document.querySelector("kosc").value;
+let czyznalezione = false;
 function podroz(){
     czyznalezione = false;
     alert("Do przodu! Przejdź do najbliższej wolnej nieruchomości.");
@@ -466,36 +466,41 @@ function limo(){
         $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '1'); $('#targ').html('');
     }
 }
-function losowanieDlaPierwszejSzansy(){
-    let los = Math.floor(Math.random() * 7);
-    if(los == 0 && czy0juzbylo == false){ czy0juzbylo = true; dom(); } else{los = Math.floor(Math.random() * 7);}
-    if(los == 1 && czy1juzbylo == false){czy1juzbylo = true; dom();} else{los = Math.floor(Math.random() * 7);}
-    if(los == 2 && czy2juzbylo == false){ czy2juzbylo = true; dom(); } else{los = Math.floor(Math.random() * 7);}
-    if(los == 3 && czy3juzbylo == false){czy3juzbylo = true; dom();} else{los = Math.floor(Math.random() * 7);}
-    if(los == 4 && czy4juzbylo == false){ czy4juzbylo = true; dom(); } else{los = Math.floor(Math.random() * 7);}
-    if(los == 5 && czy5juzbylo == false){czy5juzbylo = true; gest();} else{los = Math.floor(Math.random() * 7);}
-    if(los == 6 && czy6juzbylo == false){czy6juzbylo = true; gest();} else{los = Math.floor(Math.random() * 7);}
+let czyJuzbylo = [false, false, false, false, false, false, false, false, false, false, 
+    false, false, false, false, false, false, false, false, false, false, false, false];
+function pierwszeLosowanie(){
+    let ktoraCyfra = Math.floor(Math.random() * 7);
+    if(ktoraCyfra == 0 && czyJuzbylo[ktoraCyfra] === false){ czyJuzbylo[ktoraCyfra] = true; console.log('dom'); dom(); } //else{los = Math.floor(Math.random() * 7);}
+    if(ktoraCyfra == 1 && czyJuzbylo[ktoraCyfra] === false){ czyJuzbylo[ktoraCyfra] = true; console.log('dom');  dom();} //else{los = Math.floor(Math.random() * 7);}
+    if(ktoraCyfra == 2 && czyJuzbylo[ktoraCyfra] === false){ czyJuzbylo[ktoraCyfra] = true; console.log('dom');  dom(); } //else{los = Math.floor(Math.random() * 7);}
+    if(ktoraCyfra == 3 && czyJuzbylo[ktoraCyfra] === false){ czyJuzbylo[ktoraCyfra] = true; console.log('dom');  dom();}// else{los = Math.floor(Math.random() * 7);}
+    if(ktoraCyfra == 4 && czyJuzbylo[ktoraCyfra] === false){ czyJuzbylo[ktoraCyfra] = true; console.log('dom');  dom(); } //else{los = Math.floor(Math.random() * 7);}
+    if(ktoraCyfra == 5 && czyJuzbylo[ktoraCyfra] === false){ czyJuzbylo[ktoraCyfra] = true; console.log('gest');  gest();}// else{los = Math.floor(Math.random() * 7);}
+    if(ktoraCyfra == 6 && czyJuzbylo[ktoraCyfra] === false){ czyJuzbylo[ktoraCyfra] = true; console.log('gest');  gest();} //else{los = Math.floor(Math.random() * 7);}
+    console.log(ktoraCyfra); 
+    console.log(liczbadomow[licznik]);
+    console.log(czyJuzbylo);
 }
-function losowanieDlaDrugiejSzansy(){
+function drugieLosowanie(){
     let los = Math.floor(Math.random() * 7);
-    if(los == 0 && czy7juzbylo == false){czy7juzbylo = true; prezent();} else{los = Math.floor(Math.random() * 7);}
-    if(los == 1 && czy8juzbylo == false){ czy8juzbylo = true; pozew1(); } else{los = Math.floor(Math.random() * 7);}
-    if(los == 2 && czy9juzbylo == false){czy9juzbylo = true; udzialy();} else{los = Math.floor(Math.random() * 7);}
-    if(los == 3 && czy10juzbylo == false){ czy10juzbylo = true; podroz(); } else{los = Math.floor(Math.random() * 7);}
-    if(los == 4 && czy11juzbylo == false){czy11juzbylo = true; mieszkanie();} else{los = Math.floor(Math.random() * 7);}
-    if(los == 5 && czy12juzbylo == false){ czy12juzbylo = true; mieszkanie(); } else{los = Math.floor(Math.random() * 7);}
-    if(los == 6 && czy13juzbylo == false){czy13juzbylo = true; zlyrating();} else{los = Math.floor(Math.random() * 7);}
+    if(los == 0 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; prezent();} else{los = Math.floor(Math.random() * 7);}
+    if(los == 1 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; pozew1(); } else{los = Math.floor(Math.random() * 7);}
+    if(los == 2 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; udzialy();} else{los = Math.floor(Math.random() * 7);}
+    if(los == 3 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; podroz(); } else{los = Math.floor(Math.random() * 7);}
+    if(los == 4 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; mieszkanie();} else{los = Math.floor(Math.random() * 7);}
+    if(los == 5 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; mieszkanie(); } else{los = Math.floor(Math.random() * 7);}
+    if(los == 6 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; zlyrating();} else{los = Math.floor(Math.random() * 7);}
 }
-function losowanieDlaTrzeciejSzansy(){
+function trzecieLosowanie(){
     let los = Math.floor(Math.random() * 7);
-    if(los == 0 && czy14juzbylo == false){czy14juzbylo = true; podtran();} else{los = Math.floor(Math.random() * 7);}
-    if(los == 1 && czy15juzbylo == false){czy15juzbylo = true; podroz();} else{los = Math.floor(Math.random() * 7);}
-    if(los == 2 && czy16juzbylo == false){ czy16juzbylo = true; przymtran(); } else{los = Math.floor(Math.random() * 7);}
-    if(los == 3 && czy17juzbylo == false){czy17juzbylo = true; zestaw();} else{los = Math.floor(Math.random() * 7);}
-    if(los == 4 && czy18juzbylo == false){ czy18juzbylo = true; limo(); } else{los = Math.floor(Math.random() * 7);}
-    if(los == 5 && czy19juzbylo == false){czy19juzbylo = true; limo();} else{los = Math.floor(Math.random() * 7);}
-    if(los == 6 && czy20juzbylo == false){ czy20juzbylo = true; gest(); } else{los = Math.floor(Math.random() * 7);}
-    if(los == 7 && czy21juzbylo == false){czy21juzbylo = true; udzialy();} else{los = Math.floor(Math.random() * 7);}
+    if(los == 0 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; podtran();} else{los = Math.floor(Math.random() * 7);}
+    if(los == 1 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; podroz();} else{los = Math.floor(Math.random() * 7);}
+    if(los == 2 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; przymtran(); } else{los = Math.floor(Math.random() * 7);}
+    if(los == 3 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; zestaw();} else{los = Math.floor(Math.random() * 7);}
+    if(los == 4 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; limo(); } else{los = Math.floor(Math.random() * 7);}
+    if(los == 5 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; limo();} else{los = Math.floor(Math.random() * 7);}
+    if(los == 6 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; gest(); } else{los = Math.floor(Math.random() * 7);}
+    if(los == 7 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; udzialy();} else{los = Math.floor(Math.random() * 7);}
 }
 function coZrobicZPolem(){
     if(kupiona[liczbaoczek[licznik]] === 0 && czyja[liczbaoczek[licznik]] === 0 && czymoznakupic === true){
@@ -558,7 +563,8 @@ function szansa(){
     }
 }
 function tura(){
-    let rzutkostkami = Math.floor(Math.random() * 10 + 2);
+    let rzutkostkami = 4;
+    //Math.floor(Math.random() * 10 + 2);
     if(liczbadomow[licznik] > 0){
         $('#domy').toggleClass('dom1'); $('#domy').toggleClass('klik');
         domy.addEventListener("click", dom2);
@@ -612,14 +618,13 @@ function tura(){
         document.getElementById("kosc").innerHTML = liczbaoczek[licznik];
     }
     let opacityValue = $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity');
-    if(opacityValue === 1){
         if(liczbaoczek[licznik] === 8 || liczbaoczek[licznik] === 16){
             $('#targ').html('');           
         }
         let hamza = $('#od'+liczbaoczek[licznik]).css('opacity');
         if(liczbaoczek[licznik] < 8){
             if(hamza !== 0.99 && liczbaoczek[licznik] !== 2 && liczbaoczek[licznik] !== 5){
-                losowanie();
+                pierwszeLosowanie();
             }
             zmianaKoloru();
             if(liczbaoczek[licznik] !== 2 && liczbaoczek[licznik] !== 5){
@@ -653,7 +658,7 @@ function tura(){
         }
         else if(liczbaoczek[licznik] > 8 && liczbaoczek[licznik] < 16){
             if(hamza !== 0.99 && liczbaoczek[licznik] !== 13){
-                losowanie()
+                drugieLosowanie()
             }
             zmianaKoloru();
             if(liczbaoczek[licznik] !== 13){
@@ -677,10 +682,9 @@ function tura(){
             else if(liczbaoczek[licznik] === 13){
                 nagroda();
             }
-        }
         else if(liczbaoczek[licznik] > 16 && liczbaoczek[licznik] < 24){
             if(hamza !== 0.99 && liczbaoczek[licznik] !== 18){
-                losowanie();
+                trzecieLosowanie();
             }
             zmianaKoloru();
             if(liczbaoczek[licznik] !== 18){
