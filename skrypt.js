@@ -402,7 +402,11 @@ function wybranie(){
     }
 }
 function wybranieswojego(){
-    let dozamiany = this.value; 
+    let dozamiany = this.value;
+    let wartoscDzialki = String(this);
+    if(kupiona[liczbaoczek[licznik]] == ){
+        
+    }
     $('#k'+dozamiany).css("color", kolorydzialek[komuPrzekazacDzialke]);
     kupiona[dozamiany] = licznik; 
     czyja[dozamiany] = 1;
