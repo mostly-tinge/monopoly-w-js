@@ -51,14 +51,14 @@ let kaal = [0, 0, 0, 0, 0, 0, 0, 0 ,0, /*8*/0, 0, 0, 0, 0, 0, 0, 0, /*16*/0, 0, 
 let czyja = [0, 0, 0, 0, 0, 0, 0, 0, 0,/*8*/0, 0, 0, 0, 0, 0, 0, 0,/*16*/0, 0, 0, 0, 0, 0, 0, 0,/*24*/0, 0, 0, 0, 0, 0, 0,/*31*/];
 
 let kupiona = [0, 0, 0, 0, 0, 0, 0, 0, 0,/*8*/0, 0, 0, 0, 0, 0, 0, 0,/*16*/0, 0, 0, 0, 0, 0, 0, 0,/*24*/0, 0, 0, 0 , 0, 0,/*31*/];
-function jessie(){
+function postawHotel(){
     $('#dom'+liczbaoczek[licznik]+'-0').css('opacity', '0'); $('#dom'+liczbaoczek[licznik]+'-2').css('opacity', '0');
     $('#dom'+liczbaoczek[licznik]+'-1').css('opacity', '0'); $('#dom'+liczbaoczek[licznik]+'-3').css('opacity', '0');
     $('#h'+liczbaoczek[licznik]).css('opacity', '1');
     if(kaal[liczbaoczek[licznik]] === 4){
         kaal[liczbaoczek[licznik]]++;
         $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] - cenydomow[liczbaoczek[licznik]]);
-        targ.removeEventListener("click", jessie);
+        targ.removeEventListener("click", postawHotel);
     }
     $('#targ').html('');
 }
@@ -66,14 +66,14 @@ function jessie(){
 const cenydomow = [0, 10000, 0, 10000, 15000, 0, 15000, 15000, 0, 25000, 25000, 25000, 30000, 0, 30000, 30000, 0, 40000, 0, 40000, 40000, 
 45000, 45000, 45000, 0, 50000, 50000, 0, 50000, 0, 60000, 60000];
 
-function walter(){
+function postawDom(){
     if(czydomjestzadarmo === false){
         $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] - cenydomow[liczbaoczek[licznik]]);
     }
     $('#dom'+liczbaoczek[licznik]+'-'+kaal[liczbaoczek[licznik]]).css('opacity', '1');
     kaal[liczbaoczek[licznik]]++;
     if(kaal[liczbaoczek[licznik]] === 4){
-        targ.removeEventListener("click", walter); targ.addEventListener("click", jessie);
+        targ.removeEventListener("click", postawDom); targ.addEventListener("click", postawHotel);
         $('#targ').html('Czy chcesz kupić hotel?');
     }
     if(kaal[liczbaoczek[licznik]] > 5){
@@ -99,13 +99,13 @@ function zmianaKoloru(){
     $('#od'+liczbaoczek[licznik]).css('opacity', '0.99');
 }
 
-function gus(){
+function zajmijDzialke(){
     $('#ba'+licznik).html(bilans[licznik] = bilans[licznik] - cenydzialek[liczbaoczek[licznik]]);
     $('#k'+liczbaoczek[licznik]).css('color', kolorydzialek[licznik]);
-    czyja[liczbaoczek[licznik]] = 1; kupiona[liczbaoczek[licznik]] = licznik; targ.removeEventListener("click", gus);
+    czyja[liczbaoczek[licznik]] = 1; kupiona[liczbaoczek[licznik]] = licznik; targ.removeEventListener("click", zajmijDzialke);
     if(kupiona[liczbaoczek[licznik]] === licznik){
         $('#targ').html('Czy chcesz kupić domek?');
-        targ.addEventListener("click", walter);
+        targ.addEventListener("click", postawDom);
     }
 }
 
@@ -403,10 +403,6 @@ function wybranie(){
 }
 function wybranieswojego(){
     let dozamiany = this.value;
-    let wartoscDzialki = String(this);
-    if(kupiona[liczbaoczek[licznik]] == ){
-        
-    }
     $('#k'+dozamiany).css("color", kolorydzialek[komuPrzekazacDzialke]);
     kupiona[dozamiany] = licznik; 
     czyja[dozamiany] = 1;
@@ -421,23 +417,27 @@ function wybranieswojego(){
     kupiona[dozamiany] = komuPrzekazacDzialke;
 }
 function wybraniecudzego(){
-    let dozamiany2 = this.value; 
-    czysajakiesprzymtrany[licznik]--; 
-    $('#k'+dozamiany2).css("color", kolorydzialek[licznik]);
-    kupiona[dozamiany2] = licznik; czyja[dozamiany2] = 1;
-    for(let dz5 of dzialka3){
-        dz5.addEventListener("click", wybranieswojego);
-        dz5.removeEventListener("click", wybraniecudzego);
-    } 
-    for(let dz6 of dzialka20){
-        dz6.addEventListener("click", wybranieswojego);
-        dz6.removeEventListener("click", wybraniecudzego);
+    let dozamiany2 = this.value;
+    if(kupiona[dozmiany] !== licznik){
+        czysajakiesprzymtrany[licznik]--; 
+        $('#k'+dozamiany2).css("color", kolorydzialek[licznik]);
+        kupiona[dozamiany2] = licznik; czyja[dozamiany2] = 1;
+        for(let dz5 of dzialka3){
+            dz5.addEventListener("click", wybranieswojego);
+            dz5.removeEventListener("click", wybraniecudzego);
+        } 
+        for(let dz6 of dzialka20){
+            dz6.addEventListener("click", wybranieswojego);
+            dz6.removeEventListener("click", wybraniecudzego);
+        }
+        for(let element of ceny){
+            element.removeEventListener("click", tura);
+        }
+        balans1.addEventListener("click", argument1); balans2.addEventListener("click", argument2);
+        balans3.addEventListener("click", argument3); balans4.addEventListener("click", argument4);
+    }else{
+        alert("Wybierz cudzą działkę, a nie swoją!");
     }
-    for(let element of ceny){
-        element.removeEventListener("click", tura);
-    }
-    balans1.addEventListener("click", argument1); balans2.addEventListener("click", argument2);
-    balans3.addEventListener("click", argument3); balans4.addEventListener("click", argument4);
 }
 function argument1(){komuPrzekazacDzialke = 1}; function argument2(){komuPrzekazacDzialke = 2}; 
 function argument3(){komuPrzekazacDzialke = 3}; function argument4(){komuPrzekazacDzialke = 4};
@@ -508,11 +508,11 @@ function trzecieLosowanie(){
 }
 function coZrobicZPolem(){
     if(kupiona[liczbaoczek[licznik]] === 0 && czyja[liczbaoczek[licznik]] === 0 && czymoznakupic === true){
-        $('#targ').html('Czy chcesz kupić tą działke?'); targ.addEventListener("click", gus);
-        $('#targ').toggleClass('klik'); targ.removeEventListener("click", walter);
+        $('#targ').html('Czy chcesz kupić tą działke?'); targ.addEventListener("click", zajmijDzialke);
+        $('#targ').toggleClass('klik'); targ.removeEventListener("click", postawDom);
     }
     else if(czyja[liczbaoczek[licznik]] === licznik){
-        $('#targ').html('Czy chcesz kupić domek?'); targ.addEventListener("click", walter); targ.removeEventListener("click", gus);
+        $('#targ').html('Czy chcesz kupić domek?'); targ.addEventListener("click", postawDom); targ.removeEventListener("click", zajmijDzialke);
     }
 }
 function nagroda(){
