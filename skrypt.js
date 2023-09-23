@@ -193,40 +193,17 @@ function nadajKlik(){
 function gog(){
     for(let element of ceny){
         element.removeEventListener("click", gog);
-    }
-    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 40000
-    if(this === ba1){
-        balans1.innerHTML = bilans[1] = bilans[1] + 40000;
-        if(wiekszaszansa === true){
-            balans1.innerHTML = bilans[1] = bilans[1] + 10000;
-            balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
-        }
-    }
-    else if(this === ba2){
-        balans2.innerHTML = bilans[2] = bilans[2] + 40000;
-        if(wiekszaszansa === true){
-            balans2.innerHTML = bilans[2] = bilans[2] + 10000;
-            balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
-        }
-    }
-    else if(this === ba3){
-        balans3.innerHTML = bilans[3] = bilans[3] + 40000;
-        if(wiekszaszansa === true){
-            balans3.innerHTML = bilans[3] = bilans[3] + 10000;
-            balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
-        }
-    }
-    else if(this === ba4){
-        balans4.innerHTML = bilans[4] = bilans[4] + 40000;
-        if(wiekszaszansa === true){
-            balans4.innerHTML = bilans[4] = bilans[4] + 10000;
-            balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - 10000;
-        }
-    }
-    wiekszaszansa = false;
-    for(let element of ceny){
         element.addEventListener("click", tura);
     }
+    balansPlusLicznik.innerHTML = bilans[licznik] -= 40000
+    let danyBalans = this.toString();
+    danyBalans.slice(2,3);
+    this.innerHTML = bilans[danyBalans] += 40000;
+    if(wiekszaszansa === true){
+        this.innerHTML = bilans[danyBalans] += 10000;
+        balansPlusLicznik.innerHTML = bilans[licznik] -= 10000;
+    }
+    wiekszaszansa = false;
 }
 const domy = document.querySelector("#domy");
 function dom2(){
@@ -245,10 +222,10 @@ function danieLubZabranieInnym(ileLacznie, odJednegoGracza){
     let innyGracz1 = licznik + 1; let innyGracz2 = licznik + 2; let innyGracz3 = licznik + 3;
     if(innyGracz1 === 5){innyGracz1 = 1;} if(innyGracz2 === 5){innyGracz2 = 1;} if(innyGracz2 === 6){innyGracz2 = 2;} if(innyGracz3 === 5){innyGracz3 = 1;} 
     if(innyGracz3 === 6){innyGracz3 = 2;} if(innyGracz3 === 7){innyGracz3 = 3;}
-    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - ileLacznie;
-    document.getElementById("ba"+innyGracz1).innerHTML = bilans[innyGracz1] = bilans[innyGracz1] + odJednegoGracza;
-    document.getElementById("ba"+innyGracz2).innerHTML = bilans[innyGracz2] = bilans[innyGracz2] + odJednegoGracza;
-    document.getElementById("ba"+innyGracz3).innerHTML = bilans[innyGracz3] = bilans[innyGracz3] + odJednegoGracza;
+    balansPlusLicznik.innerHTML = bilans[licznik] -=  ileLacznie;
+    document.getElementById("ba"+innyGracz1).innerHTML = bilans[innyGracz1] += odJednegoGracza;
+    document.getElementById("ba"+innyGracz2).innerHTML = bilans[innyGracz2] += odJednegoGracza;
+    document.getElementById("ba"+innyGracz3).innerHTML = bilans[innyGracz3] += odJednegoGracza;
 }
 
 function gest(){
@@ -271,22 +248,14 @@ function pozew1(){
     }
 }
 function pozew2(){
-    balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] + 50000;
-    if(this === ba1){
-        balans1.innerHTML = bilans[1] = bilans[1] - 50000;
-    }
-    else if(this === ba2){
-        balans2.innerHTML = bilans[2] = bilans[2] - 50000;
-    }
-    else if(this === ba3){
-        balans3.innerHTML = bilans[3] = bilans[3] - 50000;
-    }
-    else if(this === ba4){
-        balans4.innerHTML = bilans[4] = bilans[4] - 50000;
-    }
+    balansPlusLicznik.innerHTML = bilans[licznik] += 50000;
+    let danyBalans = this.toString();
+    danyBalans.slice(2,3);
+    bilans[danyBalans] -= 50000;
      for(let element of ceny){
         element.removeEventListener("click", pozew2);
         element.addEventListener("click", tura);
+        element.innerHTML = bilans[danyBalans];
     }
 }
 function mieszkanie(){
@@ -527,30 +496,31 @@ function szansa(){
     if(l === 5){l = 1;}; if(i === 5){i = 1;} if(i === 6){i = 2;} if(c === 5){c = 1;} if(c === 6){c = 2;} if(c === 7){c = 3;}
     if(los === 0){
         balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] + szansy1[poziom[1]] + szansy1[poziom[2]] + szansy1[poziom[3]] + szansy1[poziom[4]] - szansy1[poziom[licznik]];
-        document.getElementById("ba"+l).innerHTML = bilans[l] = bilans[l] - szansy1[poziom[l]];                   
-        document.getElementById("ba"+i).innerHTML = bilans[i] = bilans[i] - szansy1[poziom[i]];                   
-        document.getElementById("ba"+c).innerHTML = bilans[c] = bilans[c] - szansy1[poziom[c]];
+        document.getElementById("ba"+l).innerHTML = bilans[l] -= szansy1[poziom[l]];                   
+        document.getElementById("ba"+i).innerHTML = bilans[i] -= szansy1[poziom[i]];                   
+        document.getElementById("ba"+c).innerHTML = bilans[c] -= szansy1[poziom[c]];
         alert(tekstyszansy1[Math.floor(Math.random())]+szansy1[wydaneszanse]* poziom[licznik]);                                     
     }
     else if(los === 1){
         balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - szansy3[poziom[licznik]] * 3;
-        document.getElementById("ba"+l).innerHTML = bilans[l] = bilans[l] + szansy3[poziom[l]];                   
-        document.getElementById("ba"+i).innerHTML = bilans[i] = bilans[i] + szansy3[poziom[i]];                   
-        document.getElementById("ba"+c).innerHTML = bilans[c] = bilans[c] + szansy3[poziom[c]];
+        document.getElementById("ba"+l).innerHTML = bilans[l] += szansy3[poziom[l]];                   
+        document.getElementById("ba"+i).innerHTML = bilans[i] += szansy3[poziom[i]];                   
+        document.getElementById("ba"+c).innerHTML = bilans[c] += szansy3[poziom[c]];
         alert(tekstyszansy3[Math.floor(Math.random())]+szansy3[wydaneszanse]* poziom[licznik]);
     }
     else if(los === 2){
-        $('#targ').html('<span id="xD" style="cursor:pointer;" onclick="rzut()">Rzuć kostką i sprawdź czy wygrasz</span>');
+        $('#targ').html('>Rzuć kostką i sprawdź czy wygrasz');
+        targ.addEventListener("click", rzut); 
     }
-    else if(los === 3){
+    else{
         let kolejnazmienna = 2;
         alert(tekstyszansy4[kolejnazmienna]);
         if(kolejnazmienna === 0){
             $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '0');
-                liczbaoczek[licznik] = 8;
-                ('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '1');
+            liczbaoczek[licznik] = 8;
+            ('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '1');
         }
-        else if(kolejnazmienna > 0 && kolejnazmienna < 3){
+        else if(kolejnazmienna === 1 || kolejnazmienna === 2){
             for(let element of ceny){
                 element.removeEventListener("click", tura);
                 element.addEventListener("click", gog);
@@ -559,7 +529,7 @@ function szansa(){
                     wiekszaszansa = true;
                 }
             }
-        else if(kolejnazmienna === 3){
+        else{
             if(poziom[licznik] > 1){
                 poziom[licznik] = poziom[licznik] - 1;
             }
@@ -727,8 +697,8 @@ function tura(){
                 }
                 else if(liczbaoczek[licznik] > 28){
                     if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaoczek[licznik]] !== licznik){
-                        balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - ceny4[kaal[liczbaoczek[licznik]]];
-                        document.getElementById("ba"+czyja[liczbaoczek[licznik]]).innerHTML = bilans[czyja[liczbaoczek[licznik]]] = bilans[czyja[liczbaoczek[licznik]]] + ceny4[kaal[liczbaoczek[licznik]]];
+                        balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - ceny8[kaal[liczbaoczek[licznik]]];
+                        document.getElementById("ba"+czyja[liczbaoczek[licznik]]).innerHTML = bilans[czyja[liczbaoczek[licznik]]] = bilans[czyja[liczbaoczek[licznik]]] + ceny8[kaal[liczbaoczek[licznik]]];
                     }
                 }
                 $('#targ').html('');
