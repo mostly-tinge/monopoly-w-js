@@ -87,7 +87,7 @@ const cenydzialek = [0, 5000, 0, 5000, 11000, 0, 15000, 20000, 0, 35000, 35000, 
 
 const kolorydzialek = ['', 'darkred', 'chartreuse', 'fuchsia', 'navy']
 
-function zmianaKoloru(){
+function zmianaKoloruDzialki(){
     if(liczbaoczek[licznik] < 8 || (liczbaoczek[licznik] > 16 && liczbaoczek[licznik] < 24)){
         $('#od'+liczbaoczek[licznik]).css('background-color', 'red');
         $('#od'+liczbaoczek[licznik]).css('border-color', 'red');
@@ -273,7 +273,7 @@ function podroz(){
     25, 26, 27, 28, 29, 30, 31]; 
     for(i = liczbaoczek[licznik]; i < 32; i++){
         if(czyja[i] === 0 && czyznalezione === false && i > liczbaoczek[licznik] && i !== 13 && i !== 8 & i !== 16 && i !== 24 && i !== 27 && i !== 29 && i !== 32){
-            zmianaKoloru();
+            zmianaKoloruDzialki();
             $('#'+pionek[licznik]+oczka[i]).css('opacity', '1'); czyznalezione = true;
             $('#kosc').html(i); liczbaoczek[licznik] = i;
             $('#od'+liczbaoczek[licznik]).css('opacity', '0.99');
@@ -281,22 +281,7 @@ function podroz(){
     }
     for(i = liczbaoczek[licznik]; i > 0; i--){
         if(czyznalezione === false && czyja[i] === 0 && i < liczbaoczek[licznik] && i !== 13 && i !== 8 & i !== 16 && i !== 24 && i !== 27 && i !== 29 && i !== 32){
-            if(liczbaoczek[licznik] > 0 && liczbaoczek[licznik] < 8){
-                $('#od'+liczbaoczek[licznik]).css('background-color', 'red');
-                $('#od'+liczbaoczek[licznik]).css('border-color', 'red'); 
-            }
-            else if(liczbaoczek[licznik] > 8 && liczbaoczek[licznik] < 16){
-                $('#od'+liczbaoczek[licznik]).css('background-color', 'darkkhaki');
-                $('#od'+liczbaoczek[licznik]).css('border-color', 'darkkhaki');
-            }
-            else if(liczbaoczek[licznik] > 16 && liczbaoczek[licznik] < 24){
-                $('#od'+liczbaoczek[licznik]).css('background-color', 'red');
-                $('#od'+liczbaoczek[licznik]).css('border-color', 'red');
-            }
-            else{
-                $('#od'+liczbaoczek[licznik]).css('background-color', 'darkkhaki');
-                $('#od'+liczbaoczek[licznik]).css('border-color', 'darkkhaki');
-            }
+            zmianaKoloruDzialki();
             $('#'+pionek[licznik]+oczka[i]).css('opacity', '1');
             czyznalezione = true;
             $('#kosc').html(i);
@@ -373,23 +358,27 @@ function wybranie(){
     }
 }
 function wybranieswojego(){
-    let dozamiany = this.value;
-    $('#k'+dozamiany).css("color", kolorydzialek[komuPrzekazacDzialke]);
-    kupiona[dozamiany] = licznik; 
-    czyja[dozamiany] = 1;
-    $('#przymtran').toggleClass('klik'); $('#przymtran').toggleClass('dom1');
-    przytr.removeEventListener("click", wybranieswojego); $('#przymtran').html('');
-    for(let element of pionoweDzialki){
-        element.removeEventListener("click", wybranieswojego); 
-    }
-    for(let element of poziomeDzialki){
-        element.removeEventListener("click", wybranieswojego);
-    }
-    kupiona[dozamiany] = komuPrzekazacDzialke;
+    let doZamiany = this.value;
+    if(kupiona[doZamiany] === licznik){
+        $('#k'+dozamiany).css("color", kolorydzialek[komuPrzekazacDzialke]);
+        kupiona[dozamiany] = licznik; 
+        czyja[dozamiany] = 1;
+        $('#przymtran').toggleClass('klik'); $('#przymtran').toggleClass('dom1');
+        przytr.removeEventListener("click", wybranieswojego); $('#przymtran').html('');
+        for(let element of pionoweDzialki){
+            element.removeEventListener("click", wybranieswojego); 
+        }
+        for(let element of poziomeDzialki){
+            element.removeEventListener("click", wybranieswojego);
+        }
+        kupiona[dozamiany] = komuPrzekazacDzialke;
+        }else{
+            alert("Wybierz swoją działke, a nie cudzą, albo niczyją");
+        }
 }
 function wybraniecudzego(){
-    let dozamiany2 = this.value;
-    if(kupiona[dozmiany] !== licznik){
+    let doZamiany2 = this.value;
+    if(kupiona[doZamiany] !== licznik){
         czysajakiesprzymtrany[licznik]--; 
         $('#k'+dozamiany2).css("color", kolorydzialek[licznik]);
         kupiona[dozamiany2] = licznik; 
@@ -414,6 +403,9 @@ function ktoMaDostacDzialke(){
     let danyBalans = this.toString();
     danyBalans.slice(2,3);
     komuPrzekacDzialke = danyBalans;
+    for(let element of ceny){
+        element.removeEventListener("click", ktoMaDostacDzialke);
+    }
 }
 function zestaw(){
     alert("Tym razem nic się nie dzieje");
@@ -596,7 +588,6 @@ function tura(){
         czywwiezieniu[licznik] = 1;
         document.getElementById("kosc").innerHTML = liczbaoczek[licznik];
     }
-    let opacityValue = $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity');
         if(liczbaoczek[licznik] === 8 || liczbaoczek[licznik] === 16){
             $('#targ').html('');           
         }
@@ -605,7 +596,7 @@ function tura(){
             if(hamza !== 0.99 && liczbaoczek[licznik] !== 2 && liczbaoczek[licznik] !== 5){
                 pierwszeLosowanie();
             }
-            zmianaKoloru();
+            zmianaKoloruDzialki();
             if(liczbaoczek[licznik] !== 2 && liczbaoczek[licznik] !== 5){
                 if(liczbaoczek[licznik] < 4){
                     coZrobicZPolem();
@@ -639,7 +630,7 @@ function tura(){
             if(hamza !== 0.99 && liczbaoczek[licznik] !== 13){
                 drugieLosowanie()
             }
-            zmianaKoloru();
+            zmianaKoloruDzialki();
             if(liczbaoczek[licznik] !== 13){
                 if(liczbaoczek[licznik] < 12){
                     coZrobicZPolem();
@@ -665,7 +656,7 @@ function tura(){
             if(hamza !== 0.99 && liczbaoczek[licznik] !== 18){
                 trzecieLosowanie();
             }
-            zmianaKoloru();
+            zmianaKoloruDzialki();
             if(liczbaoczek[licznik] !== 18){
                 if(liczbaoczek[licznik] < 21){
                     coZrobicZPolem();
@@ -691,7 +682,7 @@ function tura(){
             if(hamza !== 0.99 && liczbaoczek[licznik] !== 27 && liczbaoczek[licznik] !== 29){
                 losowanie();
             }
-            zmianaKoloru();
+            zmianaKoloruDzialki();
             if(liczbaoczek[licznik] !== 27 && liczbaoczek[licznik] !== 29){
                 coZrobicZPolem();
                 if(liczbaoczek[licznik] < 29){
