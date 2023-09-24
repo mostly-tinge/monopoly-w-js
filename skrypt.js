@@ -484,7 +484,7 @@ function coZrobicZPolem(){
 function nagroda(){
     let losuj2 = Math.floor(Math.random()* 10); 
     balansPlusLicznik.innerHTML = bilans[licznik] += nagrody[wydanenagrody] * poziom[licznik];
-    alert(tekstynagrody[losuj2]+' pobierz: '+nagrody[wydanenagrody]* poziom[licznik]); wydanenagrody++;
+    alert(`${tekstynagrody[losuj2]} pobierz: ${nagrody[wydanenagrody]* poziom[licznik]}`); wydanenagrody++;
     $('#targ').html('');
 }
 function szansa(){
