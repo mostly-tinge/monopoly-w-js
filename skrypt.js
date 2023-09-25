@@ -5,7 +5,7 @@ let bilans = ['', 372000, 372000, 372000, 372000]; let komuPrzekazacDzialke = 0;
 
 const balans1 = document.querySelector("#ba1"); const balans2 = document.querySelector("#ba2"); const balans3 = document.querySelector("#ba3");
 const balans4 = document.querySelector("#ba4"); const ceny = [balans1, balans2, balans3, balans4]; const podtr = document.querySelector("#podtran");
-let licznik = 1; let balansPlusLicznik = document.querySelector("#ba"+licznik);
+let licznik = 1; let balansPlusLicznik = document.querySelector("#ba"+licznik); const dzialkaNaKtorejStoiPionek =document.getElementById("ba"+czyja[liczbaoczek[licznik]]);
 for(let element of ceny){
     element.addEventListener("click", tura);
 }
