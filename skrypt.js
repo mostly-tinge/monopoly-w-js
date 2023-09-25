@@ -533,6 +533,15 @@ function szansa(){
         }
     }
 }
+function tura2(){
+    if(liczbaoczek[licznik] === 2 || liczbaoczek[licznik] === 13 || licznaoczek[licznik] === 27){
+        nagroda();
+    }
+    else if(liczbaoczek[licznik] === 5 || liczbaoczek[licznik] === 29){
+        szansa();
+    }
+
+}
 function tura(){
     let rzutkostkami = 4;
     //Math.floor(Math.random() * 10 + 2);
