@@ -46,7 +46,7 @@ $('#a0').css('opacity', '1'); $('#b0').css('opacity', '1'); $('#c0').css('opacit
 
 let liczbadomow = ['', 0, 0, 0, 0]; let czydomjestzadarmo = false; let liczbaodmow = ['', 0, 0, 0, 0]; const targ = document.querySelector("#targ");
 
-let kaal = [0, 0, 0, 0, 0, 0, 0, 0 ,0, /*8*/0, 0, 0, 0, 0, 0, 0, 0, /*16*/0, 0, 0, 0, 0, 0, 0, 0, /*24*/0, 0, 0, 0, 0, 0, 0,/*31*/];
+let ileJestDomow = [0, 0, 0, 0, 0, 0, 0, 0 ,0, /*8*/0, 0, 0, 0, 0, 0, 0, 0, /*16*/0, 0, 0, 0, 0, 0, 0, 0, /*24*/0, 0, 0, 0, 0, 0, 0,/*31*/];
 
 let czyja = [0, 0, 0, 0, 0, 0, 0, 0, 0,/*8*/0, 0, 0, 0, 0, 0, 0, 0,/*16*/0, 0, 0, 0, 0, 0, 0, 0,/*24*/0, 0, 0, 0, 0, 0, 0,/*31*/];
 
@@ -55,8 +55,8 @@ function postawHotel(){
     $('#dom'+liczbaoczek[licznik]+'-0').css('opacity', '0'); $('#dom'+liczbaoczek[licznik]+'-2').css('opacity', '0');
     $('#dom'+liczbaoczek[licznik]+'-1').css('opacity', '0'); $('#dom'+liczbaoczek[licznik]+'-3').css('opacity', '0');
     $('#h'+liczbaoczek[licznik]).css('opacity', '1');
-    if(kaal[liczbaoczek[licznik]] === 4){
-        kaal[liczbaoczek[licznik]]++;
+    if(ileJestDomow[liczbaoczek[licznik]] === 4){
+        ileJestDomow[liczbaoczek[licznik]]++;
         $('#ba'+licznik).html(bilans[licznik] -= cenydomow[liczbaoczek[licznik]]);
         targ.removeEventListener("click", postawHotel);
     }
@@ -71,12 +71,12 @@ function postawDom(){
         $('#ba'+licznik).html(bilans[licznik] -= cenydomow[liczbaoczek[licznik]]);
     }
     $('#dom'+liczbaoczek[licznik]+'-'+kaal[liczbaoczek[licznik]]).css('opacity', '1');
-    kaal[liczbaoczek[licznik]]++;
-    if(kaal[liczbaoczek[licznik]] === 4){
+    ileJestDomow[liczbaoczek[licznik]]++;
+    if(ileJestDomow[liczbaoczek[licznik]] === 4){
         targ.removeEventListener("click", postawDom); targ.addEventListener("click", postawHotel);
         $('#targ').html('Czy chcesz kupić hotel?');
     }
-    if(kaal[liczbaoczek[licznik]] > 5){
+    if(ileJestDomow[liczbaoczek[licznik]] > 5){
         $('#targ').html('');
     }
     czydomjestzadarmo = false;
