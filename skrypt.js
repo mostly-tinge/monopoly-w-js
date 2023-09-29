@@ -534,11 +534,6 @@ function szansa(){
     }
 }
 function tura2(){
-    if(liczbadomow[licznik] > 0){
-        $('#domy').toggleClass('dom1'); $('#domy').toggleClass('klik');
-        domy.addEventListener("click", dom2);
-        $('#domy').html('Czy chcesz wykorzystać darmowy dom?');
-    }
     if(czysajakiespodtrany[licznik] === 0){
         $('#podtran').removeClass('klik'); $('#podtran').removeClass('dom1');
         podtr.removeEventListener("click", ukradniecie);
@@ -597,6 +592,11 @@ function tura2(){
         $('#targ').html('');           
     }
     else{
+        if(liczbadomow[licznik] > 0){
+           $('#domy').toggleClass('dom1'); $('#domy').toggleClass('klik');
+           domy.addEventListener("click", dom2);
+           $('#domy').html('Czy chcesz wykorzystać darmowy dom?');
+        }
         let hamza = $('#od'+liczbaoczek[licznik]).css('opacity');
         zmianaKoloruDzialki();
         coZrobicZPolem()
@@ -609,15 +609,16 @@ function tura2(){
                     balansPlusLicznik.innerHTML = bilans[licznik] -= ceny1[kaal[liczbaoczek[licznik]]];
                         
                     balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaoczek[licznik]]] += ceny1[kaal[liczbaoczek[licznik]]];
+                    $('#targ').html('')
                 }
                 else if(liczbaoczek[licznik] > 3){
                     if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaoczek[licznik]] !== licznik){
                         balansPlusLicznik.innerHTML = bilans[licznik] -= ceny2[kaal[liczbaoczek[licznik]]];
                         
                         balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaoczek[licznik]]] += ceny2[kaal[liczbaoczek[licznik]]];
+                        $('#targ').html('')
                     }
                 }
-                $('#targ').html('')
             }
             if(limuzyna === true){
                 limo(); limuzyna = false;
@@ -631,12 +632,14 @@ function tura2(){
                 if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaoczek[licznik]] !== licznik){
                     balansPlusLicznik.innerHTML = bilans[licznik] -= ceny3[kaal[liczbaoczek[licznik]]];
                     balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaoczek[licznik]]] += ceny3[kaal[liczbaoczek[licznik]]];
+                    $('#targ').html('');
                 }
             }
             else if(liczbaoczek[licznik] > 11){
                 if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaoczek[licznik]] !== licznik){
                     balansPlusLicznik.innerHTML = bilans[licznik] -= ceny4[kaal[liczbaoczek[licznik]]];    
                     balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaoczek[licznik]]] += ceny4[kaal[liczbaoczek[licznik]]];
+                    $('#targ').html('');
                 }
             }
         }
@@ -648,15 +651,16 @@ function tura2(){
                 if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaoczek[licznik]] !== licznik){
                     balansPlusLicznik.innerHTML = bilans[licznik] -= ceny5[kaal[liczbaoczek[licznik]]];                      
                     balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaoczek[licznik]]] += ceny5[kaal[liczbaoczek[licznik]]];
+                    $('#targ').html('')
                 }
             }
             else if(liczbaoczek[licznik] > 20){
                 if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaoczek[licznik]] !== licznik){
                     balansPlusLicznik.innerHTML = bilans[licznik] -= ceny6[kaal[liczbaoczek[licznik]]];                      
                     balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaoczek[licznik]]] += ceny6[kaal[liczbaoczek[licznik]]];
+                    $('#targ').html('')
                 }
             }
-            $('#targ').html('');
         }
         else if(liczbaoczek[licznik] > 24){ 
             if(hamza !== 0.99){
@@ -666,17 +670,17 @@ function tura2(){
                 if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaoczek[licznik]] !== licznik){
                     balansPlusLicznik.innerHTML = bilans[licznik] -= ceny7[kaal[liczbaoczek[licznik]]];
                     balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaoczek[licznik]]] += ceny7[kaal[liczbaoczek[licznik]]];
+                    $('#targ').html('')
                 }
             }
             else if(liczbaoczek[licznik] > 28){
                 if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaoczek[licznik]] !== licznik){
                     balansPlusLicznik.innerHTML = bilans[licznik] -= ceny8[kaal[liczbaoczek[licznik]]];
                     balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaoczek[licznik]]] += ceny8[kaal[liczbaoczek[licznik]]];
+                    $('#targ').html('')
                 }
             }
-                $('#targ').html('');
-            }
-    
+        }
         balans1.innerHTML = bilans[1]; balans2.innerHTML = bilans[2]; balans3.innerHTML = bilans[3]; balans4.innerHTML = bilans[4
     }
 }
