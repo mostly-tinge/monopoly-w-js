@@ -533,7 +533,7 @@ function szansa(){
         }
     }
 }
-function tura2(){
+function tura(){
     if(czysajakiespodtrany[licznik] === 0){
         $('#podtran').removeClass('klik'); $('#podtran').removeClass('dom1');
         podtr.removeEventListener("click", ukradniecie);
