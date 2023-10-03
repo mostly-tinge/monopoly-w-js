@@ -7,148 +7,145 @@ let innyGracz1 = licznik + 1; let innyGracz2 = licznik + 2; let innyGracz3 = lic
 
 const balans1 = document.querySelector("#ba1"); const balans2 = document.querySelector("#ba2"); const balans3 = document.querySelector("#ba3");
 const balans4 = document.querySelector("#ba4"); const ceny = [balans1, balans2, balans3, balans4]; const podtr = document.querySelector("#podtran");
-let balansPlusLicznik = document.querySelector("#ba"+licznik);
+let balansPlusLicznik = document.getElementById("#ba"+licznik);
 for(let element of ceny){
     element.addEventListener("click", tura);
 }
-let wiekszaszansa = false; let czymoznakupic = true; let czynsz = ['', 0, 0, 0, 0];
+let wiekszaSzansa = false; let czyMoznaKupicDzialke = true; let czynsz = ['', 0, 0, 0, 0];
 
 let nagrody = [25000, 10000, 10000, 25000, 10000, 10000, 25000, 50000, 50000, 50000]; let transakcje = ['', 0, 0, 0, 0]
 
-let wydaneszanse = 1; if(wydaneszanse === 10){wydaneszanse = 0; alert("szanse zostały zresetowane");}
+let wydaneSzanse = 1; if(wydaneSzanse === 10){wydaneSzanse = 0; alert("szanse zostały zresetowane");}
 
-let tekstyszansy1 = ["przeprowadzasz świetną transakcję biznesową! od wszystkich pozostałych graczy odtrzymujesz", 
+let tekstySzansy1 = ["przeprowadzasz świetną transakcję biznesową! od wszystkich pozostałych graczy odtrzymujesz", 
 "Właśnie obchodzisz urodziny! od wszystkich pozostałych graczy otrzymujesz"];
 
 let szansy1 = ['', 10000, 30000, 50000];
 
-let tekstyszansy2 = ["Weź udział w wyścigu motorówek! aby wygrać 50k wyrzuć","Wyścig na prywatnym torze! aby wygrać 100k, wyrzuć", 
+let tekstySzansy2 = ["Weź udział w wyścigu motorówek! aby wygrać 50k wyrzuć","Wyścig na prywatnym torze! aby wygrać 100k, wyrzuć", 
 "Rozbij kasyno! aby wygrać 100k, wyrzuć", "Zainwestuj w giełdę! aby zarobić 100k wyrzuć", "Załóż własną firmę! aby zarobić 150k wyrzuć",
 "Weź udział w wyścigu balonów! aby wygrać 150k wyrzuć"];
 
-let tekstyszansy3 = ["Zabierz przyjaciół w luksusową podróż! płacisz wszystkim pozostałym graczom",
+let tekstySzansy3 = ["Zabierz przyjaciół w luksusową podróż! płacisz wszystkim pozostałym graczom",
 "Zabierz przyjaciół na wystawny obiad! płacisz wszystkim pozostałym graczom"];
 
 let szansy3 = ['', 5000, 15000, 25000];
 
-let tekstyszansy4 = ["Idziesz prosto do więzienia, nie przechodzisz przez start ani nie pobierasz premii", 
+let tekstySzansy4 = ["Idziesz prosto do więzienia, nie przechodzisz przez start ani nie pobierasz premii", 
 "Zaproszenie na ważną imprezę! zapłać 40k wybranemu graczowi za towarzystwo.", "Wysoko postawieni przyjaciele! zapłać 50k wybranemu graczowi za udział w jego premierze filmowej.",
 "przepuściłeś sporą kwotę w szale wydawania pieniędzy! obniż status swojego pionka."];
 
-let wydanenagrody = 0; if(wydanenagrody === 10){wydanenagrody = 0; alert("nagrody zostały zresetowane");}
+let wydaneNagrody = 0; if(wydaneNagrody === 10){wydaneNagrody = 0; alert("nagrody zostały zresetowane");}
 
-let tekstynagrody = ["Wynajmij swój prywatny odrzutowiec", 'Zdobywasz tytuł "Biznesowy bohater dekady"!', "Wynajmij swój skuter wodny",
+let tekstyNagrody = ["Wynajmij swój prywatny odrzutowiec", 'Zdobywasz tytuł "Biznesowy bohater dekady"!', "Wynajmij swój skuter wodny",
 "Twój koń zajął pierwsze miejsce w wyścigu", "Zarabiasz na swoich oszczędnościach z zagranicznych kont.", "Twój szofer podwozi cię o 5 pól",
 "Otrzymujesz odsetki od swoich milionów", "Sprzedaj swój sportowy samochód", "Sprzedaj jeden ze swoich wakacyjnych domów", 
 'Zdobyłeś tytuł "milionera roku"'];
 
-let liczbaoczek = ['', 0, 0, 0, 0]; let poziom = ['', 1, 1, 1, 1]; let pionek = ['', "a", "b", "c", "e"];
+let liczbaOczek = ['', 0, 0, 0, 0]; let poziom = ['', 1, 1, 1, 1]; let pionek = ['', "a", "b", "c", "e"];
 
 $('#a0').css('opacity', '1'); $('#b0').css('opacity', '1'); $('#c0').css('opacity', '1'); $('#e0').css('opacity', '1');
 
-let liczbadomow = ['', 0, 0, 0, 0]; let czydomjestzadarmo = false; let liczbaodmow = ['', 0, 0, 0, 0]; const targ = document.querySelector("#targ");
+let liczbaDomow = ['', 0, 0, 0, 0]; let czyDomJestZaDarmo = false; let liczbaOdmow = ['', 0, 0, 0, 0]; const targ = document.querySelector("#targ");
 
 let ileJestDomow = [0, 0, 0, 0, 0, 0, 0, 0 ,0, /*8*/0, 0, 0, 0, 0, 0, 0, 0, /*16*/0, 0, 0, 0, 0, 0, 0, 0, /*24*/0, 0, 0, 0, 0, 0, 0,/*31*/];
 
 let czyja = [0, 0, 0, 0, 0, 0, 0, 0, 0,/*8*/0, 0, 0, 0, 0, 0, 0, 0,/*16*/0, 0, 0, 0, 0, 0, 0, 0,/*24*/0, 0, 0, 0, 0, 0, 0,/*31*/];
 
 let kupiona = [0, 0, 0, 0, 0, 0, 0, 0, 0,/*8*/0, 0, 0, 0, 0, 0, 0, 0,/*16*/0, 0, 0, 0, 0, 0, 0, 0,/*24*/0, 0, 0, 0 , 0, 0,/*31*/];
-const balansWlascicielaDzialki = document.getElementById("ba"+czyja[liczbaoczek[licznik]]);
+const balansWlascicielaDzialki = document.getElementById("ba"+czyja[liczbaOczek[licznik]]);
 function zmianaPoziomu(){
-    if(poziom[licznik] === 3 && liczbaoczek[licznik] > 31){
-        liczbaoczek[licznik] -= 32;
+    if(poziom[licznik] === 3 && liczbaOczek[licznik] > 31){
+        liczbaOczek[licznik] -= 32;
         balansPlusLicznik.innerHTML = bilans[licznik] += 250000;
     }
-    else if(poziom[licznik] === 2 && przejscie[licznik] === true && liczbaoczek[licznik] > 31){
+    else if(poziom[licznik] === 2 && przejscie[licznik] === true && liczbaOczek[licznik] > 31){
         $('.p'+licznik).toggleClass('srebrny'); $('.p'+licznik).toggleClass('zloty');
         poziom[licznik] = 3;
-        liczbaoczek[licznik] -= 32;
+        liczbaOczek[licznik] -= 32;
     }
-    else if(liczbaoczek[licznik] > 31 && przejscie[licznik] === false){
-        liczbaoczek[licznik] -= 32;
+    else if(liczbaOczek[licznik] > 31 && przejscie[licznik] === false){
+        liczbaOczek[licznik] -= 32;
         poziom[licznik] = 2;
         $('.p'+licznik).toggleClass('srebrny');
         $('.p'+licznik).toggleClass('normalny'+licznik);
         przejscie[licznik] = true;
     }
 }
+const cenyDomow = [0, 10000, 0, 10000, 15000, 0, 15000, 15000, 0, 25000, 25000, 25000, 30000, 0, 30000, 30000, 0, 40000, 0, 40000, 40000, 
+    45000, 45000, 45000, 0, 50000, 50000, 0, 50000, 0, 60000, 60000];
 function postawHotel(){
-    $('#dom'+liczbaoczek[licznik]+'-0').css('opacity', '0'); $('#dom'+liczbaoczek[licznik]+'-2').css('opacity', '0');
-    $('#dom'+liczbaoczek[licznik]+'-1').css('opacity', '0'); $('#dom'+liczbaoczek[licznik]+'-3').css('opacity', '0');
-    $('#h'+liczbaoczek[licznik]).css('opacity', '1');
-    if(ileJestDomow[liczbaoczek[licznik]] === 4){
-        ileJestDomow[liczbaoczek[licznik]]++;
-        $('#ba'+licznik).html(bilans[licznik] -= cenydomow[liczbaoczek[licznik]]);
+    $('#dom'+liczbaOczek[licznik]+'-0').css('opacity', '0'); $('#dom'+liczbaOczek[licznik]+'-2').css('opacity', '0');
+    $('#dom'+liczbaOczek[licznik]+'-1').css('opacity', '0'); $('#dom'+liczbaOczek[licznik]+'-3').css('opacity', '0');
+    $('#h'+liczbaOczek[licznik]).css('opacity', '1');
+    if(ileJestDomow[liczbaOczek[licznik]] === 4){
+        ileJestDomow[liczbaOczek[licznik]]++;
+        $('#ba'+licznik).html(bilans[licznik] -= cenyDomow[liczbaOczek[licznik]]);
         targ.removeEventListener("click", postawHotel);
     }
-    $('#targ').html('');
+    $('#targ').html('');$('#targ').toggleClass('klik');
 }
-
-const cenydomow = [0, 10000, 0, 10000, 15000, 0, 15000, 15000, 0, 25000, 25000, 25000, 30000, 0, 30000, 30000, 0, 40000, 0, 40000, 40000, 
-45000, 45000, 45000, 0, 50000, 50000, 0, 50000, 0, 60000, 60000];
-
 function postawDom(){
-    if(czydomjestzadarmo === false){
-        $('#ba'+licznik).html(bilans[licznik] -= cenydomow[liczbaoczek[licznik]]);
+    if(czyDomJestZaDarmo === false){
+        $('#ba'+licznik).html(bilans[licznik] -= cenyDomow[liczbaOczek[licznik]]);
     }
-    console.log("xd"+ileJestDomow);
-    $('#dom'+liczbaoczek[licznik]+'-'+ileJestDomow[liczbaoczek[licznik]]).css('opacity', '1');
-    ileJestDomow[liczbaoczek[licznik]]++;
-    if(ileJestDomow[liczbaoczek[licznik]] === 4){
+    $('#dom'+liczbaOczek[licznik]+'-'+ileJestDomow[liczbaOczek[licznik]]).css('opacity', '1');
+    ileJestDomow[liczbaOczek[licznik]]++;
+    if(ileJestDomow[liczbaOczek[licznik]] === 4){
         targ.removeEventListener("click", postawDom); targ.addEventListener("click", postawHotel);
         $('#targ').html('Czy chcesz kupić hotel?');
     }
-    if(ileJestDomow[liczbaoczek[licznik]] > 5){
+    if(ileJestDomow[liczbaOczek[licznik]] > 5){
         $('#targ').html('');
     }
-    czydomjestzadarmo = false;
+    czyDomJestZaDarmo = false;
 }
 
-const cenydzialek = [0, 5000, 0, 5000, 11000, 0, 15000, 20000, 0, 35000, 35000, 40000, 55000, 0, 55000, 60000, 0, 80000, 0, 80000, 90000, 
+const cenyDzialek = [0, 5000, 0, 5000, 11000, 0, 15000, 20000, 0, 35000, 35000, 40000, 55000, 0, 55000, 60000, 0, 80000, 0, 80000, 90000, 
 115000, 115000, 120000, 0, 145000, 145000, 0, 150000, 0, 170000, 200000];
 
-const kolorydzialek = ['', 'darkred', 'chartreuse', 'fuchsia', 'navy']
+const koloryDzialek = ['', 'darkred', 'chartreuse', 'fuchsia', 'navy']
 
 function zmianaKoloruDzialki(){
-    if(liczbaoczek[licznik] < 8 || (liczbaoczek[licznik] > 16 && liczbaoczek[licznik] < 24)){
-        $('#od'+liczbaoczek[licznik]).css('background-color', 'red');
-        $('#od'+liczbaoczek[licznik]).css('border-color', 'red');
+    if(liczbaOczek[licznik] < 8 || (liczbaOczek[licznik] > 16 && liczbaOczek[licznik] < 24)){
+        $('#od'+liczbaOczek[licznik]).css('background-color', 'red');
+        $('#od'+liczbaOczek[licznik]).css('border-color', 'red');
     }
     else{
-        $('#od'+liczbaoczek[licznik]).css('background-color', 'darkkhaki');
-        $('#od'+liczbaoczek[licznik]).css('border-color', 'darkkhaki');
+        $('#od'+liczbaOczek[licznik]).css('background-color', 'darkkhaki');
+        $('#od'+liczbaOczek[licznik]).css('border-color', 'darkkhaki');
     }
-    $('#od'+liczbaoczek[licznik]).css('opacity', '0.99');
+    hamza = 0.99;
 }
 
 function zajmijDzialke(){
-    $('#ba'+licznik).html(bilans[licznik] -= cenydzialek[liczbaoczek[licznik]]);
-    $('#k'+liczbaoczek[licznik]).css('color', kolorydzialek[licznik]);
-    czyja[liczbaoczek[licznik]] = 1; 
-    kupiona[liczbaoczek[licznik]] = licznik; targ.removeEventListener("click", zajmijDzialke);
-    if(kupiona[liczbaoczek[licznik]] === licznik){
+    $('#ba'+licznik).html(bilans[licznik] -= cenyDzialek[liczbaOczek[licznik]]);
+    $('#k'+liczbaOczek[licznik]).css('color', koloryDzialek[licznik]);
+    czyja[liczbaOczek[licznik]] = 1; 
+    kupiona[liczbaOczek[licznik]] = licznik; targ.removeEventListener("click", zajmijDzialke);
+    if(kupiona[liczbaOczek[licznik]] === licznik){
         $('#targ').html('Czy chcesz kupić domek?');
         targ.addEventListener("click", postawDom);
     }
 }
 
 function rzut(){
-    let sol = Math.floor(Math.random() * 6);
-    alert(tekstyszansy2[sol]);
+    let ktoryTekst = Math.floor(Math.random() * 6);
+    alert(tekstySzansy2[ktoryTekst]);
     let wynikRzutu = Math.floor(Math.random() * 10 + 2);
     $('#targ').html(wynik);
     if((poziom[licznik] === 1 && wynikRzutu === 2) || (poziom[licznik] === 2 && wynikRzutu > 7 && wynikRzutu < 13) || (poziom[licznik] === 3 && wynikRzutu > 4 && wynikRzutu < 13)){
         alert("wygrałeś!");
         $('#targ').html(wynik);
-        if(sol === 0){
+        if(ktoryTekst === 0){
             $('#ba'+licznik).html(bilans[licznik] += 50000);
         }
-        else if(sol > 0 && sol < 4){
+        else if(ktoryTekst > 0 && sol < 4){
             $('#ba'+licznik).html(bilans[licznik] += 100000);
         }
         else{
             $('#ba'+licznik).html(bilans[licznik] += 150000);
-        } /* Chciałbym aby się nie powtarzało, ale sol musi być generowany odzielnie */
+        }
     }
 }
 
@@ -160,7 +157,7 @@ const ceny3 = [20000, 50000, 90000, 140000, 165000, 215000]; const ceny4 = [2500
 const ceny5 = [35000, 90000, 150000, 230000, 270000, 350000]; const ceny6 = [40000, 100000, 170000, 260000, 305000, 395000];
 const ceny7 = [50000, 125000, 210000, 320000, 375000, 485000]; const ceny8 = [65000, 160000, 250000, 370000, 430000, 550000];
 
-let czywwiezieniu = ['', false, false, false, false]; let przejscie = ['', false, false, false, false];
+let czyJestWWiezieniu = ['', false, false, false, false]; let przejscie = ['', false, false, false, false];
 $('.p1').toggleClass('normalny1'); $('.p2').toggleClass('normalny2'); $('.p3').toggleClass('normalny3'); $('.p4').toggleClass('normalny4');  $('#ba1').toggleClass('klik'); 
 
 function nadajKlik(){
@@ -183,11 +180,11 @@ function DajInnemuGraczowi(){
     let danyBalans = this.toString();
     danyBalans.slice(2,3);
     this.innerHTML = bilans[danyBalans] += 40000;
-    if(wiekszaszansa === true){
+    if(wiekszaSzansa === true){
         this.innerHTML = bilans[danyBalans] += 10000;
         balansPlusLicznik.innerHTML = bilans[licznik] -= 10000;
     }
-    wiekszaszansa = false;
+    wiekszaSzansa = false;
 }
 const domy = document.querySelector("#domy");
 function dom2(){
@@ -197,7 +194,7 @@ function dom2(){
     czydomjestzadarmo = true;
 } 
 function dom(){
-    liczbadomow[licznik]++
+    liczbaDomow[licznik]++
     if(liczbadomow[licznik] > 0){
         $('#domy').toggleClass('dom1'); $('#domy').toggleClass('klik');
         domy.addEventListener("click", dom2); $('#domy').html('Czy chcesz wykorzystać darmowy dom?');
@@ -246,24 +243,25 @@ function mieszkanie(){
     alert("Wynajmujesz swoje mieszkanie przez 3 następne kolejki pobierasz 12k");
     czynsz[licznik] = czynsz[licznik] + 3;
 }
-let czyznalezione = false;
+let czyZnalezione = false;
 function podroz(){
-    czyznalezione = false;
+    czyZnalezione = false;
     alert("Do przodu! Przejdź do najbliższej wolnej nieruchomości.");
-    $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '0');
+    $('#'+pionek[licznik]+liczbaOczek[licznik]).css('opacity', '0');
+    $('#od'+liczbaOczek[licznik]).css('opacity', '0.99');
     function zakonczPentle(){
         $('#kosc').html(i); liczbaoczek[licznik] = i;
-        $('#od'+liczbaoczek[licznik]).css('opacity', '0.99');
-        $('#'+pionek[licznik]+liczbaoczek[i]).css('opacity', '1'); czyznalezione = true;
+        $('#od'+liczbaOczek[licznik]).css('opacity', '0.99');
+        $('#'+pionek[licznik]+liczbaOczek[licznik]).css('opacity', '1'); czyZnalezione = true;
         zmianaKoloruDzialki();
     }
-    for(i = liczbaoczek[licznik]; i < 32; i++){
-        if(czyja[i] === 0 && czyznalezione === false && i > liczbaoczek[licznik] && i !== 13 && i !== 8 & i !== 16 && i !== 24 && i !== 27 && i !== 29 && i !== 32 && i !== 5){
+    for(i = liczbaOczek[licznik]; i < 32; i++){
+        if(czyja[i] === 0 && czyZnalezione === false && i > liczbaOczek[licznik] && i !== 13 && i !== 8 & i !== 16 && i !== 24 && i !== 27 && i !== 29 && i !== 32 && i !== 5){
             zakonczPentle();
         }
     }
-    for(i = liczbaoczek[licznik]; i > 0; i--){
-        if(czyznalezione === false && czyja[i] === 0 && i < liczbaoczek[licznik] && i !== 13 && i !== 8 & i !== 16 && i !== 24 && i !== 27 && i !== 29 && i !== 32 && i !== 5){
+    for(i = liczbaOczek[licznik]; i > 0; i--){
+        if(czyZnalezione === false && czyja[i] === 0 && i < liczbaOczek[licznik] && i !== 13 && i !== 8 & i !== 16 && i !== 24 && i !== 27 && i !== 29 && i !== 32 && i !== 5){
             zakonczPentle();
         }
     }
@@ -281,9 +279,10 @@ function akcja(){
     }
     $('#podtran').toggleClass('klik'); $('#podtran').toggleClass('dom1'); podtr.removeEventListener("click", ukradniecie);
     $('#podtran').html('');
-    $('#k'+wlasciciel).css('color', kolorydzialek[licznik]); 
+    $('#k'+wlasciciel).css('color', koloryDzialek[licznik]); 
     kupiona[wlasciciel] = licznik; czyja[wlasciciel] = 1;
 }
+let ileJestPodTranow = ['', 0, 0, 0, 0];
 function ukradniecie(){
     for(let i = 0; i < 31; i++){
         if(kupiona[i] !== licznik){
@@ -296,27 +295,26 @@ function ukradniecie(){
     for(let element of pionoweDzialki){
         element.addEventListener("click", akcja);
     }
-    czysajakiespodtrany[licznik]--;
+    ileJestPodTranow[licznik]--;
 }
-let czysajakiespodtrany = ['', 0, 0, 0, 0];
 function podtran(){
     alert("Podstępna transakcja! Wykradnij nieruchomość od wybranego gracza");
     $('#podtran').toggleClass('klik'); $('#podtran').toggleClass('dom1');
     podtr.addEventListener("click", ukradniecie)
     $('#podtran').html('Czy chcesz ukraść komuś działkę?');
-    czysajakiespodtrany[licznik] += 1;
+    ileJestPodTranow[licznik] += 1;
 }
 function zlyrating(){
     alert("Zły rating kredytowy! Nie możesz kupić tej działki");
-    czymoznakupic = false;
+    czyMoznaKupicDzialke = false;
 }
-let czysajakiesprzymtrany = ['', 0, 0, 0, 0]; const przytr = document.querySelector("przymtran");
+let ileJestPrzymTranow = ['', 0, 0, 0, 0]; const przytr = document.querySelector("przymtran");
 function przymtran(){
     alert("Przymusowa transakcja! Zamień nieruchomość z wybranym graczem");
     $('#przymtran').toggleClass('klik'); $('#przymtran').toggleClass('dom1');
     przytr.addEventListener("click", wybranie);
     $('#przymtran').html('Czy chcesz zamienić z kimś działkę?');
-    czysajakiesprzymtrany[licznik] += 1;
+    ileJestPrzymTranow[licznik] += 1;
 }
 function wybranie(){
     alert("najpierw wybierz cudzą działkę, a potem kliknij bilans gracza do, którego należała i wtedy wybierz działkę, którą dajesz w zamian")
@@ -333,9 +331,9 @@ function wybranie(){
 function wybranieswojego(){
     let doZamiany = this.value;
     if(kupiona[doZamiany] === licznik){
-        $('#k'+dozamiany).css("color", kolorydzialek[komuPrzekazacDzialke]);
-        kupiona[dozamiany] = licznik; 
-        czyja[dozamiany] = 1;
+        $('#k'+doZamiany).css("color", koloryDzialek[komuPrzekazacDzialke]);
+        kupiona[doZamiany] = licznik; 
+        czyja[doZamiany] = 1;
         $('#przymtran').toggleClass('klik'); $('#przymtran').toggleClass('dom1');
         przytr.removeEventListener("click", wybranieswojego); $('#przymtran').html('');
         for(let element of pionoweDzialki){
@@ -352,8 +350,8 @@ function wybranieswojego(){
 function wybraniecudzego(){
     let doZamiany2 = this.value;
     if(kupiona[doZamiany] !== licznik){
-        czysajakiesprzymtrany[licznik]--; 
-        $('#k'+doZamiany2).css("color", kolorydzialek[licznik]);
+        ileJestPrzymTranow[licznik]--; 
+        $('#k'+doZamiany2).css("color", koloryDzialek[licznik]);
         kupiona[dozamiany2] = licznik; 
         czyja[dozamiany2] = 1;
         for(let element of pionoweDzialki){
@@ -385,20 +383,20 @@ function zestaw(){
 }
 function limo(){
     alert("Przejedź się limuzyną na start");
-    $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '0');
-    liczbaoczek[licznik] = 32;
-    $('#kosc').html(liczbaoczek[licznik]);
+    $('#'+pionek[licznik]+liczbaOczek[licznik]).css('opacity', '0');
+    liczbaOczek[licznik] = 32;
+    $('#kosc').html(liczbaOczek[licznik]);
     zmianaPoziomu();
-    if(liczbaoczek[licznik] === 32){
-        liczbaoczek[licznik] = 0;
-        $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '1'); $('#targ').html('');
+    if(liczbaOczek[licznik] === 32){
+        liczbaOczek[licznik] = 0;
+        $('#'+pionek[licznik]+liczbaOczek[licznik]).css('opacity', '1'); $('#targ').html('');
     }
 }
 let czyJuzbylo = [false, false, false, false, false, false, false, false, false, false, 
     false, false, false, false, false, false, false, false, false, false, false, false];
 function pierwszeLosowanie(){
-    let ktoraCyfra = Math.floor(Math.random() * 7);
-    if(ktoraCyfra == 0 && czyJuzbylo[ktoraCyfra] === false){ czyJuzbylo[ktoraCyfra] = true; console.log('dom'); dom(); } //else{los = Math.floor(Math.random() * 7);}
+    let ktoraCyfra = 0//Math.floor(Math.random() * 7);
+    if(ktoraCyfra == 0 && czyJuzbylo[ktoraCyfra] === false){ czyJuzbylo[ktoraCyfra] = true; console.log('dom'); podroz(); } //else{los = Math.floor(Math.random() * 7);}
     if(ktoraCyfra == 1 && czyJuzbylo[ktoraCyfra] === false){ czyJuzbylo[ktoraCyfra] = true; console.log('dom');  dom();} //else{los = Math.floor(Math.random() * 7);}
     if(ktoraCyfra == 2 && czyJuzbylo[ktoraCyfra] === false){ czyJuzbylo[ktoraCyfra] = true; console.log('dom');  dom(); } //else{los = Math.floor(Math.random() * 7);}
     if(ktoraCyfra == 3 && czyJuzbylo[ktoraCyfra] === false){ czyJuzbylo[ktoraCyfra] = true; console.log('dom');  dom();}// else{los = Math.floor(Math.random() * 7);}
@@ -430,8 +428,11 @@ function trzecieLosowanie(){
     if(los == 6 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; gest(); } else{los = Math.floor(Math.random() * 7);}
     if(los == 7 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; udzialy();} else{los = Math.floor(Math.random() * 7);}
 }
+function czwarteLosowanie(){
+    
+}
 function coZrobicZPolem(){
-    if(kupiona[liczbaoczek[licznik]] === 0 && czyja[liczbaoczek[licznik]] === 0 && czymoznakupic === true){
+    if(kupiona[liczbaoczek[licznik]] === 0 && czyja[liczbaoczek[licznik]] === 0 && czyMoznaKupicDzialke === true){
         $('#targ').html('Czy chcesz kupić tą działke?'); targ.addEventListener("click", zajmijDzialke);
         $('#targ').toggleClass('klik'); targ.removeEventListener("click", postawDom);
     }
@@ -441,8 +442,8 @@ function coZrobicZPolem(){
 }
 function nagroda(){
     let losuj2 = Math.floor(Math.random()* 10); 
-    balansPlusLicznik.innerHTML = bilans[licznik] += nagrody[wydanenagrody] * poziom[licznik];
-    alert(`${tekstynagrody[losuj2]} pobierz: ${nagrody[wydanenagrody]* poziom[licznik]}`); wydanenagrody++;
+    balansPlusLicznik.innerHTML = bilans[licznik] += nagrody[wydaneNagrody] * poziom[licznik];
+    alert(`${tekstyNagrody[losuj2]} pobierz: ${nagrody[wydaneNagrody]* poziom[licznik]}`); wydaneNagrody++;
     $('#targ').html('');
 }
 function szansa(){
@@ -454,52 +455,52 @@ function szansa(){
         document.getElementById("ba"+innyGracz1).innerHTML = bilans[innyGracz1] -= szansy1[poziom[l]];                   
         document.getElementById("ba"+innyGracz2).innerHTML = bilans[innyGracz2] -= szansy1[poziom[i]];                   
         document.getElementById("ba"+innyGracz3).innerHTML = bilans[innyGracz3] -= szansy1[poziom[c]];
-        alert(tekstyszansy1[Math.floor(Math.random())]+szansy1[wydaneszanse]* poziom[licznik]);                                     
+        alert(tekstySzansy1[Math.floor(Math.random())]+szansy1[wydaneszanse]* poziom[licznik]);                                     
     }
     else if(los === 1){
         balansPlusLicznik.innerHTML = bilans[licznik] = bilans[licznik] - szansy3[poziom[licznik]] * 3;
         document.getElementById("ba"+innyGracz1).innerHTML = bilans[innyGracz1] += szansy3[poziom[l]];                   
         document.getElementById("ba"+innyGracz2).innerHTML = bilans[innyGracz2] += szansy3[poziom[i]];                   
         document.getElementById("ba"+innyGracz3).innerHTML = bilans[innyGracz3] += szansy3[poziom[c]];
-        alert(tekstyszansy3[Math.floor(Math.random())]+szansy3[wydaneszanse]* poziom[licznik]);
+        alert(tekstySzansy3[Math.floor(Math.random())]+szansy3[wydaneszanse]* poziom[licznik]);
     }
     else if(los === 2){
         $('#targ').html('>Rzuć kostką i sprawdź czy wygrasz');
         targ.addEventListener("click", rzut); 
     }
     else{
-        let kolejnazmienna = 2;
-        alert(tekstyszansy4[kolejnazmienna]);
-        if(kolejnazmienna === 0){
-            $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '0');
-            liczbaoczek[licznik] = 8;
-            ('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '1');
+        let ktoryTekst = 2;
+        alert(tekstySzansy4[ktoryTekst]);
+        if(ktoryTekst === 0){
+            $('#'+pionek[licznik]+liczbaOczek[licznik]).css('opacity', '0');
+            liczbaOczek[licznik] = 8;
+            ('#'+pionek[licznik]+liczbaOczek[licznik]).css('opacity', '1');
         }
-        else if(kolejnazmienna === 1 || kolejnazmienna === 2){
+        else if(ktoryTekst === 1 || ktoryTekst === 2){
             for(let element of ceny){
                 element.removeEventListener("click", tura);
-                element.addEventListener("click", gog);
+                element.addEventListener("click", inicjacjaPozewu);
             }
-            if(kolejnazmienna === 2){
-                wiekszaszansa = true;
+            if(ktoryTekst === 2){
+                wiekszaSzansa = true;
             }
-            }
+        }
         else{
             if(poziom[licznik] > 1){
-                poziom[licznik] = poziom[licznik] - 1;
+                poziom[licznik] -= 1;
             }
         }
     }
 }
 function tura(){
-    let rzutkostkami = 4//Math.floor(Math.random() * 10 + 2)
+    let rzutKostkami = 4//Math.floor(Math.random() * 10 + 2)
     console.log(rzutkostkami);
-    if(czysajakiespodtrany[licznik] === 0){
-        $('#podtran').toggleClass('klik'); $('#podtran').toggleClass('dom1');
+    if(ileJestPodTranow[licznik] === 0){
+        $('#podtran').removeClass('klik'); $('#podtran').removeClass('dom1');
         podtr.removeEventListener("click", ukradniecie);
         $('#podtran').html('');
     }
-    if(czysajakiesprzymtrany[licznik] === 1){
+    if(ileJestPrzymTranow[licznik] === 1){
         $('#przymtran').toggleClass('klik'); $('#przymtran').toggleClass('dom1');
         przytr.addEventListener("click", wybranie);
         $('#przymtran').html('Czy chcesz zamienić z kimś działkę?');
@@ -508,132 +509,131 @@ function tura(){
         balansPlusLicznik.innerHTML = bilans[licznik] += 12000;
         czynsz[licznik]--;
     }
-    czymoznakupic = true; 
+    czyMoznaKupicDzialke = true; 
     let limuzyna = false;
-    $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '0');
-    kosc.innerHTML = liczbaoczek[licznik] += rzutkostkami;
-    if(liczbaoczek[licznik] === 32){
-        $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '1');
-        liczbaoczek[licznik] = 0; $('#targ').html('');
+    $('#'+pionek[licznik]+liczbaOczek[licznik]).css('opacity', '0');
+    kosc.innerHTML = liczbaOczek[licznik] += rzutKostkami;
+    if(liczbaOczek[licznik] === 32){
+        $('#'+pionek[licznik]+liczbaOczek[licznik]).css('opacity', '1');
+        liczbaOczek[licznik] = 0; $('#targ').html('');
     }
     zmianaPoziomu();
-    $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '1');
-    if(liczbaoczek[licznik] === 24){
+    $('#'+pionek[licznik]+liczbaOczek[licznik]).css('opacity', '1');
+    if(liczbaOczek[licznik] === 24){
         $('#targ').html('');
-        $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '0');
-        liczbaoczek[licznik] = 8;
-        $('#'+pionek[licznik]+liczbaoczek[licznik]).css('opacity', '1');
-        czywwiezieniu[licznik] = 1;
-        kosc = liczbaoczek[licznik];
+        $('#'+pionek[licznik]+liczbaOczek[licznik]).css('opacity', '0');
+        liczbaOczek[licznik] = 8;
+        $('#'+pionek[licznik]+liczbaOczek[licznik]).css('opacity', '1');
+        czyJestWWiezieniu[licznik] = 1;
+        kosc = liczbaOczek[licznik];
     }
     $('#targ').html('')
-    if(liczbaoczek[licznik] === 2 || liczbaoczek[licznik] === 13 || liczbaoczek[licznik] === 27){
+    if(liczbaOczek[licznik] === 2 || liczbaOczek[licznik] === 13 || liczbaOczek[licznik] === 27){
         nagroda();
     }
-    else if(liczbaoczek[licznik] === 5 || liczbaoczek[licznik] === 29 || liczbaoczek[licznik] === 18){
+    else if(liczbaOczek[licznik] === 5 || liczbaOczek[licznik] === 29 || liczbaOczek[licznik] === 18){
         szansa();
     }
-    if(liczbaoczek[licznik] === 8 || liczbaoczek[licznik] === 16){
+    if(liczbaOczek[licznik] === 8 || liczbaOczek[licznik] === 16){
         $('#targ').html('');           
     }
     else{
-        if(liczbadomow[licznik] > 0){
+        if(liczbaDomow[licznik] > 0){
            $('#domy').toggleClass('dom1'); $('#domy').toggleClass('klik');
            domy.addEventListener("click", dom2);
            $('#domy').html('Czy chcesz wykorzystać darmowy dom?');
         }
-        let hamza = $('#od'+liczbaoczek[licznik]).css('opacity');
+        let hamza = $('#od'+liczbaOczek[licznik]).css('opacity');
         zmianaKoloruDzialki();
-        coZrobicZPolem()
-        if(liczbaoczek[licznik] < 8){
+        coZrobicZPolem();
+        if(liczbaOczek[licznik] < 8){
             if(hamza !== 0.99){
                 pierwszeLosowanie();
             }
-            if(liczbaoczek[licznik] < 4){
-                if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaoczek[licznik]] !== licznik){
-                    balansPlusLicznik.innerHTML = bilans[licznik] -= ceny1[ileJestDomow[liczbaoczek[licznik]]];
+            if(liczbaOczek[licznik] < 4){
+                if(czyja[liczbaOczek[licznik]] !== 0 && czyja[liczbaOczek[licznik]] !== licznik){
+                    balansPlusLicznik.innerHTML = bilans[licznik] -= ceny1[ileJestDomow[liczbaOczek[licznik]]];
                         
-                    balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaoczek[licznik]]] += ceny1[ileJestDomow[liczbaoczek[licznik]]];
-                    $('#targ').html('')
+                    balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaOczek[licznik]]] += ceny1[ileJestDomow[liczbaOczek[licznik]]];
+                    $('#targ').html('');
                 }
-                else if(liczbaoczek[licznik] > 3){
-                    if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaoczek[licznik]] !== licznik){
-                        balansPlusLicznik.innerHTML = bilans[licznik] -= ceny2[ileJestDomow[liczbaoczek[licznik]]];
+            }
+            else if(liczbaOczek[licznik] > 3){
+                if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaOczek[licznik]] !== licznik){
+                    balansPlusLicznik.innerHTML = bilans[licznik] -= ceny2[ileJestDomow[liczbaOczek[licznik]]];
                         
-                        balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaoczek[licznik]]] += ceny2[ileJestDomow[liczbaoczek[licznik]]];
-                        $('#targ').html('')
-                    }
+                    balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaOczek[licznik]]] += ceny2[ileJestDomow[liczbaOczek[licznik]]];
+                    $('#targ').html('');
                 }
             }
             if(limuzyna === true){
                 limo(); limuzyna = false;
             }
         }
-        else if(liczbaoczek[licznik] > 8 && liczbaoczek[licznik] < 16){
+        else if(liczbaOczek[licznik] > 8 && liczbaOczek[licznik] < 16){
             if(hamza !== 0.99){
                 drugieLosowanie()
             }
-            if(liczbaoczek[licznik] < 12){
-                if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaoczek[licznik]] !== licznik){
-                    balansPlusLicznik.innerHTML = bilans[licznik] -= ceny3[ileJestDomow[liczbaoczek[licznik]]];
+            if(liczbaOczek[licznik] < 12){
+                if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaOczek[licznik]] !== licznik){
+                    balansPlusLicznik.innerHTML = bilans[licznik] -= ceny3[ileJestDomow[liczbaOczek[licznik]]];
 
-                    balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaoczek[licznik]]] += ceny3[ileJestDomow[liczbaoczek[licznik]]];
+                    balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaOczek[licznik]]] += ceny3[ileJestDomow[liczbaOczek[licznik]]];
                     $('#targ').html('');
                 }
             }
-            else if(liczbaoczek[licznik] > 11){
-                if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaoczek[licznik]] !== licznik){
-                    balansPlusLicznik.innerHTML = bilans[licznik] -= ceny4[ileJestDomow[liczbaoczek[licznik]]];  
+            else if(liczbaOczek[licznik] > 11){
+                if(czyja[liczbaOczek[licznik]] !== 0 && czyja[liczbaOczek[licznik]] !== licznik){
+                    balansPlusLicznik.innerHTML = bilans[licznik] -= ceny4[ileJestDomow[liczbaOczek[licznik]]];  
 
-                    balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaoczek[licznik]]] += ceny4[ileJestDomow[liczbaoczek[licznik]]];
+                    balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaOczek[licznik]]] += ceny4[ileJestDomow[liczbaOczek[licznik]]];
                     $('#targ').html('');
                 }
             }
         }
-        else if(liczbaoczek[licznik] > 16 && liczbaoczek[licznik] < 24){
+        else if(liczbaOczek[licznik] > 16 && liczbaOczek[licznik] < 24){
             if(hamza !== 0.99){
                 trzecieLosowanie();
             }
-            if(liczbaoczek[licznik] < 21){
-                if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaoczek[licznik]] !== licznik){
-                    balansPlusLicznik.innerHTML = bilans[licznik] -= ceny5[ileJestDomow[liczbaoczek[licznik]]];
+            if(liczbaOczek[licznik] < 21){
+                if(czyja[liczbaOczek[licznik]] !== 0 && czyja[liczbaOczek[licznik]] !== licznik){
+                    balansPlusLicznik.innerHTML = bilans[licznik] -= ceny5[ileJestDomow[liczbaOczek[licznik]]];
 
-                    balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaoczek[licznik]]] += ceny5[ileJestDomow[liczbaoczek[licznik]]];
+                    balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaOczek[licznik]]] += ceny5[ileJestDomow[liczbaOczek[licznik]]];
                     $('#targ').html('')
                 }
             }
-            else if(liczbaoczek[licznik] > 20){
-                if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaoczek[licznik]] !== licznik){
-                    balansPlusLicznik.innerHTML = bilans[licznik] -= ceny6[ileJestDomow[liczbaoczek[licznik]]]; 
+            else if(liczbaOczek[licznik] > 20){
+                if(czyja[liczbaOczek[licznik]] !== 0 && czyja[liczbaOczek[licznik]] !== licznik){
+                    balansPlusLicznik.innerHTML = bilans[licznik] -= ceny6[ileJestDomow[liczbaOczek[licznik]]]; 
 
-                    balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaoczek[licznik]]] += ceny6[ileJestDomow[liczbaoczek[licznik]]];
+                    balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaOczek[licznik]]] += ceny6[ileJestDomow[liczbaOczek[licznik]]];
                     $('#targ').html('')
                 }
             }
         }
-        else if(liczbaoczek[licznik] > 24){ 
+        else if(liczbaOczek[licznik] > 24){ 
             if(hamza !== 0.99){
                 czwarteLosowanie();
             }
-            if(liczbaoczek[licznik] < 29){
-                if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaoczek[licznik]] !== licznik){
-                    balansPlusLicznik.innerHTML = bilans[licznik] -= ceny7[ileJestDomow[liczbaoczek[licznik]]];
+            if(liczbaOczek[licznik] < 29){
+                if(czyja[liczbaOczek[licznik]] !== 0 && czyja[liczbaOczek[licznik]] !== licznik){
+                    balansPlusLicznik.innerHTML = bilans[licznik] -= ceny7[ileJestDomow[liczbaOczek[licznik]]];
 
-                    balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaoczek[licznik]]] += ceny7[ileJestDomow[liczbaoczek[licznik]]];
+                    balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaOczek[licznik]]] += ceny7[ileJestDomow[liczbaOczek[licznik]]];
                     $('#targ').html('')
                 }
             }
-            else if(liczbaoczek[licznik] > 28){
-                if(czyja[liczbaoczek[licznik]] !== 0 && czyja[liczbaoczek[licznik]] !== licznik){
-                    balansPlusLicznik.innerHTML = bilans[licznik] -= ceny8[ileJestDomow[liczbaoczek[licznik]]];
+            else if(liczbaOczek[licznik] > 28){
+                if(czyja[liczbaOczek[licznik]] !== 0 && czyja[liczbaOczek[licznik]] !== licznik){
+                    balansPlusLicznik.innerHTML = bilans[licznik] -= ceny8[ileJestDomow[liczbaOczek[licznik]]];
 
-                    balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaoczek[licznik]]] += ceny8[ileJestDomow[liczbaoczek[licznik]]];
+                    balansWlascicielaDzialki.innerHTML = bilans[czyja[liczbaOczek[licznik]]] += ceny8[ileJestDomow[liczbaOczek[licznik]]];
                     $('#targ').html('')
                 }
             }
         }
         balans1.innerHTML = bilans[1]; balans2.innerHTML = bilans[2]; balans3.innerHTML = bilans[3]; balans4.innerHTML = bilans[4]
     }
-    podroz();
 }
 balans1.innerHTML = bilans[1]; balans2.innerHTML = bilans[2]; balans3.innerHTML = bilans[3]; balans4.innreHTML = bilans[4]; 
