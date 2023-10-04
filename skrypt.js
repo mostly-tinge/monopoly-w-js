@@ -426,10 +426,14 @@ function trzecieLosowanie(){
     if(los == 4 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; limo(); } else{los = Math.floor(Math.random() * 7);}
     if(los == 5 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; limo();} else{los = Math.floor(Math.random() * 7);}
     if(los == 6 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; gest(); } else{los = Math.floor(Math.random() * 7);}
-    if(los == 7 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; udzialy();} else{los = Math.floor(Math.random() * 7);}
 }
 function czwarteLosowanie(){
-    
+    if(los == 0 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; udzialy();} else{los = Math.floor(Math.random() * 5);}
+    if(los == 1 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; przymtran(); } else{los = Math.floor(Math.random() * 5);}
+    if(los == 2 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; zestaw();} else{los = Math.floor(Math.random() * 5);}
+    if(los == 3 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; limo(); } else{los = Math.floor(Math.random() * 5);}
+    if(los == 4 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; limo();} else{los = Math.floor(Math.random() * 5);}
+    if(los == 5 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; gest(); } else{los = Math.floor(Math.random() * 5);}
 }
 function coZrobicZPolem(){
     if(kupiona[liczbaoczek[licznik]] === 0 && czyja[liczbaoczek[licznik]] === 0 && czyMoznaKupicDzialke === true){
