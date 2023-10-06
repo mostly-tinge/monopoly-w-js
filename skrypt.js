@@ -4,7 +4,6 @@ alert("A no i jeżeli chcesz przejść do następnego musisz kliknąć pole poka
 let bilans = ['', 372000, 372000, 372000, 372000]; let komuPrzekazacDzialke = 0;
 let licznik = 1;
 let innyGracz1 = licznik + 1; let innyGracz2 = licznik + 2; let innyGracz3 = licznik + 3;
-
 const balans1 = document.querySelector("#ba1"); const balans2 = document.querySelector("#ba2"); const balans3 = document.querySelector("#ba3");
 const balans4 = document.querySelector("#ba4"); const ceny = [balans1, balans2, balans3, balans4]; const podtr = document.querySelector("#podtran");
 let balansPlusLicznik = document.getElementById("#ba"+licznik);
@@ -13,34 +12,35 @@ for(let element of ceny){
 }
 let wiekszaSzansa = false; let czyMoznaKupicDzialke = true; let czynsz = ['', 0, 0, 0, 0];
 
-let nagrody = [25000, 10000, 10000, 25000, 10000, 10000, 25000, 50000, 50000, 50000]; let transakcje = ['', 0, 0, 0, 0]
+const nagrody = [25000, 10000, 10000, 25000, 10000, 10000, 25000, 50000, 50000, 50000];
 
-let wydaneSzanse = 1; if(wydaneSzanse === 10){wydaneSzanse = 0; alert("szanse zostały zresetowane");}
-
-let tekstySzansy1 = ["przeprowadzasz świetną transakcję biznesową! od wszystkich pozostałych graczy odtrzymujesz", 
+const tekstySzansy1 = ["przeprowadzasz świetną transakcję biznesową! od wszystkich pozostałych graczy odtrzymujesz", 
 "Właśnie obchodzisz urodziny! od wszystkich pozostałych graczy otrzymujesz"];
 
-let szansy1 = ['', 10000, 30000, 50000];
+const szansy1 = ['', 10000, 30000, 50000];
 
-let tekstySzansy2 = ["Weź udział w wyścigu motorówek! aby wygrać 50k wyrzuć","Wyścig na prywatnym torze! aby wygrać 100k, wyrzuć", 
+const tekstySzansy2 = ["Weź udział w wyścigu motorówek! aby wygrać 50k wyrzuć","Wyścig na prywatnym torze! aby wygrać 100k, wyrzuć", 
 "Rozbij kasyno! aby wygrać 100k, wyrzuć", "Zainwestuj w giełdę! aby zarobić 100k wyrzuć", "Załóż własną firmę! aby zarobić 150k wyrzuć",
 "Weź udział w wyścigu balonów! aby wygrać 150k wyrzuć"];
 
-let tekstySzansy3 = ["Zabierz przyjaciół w luksusową podróż! płacisz wszystkim pozostałym graczom",
+const tekstySzansy3 = ["Zabierz przyjaciół w luksusową podróż! płacisz wszystkim pozostałym graczom",
 "Zabierz przyjaciół na wystawny obiad! płacisz wszystkim pozostałym graczom"];
 
-let szansy3 = ['', 5000, 15000, 25000];
+const szansy3 = ['', 5000, 15000, 25000];
 
-let tekstySzansy4 = ["Idziesz prosto do więzienia, nie przechodzisz przez start ani nie pobierasz premii", 
+const tekstySzansy4 = ["Idziesz prosto do więzienia, nie przechodzisz przez start ani nie pobierasz premii", 
 "Zaproszenie na ważną imprezę! zapłać 40k wybranemu graczowi za towarzystwo.", "Wysoko postawieni przyjaciele! zapłać 50k wybranemu graczowi za udział w jego premierze filmowej.",
 "przepuściłeś sporą kwotę w szale wydawania pieniędzy! obniż status swojego pionka."];
 
 let wydaneNagrody = 0; if(wydaneNagrody === 10){wydaneNagrody = 0; alert("nagrody zostały zresetowane");}
 
-let tekstyNagrody = ["Wynajmij swój prywatny odrzutowiec", 'Zdobywasz tytuł "Biznesowy bohater dekady"!', "Wynajmij swój skuter wodny",
+const tekstyNagrody = ["Wynajmij swój prywatny odrzutowiec", 'Zdobywasz tytuł "Biznesowy bohater dekady"!', "Wynajmij swój skuter wodny",
 "Twój koń zajął pierwsze miejsce w wyścigu", "Zarabiasz na swoich oszczędnościach z zagranicznych kont.", "Twój szofer podwozi cię o 5 pól",
 "Otrzymujesz odsetki od swoich milionów", "Sprzedaj swój sportowy samochód", "Sprzedaj jeden ze swoich wakacyjnych domów", 
 'Zdobyłeś tytuł "milionera roku"'];
+
+let czyJuzbylo = [false, false, false, false, false, false, false, false, false, false, 
+    false, false, false, false, false, false, false, false, false, false, false, false];
 
 let liczbaOczek = ['', 0, 0, 0, 0]; let poziom = ['', 1, 1, 1, 1]; let pionek = ['', "a", "b", "c", "e"];
 
@@ -48,13 +48,46 @@ $('#a0').css('opacity', '1'); $('#b0').css('opacity', '1'); $('#c0').css('opacit
 
 let liczbaDomow = ['', 0, 0, 0, 0]; let czyDomJestZaDarmo = false; let liczbaOdmow = ['', 0, 0, 0, 0]; const targ = document.querySelector("#targ");
 
-let ileJestDomow = [0, 0, 0, 0, 0, 0, 0, 0 ,0, /*8*/0, 0, 0, 0, 0, 0, 0, 0, /*16*/0, 0, 0, 0, 0, 0, 0, 0, /*24*/0, 0, 0, 0, 0, 0, 0,/*31*/];
+let ileJestDomow = [0, 0, 0, 0, 0, 0, 0, 0 , 0, /*8*/0, 0, 0, 0, 0, 0, 0, 0, /*16*/0, 0, 0, 0, 0, 0, 0, 0, /*24*/0, 0, 0, 0, 0, 0, 0,/*31*/];
+
+let ileJestPodTranow = ['', 0, 0, 0, 0]; let ileJestPrzymTranow = ['', 0, 0, 0, 0];
 
 let czyKupiona = [false, false, false, false, false, false, false, false, false,/*8*/false, false, false, false, false, false, false, false,
 /*16*/false, false, false, false, false, false, false, false,/*24*/false, false, false, false, false, false, false,/*31*/];
 
+let czyJestWWiezieniu = ['', false, false, false, false]; let przejscie = ['', false, false, false, false];
+
 let kupiona = [0, 0, 0, 0, 0, 0, 0, 0, 0,/*8*/0, 0, 0, 0, 0, 0, 0, 0,/*16*/0, 0, 0, 0, 0, 0, 0, 0,/*24*/0, 0, 0, 0 , 0, 0,/*31*/];
 const balansWlascicielaDzialki = document.getElementById("ba"+kupiona[liczbaOczek[licznik]]);
+const postep = document.getElementById('postep'); $(postep).toggleClass('dom1'); $(postep).toggleClass('klik'); postep.addEventListener("click", zapiszPostep); $(postep).html('Czy chcesz zapisać postęp?');
+function zapiszPostep(){
+    //każdy zapissny przedmiot jest nazwany tak samo jak jego odpowiednik, więc upchnąłem kod
+    localStorage.setItem('liczbaDomow', liczbaDomow); localStorage.setItem('balanse', bilans); localStorage.setItem('komuPrzekazacDzialke', komuPrzekazacDzialke);
+    localStorage.setItem('licznik', licznik); localStorage.setItem('wiekszaSzansa', wiekszaSzansa);
+    localStorage.setItem('czyMoznaKupicDzialke', czyMoznaKupicDzialke);
+    localStorage.setItem('czynsz', czynsz); localStorage.setItem('wydaneNagrody', wydaneNagrody);
+    localStorage.setItem('liczbaOczek', liczbaOczek); localStorage.setItem('poziom', poziom);
+    localStorage.setItem('pionek', pionek); localStorage.setItem('czyDomJestZaDarmo', czyDomJestZaDarmo);
+    localStorage.setItem('liczbaOdmow', liczbaOdmow); localStorage.setItem('ileJestDomow', ileJestDomow);
+    localStorage.setItem('czyKupiona', czyKupiona); localStorage.setItem('kupiona', kupiona);
+    localStorage.setItem('czyJestWWiezieniu', czyJestWWiezieniu); localStorage.setItem('przejscie', przejscie);
+    localStorage.setItem('ileJestPodTranow', ileJestPodTranow); localStorage.setItem('ileJestPrzymTranow', ileJestPrzymTranow);
+}
+function usunPostep(){
+    localStorage.clear();
+}
+function przywrocPostep(){
+    localStorage.getItem('liczbaDomow'); localStorage.getItem('balanse');
+    localStorage.getItem('licznik'); localStorage.getItem('wiekszaSzansa');
+    localStorage.getItem('czyMoznaKupicDzialke'); localStorage.getItem('czynsz');
+    localStorage.getItem('wydaneNagrody'); localStorage.getItem('liczbOczek');
+    localStorage.getItem('poziom'); localStorage.getItem('pionek');
+    localStorage.getItem('czyDomJestZaDarmo'); localStorage.getItem('liczbaOdmow');
+    localStorage.getItem('ileJestDomow'); localStorage.getItem('czyKupiona');
+    localStorage.getItem('kupiona'); localStorage.getItem('czyJestWWiezieniu');
+    localStorage.getItem('przejscie'); localStorage.getItem('ileJestPodTranow');
+    localStorage.getItem('ileJestPrzymTranow');
+}
 function zmianaPoziomu(){
     if(poziom[licznik] === 3 && liczbaOczek[licznik] > 31){
         liczbaOczek[licznik] -= 32;
@@ -157,8 +190,6 @@ const ceny1 = [7000, 15000, 30000, 50000, 60000, 80000]; const ceny2 = [15000, 3
 const ceny3 = [20000, 50000, 90000, 140000, 165000, 215000]; const ceny4 = [25000, 65000, 110000, 170000, 200000, 270000];
 const ceny5 = [35000, 90000, 150000, 230000, 270000, 350000]; const ceny6 = [40000, 100000, 170000, 260000, 305000, 395000];
 const ceny7 = [50000, 125000, 210000, 320000, 375000, 485000]; const ceny8 = [65000, 160000, 250000, 370000, 430000, 550000];
-
-let czyJestWWiezieniu = ['', false, false, false, false]; let przejscie = ['', false, false, false, false];
 $('.p1').toggleClass('normalny1'); $('.p2').toggleClass('normalny2'); $('.p3').toggleClass('normalny3'); $('.p4').toggleClass('normalny4');  $('#ba1').toggleClass('klik'); 
 
 function nadajKlik(){
@@ -244,9 +275,8 @@ function mieszkanie(){
     alert("Wynajmujesz swoje mieszkanie przez 3 następne kolejki pobierasz 12k");
     czynsz[licznik] = czynsz[licznik] + 3;
 }
-let czyZnalezione = false;
 function podroz(){
-    czyZnalezione = false;
+    let czyZnalezione = false;
     alert("Do przodu! Przejdź do najbliższej wolnej nieruchomości.");
     $('#'+pionek[licznik]+liczbaOczek[licznik]).css('opacity', '0');
     $('#od'+liczbaOczek[licznik]).css('opacity', '0.99');
@@ -283,7 +313,6 @@ function akcja(){
     $('#k'+wlasciciel).css('color', koloryDzialek[licznik]); 
     kupiona[wlasciciel] = licznik; czyKupiona[wlasciciel] = true;
 }
-let ileJestPodTranow = ['', 0, 0, 0, 0];
 function ukradniecie(){
     for(let i = 0; i < 31; i++){
         if(kupiona[i] !== licznik){
@@ -308,8 +337,7 @@ function podtran(){
 function zlyrating(){
     alert("Zły rating kredytowy! Nie możesz kupić tej działki");
     czyMoznaKupicDzialke = false;
-}
-let ileJestPrzymTranow = ['', 0, 0, 0, 0]; const przytr = document.querySelector("przymtran");
+} const przytr = document.querySelector("przymtran");
 function przymtran(){
     alert("Przymusowa transakcja! Zamień nieruchomość z wybranym graczem");
     $('#przymtran').toggleClass('klik'); $('#przymtran').toggleClass('dom1');
@@ -393,8 +421,6 @@ function limo(){
         $('#'+pionek[licznik]+liczbaOczek[licznik]).css('opacity', '1'); $('#targ').html('');
     }
 }
-let czyJuzbylo = [false, false, false, false, false, false, false, false, false, false, 
-    false, false, false, false, false, false, false, false, false, false, false, false];
 function pierwszeLosowanie(){
     let los = Math.floor(Math.random() * 5);
     if(los === 0 && czyJuzbylo[los] === false){ czyJuzbylo[los] = true; prezent(); } else{los = Math.floor(Math.random() * 5);}
@@ -467,7 +493,7 @@ function szansa(){
         targ.addEventListener("click", rzut); 
     }
     else{
-        let ktoryTekst = 2;
+        let ktoryTekst = Math.floor(Math.random() * 3);
         alert(tekstySzansy4[ktoryTekst]);
         if(ktoryTekst === 0){
             $('#'+pionek[licznik]+liczbaOczek[licznik]).css('opacity', '0');
@@ -491,7 +517,7 @@ function szansa(){
     }
 }
 function tura(){
-    let rzutKostkami = 4//Math.floor(Math.random() * 10 + 2)
+    let rzutKostkami = Math.floor(Math.random() * 10 + 2)
     console.log(rzutKostkami);
     if(ileJestPodTranow[licznik] === 0){
         $('#podtran').removeClass('klik'); $('#podtran').removeClass('dom1');
