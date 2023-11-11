@@ -4,9 +4,14 @@ alert("A no i jeżeli chcesz przejść do następnego musisz kliknąć pole poka
 let bilans = ['', 372000, 372000, 372000, 372000]; let komuPrzekazacDzialke = 0;
 let licznik = 1;
 let innyGracz1 = licznik + 1; let innyGracz2 = licznik + 2; let innyGracz3 = licznik + 3;
+// tu są zdefiniowane wszystkie selektory
 const balans1 = document.querySelector("#ba1"); const balans2 = document.querySelector("#ba2"); const balans3 = document.querySelector("#ba3");
 const balans4 = document.querySelector("#ba4"); const ceny = [balans1, balans2, balans3, balans4]; const podtr = document.querySelector("#podtran");
-let balansPlusLicznik = document.getElementById("#ba"+licznik);
+const balansWlascicielaDzialki = document.getElementById("ba"+kupiona[liczbaOczek[licznik]]); const targ = document.querySelector("#targ");
+let balansPlusLicznik = document.getElementById("#ba"+licznik); const kosc = document.querySelector("#kosc"); const domy = document.querySelector("#domy");
+const poziomeDzialki = document.querySelectorAll('dzialka2'); const pionoweDzialki = document.querySelectorAll('bocznadzialka2');
+const przytr = document.querySelector("przymtran");
+//a dokładniej dotąd
 for(let element of ceny){
     element.addEventListener("click", tura);
 }
@@ -32,7 +37,11 @@ const tekstySzansy4 = ["Idziesz prosto do więzienia, nie przechodzisz przez sta
 "Zaproszenie na ważną imprezę! zapłać 40k wybranemu graczowi za towarzystwo.", "Wysoko postawieni przyjaciele! zapłać 50k wybranemu graczowi za udział w jego premierze filmowej.",
 "przepuściłeś sporą kwotę w szale wydawania pieniędzy! obniż status swojego pionka."];
 
-let wydaneNagrody = 0; if(wydaneNagrody === 10){wydaneNagrody = 0; alert("nagrody zostały zresetowane");}
+let wydaneNagrody = 0; 
+if(wydaneNagrody === 10){
+    wydaneNagrody = 0; 
+    alert("nagrody zostały zresetowane");
+}
 
 const tekstyNagrody = ["Wynajmij swój prywatny odrzutowiec", 'Zdobywasz tytuł "Biznesowy bohater dekady"!', "Wynajmij swój skuter wodny",
 "Twój koń zajął pierwsze miejsce w wyścigu", "Zarabiasz na swoich oszczędnościach z zagranicznych kont.", "Twój szofer podwozi cię o 5 pól",
@@ -43,10 +52,10 @@ let czyJuzbylo = [false, false, false, false, false, false, false, false, false,
     false, false, false, false, false, false, false, false, false, false, false, false];
 
 let liczbaOczek = ['', 0, 0, 0, 0]; let poziom = ['', 1, 1, 1, 1]; let pionek = ['', "a", "b", "c", "e"];
-
+//tu ustawiam pionkom widoczność 
 $('#a0').css('opacity', '1'); $('#b0').css('opacity', '1'); $('#c0').css('opacity', '1'); $('#e0').css('opacity', '1');
 
-let liczbaDomow = ['', 0, 0, 0, 0]; let czyDomJestZaDarmo = false; let liczbaOdmow = ['', 0, 0, 0, 0]; const targ = document.querySelector("#targ");
+let liczbaDomow = ['', 0, 0, 0, 0]; let czyDomJestZaDarmo = false; let liczbaOdmow = ['', 0, 0, 0, 0];
 
 let ileJestDomow = [0, 0, 0, 0, 0, 0, 0, 0 , 0, /*8*/0, 0, 0, 0, 0, 0, 0, 0, /*16*/0, 0, 0, 0, 0, 0, 0, 0, /*24*/0, 0, 0, 0, 0, 0, 0,/*31*/];
 
@@ -58,7 +67,7 @@ let czyKupiona = [false, false, false, false, false, false, false, false, false,
 let czyJestWWiezieniu = ['', false, false, false, false]; let przejscie = ['', false, false, false, false];
 
 let kupiona = [0, 0, 0, 0, 0, 0, 0, 0, 0,/*8*/0, 0, 0, 0, 0, 0, 0, 0,/*16*/0, 0, 0, 0, 0, 0, 0, 0,/*24*/0, 0, 0, 0 , 0, 0,/*31*/];
-const balansWlascicielaDzialki = document.getElementById("ba"+kupiona[liczbaOczek[licznik]]);
+
 const postep = document.getElementById('postep'); $(postep).toggleClass('dom1'); $(postep).toggleClass('klik'); postep.addEventListener("click", zapiszPostep); $(postep).html('Czy chcesz zapisać postęp?');
 function zapiszPostep(){
     //każdy zapissny przedmiot jest nazwany tak samo jak jego odpowiednik, więc upchnąłem kod
@@ -182,9 +191,8 @@ function rzut(){
         }
     }
 }
-
-const kosc = document.querySelector("#kosc"); 
-kosc.addEventListener("click", function() {nadajKlik(); }); $('#kosc').toggleClass('klik');
+ 
+kosc.addEventListener("click", nadajKlik); $('#kosc').toggleClass('klik');
 
 const ceny1 = [7000, 15000, 30000, 50000, 60000, 80000]; const ceny2 = [15000, 30000, 50000, 80000, 95000, 125000];
 const ceny3 = [20000, 50000, 90000, 140000, 165000, 215000]; const ceny4 = [25000, 65000, 110000, 170000, 200000, 270000];
@@ -218,7 +226,6 @@ function DajInnemuGraczowi(){
     }
     wiekszaSzansa = false;
 }
-const domy = document.querySelector("#domy");
 function dom2(){
     domy.removeEventListener("click", dom);
     $('#domy').toggleClass('klik'); 
@@ -297,7 +304,6 @@ function podroz(){
         }
     }
 }
-const poziomeDzialki = document.querySelectorAll('dzialka2'); const pionoweDzialki = document.querySelectorAll('bocznadzialka2');
 function akcja(){
     let wlasciciel = this.value;
     for(let element of poziomeDzialki){
@@ -337,7 +343,7 @@ function podtran(){
 function zlyrating(){
     alert("Zły rating kredytowy! Nie możesz kupić tej działki");
     czyMoznaKupicDzialke = false;
-} const przytr = document.querySelector("przymtran");
+} 
 function przymtran(){
     alert("Przymusowa transakcja! Zamień nieruchomość z wybranym graczem");
     $('#przymtran').toggleClass('klik'); $('#przymtran').toggleClass('dom1');
@@ -346,7 +352,7 @@ function przymtran(){
     ileJestPrzymTranow[licznik] += 1;
 }
 function wybranie(){
-    alert("najpierw wybierz cudzą działkę, a potem kliknij bilans gracza do, którego należała i wtedy wybierz działkę, którą dajesz w zamian")
+    alert("najpierw wybierz cudzą działkę, a potem kliknij bilans gracza do, którego należała i wtedy wybierz działkę, którą dajesz w zamian");
     for(let element of pionoweDzialki){
         element.addEventListener("click", wybraniecudzego); 
     }
@@ -660,4 +666,13 @@ function tura(){
         balans1.innerHTML = bilans[1]; balans2.innerHTML = bilans[2]; balans3.innerHTML = bilans[3]; balans4.innerHTML = bilans[4];
     }
 }
-balans1.innerHTML = bilans[1]; balans2.innerHTML = bilans[2]; balans3.innerHTML = bilans[3]; balans4.innerHTML = bilans[4]; 
+balans1.innerHTML = bilans[1]; balans2.innerHTML = bilans[2]; balans3.innerHTML = bilans[3]; balans4.innerHTML = bilans[4];
+if(bilans[0] || bilans[1] || bilans[2] || bilans[3] || bilans[4]  === 1_000_000){
+    for(let element of ceny){
+        element.removeEventListener("click", tura);
+    }
+    $('#podtran').removeClass('dom1');
+    $('#przymtran').removeClass('dom1');
+    $('#domy').removeClass('dom1');
+    alert('Wygrana, jeden z graczy został milionerem');
+}
