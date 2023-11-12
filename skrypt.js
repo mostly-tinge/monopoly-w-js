@@ -405,14 +405,6 @@ function wybraniecudzego(){
         alert("Wybierz cudzą działkę, a nie swoją!");
     }
 }
-function ktoMaDostacDzialke(){
-    let danyBalans = this.toString();
-    danyBalans.slice(2,3);
-    komuPrzekacDzialke = danyBalans;
-    for(let element of ceny){
-        element.removeEventListener("click", ktoMaDostacDzialke);
-    }
-}
 function zestaw(){
     alert("Tym razem nic się nie dzieje");
 }
