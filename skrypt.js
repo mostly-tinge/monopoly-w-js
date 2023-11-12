@@ -353,6 +353,9 @@ function przymtran(){
 }
 function wybranie(){
     alert("najpierw wybierz cudzą działkę, a potem kliknij bilans gracza do, którego należała i wtedy wybierz działkę, którą dajesz w zamian");
+    for(let element of ceny){
+        element.removeEventListener("click", tura);
+    }
     for(let element of pionoweDzialki){
         element.addEventListener("click", wybraniecudzego); 
     }
@@ -398,8 +401,7 @@ function wybraniecudzego(){
             element.removeEventListener("click", wybraniecudzego);
         }
         for(let element of ceny){
-            element.removeEventListener("click", tura);
-            element.addEventListener("click", ktoMaDostacDzialke);
+            element.addEventListener("click", tura);
         }
     }else{
         alert("Wybierz cudzą działkę, a nie swoją!");
