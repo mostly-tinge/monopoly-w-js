@@ -530,10 +530,14 @@ function tura(){
         podtr.removeEventListener("click", ukradniecie);
         $('#podtran').html('');
     }
-    if(ileJestPrzymTranow[licznik] === 1){
-        $('#przymtran').toggleClass('klik'); $('#przymtran').toggleClass('dom1');
+    if(ileJestPrzymTranow[licznik] > 0){
+        $('#przymtran').addClass('klik'); $('#przymtran').addClass('dom1');
         przytr.addEventListener("click", wybranie);
         $('#przymtran').html('Czy chcesz zamienić z kimś działkę?');
+    }else{
+        $('#przymtran').removeClass('klik'); $('#przymtran').removeClass('dom1');
+        przytr.removeEventListener("click", wybranie);
+        $('#przymtran').html('');
     }
     if(czynsz[licznik] > 0){
         balansPlusLicznik.innerHTML = bilans[licznik] += 12000;
