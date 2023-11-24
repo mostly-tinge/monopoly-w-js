@@ -352,7 +352,7 @@ function przymtran(){
     ileJestPrzymTranow[licznik] += 1;
 }
 function wybranie(){
-    alert("najpierw wybierz cudzą działkę, a potem kliknij bilans gracza do, którego należała i wtedy wybierz działkę, którą dajesz w zamian");
+    alert("najpierw wybierz cudzą działkę i wtedy wybierz działkę, którą dajesz w zamian");
     for(let element of ceny){
         element.removeEventListener("click", tura);
     }
@@ -366,10 +366,12 @@ function wybranie(){
         $('#d'+i).toggleClass('klik');
     }
 }
+let doKogoMaNalezecDzialka;
 function wybranieswojego(){
     let doZamiany = this.value;
     if(kupiona[doZamiany] === licznik){
         $('#k'+doZamiany).css("color", koloryDzialek[komuPrzekazacDzialke]);
+        dokogoMaNalezecDzialka = kupiona[doZamiany];
         kupiona[doZamiany] = licznik; 
         czyKupiona[doZamiany] = true;
         $('#przymtran').toggleClass('klik'); $('#przymtran').toggleClass('dom1');
@@ -387,10 +389,10 @@ function wybranieswojego(){
 }
 function wybraniecudzego(){
     let doZamiany2 = this.value;
-    if(kupiona[doZamiany] !== licznik){
+    if(kupiona[doZamiany2] !== licznik){
         ileJestPrzymTranow[licznik]--; 
-        $('#k'+doZamiany2).css("color", koloryDzialek[licznik]);
-        kupiona[dozamiany2] = licznik; 
+        $('#k'+doZamiany2).css("color", koloryDzialek[doKogoMaNalezecDzialka]);
+        kupiona[doZamiany2] = doKogoMaNalezecDzialka;
         czyKupiona[dozamiany2] = true;
         for(let element of pionoweDzialki){
             element.addEventListener("click", wybranieswojego);
