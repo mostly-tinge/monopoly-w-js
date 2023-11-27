@@ -656,7 +656,7 @@ function tura(){
                     $('#targ').html('')
                 }
             }
-            else if(liczbaOczek[licznik] > 28){
+            else(liczbaOczek[licznik] > 28){
                 if(czyKupiona[liczbaOczek[licznik]] === true && kupiona[liczbaOczek[licznik]] !== licznik){
                     balansPlusLicznik.innerHTML = bilans[licznik] -= ceny8[ileJestDomow[liczbaOczek[licznik]]];
 
