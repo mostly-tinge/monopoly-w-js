@@ -81,9 +81,11 @@ function zapiszPostep(){
     localStorage.setItem('czyKupiona', czyKupiona); localStorage.setItem('kupiona', kupiona);
     localStorage.setItem('czyJestWWiezieniu', czyJestWWiezieniu); localStorage.setItem('przejscie', przejscie);
     localStorage.setItem('ileJestPodTranow', ileJestPodTranow); localStorage.setItem('ileJestPrzymTranow', ileJestPrzymTranow);
+    alert("Postęp zapisany");
 }
 function usunPostep(){
     localStorage.clear();
+    alert("Postęp usunięty");
 }
 function przywrocPostep(){
     localStorage.getItem('liczbaDomow'); localStorage.getItem('balanse');
@@ -96,6 +98,7 @@ function przywrocPostep(){
     localStorage.getItem('kupiona'); localStorage.getItem('czyJestWWiezieniu');
     localStorage.getItem('przejscie'); localStorage.getItem('ileJestPodTranow');
     localStorage.getItem('ileJestPrzymTranow');
+    alert("Przywrócono postęp");
 }
 function zmianaPoziomu(){
     if(poziom[licznik] === 3 && liczbaOczek[licznik] > 31){
@@ -173,9 +176,9 @@ function zajmijDzialke(){
 }
 
 function rzut(){
-    let ktoryTekst = Math.floor(Math.random() * 6);
+    const ktoryTekst = Math.floor(Math.random() * 6);
+    const wynikRzutu = Math.floor(Math.random() * 10 + 2);
     alert(tekstySzansy2[ktoryTekst]);
-    let wynikRzutu = Math.floor(Math.random() * 10 + 2);
     $('#targ').html(wynikRzutu);
     if((poziom[licznik] === 1 && wynikRzutu === 2) || (poziom[licznik] === 2 && wynikRzutu > 7 && wynikRzutu < 13) || (poziom[licznik] === 3 && wynikRzutu > 4 && wynikRzutu < 13)){
         alert("wygrałeś!");
@@ -268,8 +271,8 @@ function inicjacjaPozewu(){
     }
 }
 function pozew(){
-    balansPlusLicznik.innerHTML = bilans[licznik] += 50000;
     let danyBalans = this.toString();
+    balansPlusLicznik.innerHTML = bilans[licznik] += 50000;
     danyBalans.slice(2,3);
     bilans[danyBalans] -= 50000;
      for(let element of ceny){
@@ -467,9 +470,9 @@ function coZrobicZPolem(){
     }
 }
 function nagroda(){
-    let losuj2 = Math.floor(Math.random()* 10); 
+    let los = Math.floor(Math.random()* 10); 
     balansPlusLicznik.innerHTML = bilans[licznik] += nagrody[wydaneNagrody] * poziom[licznik];
-    alert(`${tekstyNagrody[losuj2]} pobierz: ${nagrody[wydaneNagrody]* poziom[licznik]}`); wydaneNagrody++;
+    alert(`${tekstyNagrody[los]} pobierz: ${nagrody[wydaneNagrody]* poziom[licznik]}`); wydaneNagrody++;
     $('#targ').html('');
 }
 function szansa(){
@@ -520,7 +523,6 @@ function szansa(){
 }
 function tura(){
     let rzutKostkami = Math.floor(Math.random() * 10 + 2)
-    console.log(rzutKostkami);
     if(ileJestPodTranow[licznik] === 0){
         $('#podtran').removeClass('klik'); $('#podtran').removeClass('dom1');
         podtr.removeEventListener("click", ukradniecie);
