@@ -412,9 +412,8 @@ function wybraniecudzego(){
         alert("Wybierz cudzą działkę, a nie swoją!");
     }
 }
-function zestaw(){
-    alert("Tym razem nic się nie dzieje");
-}
+const zestaw = () => alert("Tym razem nic się nie dzieje");
+
 function limo(){
     alert("Przejedź się limuzyną na start");
     $('#'+pionek[licznik]+liczbaOczek[licznik]).css('opacity', '0');
