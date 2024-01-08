@@ -1,20 +1,20 @@
 //licznik jest po to, aby program wiedział czyja jest tura
 alert("Żeby ruszyć pionkami treba kliknąć balans danego pionka.");
 alert("A no i jeżeli chcesz przejść do następnego musisz kliknąć pole pokazujące oczka(nie pytaj czemu ono istnieje ani czemu jest na nim napisane klik)");
-let bilans = ['', 372000, 372000, 372000, 372000]; let komuPrzekazacDzialke = 0;
+let bilans = ['', 372000, 372000, 372000, 372000], komuPrzekazacDzialke = 0;
 let licznik = 1;
-let innyGracz1 = licznik + 1; let innyGracz2 = licznik + 2; let innyGracz3 = licznik + 3;
+let innyGracz1 = licznik + 1, innyGracz2 = licznik + 2, innyGracz3 = licznik + 3;
 // tu są zdefiniowane wszystkie selektory
-const balans1 = document.querySelector("#ba1"); const balans2 = document.querySelector("#ba2"); const balans3 = document.querySelector("#ba3");
-const balans4 = document.querySelector("#ba4"); const ceny = [balans1, balans2, balans3, balans4]; const podtr = document.querySelector("#podtran");
-const balansWlascicielaDzialki = document.getElementById("ba"+kupiona[liczbaOczek[licznik]]); const targ = document.querySelector("#targ");
-let balansPlusLicznik = document.getElementById("#ba"+licznik); const kosc = document.querySelector("#kosc"); const domy = document.querySelector("#domy");
-const poziomeDzialki = document.querySelectorAll('dzialka2'); const pionoweDzialki = document.querySelectorAll('bocznadzialka2');
+const balans1 = document.querySelector("#ba1"), balans2 = document.querySelector("#ba2"), balans3 = document.querySelector("#ba3");
+const balans4 = document.querySelector("#ba4"), ceny = [balans1, balans2, balans3, balans4], podtr = document.querySelector("#podtran");
+const balansWlascicielaDzialki = document.getElementById("ba"+kupiona[liczbaOczek[licznik]]), targ = document.querySelector("#targ");
+let balansPlusLicznik = document.getElementById("#ba"+licznik); const kosc = document.querySelector("#kosc"), domy = document.querySelector("#domy");
+const poziomeDzialki = document.querySelectorAll('dzialka2'), pionoweDzialki = document.querySelectorAll('bocznadzialka2');
 const przytr = document.querySelector("przymtran");
 for(let element of ceny){
     element.addEventListener("click", tura);
 }
-let wiekszaSzansa = false; let czyMoznaKupicDzialke = true; let czynsz = ['', 0, 0, 0, 0];
+let wiekszaSzansa = false, czyMoznaKupicDzialke = true; let czynsz = ['', 0, 0, 0, 0];
 
 const nagrody = [25000, 10000, 10000, 25000, 10000, 10000, 25000, 50000, 50000, 50000];
 
