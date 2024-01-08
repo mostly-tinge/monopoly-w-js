@@ -202,7 +202,7 @@ const ceny5 = [35000, 90000, 150000, 230000, 270000, 350000]; const ceny6 = [400
 const ceny7 = [50000, 125000, 210000, 320000, 375000, 485000]; const ceny8 = [65000, 160000, 250000, 370000, 430000, 550000];
 $('.p1').toggleClass('normalny1'); $('.p2').toggleClass('normalny2'); $('.p3').toggleClass('normalny3'); $('.p4').toggleClass('normalny4');  $('#ba1').toggleClass('klik'); 
 
-function nadajKlik(){
+function nadajKlikBilansom(){
     if(licznik === 5){
         licznik = 1;
     }
