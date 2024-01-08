@@ -11,7 +11,6 @@ const balansWlascicielaDzialki = document.getElementById("ba"+kupiona[liczbaOcze
 let balansPlusLicznik = document.getElementById("#ba"+licznik); const kosc = document.querySelector("#kosc"); const domy = document.querySelector("#domy");
 const poziomeDzialki = document.querySelectorAll('dzialka2'); const pionoweDzialki = document.querySelectorAll('bocznadzialka2');
 const przytr = document.querySelector("przymtran");
-//a dokładniej dotąd
 for(let element of ceny){
     element.addEventListener("click", tura);
 }
