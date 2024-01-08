@@ -11,7 +11,7 @@ const balansWlascicielaDzialki = document.getElementById("ba"+kupiona[liczbaOcze
 let balansPlusLicznik = document.getElementById("#ba"+licznik); const kosc = document.querySelector("#kosc"), domy = document.querySelector("#domy");
 const poziomeDzialki = document.querySelectorAll('dzialka2'), pionoweDzialki = document.querySelectorAll('bocznadzialka2');
 const przytr = document.querySelector("przymtran");
-for(let element of ceny){
+for(const element of ceny){
     element.addEventListener("click", tura);
 }
 let wiekszaSzansa = false, czyMoznaKupicDzialke = true; let czynsz = ['', 0, 0, 0, 0];
@@ -21,7 +21,7 @@ const nagrody = [25000, 10000, 10000, 25000, 10000, 10000, 25000, 50000, 50000, 
 const tekstySzansy1 = ["przeprowadzasz świetną transakcję biznesową! od wszystkich pozostałych graczy odtrzymujesz", 
 "Właśnie obchodzisz urodziny! od wszystkich pozostałych graczy otrzymujesz"];
 
-const szansy1 = ['', 10000, 30000, 50000];
+const szansy1 = ['', 10000, 30000, 50000], szansy3 = ['', 5000, 15000, 25000];
 
 const tekstySzansy2 = ["Weź udział w wyścigu motorówek! aby wygrać 50k wyrzuć","Wyścig na prywatnym torze! aby wygrać 100k, wyrzuć", 
 "Rozbij kasyno! aby wygrać 100k, wyrzuć", "Zainwestuj w giełdę! aby zarobić 100k wyrzuć", "Załóż własną firmę! aby zarobić 150k wyrzuć",
@@ -29,8 +29,6 @@ const tekstySzansy2 = ["Weź udział w wyścigu motorówek! aby wygrać 50k wyrz
 
 const tekstySzansy3 = ["Zabierz przyjaciół w luksusową podróż! płacisz wszystkim pozostałym graczom",
 "Zabierz przyjaciół na wystawny obiad! płacisz wszystkim pozostałym graczom"];
-
-const szansy3 = ['', 5000, 15000, 25000];
 
 const tekstySzansy4 = ["Idziesz prosto do więzienia, nie przechodzisz przez start ani nie pobierasz premii", 
 "Zaproszenie na ważną imprezę! zapłać 40k wybranemu graczowi za towarzystwo.", "Wysoko postawieni przyjaciele! zapłać 50k wybranemu graczowi za udział w jego premierze filmowej.",
@@ -50,20 +48,20 @@ const tekstyNagrody = ["Wynajmij swój prywatny odrzutowiec", 'Zdobywasz tytuł 
 let czyJuzbylo = [false, false, false, false, false, false, false, false, false, false, 
     false, false, false, false, false, false, false, false, false, false, false, false];
 
-let liczbaOczek = ['', 0, 0, 0, 0]; let poziom = ['', 1, 1, 1, 1]; let pionek = ['', "a", "b", "c", "e"];
+let liczbaOczek = ['', 0, 0, 0, 0], poziom = ['', 1, 1, 1, 1], pionek = ['', "a", "b", "c", "e"];
 //tu ustawiam pionkom widoczność 
 $('#a0').css('opacity', '1'); $('#b0').css('opacity', '1'); $('#c0').css('opacity', '1'); $('#e0').css('opacity', '1');
 
-let liczbaDomow = ['', 0, 0, 0, 0]; let czyDomJestZaDarmo = false; let liczbaOdmow = ['', 0, 0, 0, 0];
+let liczbaDomow = ['', 0, 0, 0, 0], czyDomJestZaDarmo = false, liczbaOdmow = ['', 0, 0, 0, 0];
 
 let ileJestDomow = [0, 0, 0, 0, 0, 0, 0, 0 , 0, /*8*/0, 0, 0, 0, 0, 0, 0, 0, /*16*/0, 0, 0, 0, 0, 0, 0, 0, /*24*/0, 0, 0, 0, 0, 0, 0,/*31*/];
 
-let ileJestPodTranow = ['', 0, 0, 0, 0]; let ileJestPrzymTranow = ['', 0, 0, 0, 0];
+let ileJestPodTranow = ['', 0, 0, 0, 0], ileJestPrzymTranow = ['', 0, 0, 0, 0];
 
 let czyKupiona = [false, false, false, false, false, false, false, false, false,/*8*/false, false, false, false, false, false, false, false,
 /*16*/false, false, false, false, false, false, false, false,/*24*/false, false, false, false, false, false, false,/*31*/];
 
-let czyJestWWiezieniu = ['', false, false, false, false]; let przejscie = ['', false, false, false, false];
+let czyJestWWiezieniu = ['', false, false, false, false], przejscie = ['', false, false, false, false];
 
 let kupiona = [0, 0, 0, 0, 0, 0, 0, 0, 0,/*8*/0, 0, 0, 0, 0, 0, 0, 0,/*16*/0, 0, 0, 0, 0, 0, 0, 0,/*24*/0, 0, 0, 0 , 0, 0,/*31*/];
 
