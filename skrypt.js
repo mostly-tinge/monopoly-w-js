@@ -3,13 +3,13 @@ alert("Żeby ruszyć pionkami treba kliknąć balans danego pionka.");
 alert("A no i jeżeli chcesz przejść do następnego musisz kliknąć pole pokazujące oczka(nie pytaj czemu ono istnieje ani czemu jest na nim napisane klik)");
 let bilans = ['', 372_000, 372_000, 372_000, 372_000], komuPrzekazacDzialke = 0;
 let licznik = 1;
-let innyGracz1 = licznik + 1, innyGracz2 = licznik + 2, innyGracz3 = licznik + 3;
 // tu są zdefiniowane wszystkie selektory
 const balans1 = document.querySelector("#ba1"), balans2 = document.querySelector("#ba2"), balans3 = document.querySelector("#ba3");
 const balans4 = document.querySelector("#ba4"), ceny = [balans1, balans2, balans3, balans4], podtr = document.querySelector("#podtran");
 const balansWlascicielaDzialki = document.getElementById("ba"+kupiona[liczbaOczek[licznik]]), targ = document.querySelector("#targ");
 let balansPlusLicznik = document.getElementById("#ba"+licznik); const kosc = document.querySelector("#kosc"), domy = document.querySelector("#domy");
 const poziomeDzialki = document.querySelectorAll('dzialka2'), pionoweDzialki = document.querySelectorAll('bocznadzialka2');
+
 const przytr = document.querySelector("przymtran");
 for(const element of ceny){
     element.addEventListener("click", tura);
@@ -115,7 +115,7 @@ function zmianaPoziomu(){
         przejscie[licznik] = true;
     }
 }
-const cenyDomow = [0, 10000, 0, 10000, 15000, 0, 15000, 15000, 0, 25000, 25000, 25000, 30000, 0, 30000, 30000, 0, 40000, 0, 40000, 40000, 
+const cenyDomow = [0, 10_000, 0, 1000, 15000, 0, 15000, 15000, 0, 25000, 25000, 25000, 30000, 0, 30000, 30000, 0, 40000, 0, 40000, 40000, 
     45000, 45000, 45000, 0, 50000, 50000, 0, 50000, 0, 60000, 60000];
 function postawHotel(){
     $('#dom'+liczbaOczek[licznik]+'-0').css('opacity', '0'); $('#dom'+liczbaOczek[licznik]+'-2').css('opacity', '0');
@@ -145,9 +145,7 @@ function postawDom(){
 }
 
 const cenyDzialek = [0, 5000, 0, 5000, 11000, 0, 15000, 20000, 0, 35000, 35000, 40000, 55000, 0, 55000, 60000, 0, 80000, 0, 80000, 90000, 
-115000, 115000, 120000, 0, 145000, 145000, 0, 150000, 0, 170000, 200000];
-
-const koloryDzialek = ['', 'darkred', 'chartreuse', 'fuchsia', 'navy']
+115_000, 115_000, 120_000, 0, 145000, 145000, 0, 150000, 0, 170_000, 200_000];
 
 function zmianaKoloruDzialki(){
     if(liczbaOczek[licznik] < 8 || (liczbaOczek[licznik] > 16 && liczbaOczek[licznik] < 24)){
@@ -162,6 +160,7 @@ function zmianaKoloruDzialki(){
 }
 
 function zajmijDzialke(){
+    const koloryDzialek = ['', 'darkred', 'chartreuse', 'fuchsia', 'navy'];
     $('#ba'+licznik).html(bilans[licznik] -= cenyDzialek[liczbaOczek[licznik]]);
     $('#k'+liczbaOczek[licznik]).css('color', koloryDzialek[licznik]);
     czyKupiona[liczbaOczek[licznik]] = true; 
@@ -193,11 +192,6 @@ function rzut(){
 }
  
 kosc.addEventListener("click", nadajKlik); $('#kosc').toggleClass('klik');
-
-const ceny1 = [7000, 15000, 30000, 50000, 60000, 80000]; const ceny2 = [15000, 30000, 50000, 80000, 95000, 125000];
-const ceny3 = [20000, 50000, 90000, 140000, 165000, 215000]; const ceny4 = [25000, 65000, 110000, 170000, 200000, 270000];
-const ceny5 = [35000, 90000, 150000, 230000, 270000, 350000]; const ceny6 = [40000, 100000, 170000, 260000, 305000, 395000];
-const ceny7 = [50000, 125000, 210000, 320000, 375000, 485000]; const ceny8 = [65000, 160000, 250000, 370000, 430000, 550000];
 $('.p1').toggleClass('normalny1'); $('.p2').toggleClass('normalny2'); $('.p3').toggleClass('normalny3'); $('.p4').toggleClass('normalny4');  $('#ba1').toggleClass('klik'); 
 
 function nadajKlikBilansom(){
@@ -240,6 +234,7 @@ function dom(){
     }
 }
 function danieLubZabranieInnym(ileLacznie, odJednegoGracza){
+    const innyGracz1 = licznik + 1, innyGracz2 = licznik + 2, innyGracz3 = licznik + 3;
     if(innyGracz1 === 5){innyGracz1 = 1;} if(innyGracz2 === 5){innyGracz2 = 1;} if(innyGracz2 === 6){innyGracz2 = 2;} if(innyGracz3 === 5){innyGracz3 = 1;} 
     if(innyGracz3 === 6){innyGracz3 = 2;} if(innyGracz3 === 7){innyGracz3 = 3;}
     balansPlusLicznik.innerHTML = bilans[licznik] -=  ileLacznie;
@@ -445,6 +440,7 @@ function nagroda(){
     $('#targ').html('');
 }
 function szansa(){
+    let innyGracz1 = licznik + 1, innyGracz2 = licznik + 2, innyGracz3 = licznik + 3;
     let los = 3;
     if(innyGracz1 === 5){innyGracz1 = 1;}; if(innyGracz2 === 5){innyGracz2 = 1;} if(i === innyGracz2){innyGracz2 = 2;} 
     if(innyGracz3 === 5){innyGracz3 = 1;} if(innyGracz3 === 6){innyGracz3 = 2;} if(innyGracz3 === 7){innyGracz3 = 3;}
@@ -491,6 +487,10 @@ function szansa(){
     }
 }
 function tura(){
+    const ceny1 = [7000, 15000, 30000, 50000, 60000, 80000]; const ceny2 = [15000, 30000, 50000, 80000, 95000, 125000];
+    const ceny3 = [20000, 50000, 90000, 140000, 165000, 215000]; const ceny4 = [25000, 65000, 110000, 170000, 200000, 270000];
+    const ceny5 = [35000, 90000, 150000, 230000, 270000, 350000]; const ceny6 = [40000, 100000, 170000, 260000, 305000, 395000];
+    const ceny7 = [50000, 125000, 210000, 320000, 375000, 485000]; const ceny8 = [65000, 160000, 250000, 370000, 430000, 550000];
     let rzutKostkami = Math.floor(Math.random() * 10 + 2)
     if(ileJestPodTranow[licznik] === 0){
         $('#podtran').removeClass('klik'); $('#podtran').removeClass('dom1');
