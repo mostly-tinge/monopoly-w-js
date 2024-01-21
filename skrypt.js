@@ -4,16 +4,13 @@ alert("A no i jeżeli chcesz przejść do następnego musisz kliknąć pole poka
 let bilans = ['', 372_000, 372_000, 372_000, 372_000], komuPrzekazacDzialke = 0;
 let licznik = 1;
 // tu są zdefiniowane wszystkie selektory
-const balans1 = document.querySelector("#ba1"), balans2 = document.querySelector("#ba2"), balans3 = document.querySelector("#ba3");
-const balans4 = document.querySelector("#ba4"), ceny = [balans1, balans2, balans3, balans4], podtr = document.querySelector("#podtran");
+const ceny = document.querySelector(".cena"), podtr = document.querySelector("#podtran");
 const balansWlascicielaDzialki = document.getElementById("ba"+kupiona[liczbaOczek[licznik]]), targ = document.querySelector("#targ");
 let balansPlusLicznik = document.getElementById("#ba"+licznik); const kosc = document.querySelector("#kosc"), domy = document.querySelector("#domy");
 const poziomeDzialki = document.querySelectorAll('dzialka2'), pionoweDzialki = document.querySelectorAll('bocznadzialka2');
 
 const przytr = document.querySelector("przymtran");
-for(const element of ceny){
-    element.addEventListener("click", tura);
-}
+ceny.forEach(element => element.addEventListener("click", tura));
 let wiekszaSzansa = false, czyMoznaKupicDzialke = true; let czynsz = ['', 0, 0, 0, 0];
 
 const nagrody = [25_000, 10_000, 10_000, 25_000, 10_000, 10_000, 25_000, 50_000, 50_000, 50_000];
@@ -206,10 +203,10 @@ function nadajKlikBilansom(){
     $('#ba'+licznik).toggleClass('klik'); 
 }
 function DajInnemuGraczowi(){
-    for(let element of ceny){
+    ceny.forEach(element => {
         element.removeEventListener("click", DajInnemuGraczowi);
         element.addEventListener("click", tura);
-    }
+    })
     balansPlusLicznik.innerHTML = bilans[licznik] -= 40000
     let danyBalans = this.toString();
     danyBalans.slice(2,3);
@@ -256,22 +253,22 @@ function udzialy(){
     balansPlusLicznik.innerHTML = bilans[licznik] += 100000;
 }
 function inicjacjaPozewu(){
-    alert("pozew! Pobierz 50k od wybranego gracza")
-    for(let element of ceny){
+    alert("pozew! Pobierz 50k od wybranego gracza");
+    ceny.forEach(element => {
         element.removeEventListener("click", tura);
         element.addEventListener("click", pozew);
-    }
+    })
 }
 function pozew(){
     let danyBalans = this.toString();
     balansPlusLicznik.innerHTML = bilans[licznik] += 50000;
     danyBalans.slice(2,3);
     bilans[danyBalans] -= 50000;
-     for(let element of ceny){
-        element.removeEventListener("click", pozew);
-        element.addEventListener("click", tura);
+    ceny.forEach(element => {
+        element.removeEventListener("click", tura);
+        element.addEventListener("click", pozew);
         element.innerHTML = bilans[danyBalans];
-    }
+    })
 }
 function mieszkanie(){
     alert("Wynajmujesz swoje mieszkanie przez 3 następne kolejki pobierasz 12k");
@@ -348,9 +345,7 @@ function przymtran(){
 }
 function wybranie(){
     alert("najpierw wybierz cudzą działkę i wtedy wybierz działkę, którą dajesz w zamian");
-    for(let element of ceny){
-        element.removeEventListener("click", tura);
-    }
+    ceny.forEach(element => element.removeEventListener("click", tura);)
     for(let element of pionoweDzialki){
         element.addEventListener("click", wybraniecudzego); 
     }
@@ -384,25 +379,20 @@ function wybranieswojego(){
 }
 function wybraniecudzego(){
     let doZamiany2 = this.value;
-    if(kupiona[doZamiany2] !== licznik){
-        ileJestPrzymTranow[licznik]--; 
-        $('#k'+doZamiany2).css("color", koloryDzialek[doKogoMaNalezecDzialka]);
-        kupiona[doZamiany2] = doKogoMaNalezecDzialka;
-        czyKupiona[dozamiany2] = true;
-        for(let element of pionoweDzialki){
-            element.addEventListener("click", wybranieswojego);
-            element.removeEventListener("click", wybraniecudzego);
-        } 
-        for(let element of poziomeDzialki){
-            element.addEventListener("click", wybranieswojego);
-            element.removeEventListener("click", wybraniecudzego);
-        }
-        for(let element of ceny){
-            element.addEventListener("click", tura);
-        }
-    }else{
-        alert("Wybierz cudzą działkę, a nie swoją!");
+    if(kupiona[doZamiany2] === licznik) return alert("Wybierz cudzą działkę, a nie swoją!");
+    ileJestPrzymTranow[licznik]--; 
+    $('#k'+doZamiany2).css("color", koloryDzialek[doKogoMaNalezecDzialka]);
+    kupiona[doZamiany2] = doKogoMaNalezecDzialka;
+    czyKupiona[dozamiany2] = true;
+    for(let element of pionoweDzialki){
+        element.addEventListener("click", wybranieswojego);
+        element.removeEventListener("click", wybraniecudzego);
+    } 
+    for(let element of poziomeDzialki){
+        element.addEventListener("click", wybranieswojego);
+        element.removeEventListener("click", wybraniecudzego);
     }
+    ceny.forEach(element => element.addEventListener("click", tura))
 }
 const zestaw = () => alert("Tym razem nic się nie dzieje");
 
@@ -471,10 +461,10 @@ function szansa(){
             ('#'+pionek[licznik]+liczbaOczek[licznik]).css('opacity', '1');
         }
         else if(ktoryTekst === 1 || ktoryTekst === 2){
-            for(let element of ceny){
+            ceny.forEach(element => {
                 element.removeEventListener("click", tura);
                 element.addEventListener("click", inicjacjaPozewu);
-            }
+            })
             if(ktoryTekst === 2){
                 wiekszaSzansa = true;
             }
@@ -642,9 +632,7 @@ balans1.innerHTML = bilans[1]; balans2.innerHTML = bilans[2]; balans3.innerHTML 
 }
 balans1.innerHTML = bilans[1]; balans2.innerHTML = bilans[2]; balans3.innerHTML = bilans[3]; balans4.innerHTML = bilans[4];
 if(bilans[0] || bilans[1] || bilans[2] || bilans[3] || bilans[4]  === 1_000_000){
-    for(let element of ceny){
-        element.removeEventListener("click", tura);
-    }
+    ceny.forEach(element => element.removeEventListener("click", tura));
     $('#podtran').removeClass('dom1');
     $('#przymtran').removeClass('dom1');
     $('#domy').removeClass('dom1');
