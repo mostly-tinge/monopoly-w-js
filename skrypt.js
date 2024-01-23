@@ -118,11 +118,9 @@ function postawHotel(){
     $('#dom'+liczbaOczek[licznik]+'-0').css('opacity', '0'); $('#dom'+liczbaOczek[licznik]+'-2').css('opacity', '0');
     $('#dom'+liczbaOczek[licznik]+'-1').css('opacity', '0'); $('#dom'+liczbaOczek[licznik]+'-3').css('opacity', '0');
     $('#h'+liczbaOczek[licznik]).css('opacity', '1');
-    if(ileJestDomow[liczbaOczek[licznik]] === 4){
-        ileJestDomow[liczbaOczek[licznik]]++;
-        $('#ba'+licznik).html(bilans[licznik] -= cenyDomow[liczbaOczek[licznik]]);
-        targ.removeEventListener("click", postawHotel);
-    }
+    ileJestDomow[liczbaOczek[licznik]]++;
+    $('#ba'+licznik).html(bilans[licznik] -= cenyDomow[liczbaOczek[licznik]]);
+    targ.removeEventListener("click", postawHotel);
     $('#targ').html('');$('#targ').toggleClass('klik');
 }
 function postawDom(){
@@ -148,8 +146,7 @@ function zmianaKoloruDzialki(){
     if(liczbaOczek[licznik] < 8 || (liczbaOczek[licznik] > 16 && liczbaOczek[licznik] < 24)){
         $('#od'+liczbaOczek[licznik]).css('background-color', 'red');
         $('#od'+liczbaOczek[licznik]).css('border-color', 'red');
-    }
-    else{
+    }else{
         $('#od'+liczbaOczek[licznik]).css('background-color', 'darkkhaki');
         $('#od'+liczbaOczek[licznik]).css('border-color', 'darkkhaki');
     }
@@ -181,8 +178,7 @@ function rzut(){
         }
         else if(ktoryTekst > 0 && sol < 4){
             $('#ba'+licznik).html(bilans[licznik] += 100000);
-        }
-        else{
+        }else{
             $('#ba'+licznik).html(bilans[licznik] += 150000);
         }
     }
@@ -272,7 +268,7 @@ function pozew(){
 }
 function mieszkanie(){
     alert("Wynajmujesz swoje mieszkanie przez 3 następne kolejki pobierasz 12k");
-    czynsz[licznik] = czynsz[licznik] + 3;
+    czynsz[licznik] += 3;
 }
 function podroz(){
     let czyZnalezione = false;
