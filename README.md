@@ -42,5 +42,5 @@
 <p>ceny1-8 - Ceny domów i hoteli.</p>
 <p>bilans- balans graczy</p>
 <p>komuPrzekazacDzialke- wykorzytywane w podtranach i przymtranach do nadania graczowi działki</p>
-<p>wydane nagrody- </p>
+<p>wydane nagrody- pokazują ile wydano nagród, po osiągnięciu maximum(10) resetują się</p>
 
