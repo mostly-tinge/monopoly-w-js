@@ -1,326 +1,251 @@
-body
-{
-    background-color:#333333;
-    color:white;
+body {
+  background-color: #333333;
+  color: white;
 }
-.cena{
-    
+#k3 {
+  color: white;
 }
-#k3
-{
-    color:white;
+.balanse-graczy {
 }
-.dom1
-{
-    width:125px;
-    background-color:aquamarine;
-    border:3px purple solid;
-    display:inline-block;
-    height:50px;
-    margin-left:140px;
-    color:black;
-    text-align:center;
-    font-size:14px;
-    font-weight:600;
-    margin-top:45px;
+.dzialki {
 }
-#policjant
-{
-    width:200px;
+.karta {
+  width: 8rem;
+  background-color: aquamarine;
+  border: 3px purple solid;
+  display: inline-block;
+  height: 3.2rem;
+  margin-left: 9rem;
+  color: black;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 2.6rem;
 }
-.dzialka2
-{
-    height:88px;
-    width:140px;
-    background-color: red;
-    border: 4px solid blueviolet;
-    float:left;
+#policjant {
+  width: 13rem;
 }
-.odkrywka2
-{
-    width:122px;
-    border:4px purple solid;
-    height:45px;
-    background-color:darkblue;
-    margin-top:12px;
-    font-size:16px;
-    color:black;
-    margin-left:-5px;
+.odkrywka2 {
+  width: 7rem;
+  border: 4px purple solid;
+  height: 2.7rem;
+  background-color: darkblue;
+  margin-top: 0.8rem;
+  font-size: 1rem;
+  color: black;
+  margin-left: -5px;
 }
-.bocznaodkrywka2
-{
-    width:70px;
-    height:70px;
-    background-color:darkblue;
-    border:4px purple solid;
-    margin-left:-6px;
+.bocznaodkrywka2 {
+  width: 4.5rem;
+  height: 4.4rem;
+  background-color: darkblue;
+  border: 4px purple solid;
+  margin-left: -6px;
 }
-.cos
-{
-    width:125px;
-    background-color:aquamarine;
-    border:3px purple solid;
-    display:inline-block;
-    height:35px;
-    color:black;
-    text-align:center;
-    font-size:30px;
+.klik {
+  cursor: pointer;
 }
-.klik
-{
-    cursor:pointer;
+.wiekszepole {
+  width: 16.5rem;
+  height: 4.4rem;
+  float: left;
+  text-align: center;
+  border: 4px solid blueviolet;
+  padding-top: 0.6rem;
+  font-size: 1.3rem;
 }
-.wiekszepole
-{
-    width:260px;
-    height:80px;
-    float:left;
-    border: 4px solid blueviolet;
+.dzialka2 {
+  height: 5.5rem;
+  width: 8.2rem;
+  background-color: red;
+  border: 4px solid blueviolet;
+  float: left;
 }
-.dzialka
-{
-    height:80px;
-    width:130px;
-    background-color: red;
-    border: 4px solid blueviolet;
-    float:left;
+.bocznadzialka2 {
+  height: 5.5rem;
+  width: 7.4rem;
+  background-color: darkkhaki;
+  border: 4px solid blueviolet;
 }
-.bocznadzialka
-{
-    height:80px;
-    width:110px;
-    background-color:darkkhaki;
-    border: 4px solid blueviolet;
-    margin-right:650px;
+.bocznanagroda {
+  height: 5rem;
+  width: 6.9rem;
+  background-color: brown;
+  border: 4px solid blueviolet;
+  font-size: 1.2rem;
+  text-align: center;
 }
-.bocznadzialka2
-{
-    height:88px;
-    width:118px;
-    background-color:darkkhaki;
-    border: 4px solid blueviolet;
-    margin-right:650px;
-
+#wienzienie {
+  opacity: 0.8;
+  background-color: darkgreen;
 }
-.bocznanagroda
-{
-    height:80px;
-    width:110px;
-    background-color:honeydew;
-    border: 4px solid blueviolet;
-    margin-right:650px;
+.nagroda {
+  height: 5rem;
+  width: 8.2rem;
+  background-color: brown;
+  float: left;
+  border: 4px solid blueviolet;
+  text-align: center;
+  font-size: 1.2rem;
 }
-#wienzienie
-{
-    opacity:0.8;
-    background-color:darkgreen;
+.szansa {
+  height: 5rem;
+  width: 8.2rem;
+  background-color: forestgreen;
+  float: left;
+  border: 4px solid blueviolet;
+  font-size: 1.2rem;
+  text-align: center;
 }
-.nagroda
-{
-    height:80px;
-    width:130px;
-    background-color:brown; 
-    float:left;
-    border: 4px solid blueviolet;
+#start {
+  background-color: blue;
+  width: 12.5rem;
 }
-.szansa
-{
-    height:80px;
-    width:130px;
-    background-color:forestgreen; 
-    float:left;
-    border: 4px solid blueviolet;
+#parking {
+  background-color: deeppink;
 }
-#start
-{
-    background-color: blue;
-    width:200px;
+#trzecia {
+  width: 90rem;
 }
-#parking
-{
-    background-color:deeppink;
+.bocznaszansa {
+  height: 5rem;
+  width: 6.9rem;
+  background-color: forestgreen;
+  border: 4px solid blueviolet;
+  font-size: 1.2rem;
+  text-align: center;
 }
-#trzecia
-{
-    width:1510px;
-    height:80px;
+#druga {
+  width: 1rem;
 }
-.bocznaszansa
-{
-    height:80px;
-    width:110px;
-    background-color:rgb(214, 210, 160);
-    border: 4px solid blueviolet;
-    margin-right:650px;
+#czwarta {
+  width: 7rem;
+  float: right;
 }
-#druga
-{
-    width:115px;
+#pierwsza {
+  height: 5rem;
+  width: 90rem;
 }
-#czwarta
-{
-    width:115px;
-    float:right;
+.balans {
+  width: 8rem;
+  background-color: aquamarine;
+  border: 3px purple solid;
+  display: inline-block;
+  height: 2.188rem;
+  margin-left: 8.75rem;
+  color: black;
+  text-align: center;
+  font-size: 1.875rem;
 }
-#pierwsza
-{
-    height:88px;
-    width:1510px;
+.odkrywka {
+  width: 7.625rem;
+  border: 4px purple solid;
+  height: 2.813rem;
+  background-color: darkblue;
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  color: black;
 }
-.banans
-{
-    width:125px;
-    background-color:aquamarine;
-    border:3px purple solid;
-    display:inline-block;
-    height:35px;
-    margin-left:140px;
-    color:black;
-    text-align:center;
-    font-size:30px;
+.bocznaodkrywka {
+  width: 4.375rem;
+  height: 4.375rem;
+  background-color: darkblue;
+  border: 4px purple solid;
 }
-.odkrywka
-{
-    width:122px;
-    border:4px purple solid;
-    height:45px;
-    background-color:darkblue;
-    margin-top:12px;
-    font-size:16px;
-    color:black;
+.cena {
+  height: 0.5rem;
+  text-align: center;
+  color: white;
 }
-.bocznaodkrywka
-{
-    width:70px;
-    height:70px;
-    background-color:darkblue;
-    border:4px purple solid;
+.bocznacena {
+  text-align: center;
+  font-size: 0.875rem;
+  width: 1.25rem;
+  float: right;
+  margin-top: 0.313rem;
+  color: white;
 }
-.cena
-{
-    height:8px;
-    text-align:center;
-    color:white;
+.gracze {
+  width: 7.813rem;
+  background-color: aquamarine;
+  border: 3px purple solid;
+  display: inline-block;
+  height: 2.188rem;
+  margin-left: 11.25rem;
+  color: black;
+  text-align: center;
+  font-size: 1.875rem;
 }
-.bocznacena
-{
-    text-align:center;
-    font-size:14px;
-    width:20px;
-    float:right;
-    margin-top:5px;
-    color:white;
+.pionek {
+  width: 0.938rem;
+  height: 0.938rem;
+  float: right;
+  background-color: beige;
+  border: burlywood 2px solid;
+  color: black;
 }
-.gracze
-{
-    width:125px;
-    background-color:aquamarine;
-    border:3px purple solid;
-    display:inline-block;
-    height:35px;
-    margin-left:180px;
-    color:black;
-    text-align:center;
-    font-size:30px;
+.srebrny {
+  border: silver 2px solid;
 }
-.pionek
-{
-    width:15px;
-    height:15px;
-    float:right;
-    background-color:beige;
-    border: burlywood 2px solid;
-    color:black;
+.zloty {
+  border: gold 2px solid;
 }
-.srebrny
-{
-    border: silver 2px solid;
+.normalny1 {
+  border: darkred 2px solid;
 }
-.zloty
-{
-    border: gold 2px solid;
+.normalny2 {
+  border: chartreuse 2px solid;
 }
-.normalny1
-{
-    border: darkred 2px solid;
+.normalny3 {
+  border: fuchsia 2px solid;
 }
-.normalny2
-{
-    border: chartreuse 2px solid;
+.normalny4 {
+  border: navy 2px solid;
 }
-.normalny3
-{
-    border: fuchsia 2px solid;
+.pionek {
+  opacity: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  float: right;
+  color: black;
 }
-.normalny4
-{
-    border: navy 2px solid;
+.p1 {
+  background-color: darkred;
 }
-.p1
-{
-    opacity:0;
-    width:8px;
-    height:8px;
-    float:right;
-    background-color:darkred;
-    color:black;
+.p2 {
+  background-color: chartreuse;
 }
-.p2
-{
-    opacity:0;
-    width:8px;
-    height:8px;
-    float:right;
-    background-color:chartreuse;
-    color:black;
+.p3 {
+  background-color: fuchsia;
 }
-.p3
-{
-    opacity:0;
-    width:8px;
-    height:8px;
-    float:right;
-    background-color:fuchsia;
-    color:black;
+.p4 {
+  background-color: navy;
 }
-.p4
-{
-    opacity:0;
-    width:8px;
-    height:8px;
-    float:right;
-    background-color:navy;
-    color:black;
+.domek {
+  width: 1rem;
+  height: 1.1rem;
+  background-color: darkgreen;
+  opacity: 0;
+  float: left;
+  border: brown 1px solid;
 }
-.domek
-{
-    width:17px;
-    height:20px;
-    background-color:darkgreen;
-    opacity:0;
-    float:left;
-    border: brown 1px solid;
+#targ {
+  float: left;
+  margin-left: 42rem;
+  margin-top: 2.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
-#targ
-{
-    float:left;
-    margin-left:650px;
-    margin-top:44px;
-    font-size:14px;
-    font-weight:600;
+.hotel {
+  width: 4.625rem;
+  background-color: rgb(101, 42, 42);
+  height: 1.313rem;
+  float: left;
+  opacity: 0;
 }
-.hotel
-{
-    width:74px;
-    background-color:rgb(101, 42, 42);
-    height:21px;
-    float:left;
-    opacity:0;
-}
-.bocznyhotel
-{
-    width:33px;
-    height:33px;
-    background-color:rgb(101, 42, 42);
-    opacity:0;
+.bocznyhotel {
+  width: 2.063rem;
+  height: 2.063rem;
+  background-color: rgb(101, 42, 42);
+  opacity: 0;
 }
