@@ -1,7 +1,7 @@
 //licznik jest po to, aby program wiedział czyja jest tura
 alert("Żeby ruszyć pionkami treba kliknąć balans danego gracza.");
 alert("A no i jeżeli chcesz przejść do następnego musisz kliknąć pole bilansu gracza");
-let bilans = ['', 372_000, 372_000, 372_000, 372_000], komuPrzekazacDzialke = 0;
+let bilans = ['', 372_000, 372_000, 372_000, 372_000];
 let licznik = 1;
 const balans1 = document.getElementById('ba1'), balans2 = document.getElementById('ba2');
 const balans3 = document.getElementById('ba3'), balans4 = document.getElementById('ba4');
@@ -9,15 +9,15 @@ const gracze = ['', balans1, balans2, balans3, balans4];
 balans1.innerHTML = bilans[1]; balans2.innerHTML = bilans[2];
 balans3.innerHTML = bilans[3]; balans4.innerHTML = bilans[4];
 const balanseGraczy = document.getElementsByClassName('balanse-graczy');
-const podtr = document.querySelector("#podtran")
-const targ = document.querySelector("#targ");
+const podtr = document.querySelector("#podtran"), targ = document.querySelector("#targ");
 const balansPlusLicznik = document.getElementById(`ba${licznik}`), domy = document.querySelector("#domy");
-const poziomeDzialki = document.querySelectorAll('dzialka2'), pionoweDzialki = document.querySelectorAll('bocznadzialka2');
+const wszystkieDzialki = document.getElementsByClassName('dzialki');
 
 const przytr = document.getElementById("przymtran");
 let wiekszaSzansa = false, czynsz = ['', 0, 0, 0, 0];
 
 let wydaneNagrody = 0; 
+const koloryDzialek = ['', 'darkred', 'chartreuse', 'fuchsia', 'navy'];
 
 let czyJuzByloOdkryte = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 
             false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
@@ -34,16 +34,16 @@ let ileJestPodTranow = ['', 0, 0, 0, 0], ileJestPrzymTranow = ['', 0, 0, 0, 0];
 
 let czyJestWWiezieniu = ['', false, false, false, false], przejscie = ['', false, false, false, false];
 
-let kupionaPrzezKogo = [0, 0, 0, 0, 0, 0, 0, 0, 0,/*8*/0, 0, 0, 0, 0, 0, 0, 0,/*16*/0, 0, 0, 0, 0, 0, 0, 0,/*24*/0, 0, 0, 0 , 0, 0, 0, 0/*31*/];
+let kupionaPrzezKogo = [0, 0, 0, 0, 0, 0, 0, 0, 0,/*8*/0, 0, 0, 0, 0, 0, 0, 0,/*16*/0, 0, 0, 0, 0, 0, 0, 0,/*24*/0, 0, 0, 0, 0, 0, 0, 0/*31*/];
 
-$('.p1').toggleClass('normalny1'); $('.p2').toggleClass('normalny2'); $('.p3').toggleClass('normalny3'); $('.p4').toggleClass('normalny4');  $('#ba1').toggleClass('klik'); 
+$('.p1').addClass('normalny1'); $('.p2').addClass('normalny2'); $('.p3').addClass('normalny3'); $('.p4').addClass('normalny4'); $('#ba1').addClass('klik'); 
 
 const zapiszywaniePostepu = document.getElementById('zapiszywaniePostepu');
-$(zapiszywaniePostepu).addClass('dom1'); $(zapiszywaniePostepu).addClass('klik'); 
+$(zapiszywaniePostepu).addClass('karta'); $(zapiszywaniePostepu).addClass('klik'); 
 $(zapiszywaniePostepu).html('Czy chcesz zapisać postęp?'); zapiszywaniePostepu.addEventListener("click", zapiszPostep);
 
 const przywrocaniePostepu = document.getElementById('przywrocPostep');
-$(przywrocaniePostepu).addClass('dom1'); $(przywrocaniePostepu).addClass('klik');
+$(przywrocaniePostepu).addClass('karta'); $(przywrocaniePostepu).addClass('klik');
 $(przywrocaniePostepu).html('Czy chcesz przywrócić postęp?'); przywrocaniePostepu.addEventListener("click", przywrocPostep);
 
 document.getElementById('ba1').addEventListener('click', tura);
@@ -160,7 +160,6 @@ function zajmijDzialke(){
         kopiaLicznika--;
     }
     const balansZKopiaLicznika = document.getElementById(`ba${kopiaLicznika}`);
-    const koloryDzialek = ['', 'darkred', 'chartreuse', 'fuchsia', 'navy'];
     $(`#ba${kopiaLicznika}`).html(bilans[kopiaLicznika] -= cenyDzialek[liczbaOczek[kopiaLicznika]]);
     $(`#k${liczbaOczek[kopiaLicznika]}`).css('color', koloryDzialek[kopiaLicznika]); 
     kupionaPrzezKogo[liczbaOczek[kopiaLicznika]] = kopiaLicznika; 
@@ -202,7 +201,7 @@ function dajInnemuGraczowi(){
 function dom2(){
     domy.removeEventListener("click", dom);
     $('#domy').removeClass('klik'); 
-    $('#domy').removeClass('dom1'); 
+    $('#domy').removeClass('karta'); 
     $('#domy').html('');
     czyDomJestZaDarmo = true;
     liczbaDarmowychDomow[licznik]--;
@@ -211,7 +210,7 @@ function dom(){
     alert('Dostajesz darmowy dom do wykorzystania');
     liczbaDarmowychDomow[licznik]++;
     if(liczbaDarmowychDomow[licznik] > 0){
-        $('#domy').addClass('dom1'); 
+        $('#domy').addClass('karta'); 
         $('#domy').addClass('klik');
         domy.addEventListener("click", dom2); 
         $('#domy').html('Czy chcesz wykorzystać darmowy dom?');
@@ -221,7 +220,7 @@ function danieLubZabranieInnym(ileLacznie, odJednegoGracza){
     let innyGracz1 = licznik + 1, innyGracz2 = licznik + 2, innyGracz3 = licznik + 3;
     if(innyGracz1 === 5){innyGracz1 = 1;} if(innyGracz2 === 5){innyGracz2 = 1;} if(innyGracz2 === 6){innyGracz2 = 2;} if(innyGracz3 === 5){innyGracz3 = 1;} 
     if(innyGracz3 === 6){innyGracz3 = 2;} if(innyGracz3 === 7){innyGracz3 = 3;}
-    balansPlusLicznik.innerHTML = bilans[licznik] -=  ileLacznie;
+    balansPlusLicznik.innerHTML = bilans[licznik] -= ileLacznie;
     document.getElementById(`ba${innyGracz1}`).innerHTML = bilans[innyGracz1] += odJednegoGracza;
     document.getElementById(`ba${innyGracz2}`).innerHTML = bilans[innyGracz2] += odJednegoGracza;
     document.getElementById(`ba${innyGracz3}`).innerHTML = bilans[innyGracz3] += odJednegoGracza;
@@ -248,7 +247,6 @@ function inicjacjaPozewu(){
             licznik = 1;
         }
     }, 0)
-    gracze[licznik].removeEventListener('click', tura);
     $(gracze[licznik]).removeClass('klik');
     for(let i = 1; i < 5; i++){
         gracze[i].addEventListener('click', pozew);
@@ -294,50 +292,48 @@ function podroz(){
         }
     }
 }
-function akcja(){
-    let wlasciciel = this.value;
-    for(let element of poziomeDzialki){
-        element.removeEventListener("click", akcja);
-        $(element).toggleClass('klik');
-    }
-    for(let element of pionoweDzialki){
-        element.removeEventListener("click", akcja);
-        $(element).toggleClass('klik');
-    }
-    if(ileJestPodTranow[licznik] === 0){
+function podtran(){
+    alert("Podstępna transakcja! Wykradnij nieruchomość od wybranego gracza, możesz ją wykorzystać w dowolnym momencie");
+    $('#podtran').addClass('klik'); 
+    $('#podtran').addClass('karta');
+    podtr.addEventListener("click", ukradniecie)
+    $('#podtran').html('Czy chcesz ukraść komuś działkę?');
+    ileJestPodTranow[licznik] += 1;
+}
+function ukradniecie(){
+    let kopiaLicznika = licznik - 1;
+    ileJestPodTranow[kopiaLicznika]--;
+    if(ileJestPodTranow[kopiaLicznika] === 0){
         $('#podtran').removeClass('klik'); 
-        $('#podtran').removeClass('dom1');
+        $('#podtran').removeClass('karta');
         $('#podtran').html('');
         podtr.removeEventListener("click", ukradniecie);
     } 
-    $(`#k${wlasciciel}`).css('color', koloryDzialek[licznik]); 
-    kupionaPrzezKogo[wlasciciel] = licznik; 
-}
-function ukradniecie(){
-    if(kupionaPrzezKogo.reduce(arg => arg + arg) === 0) return;
+    if(kopiaLicznika === 5){licznik = 1;}
     for(let i = 1; i < 5; i++){
         gracze[i].removeEventListener('click', tura);
     }
     for(let i = 1; i < 32; i++){
-        if(kupionaPrzezKogo[i] !== licznik){
+        if(kupionaPrzezKogo[i] !== kopiaLicznika){
             $(`#d${i}`).addClass('klik');
         }
     }
-    for(let element of poziomeDzialki){
+    for(const element of wszystkieDzialki){
         element.addEventListener("click", akcja);
     }
-    for(let element of pionoweDzialki){
-        element.addEventListener("click", akcja);
+    function akcja(){
+        const wlasciciel = this.value;
+        console.log(wlasciciel);
+        console.log(kopiaLicznika);
+        if(kupionaPrzezKogo[wlasciciel] === kopiaLicznika) return;
+        $(`#k${wlasciciel}`).css('color', koloryDzialek[kopiaLicznika]); 
+        kupionaPrzezKogo[wlasciciel] = kopiaLicznika; 
+        for(const element of wszystkieDzialki){
+            element.removeEventListener("click", akcja);
+            $(element).removeClass('klik');
+        }
+        console.log(ileJestPodTranow[kopiaLicznika]);
     }
-    ileJestPodTranow[licznik]--;
-}
-function podtran(){
-    alert("Podstępna transakcja! Wykradnij nieruchomość od wybranego gracza, możesz ją wykorzystać w każdym momencie");
-    $('#podtran').addClass('klik'); 
-    $('#podtran').addClass('dom1');
-    podtr.addEventListener("click", ukradniecie)
-    $('#podtran').html('Czy chcesz ukraść komuś działkę?');
-    ileJestPodTranow[licznik] += 1;
 }
 function zlyrating(){
     alert("Zły rating kredytowy! Nie możesz kupić tej działki");
@@ -345,62 +341,52 @@ function zlyrating(){
     targ.removeEventListener('click', zajmijDzialke);
 } 
 function przymtran(){
-    alert("Przymusowa transakcja! Zamień nieruchomość z wybranym graczem, możesz ją wykorzystać w każdym momencie");
-    $('#przymtran').toggleClass('klik'); $('#przymtran').toggleClass('dom1');
+    alert("Przymusowa transakcja! Zamień nieruchomość z wybranym graczem, możesz ją wykorzystać w dowolnym momencie");
+    $('#przymtran').addClass('klik'); $('#przymtran').addClass('karta');
     przytr.addEventListener("click", wybranie);
     $('#przymtran').html('Czy chcesz zamienić z kimś działkę?');
     ileJestPrzymTranow[licznik] += 1;
 }
 function wybranie(){
     alert("najpierw wybierz cudzą działkę i wtedy wybierz działkę, którą dajesz w zamian");
-    for(let i = 1; i < 4; i++){
+    for(let i = 1; i < 5; i++){
         gracze[i].removeEventListener('click', tura);
     }
-    for(const element of pionoweDzialki){
+    for(const element of wszystkieDzialki){
         element.addEventListener("click", wybraniecudzego); 
     }
-    for(const element of poziomeDzialki){
-        element.addEventListener("click", wybraniecudzego); 
-    }
-    for(i = 0; i < 32; i++){
-        $(`#d${i}`).toggleClass('klik');
-    }
-}
-let doKogoMaNalezecDzialka;
-function wybranieswojego(){
-    const doZamiany = this.value;
-    if(kupionaPrzezKogo[doZamiany] !== licznik - 1) return alert("Wybierz swoją działke, a nie cudzą, albo niczyją");
-    $(`#k${doZamiany}`).css("color", koloryDzialek[komuPrzekazacDzialke]);
-    doKogoMaNalezecDzialka = kupionaPrzezKogo[doZamiany];
-    kupionaPrzezKogo[doZamiany] = licznik - 1; 
-    $('#przymtran').removeClass('klik'); 
-    $('#przymtran').removeClass('dom1');
-    przytr.removeEventListener("click", wybranieswojego); 
-    $('#przymtran').html('');
-    for(const element of pionoweDzialki){
-        element.removeEventListener("click", wybranieswojego); 
-    }
-    for(const element of poziomeDzialki){
-        element.removeEventListener("click", wybranieswojego);
-    }
-    kupionaPrzezKogo[doZamiany] = komuPrzekazacDzialke;
-    for(let i = 1; i < 4; i++){
-        gracze[i].addEventListener('click', tura);
+    for(i = 1; i < 32; i++){
+        $(`#d${i}`).addClass('klik');
     }
 }
 function wybraniecudzego(){
+    if(kupionaPrzezKogo.reduce(arg => arg + arg) === 0) return;
     const doZamiany2 = this.value;
-    if(kupionaPrzezKogo[doZamiany2] === licznik - 1) return alert("Wybierz cudzą działkę, a nie swoją!");
+    if(kupionaPrzezKogo[doZamiany2] === licznik - 1) return;
     ileJestPrzymTranow[licznik - 1]--; 
-    $(`#k${doZamiany2}`).css("color", koloryDzialek[doKogoMaNalezecDzialka]);
-    kupionaPrzezKogo[doZamiany2] = doKogoMaNalezecDzialka;
-    for(const element of pionoweDzialki){
+    $(`#k${doZamiany2}`).css("color", koloryDzialek[licznik - 1]);
+    for(const element of wszystkieDzialki){
         element.addEventListener("click", wybranieswojego);
         element.removeEventListener("click", wybraniecudzego);
-    } 
-    for(const element of poziomeDzialki){
-        element.addEventListener("click", wybranieswojego);
-        element.removeEventListener("click", wybraniecudzego);
+    }
+    function wybranieswojego(){
+        const doZamiany = this.value;
+        if(kupionaPrzezKogo[doZamiany] !== licznik - 1) return;
+        $(`#k${doZamiany}`).css("color", koloryDzialek[kupionaPrzezKogo[doZamiany2]]);
+        kupionaPrzezKogo[doZamiany] = kupionaPrzezKogo[doZamiany2];
+        kupionaPrzezKogo[doZamiany2] = licznik - 1;
+        if(ileJestPrzymTranow[licznik - 1] === 0){
+            $('#przymtran').removeClass('klik'); 
+            $('#przymtran').removeClass('karta');
+            przytr.removeEventListener("click", wybranieswojego);
+            $('#przymtran').html('');
+        }
+        for(const element of wszystkieDzialki){
+            element.removeEventListener("click", wybranieswojego); 
+        }
+        for(let i = 1; i < 32; i++){
+            $(`#d${i}`).removeClass('klik');
+        }
     }
 }
 
@@ -427,7 +413,7 @@ function coZrobicZPolem(){
     if(kupionaPrzezKogo[liczbaOczek[licznik]] === 0){
         $('#targ').html('Czy chcesz kupić tą działke?'); 
         targ.addEventListener("click", zajmijDzialke);
-        $('#targ').removeClass('klik'); 
+        $('#targ').addClass('klik'); 
         targ.removeEventListener("click", postawDom);
     }
     else if(kupionaPrzezKogo[liczbaOczek[licznik]] === licznik){
@@ -563,9 +549,9 @@ function odswierzBilanse(){
     for(let i = 1; i < 4; i++){
         if(gracze[i] === '') return;
         if(gracze[i] === 1_000_000){
-            $('#podtran').removeClass('dom1');
-            $('#przymtran').removeClass('dom1');
-            $('#domy').removeClass('dom1');
+            $('#podtran').removeClass('karta');
+            $('#przymtran').removeClass('karta');
+            $('#domy').removeClass('karta');
             alert('Wygrana, jeden z graczy został milionerem');
             gracze[i].removeEventListener('click', tura);
             licznik = 99;
@@ -577,6 +563,10 @@ function odswierzBilanse(){
     }
 }
 function tura(){
+    targ.removeEventListener('click', postawDom);
+    targ.removeEventListener('click', postawHotel);
+    targ.removeEventListener('click', zajmijDzialke);
+    $(targ).removeClass('klik');
     const ceny1 = [7000, 15000, 30000, 50000, 60000, 80000], ceny2 = [15_000, 30_000, 50_000, 80_000, 95_000, 125_000];
     const ceny3 = [20000, 50000, 90000, 140_000, 165_000, 215_000], ceny4 = [25_000, 65_000, 110_000, 170_000, 200_000, 270_000];
     const ceny5 = [35000, 90000, 150_000, 230_000, 270_000, 350_000], ceny6 = [40_000, 100_000, 170_000, 260_000, 305_000, 395_000];
@@ -584,21 +574,23 @@ function tura(){
     const rzutKostkami = Math.floor(Math.random() * 10 + 2);
     if(ileJestPodTranow[licznik] === 0){
         $('#podtran').removeClass('klik'); 
-        $('#podtran').removeClass('dom1');
+        $('#podtran').removeClass('karta');
         podtr.removeEventListener("click", ukradniecie);
         $('#podtran').html('');
     } else {
         $('#podtran').addClass('klik'); 
-        $('#podtran').addClass('dom1');
+        $('#podtran').addClass('karta');
         podtr.addEventListener("click", ukradniecie);
+        $('#podtran').addClass('karta');
+        $('#podtran').html('Czy chcesz ukraść komuś działkę?');
     }
     if(ileJestPrzymTranow[licznik] > 0){
         $('#przymtran').addClass('klik'); 
-        $('#przymtran').addClass('dom1');
+        $('#przymtran').addClass('karta');
         przytr.addEventListener("click", wybranie);
         $('#przymtran').html('Czy chcesz zamienić z kimś działkę?');
     } else {
-        $('#przymtran').removeClass('klik'); $('#przymtran').removeClass('dom1');
+        $('#przymtran').removeClass('klik'); $('#przymtran').removeClass('karta');
         przytr.removeEventListener("click", wybranie);
         $('#przymtran').html('');
     }
@@ -647,12 +639,12 @@ function tura(){
 
     if(czyPionekJestNaNormalnejDzialce === false) return
     if(liczbaDarmowychDomow[licznik] > 0){
-        $('#domy').addClass('dom1'); 
+        $('#domy').addClass('karta'); 
         $('#domy').addClass('klik');
         domy.addEventListener("click", dom2);
         $('#domy').html('Czy chcesz wykorzystać darmowy dom?');
     } else {
-        $('#domy').removeClass('dom1'); 
+        $('#domy').removeClass('karta'); 
         $('#domy').removeClass('klik');
         domy.removeEventListener("click", dom2);
         $('#domy').html('');
