@@ -8,7 +8,6 @@ const balans3 = document.getElementById('ba3'), balans4 = document.getElementByI
 const gracze = ['', balans1, balans2, balans3, balans4];
 balans1.innerHTML = bilans[1]; balans2.innerHTML = bilans[2];
 balans3.innerHTML = bilans[3]; balans4.innerHTML = bilans[4];
-const balanseGraczy = document.getElementsByClassName('balanse-graczy');
 const podtr = document.querySelector("#podtran"), targ = document.querySelector("#targ");
 const balansPlusLicznik = document.getElementById(`ba${licznik}`), domy = document.querySelector("#domy");
 const wszystkieDzialki = document.getElementsByClassName('dzialki');
