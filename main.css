@@ -103,9 +103,6 @@ body {
 #parking {
   background-color: deeppink;
 }
-#trzecia {
-  width: 90rem;
-}
 .bocznaszansa {
   height: 5rem;
   width: 6.9rem;
@@ -114,14 +111,17 @@ body {
   font-size: 1.2rem;
   text-align: center;
 }
-#druga {
+#pola-po-lewej {
   width: 1rem;
 }
-#czwarta {
+#pola-po-prawej {
   width: 7rem;
   float: right;
 }
-#pierwsza {
+#pola-na-gorze {
+  width: 90rem;
+}
+#dolne-pola {
   height: 5rem;
   width: 90rem;
 }
@@ -209,7 +209,7 @@ body {
   color: black;
 }
 .p1 {
-  background-color: darkred;
+  background-color: black;
 }
 .p2 {
   background-color: chartreuse;
