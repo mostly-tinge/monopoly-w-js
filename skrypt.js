@@ -16,7 +16,7 @@ const przytr = document.getElementById("przymtran");
 let wiekszaSzansa = false, czynsz = ['', 0, 0, 0, 0];
 
 let wydaneNagrody = 0; 
-const koloryDzialek = ['', 'darkred', 'chartreuse', 'fuchsia', 'navy'];
+const koloryDzialek = ['', 'black', 'chartreuse', 'fuchsia', 'navy'];
 
 let czyJuzByloOdkryte = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 
             false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
@@ -82,16 +82,14 @@ function zmianaPoziomu(){
         balansPlusLicznik.innerHTML = bilans[licznik] += 250_000;
     }
     else if(poziom[licznik] === 2 && przejscie[licznik] === true && liczbaOczek[licznik] > 31){
-        $(`.p${licznik}`).removeClass('srebrny'); 
-        $(`.p${licznik}`).addClass('zloty');
+        $(`.p${licznik}`).removeClass('srebrny').addClass('zloty'); 
         poziom[licznik] = 3;
         liczbaOczek[licznik] -= 32;
     }
     else if(poziom[licznik] === 1 && liczbaOczek[licznik] > 31 && przejscie[licznik] === false){
         liczbaOczek[licznik] -= 32;
         poziom[licznik] = 2;
-        $(`.p${licznik}`).addClass('srebrny');
-        $(`.p${licznik}`).removeClass(`normalny${licznik}`);
+        $(`.p${licznik}`).addClass('srebrny').removeClass(`normalny${licznik}`);
         przejscie[licznik] = true;
     }
 }
@@ -110,8 +108,7 @@ function postawHotel(){
     ileJestDomowNaDzialce[liczbaOczek[kopiaLicznika]]++;
     $(`#ba${kopiaLicznika}`).html(bilans[kopiaLicznika] -= cenyDomow[liczbaOczek[kopiaLicznika]]);
     targ.removeEventListener("click", postawHotel);
-    $('#targ').html('');
-    $('#targ').removeClass('klik');
+    $('#targ').removeClass('klik').html('');
 }
 function postawDom(){
     let kopiaLicznika = licznik;
@@ -120,7 +117,6 @@ function postawDom(){
     } else {
         kopiaLicznika--;
     }
-    const balansZKopiaLicznika = document.getElementById(`ba${licznik}`);
     if(czyDomJestZaDarmo === false){
         $(`#ba${kopiaLicznika}`).html(bilans[kopiaLicznika] -= cenyDomow[liczbaOczek[kopiaLicznika]]);
     }
@@ -140,12 +136,10 @@ function postawDom(){
 function zmianaKoloruOdkrywki(){
     czyJuzByloOdkryte[liczbaOczek[licznik]] = true;
     if(liczbaOczek[licznik] < 8 || (liczbaOczek[licznik] > 16 && liczbaOczek[licznik] < 24)){
-        $(`#od${liczbaOczek[licznik]}`).css('background-color', 'red');
-        $(`#od${liczbaOczek[licznik]}`).css('border-color', 'red');
+        $(`#od${liczbaOczek[licznik]}`).css('background-color', 'red').css('border-color', 'red');
     }
     else if(liczbaOczek[licznik] > 24 || (liczbaOczek[licznik] > 8 && liczbaOczek[licznik] < 16)){
-        $(`#od${liczbaOczek[licznik]}`).css('background-color', 'darkkhaki');
-        $(`#od${liczbaOczek[licznik]}`).css('border-color', 'darkkhaki');
+        $(`#od${liczbaOczek[licznik]}`).css('background-color', 'darkkhaki').css('border-color', 'darkkhaki');
     }
 }
 
@@ -164,8 +158,7 @@ function zajmijDzialke(){
     kupionaPrzezKogo[liczbaOczek[kopiaLicznika]] = kopiaLicznika; 
     targ.removeEventListener("click", zajmijDzialke);
     if(kupionaPrzezKogo[liczbaOczek[kopiaLicznika]] === kopiaLicznika){
-        $('#targ').html('Czy chcesz kupić domek?');
-        $('#targ').addClass('klik');
+        $('#targ').addClass('klik').html('Czy chcesz kupić domek?');
         targ.addEventListener("click", postawDom);
     }
 }
@@ -199,9 +192,7 @@ function dajInnemuGraczowi(){
 }
 function dom2(){
     domy.removeEventListener("click", dom);
-    $('#domy').removeClass('klik'); 
-    $('#domy').removeClass('karta'); 
-    $('#domy').html('');
+    $('#domy').removeClass('klik').removeClass('karta').html(''); 
     czyDomJestZaDarmo = true;
     liczbaDarmowychDomow[licznik]--;
 } 
@@ -209,10 +200,8 @@ function dom(){
     alert('Dostajesz darmowy dom do wykorzystania');
     liczbaDarmowychDomow[licznik]++;
     if(liczbaDarmowychDomow[licznik] > 0){
-        $('#domy').addClass('karta'); 
-        $('#domy').addClass('klik');
+        $('#domy').addClass('karta').addClass('klik').html('Czy chcesz wykorzystać darmowy dom?'); 
         domy.addEventListener("click", dom2); 
-        $('#domy').html('Czy chcesz wykorzystać darmowy dom?');
     }
 }
 function danieLubZabranieInnym(ileLacznie, odJednegoGracza){
@@ -293,19 +282,15 @@ function podroz(){
 }
 function podtran(){
     alert("Podstępna transakcja! Wykradnij nieruchomość od wybranego gracza, możesz ją wykorzystać w dowolnym momencie");
-    $('#podtran').addClass('klik'); 
-    $('#podtran').addClass('karta');
+    $('#podtran').addClass('klik').addClass('karta').html('Czy chcesz ukraść komuś działkę?'); 
     podtr.addEventListener("click", ukradniecie)
-    $('#podtran').html('Czy chcesz ukraść komuś działkę?');
     ileJestPodTranow[licznik] += 1;
 }
 function ukradniecie(){
     let kopiaLicznika = licznik - 1;
     ileJestPodTranow[kopiaLicznika]--;
     if(ileJestPodTranow[kopiaLicznika] === 0){
-        $('#podtran').removeClass('klik'); 
-        $('#podtran').removeClass('karta');
-        $('#podtran').html('');
+        $('#podtran').removeClass('klik').removeClass('karta').html(''); 
         podtr.removeEventListener("click", ukradniecie);
     } 
     if(kopiaLicznika === 5){licznik = 1;}
@@ -322,8 +307,6 @@ function ukradniecie(){
     }
     function akcja(){
         const wlasciciel = this.value;
-        console.log(wlasciciel);
-        console.log(kopiaLicznika);
         if(kupionaPrzezKogo[wlasciciel] === kopiaLicznika) return;
         $(`#k${wlasciciel}`).css('color', koloryDzialek[kopiaLicznika]); 
         kupionaPrzezKogo[wlasciciel] = kopiaLicznika; 
@@ -341,9 +324,8 @@ function zlyrating(){
 } 
 function przymtran(){
     alert("Przymusowa transakcja! Zamień nieruchomość z wybranym graczem, możesz ją wykorzystać w dowolnym momencie");
-    $('#przymtran').addClass('klik'); $('#przymtran').addClass('karta');
+    $('#przymtran').addClass('klik').addClass('karta').html('Czy chcesz zamienić z kimś działkę?');
     przytr.addEventListener("click", wybranie);
-    $('#przymtran').html('Czy chcesz zamienić z kimś działkę?');
     ileJestPrzymTranow[licznik] += 1;
 }
 function wybranie(){
@@ -375,10 +357,8 @@ function wybraniecudzego(){
         kupionaPrzezKogo[doZamiany] = kupionaPrzezKogo[doZamiany2];
         kupionaPrzezKogo[doZamiany2] = licznik - 1;
         if(ileJestPrzymTranow[licznik - 1] === 0){
-            $('#przymtran').removeClass('klik'); 
-            $('#przymtran').removeClass('karta');
+            $('#przymtran').removeClass('klik').removeClass('karta').html(''); 
             przytr.removeEventListener("click", wybranieswojego);
-            $('#przymtran').html('');
         }
         for(const element of wszystkieDzialki){
             element.removeEventListener("click", wybranieswojego); 
@@ -410,9 +390,8 @@ function losowanie(){
 }
 function coZrobicZPolem(){
     if(kupionaPrzezKogo[liczbaOczek[licznik]] === 0){
-        $('#targ').html('Czy chcesz kupić tą działke?'); 
+        $('#targ').addClass('klik').html('Czy chcesz kupić tą działke?'); 
         targ.addEventListener("click", zajmijDzialke);
-        $('#targ').addClass('klik'); 
         targ.removeEventListener("click", postawDom);
     }
     else if(kupionaPrzezKogo[liczbaOczek[licznik]] === licznik){
@@ -481,7 +460,7 @@ function szansa(){
             } else {
                 $(`#ba${licznik}`).html(bilans[licznik] += 150000);
             }
-            for(let i = 1; i < 4; i++){
+            for(let i = 1; i < 5; i++){
                 gracze[i].addEventListener('click', tura);
             }
         }
@@ -545,7 +524,7 @@ function szansa(){
     }
 }
 function odswierzBilanse(){
-    for(let i = 1; i < 4; i++){
+    for(let i = 1; i < 5; i++){
         if(gracze[i] === '') return;
         if(gracze[i] === 1_000_000){
             $('#podtran').removeClass('karta');
@@ -572,26 +551,18 @@ function tura(){
     const ceny7 = [50_000, 125_000, 210_000, 320_000, 375000, 485_000], ceny8 = [65_000, 160_000, 250_000, 370_000, 430_000, 550_000];
     const rzutKostkami = Math.floor(Math.random() * 10 + 2);
     if(ileJestPodTranow[licznik] === 0){
-        $('#podtran').removeClass('klik'); 
-        $('#podtran').removeClass('karta');
+        $('#podtran').removeClass('klik').removeClass('karta').html(''); 
         podtr.removeEventListener("click", ukradniecie);
-        $('#podtran').html('');
     } else {
-        $('#podtran').addClass('klik'); 
-        $('#podtran').addClass('karta');
+        $('#podtran').addClass('klik').addClass('karta').html('Czy chcesz ukraść komuś działkę?'); 
         podtr.addEventListener("click", ukradniecie);
-        $('#podtran').addClass('karta');
-        $('#podtran').html('Czy chcesz ukraść komuś działkę?');
     }
     if(ileJestPrzymTranow[licznik] > 0){
-        $('#przymtran').addClass('klik'); 
-        $('#przymtran').addClass('karta');
+        $('#przymtran').addClass('klik').addClass('karta').html('Czy chcesz zamienić z kimś działkę?'); 
         przytr.addEventListener("click", wybranie);
-        $('#przymtran').html('Czy chcesz zamienić z kimś działkę?');
     } else {
-        $('#przymtran').removeClass('klik'); $('#przymtran').removeClass('karta');
+        $('#przymtran').removeClass('klik').removeClass('karta').html('');
         przytr.removeEventListener("click", wybranie);
-        $('#przymtran').html('');
     }
     if(czynsz[licznik] > 0){
         balansPlusLicznik.innerHTML = bilans[licznik] += 12000;
@@ -638,15 +609,11 @@ function tura(){
 
     if(czyPionekJestNaNormalnejDzialce === false) return
     if(liczbaDarmowychDomow[licznik] > 0){
-        $('#domy').addClass('karta'); 
-        $('#domy').addClass('klik');
+        $('#domy').addClass('karta').addClass('klik').html('Czy chcesz wykorzystać darmowy dom?'); 
         domy.addEventListener("click", dom2);
-        $('#domy').html('Czy chcesz wykorzystać darmowy dom?');
     } else {
-        $('#domy').removeClass('karta'); 
-        $('#domy').removeClass('klik');
+        $('#domy').removeClass('karta').removeClass('klik').html(''); 
         domy.removeEventListener("click", dom2);
-        $('#domy').html('');
     }
     coZrobicZPolem();
     if(czyJuzByloOdkryte[liczbaOczek[licznik]] === false){
@@ -692,14 +659,14 @@ function tura(){
                 balansPlusLicznik.innerHTML = bilans[licznik] -= ceny5[ileJestDomowNaDzialce[liczbaOczek[licznik]]];
 
                 document.getElementById(`ba${kupionaPrzezKogo[liczbaOczek[licznik]]}`).innerHTML = bilans[kupionaPrzezKogo[liczbaOczek[licznik]]] += ceny5[ileJestDomowNaDzialce[liczbaOczek[licznik]]];
-                $('#targ').html('')
+                $('#targ').html('');
             }
         }else{
             if(kupionaPrzezKogo[liczbaOczek[licznik]] !== licznik && kupionaPrzezKogo[liczbaOczek[licznik]] !== 0){
                 balansPlusLicznik.innerHTML = bilans[licznik] -= ceny6[ileJestDomowNaDzialce[liczbaOczek[licznik]]]; 
 
                 document.getElementById(`ba${kupionaPrzezKogo[liczbaOczek[licznik]]}`).innerHTML = bilans[kupionaPrzezKogo[liczbaOczek[licznik]]] += ceny6[ileJestDomowNaDzialce[liczbaOczek[licznik]]];
-                $('#targ').html('')
+                $('#targ').html('');
             }
         }
     }
@@ -709,24 +676,24 @@ function tura(){
                 balansPlusLicznik.innerHTML = bilans[licznik] -= ceny7[ileJestDomowNaDzialce[liczbaOczek[licznik]]];
 
                 document.getElementById(`ba${kupionaPrzezKogo[liczbaOczek[licznik]]}`).innerHTML = bilans[kupionaPrzezKogo[liczbaOczek[licznik]]] += ceny7[ileJestDomowNaDzialce[liczbaOczek[licznik]]];
-                $('#targ').html('')
+                $('#targ').html('');
             }
         } else {
             if(kupionaPrzezKogo[liczbaOczek[licznik]] !== licznik && kupionaPrzezKogo[liczbaOczek[licznik]] !== 0){
                 balansPlusLicznik.innerHTML = bilans[licznik] -= ceny8[ileJestDomowNaDzialce[liczbaOczek[licznik]]];
                 document.getElementById(`ba${kupionaPrzezKogo[liczbaOczek[licznik]]}`).innerHTML = bilans[kupionaPrzezKogo[liczbaOczek[licznik]]] += ceny8[ileJestDomowNaDzialce[liczbaOczek[licznik]]];
-                $('#targ').html('')
+                $('#targ').html('');
             }
         }
     }
-if(bilans[licznik] === 1_000_000 || bilans[licznik + 1] === 1_000_000){
+if(bilans[licznik] >= 1_000_000 || bilans[licznik + 1] >= 1_000_000){
     console.log('dupa');
     for(let i = 1; i < 5; i++){
         gracze[i].removeEventListener('click', tura);
     }
-    $('#podtran').removeClass('dom1');
-    $('#przymtran').removeClass('dom1');
-    $('#domy').removeClass('dom1');
+    $('#podtran').removeClass('karta').html('');
+    $('#przymtran').removeClass('karta').html('');
+    $('#domy').removeClass('karta').html('');
     alert('Wygrana, jeden z graczy został milionerem');
 }
 else if(bilans[licznik] <= 0 || bilans[licznik + 1] <= 0){
