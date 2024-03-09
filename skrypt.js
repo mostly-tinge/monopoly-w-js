@@ -720,7 +720,22 @@ function tura(){
             }
         }
     }
-nadajKlikBilansom();
+if(bilans[licznik] === 1_000_000 || bilans[licznik + 1] === 1_000_000){
+    console.log('dupa');
+    for(let i = 1; i < 5; i++){
+        gracze[i].removeEventListener('click', tura);
+    }
+    $('#podtran').removeClass('dom1');
+    $('#przymtran').removeClass('dom1');
+    $('#domy').removeClass('dom1');
+    alert('Wygrana, jeden z graczy został milionerem');
+}
+else if(bilans[licznik] <= 0 || bilans[licznik + 1] <= 0){
+    nadajKlikBilansom();
+    alert(`gracz ${licznik} zbankrutował i jego kolejka przepada`);
+} else {
+    nadajKlikBilansom();
+}
 balans1.innerHTML = bilans[1]; balans2.innerHTML = bilans[2];
 balans3.innerHTML = bilans[3]; balans4.innerHTML = bilans[4];
 }
