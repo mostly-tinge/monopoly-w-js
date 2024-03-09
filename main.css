@@ -15,7 +15,6 @@ body {
   width: 8rem;
   background-color: aquamarine;
   border: 3px purple solid;
-  /*display: inline-block;*/
   height: 3.2rem;
   color: black;
   text-align: center;
@@ -191,7 +190,7 @@ body {
   border: gold 2px solid;
 }
 .normalny1 {
-  border: darkred 2px solid;
+  border: black 2px solid;
 }
 .normalny2 {
   border: chartreuse 2px solid;
