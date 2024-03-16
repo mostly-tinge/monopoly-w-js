@@ -1,4 +1,4 @@
-                                                                        <h1>Dokumentacja</h1>
+                                                                  <h1>Dokumentacja</h1>
    <h3>Opis funkcji</h3>                                                               
 <p>zapiszPostep() - 72 linia: zapisuje postęp</p>
 <p>usunPostep() - 85 linia: usuwa postęp</p>
