@@ -187,12 +187,6 @@ function dajInnemuGraczowi(){
     wiekszaSzansa = false;
     nadajKlikBilansom();
 }
-function dom2(){
-    domy.removeEventListener("click", dom);
-    $('#domy').removeClass('klik').removeClass('karta').html(''); 
-    czyDomJestZaDarmo = true;
-    liczbaDarmowychDomow[licznik]--;
-} 
 function dom(){
     alert('Dostajesz darmowy dom do wykorzystania');
     liczbaDarmowychDomow[licznik]++;
@@ -201,6 +195,12 @@ function dom(){
         domy.addEventListener("click", dom2); 
     }
 }
+function dom2(){
+    domy.removeEventListener("click", dom);
+    $('#domy').removeClass('klik').removeClass('karta').html(''); 
+    czyDomJestZaDarmo = true;
+    liczbaDarmowychDomow[licznik]--;
+} 
 function danieLubZabranieInnym(ileLacznie, odJednegoGracza){
     let innyGracz1 = licznik + 1, innyGracz2 = licznik + 2, innyGracz3 = licznik + 3;
     if(innyGracz1 === 5){innyGracz1 = 1;} if(innyGracz2 === 5){innyGracz2 = 1;} if(innyGracz2 === 6){innyGracz2 = 2;} if(innyGracz3 === 5){innyGracz3 = 1;} 
@@ -280,7 +280,7 @@ function podroz(){
 function podtran(){
     alert("Podstępna transakcja! Wykradnij nieruchomość od wybranego gracza, możesz ją wykorzystać w dowolnym momencie");
     $('#podtran').addClass('klik').addClass('karta').html('Czy chcesz ukraść komuś działkę?'); 
-    podtr.addEventListener("click", ukradniecie)
+    podtr.addEventListener("click", ukradniecie);
     ileJestPodTranow[licznik] += 1;
 }
 function ukradniecie(){
@@ -394,7 +394,11 @@ function coZrobicZPolem(){
     else if(kupionaPrzezKogo[liczbaOczek[licznik]] === licznik){
         $('#targ').html('Czy chcesz kupić domek?'); 
         targ.addEventListener("click", postawDom); 
-        targ.removeEventListener("click", zajmijDzialke);
+        if(ileJestDomowNaDzialce[liczbaOczek[licznik]] === 4){
+            targ.removeEventListener("click", postawDom);
+            targ.addEventListener("click", postawHotel);
+            $('#targ').html('Czy chcesz postawić hotel?');
+        }
     }
 }
 function nagroda(){
@@ -676,6 +680,7 @@ if(bilans[licznik] >= 1_000_000 || bilans[licznik + 1] >= 1_000_000){
     alert('Wygrana, jeden z graczy został milionerem');
 }
 else if(bilans[licznik] <= 0 || bilans[licznik + 1] <= 0){
+    if(bilans.reduce(arg => arg + arg) === 0) return;
     nadajKlikBilansom();
     alert(`gracz ${licznik} zbankrutował i jego kolejka przepada`);
 } else {
