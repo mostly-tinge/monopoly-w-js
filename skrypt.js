@@ -37,13 +37,11 @@ let kupionaPrzezKogo = [0, 0, 0, 0, 0, 0, 0, 0, 0,/*8*/0, 0, 0, 0, 0, 0, 0, 0,/*
 
 $('.p1').addClass('normalny1'); $('.p2').addClass('normalny2'); $('.p3').addClass('normalny3'); $('.p4').addClass('normalny4'); $('#ba1').addClass('klik'); 
 
-const zapiszywaniePostepu = document.getElementById('zapiszywaniePostepu');
-$(zapiszywaniePostepu).addClass('karta'); $(zapiszywaniePostepu).addClass('klik'); 
-$(zapiszywaniePostepu).html('Czy chcesz zapisać postęp?'); zapiszywaniePostepu.addEventListener("click", zapiszPostep);
-
-const przywrocaniePostepu = document.getElementById('przywrocPostep');
-$(przywrocaniePostepu).addClass('karta'); $(przywrocaniePostepu).addClass('klik');
-$(przywrocaniePostepu).html('Czy chcesz przywrócić postęp?'); przywrocaniePostepu.addEventListener("click", przywrocPostep);
+const zapiszywaniePostepu = document.getElementById('zapiszywaniePostepu'), przywrocaniePostepu = document.getElementById('przywrocPostep');
+$(zapiszywaniePostepu).addClass('karta').addClass('klik').html('Czy chcesz zapisać postęp?');
+$(przywrocaniePostepu).addClass('karta').addClass('klik').html('Czy chcesz przywrócić postęp?');
+zapiszywaniePostepu.addEventListener("click", zapiszPostep); 
+przywrocaniePostepu.addEventListener("click", przywrocPostep);
 
 document.getElementById('ba1').addEventListener('click', tura);
 
@@ -152,7 +150,6 @@ function zajmijDzialke(){
     } else {
         kopiaLicznika--;
     }
-    const balansZKopiaLicznika = document.getElementById(`ba${kopiaLicznika}`);
     $(`#ba${kopiaLicznika}`).html(bilans[kopiaLicznika] -= cenyDzialek[liczbaOczek[kopiaLicznika]]);
     $(`#k${liczbaOczek[kopiaLicznika]}`).css('color', koloryDzialek[kopiaLicznika]); 
     kupionaPrzezKogo[liczbaOczek[kopiaLicznika]] = kopiaLicznika; 
@@ -523,23 +520,6 @@ function szansa(){
         break;
     }
 }
-function odswierzBilanse(){
-    for(let i = 1; i < 5; i++){
-        if(gracze[i] === '') return;
-        if(gracze[i] === 1_000_000){
-            $('#podtran').removeClass('karta');
-            $('#przymtran').removeClass('karta');
-            $('#domy').removeClass('karta');
-            alert('Wygrana, jeden z graczy został milionerem');
-            gracze[i].removeEventListener('click', tura);
-            licznik = 99;
-        }
-        if(gracze[i] === 0){
-            gracze[i].removeEventListener('click', tura);
-            nadajKlikBilansom();
-        }
-    }
-}
 function tura(){
     targ.removeEventListener('click', postawDom);
     targ.removeEventListener('click', postawHotel);
@@ -687,7 +667,6 @@ function tura(){
         }
     }
 if(bilans[licznik] >= 1_000_000 || bilans[licznik + 1] >= 1_000_000){
-    console.log('dupa');
     for(let i = 1; i < 5; i++){
         gracze[i].removeEventListener('click', tura);
     }
