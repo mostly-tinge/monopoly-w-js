@@ -44,13 +44,4 @@
 <p>szansa() - 429 linia: Losuje Szansę</p>
 
 <p>tura() - 527 linia: Wykonuje turę gracza i sprawdza czy któryś zbankrutował, albo został milionerem</p>
-<p></p>
-<p></p>
-
-<h3>Opis zmiennych</h3>
-<p>licznik- przechowuje numer gracza, który oznacza gracza w danej turze(od 1 do 4).</p>
-<p>ceny1-8 - Ceny domów i hoteli.</p>
-<p>bilans- balans graczy</p>
-<p>komuPrzekazacDzialke- wykorzytywane w podtranach i przymtranach do nadania graczowi działki</p>
-<p>wydane nagrody- pokazują ile wydano nagród, po osiągnięciu maximum(10) resetują się</p>
 
