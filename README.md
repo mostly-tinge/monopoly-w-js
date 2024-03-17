@@ -1,4 +1,4 @@
-                                                              Dokumentacja
+                                                Dokumentacja
   <h3><a href="https://mostly-tinge.github.io/monopoly-w-js/">Link do strony z monopoly</a></h3>
    <h3>Opis funkcji</h3>                                                               
 <p>zapiszPostep() - 48 linia: zapisuje postęp</p>
