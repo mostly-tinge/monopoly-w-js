@@ -1,10 +1,34 @@
 //licznik jest po to, aby program wiedział czyja jest tura
-alert("Żeby ruszyć pionkami treba kliknąć balans danego gracza.");
-alert("A no i jeżeli chcesz przejść do następnego musisz kliknąć pole bilansu gracza");
 let bilans = ['', 372_000, 372_000, 372_000, 372_000];
 let licznik = 1;
 const balans1 = document.getElementById('ba1'), balans2 = document.getElementById('ba2');
 const balans3 = document.getElementById('ba3'), balans4 = document.getElementById('ba4');
+const balanse = document.getElementById('balanse');
+setTimeout(() => {
+    const toolTip = document.createElement('span');
+    const toolTipArrow = document.createElement('div');
+    const zamkniecieTooltipa = document.createElement('p');
+    const zamkniecieTooltipa2 = document.createElement('p');
+    toolTip.innerText = 'Kliknij na bilansy graczy, aby się poruszyć';
+    $(toolTip).addClass('tooltip');
+    $(toolTipArrow).addClass('tooltip-arrow');
+    $(zamkniecieTooltipa).addClass('zamkniecie-tooltipa');
+    $(zamkniecieTooltipa2).addClass('zamkniecie-tooltipa').addClass('zamkniecie-tooltipa2');
+    balans1.appendChild(toolTip);
+    toolTip.appendChild(toolTipArrow);
+    toolTip.appendChild(zamkniecieTooltipa);
+    toolTip.appendChild(zamkniecieTooltipa2);
+    balans1.removeEventListener('click', tura);
+    const zamknijTooltipa = () => {
+        const toolTip = document.querySelector('span');
+        if(toolTip){
+            toolTip.remove();
+        }
+        setTimeout(() => balans1.addEventListener('click', tura), 0);
+    }
+    zamkniecieTooltipa.addEventListener('click', zamknijTooltipa);
+    zamkniecieTooltipa2.addEventListener('click', zamknijTooltipa);
+}, 0)
 const gracze = ['', balans1, balans2, balans3, balans4];
 balans1.innerHTML = bilans[1]; balans2.innerHTML = bilans[2];
 balans3.innerHTML = bilans[3]; balans4.innerHTML = bilans[4];
@@ -42,8 +66,6 @@ $(zapiszywaniePostepu).addClass('karta').addClass('klik').html('Czy chcesz zapis
 $(przywrocaniePostepu).addClass('karta').addClass('klik').html('Czy chcesz przywrócić postęp?');
 zapiszywaniePostepu.addEventListener("click", zapiszPostep); 
 przywrocaniePostepu.addEventListener("click", przywrocPostep);
-
-document.getElementById('ba1').addEventListener('click', tura);
 
 function zapiszPostep(){
     localStorage.setItem('liczbaDarmowychDomow', liczbaDarmowychDomow); localStorage.setItem('balanse', bilans); localStorage.setItem('komuPrzekazacDzialke', komuPrzekazacDzialke);
