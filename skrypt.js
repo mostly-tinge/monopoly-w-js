@@ -1,9 +1,20 @@
-//licznik jest po to, aby program wiedział czyja jest tura
+let czyLiczbaJestWybrana = false;
+let ileJestGraczy = 1;
+while(czyLiczbaJestWybrana === false){
+    const iloscGraczy = prompt('podaj liczbe graczy: ');
+    if(iloscGraczy > 1 && iloscGraczy < 5){
+        czyLiczbaJestWybrana = true;
+        for(let i = ileJestGraczy; i < iloscGraczy; i++){
+            ileJestGraczy++;
+        }
+    } else {
+        alert('Podaj własciwą liczbę');
+    }
+}
 let bilans = ['', 372_000, 372_000, 372_000, 372_000];
-let licznik = 1;
+let licznik = 1;//licznik jest po to, aby program wiedział czyja jest tura
 const balans1 = document.getElementById('ba1'), balans2 = document.getElementById('ba2');
 const balans3 = document.getElementById('ba3'), balans4 = document.getElementById('ba4');
-const balanse = document.getElementById('balanse');
 setTimeout(() => {
     const toolTip = document.createElement('span');
     const toolTipArrow = document.createElement('div');
@@ -28,10 +39,17 @@ setTimeout(() => {
     }
     zamkniecieTooltipa.addEventListener('click', zamknijTooltipa);
     zamkniecieTooltipa2.addEventListener('click', zamknijTooltipa);
-}, 0)
+}, 0);
 const gracze = ['', balans1, balans2, balans3, balans4];
-balans1.innerHTML = bilans[1]; balans2.innerHTML = bilans[2];
-balans3.innerHTML = bilans[3]; balans4.innerHTML = bilans[4];
+for(let i = 4; i > ileJestGraczy; i--){
+    gracze.pop();
+    bilans.pop();
+}
+console.log(bilans);
+gracze.forEach((ele, index) => {
+    ele.innerHTML = bilans[index];
+    $(ele).addClass('balans');
+});
 const podtr = document.querySelector("#podtran"), targ = document.querySelector("#targ");
 const balansPlusLicznik = document.getElementById(`ba${licznik}`), domy = document.querySelector("#domy");
 const wszystkieDzialki = document.getElementsByClassName('dzialki');
@@ -133,7 +151,7 @@ function postawHotel(){
 function postawDom(){
     let kopiaLicznika = licznik;
     if(kopiaLicznika === 1){
-        kopiaLicznika = 4;
+        kopiaLicznika = ileJestGraczy;
     } else {
         kopiaLicznika--;
     }
@@ -168,7 +186,7 @@ function zajmijDzialke(){
         115_000, 115_000, 120_000, 0, 145_000, 145_000, 0, 150_000, 0, 170_000, 200_000];
     let kopiaLicznika = licznik;
     if(kopiaLicznika === 1){
-        kopiaLicznika = 4;
+        kopiaLicznika = ileJestGraczy;
     } else {
         kopiaLicznika--;
     }
@@ -186,7 +204,7 @@ function nadajKlikBilansom(){
     gracze[licznik].removeEventListener('click', tura);
     $(gracze[licznik]).removeClass('klik');
     licznik++;
-    if(licznik === 5){
+    if(licznik === ileJestGraczy + 1){
         licznik = 1;
     }
     gracze[licznik].addEventListener('click', tura);
@@ -196,8 +214,7 @@ function dajInnemuGraczowi(){
     const numerBilansu = this.id.slice(2, 3);
     if(numerBilansu == licznik) return
     gracze[licznik].addEventListener('click', tura);
-    for(let i = 1; i < 5; i++){
-        const balansZLicznikiem = document.getElementById(`ba${i}`);
+    for(let i = 1; i <= ileJestGraczy; i++){
         document.getElementById(`ba${i}`).removeEventListener('click', dajInnemuGraczowi);
     }
     document.getElementById(`ba${licznik}`).innerHTML = bilans[licznik] -= 40000;
@@ -223,23 +240,21 @@ function dom2(){
     czyDomJestZaDarmo = true;
     liczbaDarmowychDomow[licznik]--;
 } 
-function danieLubZabranieInnym(ileLacznie, odJednegoGracza){
-    let innyGracz1 = licznik + 1, innyGracz2 = licznik + 2, innyGracz3 = licznik + 3;
-    if(innyGracz1 === 5){innyGracz1 = 1;} if(innyGracz2 === 5){innyGracz2 = 1;} if(innyGracz2 === 6){innyGracz2 = 2;} if(innyGracz3 === 5){innyGracz3 = 1;} 
-    if(innyGracz3 === 6){innyGracz3 = 2;} if(innyGracz3 === 7){innyGracz3 = 3;}
-    balansPlusLicznik.innerHTML = bilans[licznik] -= ileLacznie;
-    document.getElementById(`ba${innyGracz1}`).innerHTML = bilans[innyGracz1] += odJednegoGracza;
-    document.getElementById(`ba${innyGracz2}`).innerHTML = bilans[innyGracz2] += odJednegoGracza;
-    document.getElementById(`ba${innyGracz3}`).innerHTML = bilans[innyGracz3] += odJednegoGracza;
+function danieLubZabranieInnym(odJednegoGracza){
+    for(let i = 1; i <= ileJestGraczy; i++){
+        if(i === licznik) continue;
+        document.getElementById(`ba${licznik}`).innerHTML = bilans[licznik] -= odJednegoGracza;
+        document.getElementById(`ba${i}`).innerHTML = bilans[i] += odJednegoGracza;
+    }
 }
 
 function gest(){
     alert("Masz gest! daj każdemu z pozostałych graczy 20k");
-    danieLubZabranieInnym(60000, 20000);
+    danieLubZabranieInnym(20000);
 }
 function prezent(){
     alert("Prezent ślubny! pobierz od każdego gracza 20k");
-    danieLubZabranieInnym(-60000, -20000);
+    danieLubZabranieInnym(-20000);
 }
 function udzialy(){
     alert("Wystrzałowe udziały! Pobierz 100k")
@@ -255,7 +270,7 @@ function inicjacjaPozewu(){
         }
     }, 0)
     $(gracze[licznik]).removeClass('klik');
-    for(let i = 1; i < 5; i++){
+    for(let i = 1; i <= ileJestGraczy; i++){
         gracze[i].addEventListener('click', pozew);
         gracze[i].removeEventListener('click', tura);
     }
@@ -266,7 +281,7 @@ function pozew(){
     if(numerBilansu == licznik) return;
     document.getElementById(`ba${licznik}`).innerHTML = bilans[licznik] += 50_000;
     this.innerHTML = bilans[numerBilansu] -= 50_000;
-    for(let i = 1; i < 5; i++){
+    for(let i = 1; i <= ileJestGraczy; i++){
         gracze[i].removeEventListener('click', pozew);
     }
     nadajKlikBilansom();
@@ -307,13 +322,15 @@ function podtran(){
 }
 function ukradniecie(){
     let kopiaLicznika = licznik - 1;
+    if(kopiaLicznika === ileJestGraczy + 1){
+        licznik = 1;
+    }
     ileJestPodTranow[kopiaLicznika]--;
     if(ileJestPodTranow[kopiaLicznika] === 0){
         $('#podtran').removeClass('klik').removeClass('karta').html(''); 
         podtr.removeEventListener("click", ukradniecie);
     } 
-    if(kopiaLicznika === 5){licznik = 1;}
-    for(let i = 1; i < 5; i++){
+    for(let i = 1; i <= ileJestGraczy; i++){
         gracze[i].removeEventListener('click', tura);
     }
     for(let i = 1; i < 32; i++){
@@ -349,7 +366,7 @@ function przymtran(){
 }
 function wybranie(){
     alert("najpierw wybierz cudzą działkę i wtedy wybierz działkę, którą dajesz w zamian");
-    for(let i = 1; i < 5; i++){
+    for(let i = 1; i <= ileJestGraczy; i++){
         gracze[i].removeEventListener('click', tura);
     }
     for(const element of wszystkieDzialki){
@@ -452,9 +469,9 @@ function szansa(){
     const tekstySzansy1 = ["przeprowadzasz świetną transakcję biznesową! od wszystkich pozostałych graczy odtrzymujesz ", 
     "Właśnie obchodzisz urodziny! od wszystkich pozostałych graczy otrzymujesz "];
 
-    const tekstySzansy2 = ["Weź udział w wyścigu motorówek! aby wygrać 50k wyrzuć","Wyścig na prywatnym torze! aby wygrać 100k, wyrzuć", 
-    "Rozbij kasyno! aby wygrać 100k, wyrzuć", "Zainwestuj w giełdę! aby zarobić 100k wyrzuć", "Załóż własną firmę! aby zarobić 150k wyrzuć",
-    "Weź udział w wyścigu balonów! aby wygrać 150k wyrzuć"];
+    const tekstySzansy2 = ["Weź udział w wyścigu motorówek! aby wygrać 50k zagraj","Wyścig na prywatnym torze! aby wygrać 100k, zagraj", 
+    "Rozbij kasyno! aby wygrać 100k, zagraj", "Zainwestuj w giełdę! aby zarobić 100k zagraj", "Załóż własną firmę! aby zarobić 150k zagraj",
+    "Weź udział w wyścigu balonów! aby wygrać 150k zagraj"];
 
     const tekstySzansy3 = ["Zabierz przyjaciół w luksusową podróż! płacisz wszystkim pozostałym graczom ",
     "Zabierz przyjaciół na wystawny obiad! płacisz wszystkim pozostałym graczom "];
@@ -463,18 +480,14 @@ function szansa(){
     "Wysoko postawieni przyjaciele! zapłać 50k wybranemu graczowi za udział w jego premierze filmowej.",
     "przepuściłeś sporą kwotę w szale wydawania pieniędzy! obniż status swojego pionka."];
     const szansy1 = ['', 10_000, 30_000, 50_000], szansy3 = ['', 5000, 15_000, 25_000];
-    let innyGracz1 = licznik + 1, innyGracz2 = licznik + 2, innyGracz3 = licznik + 3;
-    if(innyGracz1 === 5){innyGracz1 = 1;}; if(innyGracz2 === 5){innyGracz2 = 1;} if(innyGracz2 === 6){innyGracz2 = 2;} 
-    if(innyGracz3 === 5){innyGracz3 = 1;} if(innyGracz3 === 6){innyGracz3 = 2;} if(innyGracz3 === 7){innyGracz3 = 3;}
     const los = Math.floor(Math.random() * 3);
     function rzut(){
         const ktoryTekst = Math.floor(Math.random() * 6);
         const wynikRzutu = Math.floor(Math.random() * 10 + 2);
         alert(tekstySzansy2[ktoryTekst]);
-        $('#targ').html(wynikRzutu);
+        $('#targ').html(wynikRzutu).removeClass('klik');
         if((poziom[licznik] === 1 && wynikRzutu === 2) || (poziom[licznik] === 2 && wynikRzutu > 7 && wynikRzutu < 13) || (poziom[licznik] === 3 && wynikRzutu > 4 && wynikRzutu < 13)){
             alert("wygrałeś!");
-            $('#targ').html(wynikRzutu);
             if(ktoryTekst === 0){
                 $(`#ba${licznik}`).html(bilans[licznik] += 50000);
             }
@@ -483,7 +496,7 @@ function szansa(){
             } else {
                 $(`#ba${licznik}`).html(bilans[licznik] += 150000);
             }
-            for(let i = 1; i < 5; i++){
+            for(let i = 1; i <= ileJestGraczy; i++){
                 gracze[i].addEventListener('click', tura);
             }
         }
@@ -492,27 +505,28 @@ function szansa(){
     }
     switch (los) {
         case 0:
-            document.getElementById(`ba${licznik}`).innerHTML = bilans[licznik] += szansy1[poziom[1]] + szansy1[poziom[2]] + szansy1[poziom[3]] + szansy1[poziom[4]] - szansy1[poziom[licznik]];
-            document.getElementById(`ba${innyGracz1}`).innerHTML = bilans[innyGracz1] -= szansy1[poziom[innyGracz1]];                   
-            document.getElementById(`ba${innyGracz2}`).innerHTML = bilans[innyGracz2] -= szansy1[poziom[innyGracz2]];                   
-            document.getElementById(`ba${innyGracz3}`).innerHTML = bilans[innyGracz3] -= szansy1[poziom[innyGracz3]];
             alert(`${tekstySzansy1[Math.floor(Math.random())]} 10000 od 1 poziomu 30000 od 2 poziomu, a od 3 50000`);
+            for(let i = 1; i <= ileJestGraczy; i++){
+                if(i === licznik) continue;
+                document.getElementById(`ba${licznik}`).innerHTML = bilans[licznik] += szansy1[poziom[i]];
+                document.getElementById(`ba${i}`).innerHTML = bilans[i] -= szansy1[poziom[i]];
+            }
             nadajKlikBilansom();
             break;
         case 1:
-            document.getElementById(`ba${licznik}`).innerHTML = bilans[licznik] -= szansy3[poziom[licznik]] * 3;
-            document.getElementById(`ba${innyGracz1}`).innerHTML = bilans[innyGracz1] += szansy3[poziom[innyGracz1]];                   
-            document.getElementById(`ba${innyGracz2}`).innerHTML = bilans[innyGracz2] += szansy3[poziom[innyGracz2]];                   
-            document.getElementById(`ba${innyGracz3}`).innerHTML = bilans[innyGracz3] += szansy3[poziom[innyGracz3]];
-            alert(`${tekstySzansy3[Math.floor(Math.random())]} 5000 od 1 poziomu 15000 od 2 poziomu, a od 3 25000`)
-            nadajKlikBilansom();
+            alert(`${tekstySzansy3[Math.floor(Math.random())]} 5000 od 1 poziomu 15000 od 2 poziomu, a od 3 25000`);
+            for(let i = 1; i <= ileJestGraczy; i++){
+                if(i === licznik) continue;
+                document.getElementById(`ba${licznik}`).innerHTML = bilans[licznik] -= szansy3[poziom[licznik]];
+                document.getElementById(`ba${i}`).innerHTML = bilans[i] += szansy3[poziom[i]];
+            }
             break;
         case 2:
             alert('Masz szansę na wygraną, kliknij na targ, żeby zagrać. Im większy poziom tym większa sznsa');
-            for(let i = 1; i < 4; i++){
+            for(let i = 1; i <= ileJestGraczy; i++){
                 gracze[i].removeEventListener('click', tura);
             }
-            $('#targ').html('Rzuć kostką');
+            $('#targ').html('Rzuć kostką').addClass('klik');
             targ.addEventListener("click", rzut); 
             break;
         case 3:
@@ -527,7 +541,7 @@ function szansa(){
                     break;
                 case 1:
                 case 2:
-                    for(let i = 1; i < 5; i++){
+                    for(let i = 1; i <= ileJestGraczy; i++){
                         const balansPlusLicznik = document.getElementById(`ba${i}`);
                         balansPlusLicznik.addEventListener('click', dajInnemuGraczowi);
                         balansPlusLicznik.removeEventListener('click', tura);
@@ -693,7 +707,7 @@ function tura(){
         }
     }
 if(bilans[licznik] >= 1_000_000 || bilans[licznik + 1] >= 1_000_000){
-    for(let i = 1; i < 5; i++){
+    for(let i = 1; i <= ileJestGraczy; i++){
         gracze[i].removeEventListener('click', tura);
     }
     $('#podtran').removeClass('karta').html('');
@@ -708,6 +722,5 @@ else if(bilans[licznik] <= 0 || bilans[licznik + 1] <= 0){
 } else {
     nadajKlikBilansom();
 }
-balans1.innerHTML = bilans[1]; balans2.innerHTML = bilans[2];
-balans3.innerHTML = bilans[3]; balans4.innerHTML = bilans[4];
+gracze.forEach((ele, index) => ele.innerHTML = bilans[index]);
 }
