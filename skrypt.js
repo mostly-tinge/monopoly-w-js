@@ -1,16 +1,18 @@
 let czyLiczbaJestWybrana = false;
 let ileJestGraczy = 1;
-while(czyLiczbaJestWybrana === false){
-    const iloscGraczy = prompt('podaj liczbe graczy: ');
-    if(iloscGraczy > 1 && iloscGraczy < 5){
-        czyLiczbaJestWybrana = true;
-        for(let i = ileJestGraczy; i < iloscGraczy; i++){
-            ileJestGraczy++;
+setTimeout(() => {
+    while(czyLiczbaJestWybrana === false){
+        const iloscGraczy = prompt('podaj liczbe graczy: ');
+        if(iloscGraczy > 1 && iloscGraczy < 5){
+            czyLiczbaJestWybrana = true;
+            for(let i = ileJestGraczy; i < iloscGraczy; i++){
+                ileJestGraczy++;
+            }
+        } else {
+            alert('Podaj własciwą liczbę');
         }
-    } else {
-        alert('Podaj własciwą liczbę');
     }
-}
+}, 0)
 let bilans = ['', 372_000, 372_000, 372_000, 372_000];
 let licznik = 1;//licznik jest po to, aby program wiedział czyja jest tura
 const balans1 = document.getElementById('ba1'), balans2 = document.getElementById('ba2');
@@ -45,7 +47,6 @@ for(let i = 4; i > ileJestGraczy; i--){
     gracze.pop();
     bilans.pop();
 }
-console.log(bilans);
 gracze.forEach((ele, index) => {
     ele.innerHTML = bilans[index];
     $(ele).addClass('balans');
@@ -350,7 +351,6 @@ function ukradniecie(){
             element.removeEventListener("click", akcja);
             $(element).removeClass('klik');
         }
-        console.log(ileJestPodTranow[kopiaLicznika]);
     }
 }
 function zlyrating(){
