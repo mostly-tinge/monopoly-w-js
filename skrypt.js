@@ -2,7 +2,7 @@ let czyLiczbaJestWybrana = false;
 let ileJestGraczy = 1;
 setTimeout(() => {
     while(czyLiczbaJestWybrana === false){
-        const iloscGraczy = prompt('podaj liczbe graczy: ');
+        const iloscGraczy = prompt('podaj liczbe graczy(Musi być pomiędzy 2, a 4): ');
         if(iloscGraczy > 1 && iloscGraczy < 5){
             czyLiczbaJestWybrana = true;
             for(let i = ileJestGraczy; i < iloscGraczy; i++){
@@ -12,7 +12,7 @@ setTimeout(() => {
             alert('Podaj własciwą liczbę');
         }
     }
-}, 0)
+}, 1000)
 let bilans = ['', 372_000, 372_000, 372_000, 372_000];
 let licznik = 1;//licznik jest po to, aby program wiedział czyja jest tura
 const balans1 = document.getElementById('ba1'), balans2 = document.getElementById('ba2');
