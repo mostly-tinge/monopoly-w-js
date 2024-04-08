@@ -311,3 +311,20 @@ body {
   background-color: rgb(101, 42, 42);
   opacity: 0;
 }
+noscript {
+  text-align: center;
+  margin-top: 35rem;
+  font-size: 10rem;
+}
+#alert {
+  position: absolute;
+  width: 17rem;
+  height: 3rem;
+  background-color: aquamarine;
+  top: 24rem;
+  left: 10rem;
+  border: 3px purple solid;
+  color: black;
+  text-align: center;
+  font-weight: 600;
+}
