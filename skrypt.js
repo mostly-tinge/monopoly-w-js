@@ -1,22 +1,25 @@
 let czyLiczbaJestWybrana = false;
 let ileJestGraczy = 1;
-setTimeout(() => {
-    while(czyLiczbaJestWybrana === false){
-        const iloscGraczy = prompt('podaj liczbe graczy(Musi być pomiędzy 2, a 4): ');
-        if(iloscGraczy > 1 && iloscGraczy < 5){
-            czyLiczbaJestWybrana = true;
-            for(let i = ileJestGraczy; i < iloscGraczy; i++){
-                ileJestGraczy++;
-            }
-        } else {
-            alert('Podaj własciwą liczbę');
+while(czyLiczbaJestWybrana === false){
+    const iloscGraczy = prompt('podaj liczbe graczy: ');
+    if(iloscGraczy > 1 && iloscGraczy < 5){
+        czyLiczbaJestWybrana = true;
+        for(let i = ileJestGraczy; i < iloscGraczy; i++){
+            ileJestGraczy++;
         }
+    } else {
+        alert('Podaj własciwą liczbę');
     }
-}, 1000)
+}
 let bilans = ['', 372_000, 372_000, 372_000, 372_000];
 let licznik = 1;//licznik jest po to, aby program wiedział czyja jest tura
 const balans1 = document.getElementById('ba1'), balans2 = document.getElementById('ba2');
 const balans3 = document.getElementById('ba3'), balans4 = document.getElementById('ba4');
+function stworzPowiadomienie(){
+    //const alert = document.createElement('div');
+    //alert.innerText = 'To jest alert';
+}   
+stworzPowiadomienie();
 setTimeout(() => {
     const toolTip = document.createElement('span');
     const toolTipArrow = document.createElement('div');
@@ -53,7 +56,7 @@ gracze.forEach((ele, index) => {
 });
 const podtr = document.querySelector("#podtran"), targ = document.querySelector("#targ");
 const balansPlusLicznik = document.getElementById(`ba${licznik}`), domy = document.querySelector("#domy");
-const wszystkieDzialki = document.getElementsByClassName('dzialki');
+const wszystkieDzialki = document.getElementsByClassName('dzialki'), alert = document.getElementById('alert');
 
 const przytr = document.getElementById("przymtran");
 let wiekszaSzansa = false, czynsz = ['', 0, 0, 0, 0];
@@ -96,11 +99,11 @@ function zapiszPostep(){
     localStorage.setItem('kupionaPrzezKogo', kupionaPrzezKogo);
     localStorage.setItem('czyJestWWiezieniu', czyJestWWiezieniu); localStorage.setItem('przejscie', przejscie);
     localStorage.setItem('ileJestPodTranow', ileJestPodTranow); localStorage.setItem('ileJestPrzymTranow', ileJestPrzymTranow);
-    alert("Postęp zapisany");
+    alert.innerText = ("Postęp zapisany");
 }
 function usunPostep(){
     localStorage.clear();
-    alert("Postęp usunięty");
+    alert.innerText = ("Postęp usunięty");
 }
 function przywrocPostep(){
     localStorage.getItem('liczbaDarmowychDomow'); localStorage.getItem('balanse');
@@ -113,7 +116,7 @@ function przywrocPostep(){
     localStorage.getItem('kupionaPrzezKogo'); localStorage.getItem('czyJestWWiezieniu');
     localStorage.getItem('przejscie'); localStorage.getItem('ileJestPodTranow');
     localStorage.getItem('ileJestPrzymTranow'); localStorage.getItem('ileJestPodTranow');
-    alert("Przywrócono postęp");
+    alert.innerText = ("Przywrócono postęp");
 }
 function zmianaPoziomu(){
     if(poziom[licznik] === 3 && liczbaOczek[licznik] > 31){
@@ -228,7 +231,7 @@ function dajInnemuGraczowi(){
     nadajKlikBilansom();
 }
 function dom(){
-    alert('Dostajesz darmowy dom do wykorzystania');
+    alert.innerText = ('Dostajesz darmowy dom do wykorzystania');
     liczbaDarmowychDomow[licznik]++;
     if(liczbaDarmowychDomow[licznik] > 0){
         $('#domy').addClass('karta').addClass('klik').html('Czy chcesz wykorzystać darmowy dom?'); 
@@ -250,15 +253,15 @@ function danieLubZabranieInnym(odJednegoGracza){
 }
 
 function gest(){
-    alert("Masz gest! daj każdemu z pozostałych graczy 20k");
+    alert.innerText = ("Masz gest! daj każdemu z pozostałych graczy 20k");
     danieLubZabranieInnym(20000);
 }
 function prezent(){
-    alert("Prezent ślubny! pobierz od każdego gracza 20k");
+    alert.innerText = ("Prezent ślubny! pobierz od każdego gracza 20k");
     danieLubZabranieInnym(-20000);
 }
 function udzialy(){
-    alert("Wystrzałowe udziały! Pobierz 100k")
+    alert.innerText = ("Wystrzałowe udziały! Pobierz 100k")
     balansPlusLicznik.innerHTML = bilans[licznik] += 100000;
 }
 function inicjacjaPozewu(){
@@ -275,7 +278,7 @@ function inicjacjaPozewu(){
         gracze[i].addEventListener('click', pozew);
         gracze[i].removeEventListener('click', tura);
     }
-    alert("pozew! Pobierz 50k od wybranego gracza");
+    alert.innerText = ("pozew! Pobierz 50k od wybranego gracza");
 }
 function pozew(){
     const numerBilansu = this.id.slice(2,3);
@@ -288,12 +291,12 @@ function pozew(){
     nadajKlikBilansom();
 }
 function mieszkanie(){
-    alert("Wynajmujesz swoje mieszkanie przez 3 następne kolejki pobierasz 12k");
+    alert.innerText = ("Wynajmujesz swoje mieszkanie przez 3 następne kolejki pobierasz 12k");
     czynsz[licznik] += 3;
 }
 function podroz(){
     let czyZnalezione = false;
-    alert("Do przodu! Przejdź do najbliższej wolnej nieruchomości.");
+    alert.innerText = ("Do przodu! Przejdź do najbliższej wolnej nieruchomości.");
     $(`#${pionek[licznik]+liczbaOczek[licznik]}`).css('opacity', '0');
     function zakonczPentle(i){ 
         liczbaOczek[licznik] = i;
@@ -316,7 +319,7 @@ function podroz(){
     }
 }
 function podtran(){
-    alert("Podstępna transakcja! Wykradnij nieruchomość od wybranego gracza, możesz ją wykorzystać w dowolnym momencie");
+    alert.innerText = ("Podstępna transakcja! Wykradnij nieruchomość od wybranego gracza, możesz ją wykorzystać w dowolnym momencie");
     $('#podtran').addClass('klik').addClass('karta').html('Czy chcesz ukraść komuś działkę?'); 
     podtr.addEventListener("click", ukradniecie);
     ileJestPodTranow[licznik] += 1;
@@ -351,21 +354,22 @@ function ukradniecie(){
             element.removeEventListener("click", akcja);
             $(element).removeClass('klik');
         }
+        console.log(ileJestPodTranow[kopiaLicznika]);
     }
 }
 function zlyrating(){
-    alert("Zły rating kredytowy! Nie możesz kupić tej działki");
+    alert.innerText = ("Zły rating kredytowy! Nie możesz kupić tej działki");
     $('#targ').html('');
     targ.removeEventListener('click', zajmijDzialke);
 } 
 function przymtran(){
-    alert("Przymusowa transakcja! Zamień nieruchomość z wybranym graczem, możesz ją wykorzystać w dowolnym momencie");
+    alert.innerText = ("Przymusowa transakcja! Zamień nieruchomość z wybranym graczem, możesz ją wykorzystać w dowolnym momencie");
     $('#przymtran').addClass('klik').addClass('karta').html('Czy chcesz zamienić z kimś działkę?');
     przytr.addEventListener("click", wybranie);
     ileJestPrzymTranow[licznik] += 1;
 }
 function wybranie(){
-    alert("najpierw wybierz cudzą działkę i wtedy wybierz działkę, którą dajesz w zamian");
+    alert.innerText = ("najpierw wybierz cudzą działkę i wtedy wybierz działkę, którą dajesz w zamian");
     for(let i = 1; i <= ileJestGraczy; i++){
         gracze[i].removeEventListener('click', tura);
     }
@@ -405,10 +409,10 @@ function wybraniecudzego(){
     }
 }
 
-const zestaw = () => alert("Tym razem nic się nie dzieje");
+const zestaw = () => alert.innerText = ("Tym razem nic się nie dzieje");
 
 function limo(){
-    alert("Przejedź się limuzyną na start");
+    alert.innerText = ("Przejedź się limuzyną na start");
     $(`#${pionek[licznik]}${liczbaOczek[licznik]}`).css('opacity', '0');
     liczbaOczek[licznik] = 32;
     zmianaPoziomu();
@@ -449,7 +453,7 @@ function nagroda(){
     const los = Math.floor(Math.random() * 10);
     const balansPlusLicznik = document.getElementById(`ba${licznik}`);//musiał to tu dać, nie wiem czemu nie działa inaczej
     balansPlusLicznik.innerHTML = bilans[licznik] += nagrody[wydaneNagrody] * poziom[licznik];
-    alert(`${tekstyNagrody[los]} pobierz: ${nagrody[wydaneNagrody]* poziom[licznik]}`); 
+    alert.innerText = (`${tekstyNagrody[los]} pobierz: ${nagrody[wydaneNagrody]* poziom[licznik]}`); 
     if(los === 5){
         $(`#${pionek[licznik]}${liczbaOczek[licznik]}`).css('opacity', '0');
         liczbaOczek[licznik] += 5;
@@ -460,7 +464,7 @@ function nagroda(){
     wydaneNagrody++;
     if(wydaneNagrody === 10){
         wydaneNagrody = 0; 
-        alert("nagrody zostały zresetowane");
+        alert.innerText = ("nagrody zostały zresetowane");
     }
     $('#targ').html('');
     nadajKlikBilansom();
@@ -484,10 +488,10 @@ function szansa(){
     function rzut(){
         const ktoryTekst = Math.floor(Math.random() * 6);
         const wynikRzutu = Math.floor(Math.random() * 10 + 2);
-        alert(tekstySzansy2[ktoryTekst]);
+        alert.innerText = (tekstySzansy2[ktoryTekst]);
         $('#targ').html(wynikRzutu).removeClass('klik');
         if((poziom[licznik] === 1 && wynikRzutu === 2) || (poziom[licznik] === 2 && wynikRzutu > 7 && wynikRzutu < 13) || (poziom[licznik] === 3 && wynikRzutu > 4 && wynikRzutu < 13)){
-            alert("wygrałeś!");
+            alert.innerText = ("wygrałeś!");
             if(ktoryTekst === 0){
                 $(`#ba${licznik}`).html(bilans[licznik] += 50000);
             }
@@ -505,7 +509,7 @@ function szansa(){
     }
     switch (los) {
         case 0:
-            alert(`${tekstySzansy1[Math.floor(Math.random())]} 10000 od 1 poziomu 30000 od 2 poziomu, a od 3 50000`);
+            alert.innerText = (`${tekstySzansy1[Math.floor(Math.random())]} 10000 od 1 poziomu 30000 od 2 poziomu, a od 3 50000`);
             for(let i = 1; i <= ileJestGraczy; i++){
                 if(i === licznik) continue;
                 document.getElementById(`ba${licznik}`).innerHTML = bilans[licznik] += szansy1[poziom[i]];
@@ -514,7 +518,7 @@ function szansa(){
             nadajKlikBilansom();
             break;
         case 1:
-            alert(`${tekstySzansy3[Math.floor(Math.random())]} 5000 od 1 poziomu 15000 od 2 poziomu, a od 3 25000`);
+            alert.innerText = (`${tekstySzansy3[Math.floor(Math.random())]} 5000 od 1 poziomu 15000 od 2 poziomu, a od 3 25000`);
             for(let i = 1; i <= ileJestGraczy; i++){
                 if(i === licznik) continue;
                 document.getElementById(`ba${licznik}`).innerHTML = bilans[licznik] -= szansy3[poziom[licznik]];
@@ -522,7 +526,7 @@ function szansa(){
             }
             break;
         case 2:
-            alert('Masz szansę na wygraną, kliknij na targ, żeby zagrać. Im większy poziom tym większa sznsa');
+            alert.innerText = ('Masz szansę na wygraną, kliknij na targ, żeby zagrać. Im większy poziom tym większa sznsa');
             for(let i = 1; i <= ileJestGraczy; i++){
                 gracze[i].removeEventListener('click', tura);
             }
@@ -531,7 +535,7 @@ function szansa(){
             break;
         case 3:
             const ktoryTekst = Math.floor(Math.random() * 3);
-            alert(tekstySzansy4[ktoryTekst]);
+            alert.innerText = (tekstySzansy4[ktoryTekst]);
             switch (ktoryTekst) {
                 case 0:
                     $('#'+pionek[licznik]+liczbaOczek[licznik]).css('opacity', '0');
@@ -593,7 +597,7 @@ function tura(){
     zmianaPoziomu();
     $(`#${pionek[licznik]}${liczbaOczek[licznik]}`).css('opacity', '1');
     if(liczbaOczek[licznik] === 24){
-        alert('idziesz do więzienia!');
+        alert.innerText = ('idziesz do więzienia!');
         $('#targ').html('');
         $(`#${pionek[licznik]}${liczbaOczek[licznik]}`).css('opacity', '0');
         liczbaOczek[licznik] = 8;
@@ -713,12 +717,12 @@ if(bilans[licznik] >= 1_000_000 || bilans[licznik + 1] >= 1_000_000){
     $('#podtran').removeClass('karta').html('');
     $('#przymtran').removeClass('karta').html('');
     $('#domy').removeClass('karta').html('');
-    alert('Wygrana, jeden z graczy został milionerem');
+    alert.innerText = ('Wygrana, jeden z graczy został milionerem');
 }
 else if(bilans[licznik] <= 0 || bilans[licznik + 1] <= 0){
     if(bilans.reduce(arg => arg + arg) === 0) return;
     nadajKlikBilansom();
-    alert(`gracz ${licznik} zbankrutował i jego kolejka przepada`);
+    alert.innerText = (`gracz ${licznik} zbankrutował i jego kolejka przepada`);
 } else {
     nadajKlikBilansom();
 }
