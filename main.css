@@ -31,7 +31,7 @@ body {
   left: 4.5rem;
   bottom: 1.2rem;
 }
-.zamkniecie-tooltipa {
+.strzałkaIksa {
   position: inherit;
   left: 8.6rem;
   bottom: 7.7rem;
@@ -41,9 +41,16 @@ body {
   transform: rotate(45deg);
   cursor: pointer;
 }
-.zamkniecie-tooltipa2 {
+.strzałkaIksa2 {
   bottom: 9rem;
   transform: rotate(-45deg);
+}
+.zamkniecie_tooltipa {
+  width: 1.2rem;
+  height: 1.1rem;
+  margin-left: 8.5rem;
+  margin-top: -10.8rem;
+  cursor: pointer;
 }
 .balanse-graczy {
 }
@@ -319,7 +326,7 @@ noscript {
 #alert {
   position: absolute;
   width: 17rem;
-  height: 3rem;
+  height: 5rem;
   background-color: aquamarine;
   top: 24rem;
   left: 10rem;
