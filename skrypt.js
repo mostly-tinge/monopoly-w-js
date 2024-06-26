@@ -1,39 +1,24 @@
 let czyLiczbaJestWybrana = false;
 let ileJestGraczy = 1;
-while(czyLiczbaJestWybrana === false){
-    const iloscGraczy = prompt('podaj liczbe graczy: ');
-    if(iloscGraczy > 1 && iloscGraczy < 5){
-        czyLiczbaJestWybrana = true;
-        for(let i = ileJestGraczy; i < iloscGraczy; i++){
-            ileJestGraczy++;
-        }
-    } else {
-        alert('Podaj własciwą liczbę');
-    }
-}
 let bilans = ['', 372_000, 372_000, 372_000, 372_000];
 let licznik = 1;//licznik jest po to, aby program wiedział czyja jest tura
 const balans1 = document.getElementById('ba1'), balans2 = document.getElementById('ba2');
 const balans3 = document.getElementById('ba3'), balans4 = document.getElementById('ba4');
-function stworzPowiadomienie(){
-    //const alert = document.createElement('div');
-    //alert.innerText = 'To jest alert';
-}   
-stworzPowiadomienie();
 setTimeout(() => {
-    const toolTip = document.createElement('span');
-    const toolTipArrow = document.createElement('div');
-    const zamkniecieTooltipa = document.createElement('p');
-    const zamkniecieTooltipa2 = document.createElement('p');
+    const toolTip = document.createElement('span'), toolTipArrow = document.createElement('div');
+    const strzałkaIksa1 = document.createElement('p'), strzałkaIksa2 = document.createElement('p');
+    const zamkniecieTooltipa = document.createElement('div');
     toolTip.innerText = 'Kliknij na bilansy graczy, aby się poruszyć';
     $(toolTip).addClass('tooltip');
     $(toolTipArrow).addClass('tooltip-arrow');
-    $(zamkniecieTooltipa).addClass('zamkniecie-tooltipa');
-    $(zamkniecieTooltipa2).addClass('zamkniecie-tooltipa').addClass('zamkniecie-tooltipa2');
+    $(strzałkaIksa1).addClass('strzałkaIksa');
+    $(strzałkaIksa2).addClass('strzałkaIksa').addClass('strzałkaIksa2');
+    $(zamkniecieTooltipa).addClass('zamkniecie_tooltipa');
     balans1.appendChild(toolTip);
     toolTip.appendChild(toolTipArrow);
+    toolTip.appendChild(strzałkaIksa1);
+    toolTip.appendChild(strzałkaIksa2);
     toolTip.appendChild(zamkniecieTooltipa);
-    toolTip.appendChild(zamkniecieTooltipa2);
     balans1.removeEventListener('click', tura);
     const zamknijTooltipa = () => {
         const toolTip = document.querySelector('span');
@@ -43,7 +28,8 @@ setTimeout(() => {
         setTimeout(() => balans1.addEventListener('click', tura), 0);
     }
     zamkniecieTooltipa.addEventListener('click', zamknijTooltipa);
-    zamkniecieTooltipa2.addEventListener('click', zamknijTooltipa);
+    strzałkaIksa1.addEventListener('click', zamknijTooltipa);
+    strzałkaIksa2.addEventListener('click', zamknijTooltipa);
 }, 0);
 const gracze = ['', balans1, balans2, balans3, balans4];
 for(let i = 4; i > ileJestGraczy; i--){
@@ -57,7 +43,21 @@ gracze.forEach((ele, index) => {
 const podtr = document.querySelector("#podtran"), targ = document.querySelector("#targ");
 const balansPlusLicznik = document.getElementById(`ba${licznik}`), domy = document.querySelector("#domy");
 const wszystkieDzialki = document.getElementsByClassName('dzialki'), alert = document.getElementById('alert');
-
+//while(czyLiczbaJestWybrana === false){
+    const iloscGraczy = document.createElement('div'), gejmerzy = document.getElementById('gracze');
+    $(iloscGraczy).css('position', 'absolute').css('height', '8rem').css('bottom', '28rem').css('background-color', 'aqua').css('width', '8rem');
+    $(iloscGraczy).css('left', '42rem')
+    gejmerzy.appendChild(iloscGraczy);
+    //iloscGraczy.addEventListener("click")
+    console.log(iloscGraczy.value)
+    if(iloscGraczy.value > 4) iloscGraczy.value == 4
+    /*if(iloscGraczy > 1 && iloscGraczy < 5){
+        czyLiczbaJestWybrana = true;
+        for(let i = ileJestGraczy; i < iloscGraczy; i++){
+            ileJestGraczy++;
+        }
+    }*/
+//}
 const przytr = document.getElementById("przymtran");
 let wiekszaSzansa = false, czynsz = ['', 0, 0, 0, 0];
 
