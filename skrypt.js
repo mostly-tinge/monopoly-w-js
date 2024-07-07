@@ -4,33 +4,37 @@ let bilans = ['', 372_000, 372_000, 372_000, 372_000];
 let licznik = 1;//licznik jest po to, aby program wiedział czyja jest tura
 const balans1 = document.getElementById('ba1'), balans2 = document.getElementById('ba2');
 const balans3 = document.getElementById('ba3'), balans4 = document.getElementById('ba4');
-setTimeout(() => {
+function stworzTooltipa(textTooltipa, elementRodzic, funkcjaDodatkowa){
     const toolTip = document.createElement('span'), toolTipArrow = document.createElement('div');
     const strzałkaIksa1 = document.createElement('p'), strzałkaIksa2 = document.createElement('p');
     const zamkniecieTooltipa = document.createElement('div');
-    toolTip.innerText = 'Kliknij na bilansy graczy, aby się poruszyć';
+    toolTip.innerText = textTooltipa;
     $(toolTip).addClass('tooltip');
     $(toolTipArrow).addClass('tooltip-arrow');
     $(strzałkaIksa1).addClass('strzałkaIksa');
     $(strzałkaIksa2).addClass('strzałkaIksa').addClass('strzałkaIksa2');
     $(zamkniecieTooltipa).addClass('zamkniecie_tooltipa');
-    balans1.appendChild(toolTip);
+    elementRodzic.appendChild(toolTip);
     toolTip.appendChild(toolTipArrow);
     toolTip.appendChild(strzałkaIksa1);
     toolTip.appendChild(strzałkaIksa2);
     toolTip.appendChild(zamkniecieTooltipa);
-    balans1.removeEventListener('click', tura);
+    elementRodzic.removeEventListener('click', tura);
     const zamknijTooltipa = () => {
-        const toolTip = document.querySelector('span');
         if(toolTip){
             toolTip.remove();
-        }
-        setTimeout(() => balans1.addEventListener('click', tura), 0);
+            setTimeout(() => funkcjaDodatkowa(), 10);
+        }     
     }
     zamkniecieTooltipa.addEventListener('click', zamknijTooltipa);
     strzałkaIksa1.addEventListener('click', zamknijTooltipa);
     strzałkaIksa2.addEventListener('click', zamknijTooltipa);
-}, 0);
+}
+const dodajTure = () => {
+    balans1.addEventListener('click', tura);
+    scrollTo({top: 0,
+        left: 0,
+        behavior: "smooth"});}
 const gracze = ['', balans1, balans2, balans3, balans4];
 for(let i = 4; i > ileJestGraczy; i--){
     gracze.pop();
@@ -45,10 +49,11 @@ const balansPlusLicznik = document.getElementById(`ba${licznik}`), domy = docume
 const wszystkieDzialki = document.getElementsByClassName('dzialki'), alert = document.getElementById('alert');
 //while(czyLiczbaJestWybrana === false){
     const iloscGraczy = document.createElement('div'), gejmerzy = document.getElementById('gracze');
-    $(iloscGraczy).css('position', 'absolute').css('height', '8rem').css('bottom', '28rem').css('background-color', 'aqua').css('width', '8rem');
-    $(iloscGraczy).css('left', '42rem')
+    const costam = document.createElement('input');
+    gejmerzy.appendChild(costam);
+    $(costam).addClass('pole_ilosci_graczy');
+    $(iloscGraczy).addClass("ilosc-graczy");
     gejmerzy.appendChild(iloscGraczy);
-    //iloscGraczy.addEventListener("click")
     console.log(iloscGraczy.value)
     if(iloscGraczy.value > 4) iloscGraczy.value == 4
     /*if(iloscGraczy > 1 && iloscGraczy < 5){
@@ -58,6 +63,11 @@ const wszystkieDzialki = document.getElementsByClassName('dzialki'), alert = doc
         }
     }*/
 //}
+setTimeout(() => stworzTooltipa('Kliknij na bilansy graczy, aby się poruszyć 2/5', balans1, dodajTure), 10);
+const scrollujDoDolu = () => scrollTo({top: 700,
+    left: 0,
+    behavior: "smooth"})
+setTimeout(() => stworzTooltipa('Tu ustaw liczbę graczy (musi być od 2 do 4) 1/5', iloscGraczy, scrollujDoDolu), 10);
 const przytr = document.getElementById("przymtran");
 let wiekszaSzansa = false, czynsz = ['', 0, 0, 0, 0];
 
