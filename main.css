@@ -49,9 +49,13 @@ body {
   transform: rotate(-45deg);
 }
 .zamkniecie_tooltipa {
+  position: absolute;
+  left: 8.5rem;
+  bottom: 4.3rem;
   width: 1.2rem;
   height: 1.1rem;
   cursor: pointer;
+  border-radius: 50%;
 }
 .balanse-graczy {
 }
@@ -362,5 +366,5 @@ noscript {
   width: 4.5rem;
   height: 1.2rem;
   border-radius: 20%;
-  content: "potwierdź";
+  font-size: 0.6rem;
 }
