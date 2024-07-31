@@ -47,3 +47,4 @@
 <p>tura() - 527 linia: Wykonuje turę gracza i sprawdza czy któryś zbankrutował, albo został milionerem</p>
 
 21.03 '24 wersja 1.1 - dodano tryb 2 i trzech graczy i naprawiono rozjedżanie się pól po prawej.
+31.07 '24 wersja 1.2 - Dodano tooltipy, wybór ilości graczy i poprawiono nazwę pól.
