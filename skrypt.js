@@ -4,6 +4,9 @@ let bilans = ['', 372_000, 372_000, 372_000, 372_000];
 let licznik = 1;//licznik jest po to, aby program wiedział czyja jest tura
 const balans1 = document.getElementById('ba1'), balans2 = document.getElementById('ba2');
 const balans3 = document.getElementById('ba3'), balans4 = document.getElementById('ba4');
+const podtr = document.querySelector("#podtran"), targ = document.querySelector("#targ");
+const balansPlusLicznik = document.getElementById(`ba${licznik}`), domy = document.querySelector("#domy");
+const wszystkieDzialki = document.getElementsByClassName('dzialki'), alert = document.getElementById('alert');
 function stworzTooltipa(textTooltipa, elementRodzic, gdzieScrollowac, callback, styl) {
     const toolTip = document.createElement('span'), toolTipArrow = document.createElement('div');
     const strzałkaIksa1 = document.createElement('p'), strzałkaIksa2 = document.createElement('p');
@@ -34,21 +37,25 @@ function stworzTooltipa(textTooltipa, elementRodzic, gdzieScrollowac, callback, 
     strzałkaIksa1.addEventListener('click', zamknijTooltipa);
     strzałkaIksa2.addEventListener('click', zamknijTooltipa);
 }
-setTimeout(() => stworzTooltipa('Kliknij na bilansy graczy, aby się poruszyć 1/4', balans1, scrollujDoGóry, pokażJakWybraćIloscGraczy, null), 0);
+setTimeout(() => stworzTooltipa('Kliknij na bilansy graczy, aby się poruszyć 1/5', balans1, scrollujDoGóry, pokażJakWybraćIloscGraczy, null), 0);
 const pokażJakWybraćIloscGraczy = () => {
-    setTimeout(() => stworzTooltipa('Tu ustaw liczbę graczy (musi być od 2 do 4) 2/4', pudłoWyboru, scrollujDoDolu, pokażPionki, null), 10);
+    setTimeout(() => stworzTooltipa('Tu ustaw liczbę graczy (musi być od 2 do 4) 2/5', pudłoWyboru, scrollujDoDolu, pokażPionki, null), 10);
 }
 const pokażPionki = () => {
     const odkrywka = document.getElementById('k1');
     const styl = ['font-size', '0.85rem'];
-    function pokażTekstyOdkrywek() {
-        iloscGraczy.disabled = false;
-        const tekstyOdkrywek = document.getElementById('alert');
+    const tekstyOdkrywek = document.getElementById('alert');
+    function pokażTekstyOdkrywek(){
         tekstyOdkrywek.innerHTML = 'tak tu!';
-        const pustaFunkcja = () => tekstyOdkrywek.innerHTML = '';
-        setTimeout(() => stworzTooltipa('Tutaj pojawiają się treści odkrywek 4/4', tekstyOdkrywek, scrollujDoDolu, pustaFunkcja, null), 10); 
+        setTimeout(() => stworzTooltipa('Tutaj pojawiają się treści odkrywek 4/5', tekstyOdkrywek, scrollujDoDolu, pokażJakKupićDziałke, null), 10); 
     }
-    setTimeout(() => stworzTooltipa('Odkrywki są odsłaniane po pierwszym wkroczeniu na pole i aktywują losowe wydarzenie 3/4', odkrywka, scrollujDoGóry, pokażTekstyOdkrywek, styl), 10);
+    function pokażJakKupićDziałke(){
+        iloscGraczy.disabled = false;
+        potwierzenie.disabled = false;
+        tekstyOdkrywek.innerHTML = '';
+        setTimeout(() => stworzTooltipa('Tu można kupić działkę/domy do niej 5/5', targ, scrollujDoGóry, () => console.log(), null), 10);      
+    }
+    setTimeout(() => stworzTooltipa('Odkrywki są odsłaniane po pierwszym wkroczeniu na pole i aktywują losowe wydarzenie 3/5', odkrywka, scrollujDoGóry, pokażTekstyOdkrywek, styl), 10);
 }
 const scrollujDoGóry = () => {
     scrollTo({
@@ -65,61 +72,55 @@ const scrollujDoDolu = () => {
     })
 }
 const gracze = ['', balans1, balans2, balans3, balans4];
-/*for(let i = 4; i > ileJestGraczy; i--) {
-    gracze.pop();
-    bilans.pop();
-}
-gracze.forEach((ele, index) => {
-    ele.innerHTML = bilans[index];
-    $(ele).addClass('balans');
-});*/
 $(balans1).addClass('balans');
 balans1.innerHTML = bilans[1];
-const podtr = document.querySelector("#podtran"), targ = document.querySelector("#targ");
-const balansPlusLicznik = document.getElementById(`ba${licznik}`), domy = document.querySelector("#domy");
-const wszystkieDzialki = document.getElementsByClassName('dzialki'), alert = document.getElementById('alert');
-//while(czyLiczbaJestWybrana === false){
 const pudłoWyboru = document.createElement('div'), gejmerzy = document.getElementById('gracze');
 const iloscGraczy = document.createElement('input'), potwierzenie = document.createElement('button');
 iloscGraczy.addEventListener("input", poprawLiczbeGraczy);
+potwierzenie.addEventListener("click", potwierdźWybór);
 iloscGraczy.disabled = true;
 iloscGraczy.type = 'number';
 potwierzenie.disabled = true;
+potwierzenie.innerText = 'Tu potwierdź';
 gejmerzy.appendChild(iloscGraczy);
 gejmerzy.appendChild(potwierzenie);
 $(potwierzenie).addClass('potwierdzenie');
 $(iloscGraczy).addClass('pole-ilosci-graczy');
 $(pudłoWyboru).addClass("ilosc-graczy");
 gejmerzy.appendChild(pudłoWyboru);
-function potwierdźWybór() {
-    for (let i = 4; i > ileJestGraczy + 1; i--) {
+function potwierdźWybór(){
+    if(iloscGraczy.value > 5 || iloscGraczy.value < 1) return;
+    gejmerzy.removeChild(pudłoWyboru);
+    gejmerzy.removeChild(iloscGraczy);
+    gejmerzy.removeChild(potwierzenie);
+    ileJestGraczy = iloscGraczy.value;
+    for(let i = 4; i > ileJestGraczy; i--){
         gracze.pop();
         bilans.pop();
-    }
+    };
     gracze.forEach((ele, index) => {
         ele.innerHTML = bilans[index];
         $(ele).addClass('balans');
     });
+    balans1.addEventListener("click", tura);
 }
 function poprawLiczbeGraczy() {
-    if (iloscGraczy.value > 4) {
+    if(iloscGraczy.value > 4) {
         iloscGraczy.value = 4
     }
-    if (iloscGraczy.value < 2) {
+    if(iloscGraczy.value < 2) {
         iloscGraczy.value = 2
     }
 }
-console.log(iloscGraczy.value);
-if (iloscGraczy.value > 4) {
+if(iloscGraczy.value > 4) {
     iloscGraczy.value == 4
 }
-if (iloscGraczy.value > 1 && iloscGraczy.value < 5) {
+if(iloscGraczy.value > 1 && iloscGraczy.value < 5) {
     czyLiczbaJestWybrana = true;
     for (let i = ileJestGraczy; i < iloscGraczy; i++) {
         ileJestGraczy++;
     }
 }
-//}
 const przytr = document.getElementById("przymtran");
 let wiekszaSzansa = false, czynsz = ['', 0, 0, 0, 0];
 
@@ -532,7 +533,7 @@ function nagroda() {
     nadajKlikBilansom();
 }
 function szansa() {
-    const tekstySzansy1 = ["przeprowadzasz świetną transakcję biznesową! od wszystkich pozostałych graczy odtrzymujesz ",
+    const tekstySzansy1 = ["Przeprowadzasz świetną transakcję biznesową! od wszystkich pozostałych graczy odtrzymujesz ",
         "Właśnie obchodzisz urodziny! od wszystkich pozostałych graczy otrzymujesz "];
 
     const tekstySzansy2 = ["Weź udział w wyścigu motorówek! aby wygrać 50k zagraj", "Wyścig na prywatnym torze! aby wygrać 100k, zagraj",
@@ -544,7 +545,7 @@ function szansa() {
 
     const tekstySzansy4 = ["Idziesz prosto do więzienia", "Zaproszenie na ważną imprezę! zapłać 40k wybranemu graczowi za towarzystwo.",
         "Wysoko postawieni przyjaciele! zapłać 50k wybranemu graczowi za udział w jego premierze filmowej.",
-        "przepuściłeś sporą kwotę w szale wydawania pieniędzy! obniż status swojego pionka."];
+        "Przepuściłeś sporą kwotę w szale wydawania pieniędzy! obniż status swojego pionka."];
     const szansy1 = ['', 10_000, 30_000, 50_000], szansy3 = ['', 5000, 15_000, 25_000];
     const los = Math.floor(Math.random() * 3);
     function rzut() {
@@ -627,6 +628,8 @@ function szansa() {
     }
 }
 function tura() {
+    console.log(licznik);
+    console.log(liczbaOczek[licznik]);
     targ.removeEventListener('click', postawDom);
     targ.removeEventListener('click', postawHotel);
     targ.removeEventListener('click', zajmijDzialke);
