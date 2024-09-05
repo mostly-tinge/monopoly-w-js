@@ -177,7 +177,6 @@ body {
 }
 #dolne-pola {
   height: 5rem;
-  /*width: 90rem;*/
 }
 .balans {
   width: 8rem;
@@ -226,23 +225,24 @@ body {
   color: white;
 }
 .gracze {
+  position: absolute;
   width: 7.813rem;
   background-color: aquamarine;
   border: 3px purple solid;
   display: inline-block;
   height: 2.188rem;
-  margin-left: 11.25rem;
   color: black;
   text-align: center;
   font-size: 1.875rem;
 }
 .pionek {
-  width: 0.938rem;
-  height: 0.938rem;
+  width: 0.5rem;
+  height: 0.5rem;
   float: right;
   background-color: beige;
   border: burlywood 2px solid;
   color: black;
+  opacity: 0;
 }
 .srebrny {
   border: silver 2px solid;
@@ -261,13 +261,6 @@ body {
 }
 .normalny4 {
   border: navy 2px solid;
-}
-.pionek {
-  opacity: 0;
-  width: 0.5rem;
-  height: 0.5rem;
-  float: right;
-  color: black;
 }
 .p1 {
   background-color: black;
@@ -367,4 +360,119 @@ noscript {
   height: 1.2rem;
   border-radius: 20%;
   font-size: 0.6rem;
+}
+#a23 {
+  opacity: 100;
+}
+#b23 {
+  opacity: 100;
+}
+#c23 {
+  opacity: 100;
+}
+#e23 {
+  opacity: 100;
+}
+@media (max-width: 800px) {
+  /*.wiekszepole {
+    width: 5rem;
+    height: 2rem;
+  }
+  #policjant {
+    width: 6rem;
+  }
+  .dzialki {
+    width: 2.5rem;
+  }
+  .bocznaodkrywka2 {
+    width: 1.5rem;
+    height: 1rem;
+  }
+  .odkrywka2 {
+    width: 1.5rem;
+  }
+  .szansa {
+    width: 3rem;
+  }
+  #gracze {
+    width: 5rem;
+  }
+  .karta {
+    left: 14rem;
+  }
+  #pola-po-prawej {
+    left: 30rem;
+  }*/
+  #h23 {
+    opacity: 100;
+  }
+  #dom23-0 {
+    opacity: 100;
+  }
+  .dzialka2 {
+    width: 8rem;
+  }
+  #dom23-3 {
+    opacity: 100;
+  }
+  #dom23-2 {
+    opacity: 100;
+  }
+  #dom23-1 {
+    opacity: 100;
+  }
+  .hotel {
+    width: 1rem;
+  }
+  .domek {
+    width: 0.6rem;
+    height: 0.66rem;
+  }
+  .dzialki {
+    width: 3.5rem;
+  }
+  .odkrywka2 {
+    width: 2.5rem;
+  }
+  .szansa {
+    width: 3rem;
+  }
+  #policjant {
+    width: 6rem;
+  }
+  .wiekszepole {
+    width: 6rem;
+  }
+  #pola-po-prawej {
+    left: 33.5rem;
+  }
+  .bocznanagroda {
+    width: 3rem;
+  }
+  .bocznaodkrywka2 {
+    width: 1.5rem;
+    height: 4rem;
+  }
+  .bocznaszansa {
+    width: 3rem;
+  }
+  .nagroda {
+    width: 3rem;
+  }
+  #start {
+    width: 6rem;
+  }
+  #d25 {
+    margin-left: 0.5rem;
+  }
+  #d31 {
+    margin-left: 0.5rem;
+  }
+  .cena {
+    padding-right: 0.3rem;
+  }
+  .bocznacena {
+    font-size: 0.8rem;
+    padding-left: 0.5rem;
+  }
 }
