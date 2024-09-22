@@ -67,7 +67,7 @@ body {
   width: 8rem;
   background-color: aquamarine;
   border: 3px purple solid;
-  height: 3.2rem;
+  height: 2.5rem;
   color: black;
   text-align: center;
   font-size: 0.9rem;
@@ -224,16 +224,13 @@ body {
   margin-top: 0.313rem;
   color: white;
 }
-.gracze {
+#pudlo-wyboru {
+  left: 41.6rem;
   position: absolute;
-  width: 7.813rem;
-  background-color: aquamarine;
-  border: 3px purple solid;
-  display: inline-block;
-  height: 2.188rem;
-  color: black;
-  text-align: center;
-  font-size: 1.875rem;
+  height: 8rem;
+  width: 8rem;
+  bottom: 28rem;
+  background-color: aqua;
 }
 .pionek {
   width: 0.5rem;
@@ -298,7 +295,6 @@ body {
   border: brown 1px solid;
 }
 #targ {
-  margin-left: 42rem;
   margin-top: 2.6rem;
   font-size: 0.9rem;
   font-weight: 600;
@@ -340,10 +336,10 @@ noscript {
   bottom: 28rem;
   background-color: aqua;
 }
-.pole-ilosci-graczy {
+#pole-ilosci-graczy {
   position: absolute;
-  left: 43.1rem;
-  bottom: 32rem;
+  left: 1.5rem;
+  top: 2.2rem;
   z-index: 99;
   width: 3rem;
   border: crimson, 2px, solid;
@@ -351,11 +347,11 @@ noscript {
   height: 1.5rem;
   width: 4.8rem;
 }
-.potwierdzenie {
+#potwierdzenie {
   position: absolute;
-  left: 43.5rem;
-  bottom: 30rem;
-  z-index: 99;
+  left: 1.9rem;
+  top: 5rem;
+  z-index: 98;
   width: 4.5rem;
   height: 1.2rem;
   border-radius: 20%;
@@ -373,36 +369,10 @@ noscript {
 #e23 {
   opacity: 100;
 }
-@media (max-width: 800px) {
-  /*.wiekszepole {
-    width: 5rem;
-    height: 2rem;
+@media only screen and (max-height: 800px) {
+  #balanse > div {
+    margin-left: 1rem;
   }
-  #policjant {
-    width: 6rem;
-  }
-  .dzialki {
-    width: 2.5rem;
-  }
-  .bocznaodkrywka2 {
-    width: 1.5rem;
-    height: 1rem;
-  }
-  .odkrywka2 {
-    width: 1.5rem;
-  }
-  .szansa {
-    width: 3rem;
-  }
-  #gracze {
-    width: 5rem;
-  }
-  .karta {
-    left: 14rem;
-  }
-  #pola-po-prawej {
-    left: 30rem;
-  }*/
   #h23 {
     opacity: 100;
   }
@@ -448,6 +418,7 @@ noscript {
   }
   .bocznanagroda {
     width: 3rem;
+    font-size: 0.9rem;
   }
   .bocznaodkrywka2 {
     width: 1.5rem;
@@ -458,6 +429,7 @@ noscript {
   }
   .nagroda {
     width: 3rem;
+    font-size: 0.8rem;
   }
   #start {
     width: 6rem;
@@ -472,7 +444,39 @@ noscript {
     padding-right: 0.3rem;
   }
   .bocznacena {
-    font-size: 0.8rem;
-    padding-left: 0.5rem;
+    position: relative;
+    left: 0.4rem;
+    bottom: 0.1rem;
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+  }
+  #ba2 {
+    opacity: 100;
+  }
+  #ba3 {
+    opacity: 100;
+  }
+  #ba4 {
+    opacity: 100;
+  }
+  #pudlo-wyboru {
+    bottom: 10rem;
+    left: 15rem;
+  }
+  #zapiszywaniePostepu {
+    left: 14rem;
+    bottom: 38rem;
+  }
+  #przywrocPostep {
+    left: 14rem;
+  }
+  .karta {
+    left: 14rem;
+  }
+  #domy {
+    bottom: 52rem;
+  }
+  #podtran {
+    bottom: 47rem;
   }
 }
