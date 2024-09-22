@@ -380,7 +380,7 @@ noscript {
     opacity: 100;
   }
   .dzialka2 {
-    width: 8rem;
+    width: 9.2rem;
   }
   #dom23-3 {
     opacity: 100;
@@ -421,8 +421,8 @@ noscript {
     font-size: 0.9rem;
   }
   .bocznaodkrywka2 {
-    width: 1.5rem;
-    height: 4rem;
+    width: 1.8rem;
+    height: 4.8rem;
   }
   .bocznaszansa {
     width: 3rem;
@@ -460,8 +460,8 @@ noscript {
     opacity: 100;
   }
   #pudlo-wyboru {
-    bottom: 10rem;
-    left: 15rem;
+    //bottom: 10rem;
+    //left: 15rem;
   }
   #zapiszywaniePostepu {
     left: 14rem;
