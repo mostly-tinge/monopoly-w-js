@@ -337,9 +337,9 @@ noscript {
   background-color: aqua;
 }
 #pole-ilosci-graczy {
-  position: absolute;
-  left: 1.5rem;
-  top: 2.2rem;
+  position: inherit;
+  //left: 1.5rem;
+  //top: 2.2rem;
   z-index: 99;
   width: 3rem;
   border: crimson, 2px, solid;
@@ -349,8 +349,8 @@ noscript {
 }
 #potwierdzenie {
   position: absolute;
-  left: 1.9rem;
-  top: 5rem;
+  //left: 1.9rem;
+  //top: 5rem;
   z-index: 98;
   width: 4.5rem;
   height: 1.2rem;
@@ -460,8 +460,8 @@ noscript {
     opacity: 100;
   }
   #pudlo-wyboru {
-    bottom: 4rem;
-    left: 14.7rem;
+    bottom: 0rem;
+    left: 0rem;
   }
   #zapiszywaniePostepu {
     left: 14rem;
