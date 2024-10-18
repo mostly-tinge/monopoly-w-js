@@ -466,6 +466,12 @@ noscript {
     left: 15rem;
     bottom: 0rem;
   }
+  #pole-ilosci-graczy {
+    left: 2rem;
+  }
+  #potwierdzenie {
+    bottom: 2rem;
+  }
   #zapiszywaniePostepu {
     left: 14rem;
     bottom: 38rem;
