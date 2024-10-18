@@ -21,7 +21,6 @@ const podtr = document.querySelector("#podtran"), targ = document.querySelector(
 const balansPlusLicznik = document.getElementById(`ba${licznik}`), domy = document.querySelector("#domy");
 const wszystkieDzialki = document.getElementsByClassName('dzialki'), alert = document.getElementById('alert');
 const poleIlosciGraczy = document.getElementById('pole-ilosci-graczy'), pudłoWyboru = document.getElementById('pudlo-wyboru');
-const potwierdzenie = document.getElementById('potwierdzenie');
 
 function stworzTooltipa(textTooltipa, elementRodzic, gdzieScrollowac, callback, styl) {
     const toolTip = document.createElement('span'), toolTipArrow = document.createElement('div');
@@ -55,7 +54,7 @@ function stworzTooltipa(textTooltipa, elementRodzic, gdzieScrollowac, callback, 
 }//
 setTimeout(() => stworzTooltipa('Kliknij na bilansy graczy, aby się poruszyć 1/5', balans1, scrollujDoGóry, pokażJakWybraćIloscGraczy, null), 0);
 const pokażJakWybraćIloscGraczy = () => {
-    setTimeout(() => stworzTooltipa('Tu ustaw liczbę graczy (musi być od 2 do 4) 2/5', potwierdzenie, scrollujDoDolu, pokażPionki, null), 10);
+    setTimeout(() => stworzTooltipa('Tu ustaw liczbę graczy (musi być od 2 do 4) 2/5', poleIlosciGraczy, scrollujDoDolu, pokażPionki, null), 10);
 }
 const pokażPionki = () => {
     const odkrywka = document.getElementById('k7');
@@ -66,6 +65,7 @@ const pokażPionki = () => {
         setTimeout(() => stworzTooltipa('Tutaj pojawiają się treści odkrywek 4/5', tekstyOdkrywek, scrollujDoDolu, pokażJakKupićDziałke, null), 10); 
     }
     function pokażJakKupićDziałke(){
+        const potwierdzenie = document.getElementById('potwierdzenie');
         poleIlosciGraczy.disabled = false;
         potwierdzenie.disabled = false;
         tekstyOdkrywek.innerHTML = '';
