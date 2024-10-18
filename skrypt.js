@@ -54,7 +54,7 @@ function stworzTooltipa(textTooltipa, elementRodzic, gdzieScrollowac, callback, 
 }//
 setTimeout(() => stworzTooltipa('Kliknij na bilansy graczy, aby się poruszyć 1/5', balans1, scrollujDoGóry, pokażJakWybraćIloscGraczy, null), 0);
 const pokażJakWybraćIloscGraczy = () => {
-    setTimeout(() => stworzTooltipa('Tu ustaw liczbę graczy (musi być od 2 do 4) 2/5', poleIlosciGraczy, scrollujDoDolu, pokażPionki, null), 10);
+    setTimeout(() => stworzTooltipa('Tu ustaw liczbę graczy (musi być od 2 do 4) 2/5', pudłoWyboru, scrollujDoDolu, pokażPionki, null), 10);
 }
 const pokażPionki = () => {
     const odkrywka = document.getElementById('k7');
