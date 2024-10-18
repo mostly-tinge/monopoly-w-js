@@ -467,10 +467,12 @@ noscript {
     bottom: 0rem;
   }
   #pole-ilosci-graczy {
-    left: 2rem;
+    top: 0.3rem;
+    left: 1.5rem;
   }
   #potwierdzenie {
     bottom: 2rem;
+    left: 0.8rem;
   }
   #zapiszywaniePostepu {
     left: 14rem;
