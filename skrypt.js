@@ -1,4 +1,17 @@
 let czyLiczbaJestWybrana = false;
+const dupa = window.matchMedia("(orientation:portrait)").matches;
+console.log(dupa);
+window.matchMedia("(orientation:portrait)").addEventListener("change", e => {
+    if (e.matches) {
+        console.log("pion");
+    } else {
+        console.log("poziom");
+    }
+})
+function isMobileDevice() {
+    return /Mobi|Android/i.test(navigator.userAgent);
+}
+console.log(isMobileDevice());
 let ileJestGraczy = 1;
 let bilans = ['', 372_000, 372_000, 372_000, 372_000];
 let licznik = 1;//licznik jest po to, aby program wiedział czyja jest tura
@@ -7,6 +20,9 @@ const balans3 = document.getElementById('ba3'), balans4 = document.getElementByI
 const podtr = document.querySelector("#podtran"), targ = document.querySelector("#targ");
 const balansPlusLicznik = document.getElementById(`ba${licznik}`), domy = document.querySelector("#domy");
 const wszystkieDzialki = document.getElementsByClassName('dzialki'), alert = document.getElementById('alert');
+const poleIlosciGraczy = document.getElementById('pole-ilosci-graczy'), pudłoWyboru = document.getElementById('pudlo-wyboru');
+const potwierdzenie = document.getElementById('potwierdzenie');
+
 function stworzTooltipa(textTooltipa, elementRodzic, gdzieScrollowac, callback, styl) {
     const toolTip = document.createElement('span'), toolTipArrow = document.createElement('div');
     const strzałkaIksa1 = document.createElement('p'), strzałkaIksa2 = document.createElement('p');
@@ -36,13 +52,13 @@ function stworzTooltipa(textTooltipa, elementRodzic, gdzieScrollowac, callback, 
     zamkniecieTooltipa.addEventListener('click', zamknijTooltipa);
     strzałkaIksa1.addEventListener('click', zamknijTooltipa);
     strzałkaIksa2.addEventListener('click', zamknijTooltipa);
-}
+}//
 setTimeout(() => stworzTooltipa('Kliknij na bilansy graczy, aby się poruszyć 1/5', balans1, scrollujDoGóry, pokażJakWybraćIloscGraczy, null), 0);
 const pokażJakWybraćIloscGraczy = () => {
-    setTimeout(() => stworzTooltipa('Tu ustaw liczbę graczy (musi być od 2 do 4) 2/5', pudłoWyboru, scrollujDoDolu, pokażPionki, null), 10);
+    setTimeout(() => stworzTooltipa('Tu ustaw liczbę graczy (musi być od 2 do 4) 2/5', potwierdzenie, scrollujDoDolu, pokażPionki, null), 10);
 }
 const pokażPionki = () => {
-    const odkrywka = document.getElementById('k1');
+    const odkrywka = document.getElementById('k7');
     const styl = ['font-size', '0.85rem'];
     const tekstyOdkrywek = document.getElementById('alert');
     function pokażTekstyOdkrywek(){
@@ -50,9 +66,10 @@ const pokażPionki = () => {
         setTimeout(() => stworzTooltipa('Tutaj pojawiają się treści odkrywek 4/5', tekstyOdkrywek, scrollujDoDolu, pokażJakKupićDziałke, null), 10); 
     }
     function pokażJakKupićDziałke(){
-        iloscGraczy.disabled = false;
-        potwierzenie.disabled = false;
+        poleIlosciGraczy.disabled = false;
+        potwierdzenie.disabled = false;
         tekstyOdkrywek.innerHTML = '';
+        potwierdzenie.addEventListener("click", potwierdźWybór);
         setTimeout(() => stworzTooltipa('Tu można kupić działkę/domy do niej 5/5', targ, scrollujDoGóry, () => console.log(), null), 10);      
     }
     setTimeout(() => stworzTooltipa('Odkrywki są odsłaniane po pierwszym wkroczeniu na pole i aktywują losowe wydarzenie 3/5', odkrywka, scrollujDoGóry, pokażTekstyOdkrywek, styl), 10);
@@ -74,26 +91,10 @@ const scrollujDoDolu = () => {
 const gracze = ['', balans1, balans2, balans3, balans4];
 $(balans1).addClass('balans');
 balans1.innerHTML = bilans[1];
-const pudłoWyboru = document.createElement('div'), gejmerzy = document.getElementById('gracze');
-const iloscGraczy = document.createElement('input'), potwierzenie = document.createElement('button');
-iloscGraczy.addEventListener("input", poprawLiczbeGraczy);
-potwierzenie.addEventListener("click", potwierdźWybór);
-iloscGraczy.disabled = true;
-iloscGraczy.type = 'number';
-potwierzenie.disabled = true;
-potwierzenie.innerText = 'Tu potwierdź';
-gejmerzy.appendChild(iloscGraczy);
-gejmerzy.appendChild(potwierzenie);
-$(potwierzenie).addClass('potwierdzenie');
-$(iloscGraczy).addClass('pole-ilosci-graczy');
-$(pudłoWyboru).addClass("ilosc-graczy");
-gejmerzy.appendChild(pudłoWyboru);
 function potwierdźWybór(){
-    if(iloscGraczy.value > 5 || iloscGraczy.value < 1) return;
-    gejmerzy.removeChild(pudłoWyboru);
-    gejmerzy.removeChild(iloscGraczy);
-    gejmerzy.removeChild(potwierzenie);
-    ileJestGraczy = iloscGraczy.value;
+    console.log('hhh');
+    if(poleIlosciGraczy.value > 5 || poleIlosciGraczy.value < 1) return;
+    ileJestGraczy = poleIlosciGraczy.value;
     for(let i = 4; i > ileJestGraczy; i--){
         gracze.pop();
         bilans.pop();
@@ -103,23 +104,7 @@ function potwierdźWybór(){
         $(ele).addClass('balans');
     });
     balans1.addEventListener("click", tura);
-}
-function poprawLiczbeGraczy() {
-    if(iloscGraczy.value > 4) {
-        iloscGraczy.value = 4
-    }
-    if(iloscGraczy.value < 2) {
-        iloscGraczy.value = 2
-    }
-}
-if(iloscGraczy.value > 4) {
-    iloscGraczy.value == 4
-}
-if(iloscGraczy.value > 1 && iloscGraczy.value < 5) {
-    czyLiczbaJestWybrana = true;
-    for (let i = ileJestGraczy; i < iloscGraczy; i++) {
-        ileJestGraczy++;
-    }
+    $(pudłoWyboru).css('display', 'none');
 }
 const przytr = document.getElementById("przymtran");
 let wiekszaSzansa = false, czynsz = ['', 0, 0, 0, 0];
