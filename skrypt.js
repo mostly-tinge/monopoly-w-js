@@ -134,6 +134,8 @@ $('.p1').addClass('normalny1'); $('.p2').addClass('normalny2'); $('.p3').addClas
 const zapiszywaniePostepu = document.getElementById('zapiszywaniePostepu'), przywrocaniePostepu = document.getElementById('przywrocPostep');
 $(zapiszywaniePostepu).addClass('karta').addClass('klik').html('Czy chcesz zapisać postęp?');
 $(przywrocaniePostepu).addClass('karta').addClass('klik').html('Czy chcesz przywrócić postęp?');
+$(Przytr).addClass('karta').addClass('klik');
+$(podtr).addClass('karta').addClass('klik')
 zapiszywaniePostepu.addEventListener("click", zapiszPostep);
 przywrocaniePostepu.addEventListener("click", przywrocPostep);
 
