@@ -323,7 +323,7 @@ noscript {
   height: 5rem;
   background-color: aquamarine;
   top: 24rem;
-  left: 37rem;
+  left: 10rem;
   border: 3px purple solid;
   color: black;
   text-align: center;
@@ -338,9 +338,8 @@ noscript {
 }
 #pole-ilosci-graczy {
   position: inherit;
-  left: 1.5rem;
-  top: 2.2rem;
-  z-index: 99;
+  //left: 1.5rem;
+  //top: 2.2rem;
   width: 3rem;
   border: crimson, 2px, solid;
   background-color: white;
@@ -349,15 +348,27 @@ noscript {
 }
 #potwierdzenie {
   position: absolute;
-  left: 1.9rem;
-  top: 5rem;
+  //left: 1.9rem;
+  //top: 5rem;
   z-index: 98;
   width: 4.5rem;
   height: 1.2rem;
   border-radius: 20%;
   font-size: 0.6rem;
 }
-@media only screen and (max-width: 800px) {
+#a23 {
+  opacity: 100;
+}
+#b23 {
+  opacity: 100;
+}
+#c23 {
+  opacity: 100;
+}
+#e23 {
+  opacity: 100;
+}
+@media only screen and (max-height: 800px) {
   #balanse > div {
     margin-left: 1rem;
   }
@@ -365,53 +376,47 @@ noscript {
     width: 9.2rem;
   }
   .hotel {
-    width: 1.3rem;
+    width: 1rem;
   }
   .domek {
     width: 0.6rem;
     height: 0.66rem;
   }
   .dzialki {
-    width: 4rem;
+    width: 3.5rem;
   }
   .odkrywka2 {
-    width: 2.9rem;
+    width: 2.5rem;
   }
   .szansa {
-    width: 4rem;
+    width: 3rem;
   }
   #policjant {
-    width: 8rem;
+    width: 6rem;
   }
   .wiekszepole {
-    width: 8rem;
+    width: 6rem;
   }
   #pola-po-prawej {
-    left: 41.5rem;
+    left: 33.5rem;
   }
   .bocznanagroda {
-    width: 3.5rem;
-    font-size: 1rem;
+    width: 3rem;
+    font-size: 0.9rem;
   }
   .bocznaodkrywka2 {
     width: 1.8rem;
-    height: 4.5rem;
+    height: 4.8rem;
   }
   .bocznaszansa {
-    width: 3.5rem;
+    width: 3rem;
   }
   .nagroda {
-    width: 4rem;
-    font-size: 1rem;
+    width: 3rem;
+    font-size: 0.8rem;
   }
   #start {
-    width: 8rem;
-  }
-  #d25 {
-    margin-left: 0.5rem;
-  }
-  #d31 {
-    margin-left: 0.5rem;
+    width: 6rem;
   }
   .cena {
     padding-right: 0.3rem;
@@ -426,35 +431,32 @@ noscript {
   #pudlo-wyboru {
     position: absolute;
     top: 13rem;
-    right: 18.75rem;
-    left: 18rem;
+    right: 300px;
+    left: 19rem;
     bottom: 0rem;
   }
   #pole-ilosci-graczy {
-    top: 0.3rem;
+    top: 1.2rem;
     left: 1.5rem;
   }
   #potwierdzenie {
     bottom: 2rem;
-    left: 0.8rem;
+    left: 2rem;
   }
   #zapiszywaniePostepu {
-    left: 17rem;
-    bottom: 40rem;
+    left: 14rem;
+    bottom: 38rem;
   }
   #przywrocPostep {
-    left: 17rem;
+    left: 14rem;
   }
   .karta {
-    left: 17rem;
+    left: 14rem;
   }
   #domy {
     bottom: 52rem;
   }
   #podtran {
     bottom: 47rem;
-  }
-  #alert {
-    left: 13rem;
   }
 }
