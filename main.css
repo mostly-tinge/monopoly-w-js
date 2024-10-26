@@ -323,7 +323,7 @@ noscript {
   height: 5rem;
   background-color: aquamarine;
   top: 24rem;
-  left: 10rem;
+  left: 37rem;
   border: 3px purple solid;
   color: black;
   text-align: center;
@@ -338,8 +338,9 @@ noscript {
 }
 #pole-ilosci-graczy {
   position: inherit;
-  //left: 1.5rem;
-  //top: 2.2rem;
+  left: 1.5rem;
+  top: 2.2rem;
+  z-index: 99;
   width: 3rem;
   border: crimson, 2px, solid;
   background-color: white;
@@ -348,90 +349,63 @@ noscript {
 }
 #potwierdzenie {
   position: absolute;
-  //left: 1.9rem;
-  //top: 5rem;
+  left: 1.9rem;
+  top: 5rem;
   z-index: 98;
   width: 4.5rem;
   height: 1.2rem;
   border-radius: 20%;
   font-size: 0.6rem;
 }
-#a23 {
-  opacity: 100;
-}
-#b23 {
-  opacity: 100;
-}
-#c23 {
-  opacity: 100;
-}
-#e23 {
-  opacity: 100;
-}
-@media only screen and (max-height: 800px) {
+@media only screen and (max-width: 800px) {
   #balanse > div {
     margin-left: 1rem;
-  }
-  #h23 {
-    opacity: 100;
-  }
-  #dom23-0 {
-    opacity: 100;
   }
   .dzialka2 {
     width: 9.2rem;
   }
-  #dom23-3 {
-    opacity: 100;
-  }
-  #dom23-2 {
-    opacity: 100;
-  }
-  #dom23-1 {
-    opacity: 100;
-  }
   .hotel {
-    width: 1rem;
+    width: 1.3rem;
   }
   .domek {
     width: 0.6rem;
     height: 0.66rem;
   }
   .dzialki {
-    width: 3.5rem;
+    width: 4rem;
   }
   .odkrywka2 {
-    width: 2.5rem;
+    width: 2.9rem;
   }
   .szansa {
-    width: 3rem;
+    width: 4rem;
   }
   #policjant {
-    width: 6rem;
+    width: 8rem;
   }
   .wiekszepole {
-    width: 6rem;
+    width: 8rem;
   }
   #pola-po-prawej {
-    left: 33.5rem;
+    left: 41.5rem;
   }
   .bocznanagroda {
-    width: 3rem;
-    font-size: 0.9rem;
+    width: 3.5rem;
+    font-size: 1rem;
   }
   .bocznaodkrywka2 {
     width: 1.8rem;
-    height: 4.8rem;
+    height: 4.5rem;
   }
   .bocznaszansa {
-    width: 3rem;
+    width: 3.5rem;
   }
   .nagroda {
-    width: 3rem;
-    font-size: 0.8rem;
+    width: 4rem;
+    font-size: 1rem;
   }
   #start {
-    width: 6rem;
+    width: 8rem;
   }
   #d25 {
     margin-left: 0.5rem;
@@ -449,44 +423,38 @@ noscript {
     font-size: 0.9rem;
     margin-left: 0.5rem;
   }
-  #ba2 {
-    opacity: 100;
-  }
-  #ba3 {
-    opacity: 100;
-  }
-  #ba4 {
-    opacity: 100;
-  }
   #pudlo-wyboru {
     position: absolute;
     top: 13rem;
-    right: 300px;
-    left: 19rem;
+    right: 18.75rem;
+    left: 18rem;
     bottom: 0rem;
   }
   #pole-ilosci-graczy {
-    top: 1.2rem;
+    top: 0.3rem;
     left: 1.5rem;
   }
   #potwierdzenie {
     bottom: 2rem;
-    left: 2rem;
+    left: 0.8rem;
   }
   #zapiszywaniePostepu {
-    left: 14rem;
-    bottom: 38rem;
+    left: 17rem;
+    bottom: 40rem;
   }
   #przywrocPostep {
-    left: 14rem;
+    left: 17rem;
   }
   .karta {
-    left: 14rem;
+    left: 17rem;
   }
   #domy {
     bottom: 52rem;
   }
   #podtran {
     bottom: 47rem;
+  }
+  #alert {
+    left: 13rem;
   }
 }
