@@ -368,7 +368,7 @@ noscript {
 #e23 {
   opacity: 100;
 }
-@media only screen and (max-height: 800px) {
+@media only screen and (max-width: 800px) {
   #balanse > div {
     margin-left: 1rem;
   }
