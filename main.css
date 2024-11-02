@@ -338,8 +338,8 @@ noscript {
 }
 #pole-ilosci-graczy {
   position: inherit;
-  //left: 1.5rem;
-  //top: 2.2rem;
+  left: 1.5rem;
+  top: 2.2rem;
   width: 3rem;
   border: crimson, 2px, solid;
   background-color: white;
@@ -348,8 +348,8 @@ noscript {
 }
 #potwierdzenie {
   position: absolute;
-  //left: 1.9rem;
-  //top: 5rem;
+  left: 1.9rem;
+  top: 5rem;
   z-index: 98;
   width: 4.5rem;
   height: 1.2rem;
