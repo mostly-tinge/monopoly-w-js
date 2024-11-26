@@ -47,4 +47,4 @@
 
 21.03 '24 wersja 1.1 - dodano tryb 2 i trzech graczy i naprawiono rozjedżanie się pól po prawej<br>
 31.07 '24 wersja 1.2 - Dodano tooltipy, wybór ilości graczy i poprawiono nazwę pól<br>
-26.11 '24 wersja 1.3 - Poprawiono dokumentację i naprawiono błąd w którym gracze mogli kupić działki domki i hotele będąc bankrutami
+26.11 '24 wersja 1.3 - Poprawiono dokumentację i naprawiono błąd w którym gracze mogli kupić działki domki i hotele będąc bankrutami. Dodano także wersje mobilną choć nie jest jeszcze skończona
