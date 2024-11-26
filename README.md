@@ -1,16 +1,16 @@
                                                     Dokumentacja
    <h2>Opis funkcji- skrypt</h2>                                                               
-<p>zapiszPostep() - 48 linia: zapisuje postęp</p>
+<p>zapiszPostep() - 48 linia: zapisuje postęp(zapisany w wewnętrznej pamięki komputeraz)</p>
 <p>usunPostep() - 60 linia: usuwa postęp</p>
-<p>przywrocPostep() - 64 linia: wczytuje postęp(Opcjonalnie można użyć, żeby cofnąć jakąś akcje.).</p>
-<p>zmianaPoziomu() - 77 linia: ustawia poziom(Zaczyna się od 1) przy każdym przekroczeniu startu. Przy drugim poziomie pionek ma srebrną obwódke, a przy trzecim złotą. Przy przekroczeniu z trzecim poziomem dostaje się 250k(W oryginale można było wybrać pomiędzy kasą, a poziomem na niższych progach, ale uznałem to za niepotrzebne).</p>
+<p>przywrocPostep() - 64 linia: wczytuje postęp(Opcjonalnie można użyć, żeby cofnąć jakąś akcje.)</p>
+<p>zmianaPoziomu() - 77 linia: ustawia poziom(Zaczyna się od 1) przy każdym przekroczeniu startu. Przy drugim poziomie pionek ma srebrną obwódke, a przy trzecim złotą. Przy przekroczeniu z trzecim poziomem dostaje się 250k(W oryginale można było wybrać pomiędzy kasą, a poziomem na niższych progach, ale uznałem to za niepotrzebne)</p>
 
 <p>postawHotel() - 96 linia: Stawia hotel jeżeli gracz ma wykupione wszystkie domy.</p>
-<p>postawDom() - 111 linia: Stawia dom jeżeli gracz posiada działke.</p>
-<p>zmianaKoloruOdkrywki() - 134 linia: Ustawia kolor działki przy jej zajęciu(zarówne te normalne jak i te przez limuzyne).</p>
-<p>zajmijDzialke() - 144 linia: Zajmuje działke(Ustawia kolor ceny ten sam co gracza).</p>
+<p>postawDom() - 111 linia: Stawia dom jeżeli gracz posiada działke. Sprawdza także czy gracz może go kupić(Taka sama mechanika jest w poprzedniej funkcji)</p>
+<p>zmianaKoloruOdkrywki() - 134 linia: Ustawia kolor działki przy jej zajęciu(zarówne te normalne jak i te przez podróż)</p>
+<p>zajmijDzialke() - 144 linia: Zajmuje działke(Ustawia kolor ceny ten sam co gracza)</p>
 
-<p>nadajKlikBilansom() - 163 linia: Nadaje cursor: pointer balansowi i ustawia licznik.</p>
+<p>nadajKlikBilansom() - 163 linia: Nadaje cursor: pointer następnemu balansowi i przestawia licznik</p>
 <p>dajInnemuGraczowi() - 173 linia: Daje innemu graczowi 40 tyś lub 50 tyś </p>
 <p>dom() - 190 linia: Daje graczowi dom</p>
 
