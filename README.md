@@ -1,5 +1,5 @@
                                                     Dokumentacja
-   <h3>Opis funkcji</h3>                                                               
+   <h2>Opis funkcji- skrypt</h2>                                                               
 <p>zapiszPostep() - 48 linia: zapisuje postęp</p>
 <p>usunPostep() - 60 linia: usuwa postęp</p>
 <p>przywrocPostep() - 64 linia: wczytuje postęp(Opcjonalnie można użyć, żeby cofnąć jakąś akcje.).</p>
