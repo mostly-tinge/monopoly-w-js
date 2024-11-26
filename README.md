@@ -1,4 +1,4 @@
-                                                        Dokumentacja
+                                                    Dokumentacja
    <h3>Opis funkcji</h3>                                                               
 <p>zapiszPostep() - 48 linia: zapisuje postęp</p>
 <p>usunPostep() - 60 linia: usuwa postęp</p>
