@@ -44,9 +44,10 @@
 <p>szansa() - 429 linia: Losuje Szansę</p>
 <p>tura() - 527 linia: Wykonuje turę gracza i sprawdza czy któryś zbankrutował, albo został milionerem(zostanie nim oznacza koniec gry)</p>
 
-21.03 '24 wersja 1.1 - dodano tryb 2 i trzech graczy i naprawiono rozjedżanie się pól po prawej<br>
-31.07 '24 wersja 1.2 - Dodano tooltipy, wybór ilości graczy i poprawiono nazwę pól<br>
-26.11 '24 wersja 1.3 - Poprawiono dokumentację i naprawiono błąd w którym gracze mogli kupić działki domki i hotele będąc bankrutami. Dodano także wersje mobilną choć nie jest jeszcze skończona
+21.03 '24 wersja 0.8 - dodano tryb 2 i trzech graczy i naprawiono rozjedżanie się pól po prawej<br>
+31.07 '24 wersja 0.9 - Dodano tooltipy, wybór ilości graczy i poprawiono nazwę pól<br>
+26.11 '24 wersja 0.9.5 - Poprawiono dokumentację i naprawiono błąd w którym gracze mogli kupić działki domki i hotele będąc bankrutami. Dodano także wersje mobilną choć nie jest jeszcze skończona<br>
+14.03 '25 wersja 1.0.0 - Monopoly jest w pełni funkcjonalne choć jeszcze nie ma funkcji mówiącej graczowi o obrocie telefonu do poziomu.
 
 <h2>html</h2>
 alert- Wyświetla treści odkrywek i wygranej
