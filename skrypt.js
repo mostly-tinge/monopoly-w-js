@@ -12,14 +12,12 @@ function isMobileDevice() {
     return /Mobi|Android/i.test(navigator.userAgent);
 }
 //console.log(isMobileDevice());
-let coSieKryjePodOdkrywkami = [inicjacjaPozewu, inicjacjaPozewu, inicjacjaPozewu, inicjacjaPozewu, inicjacjaPozewu, 
-    inicjacjaPozewu, inicjacjaPozewu, inicjacjaPozewu, inicjacjaPozewu, inicjacjaPozewu, 
-    inicjacjaPozewu, inicjacjaPozewu, inicjacjaPozewu, inicjacjaPozewu, inicjacjaPozewu, inicjacjaPozewu, inicjacjaPozewu, inicjacjaPozewu, inicjacjaPozewu, inicjacjaPozewu, inicjacjaPozewu];
+//do tego momentu są nie działąjące funkcje
+let coSieKryjePodOdkrywkami = [prezent, dom, dom, gest, zlyrating, dom, podtran, nicSieNieDzieje,
+    podroz, mieszkanie, dom, dom, inicjacjaPozewu, udzialy, limo, mieszkanie, przymtran, gest, gest, przymtran, podroz, limo];
 coSieKryjePodOdkrywkami.sort(() => Math.random() - 0.5);
-/*coSieKryjePodOdkrywkami = [prezent, dom, dom, gest, zlyrating, dom, podtran, nicSieNieDzieje,
-    podroz, mieszkanie, dom, dom, inicjacjaPozewu, udzialy, limo, mieszkanie, przymtran, gest, gest, przymtran, podroz, limo]; */
 let ileJestGraczy = 1;
-let bilans = ['', 372_000, 3_000, 372_000, 372_000];
+let bilans = ['', 372_000, 372_000, 372_000, 372_000];
 const cenyDomow = [0, 10_000, 0, 10_000, 15_000, 0, 15_000, 15_000, 0, 25_000, 25_000, 25_000, 30_000, 0, 30_000, 30_000, 0, 40_000, 0, 40_000, 40_000,
     45_000, 45_000, 45_000, 0, 50_000, 50_000, 0, 50_000, 0, 60_000, 60_000];
 let licznik = 1;//licznik jest po to, aby program wiedział czyja jest tura
@@ -208,7 +206,7 @@ function postawHotel() {
     $(`#dom${liczbaOczek[kopiaLicznika]}-1`).css('opacity', '0'); $(`#dom${liczbaOczek[kopiaLicznika]}-3`).css('opacity', '0');
     $(`#h${liczbaOczek[kopiaLicznika]}`).css('opacity', '1');
     ileJestDomowNaDzialce[liczbaOczek[kopiaLicznika]]++;
-    $(`#ba${kopiaLicznika}`).html(bilans[kopiaLicznika] -= cenyDomow[liczbaOczek[kopiaLicznika]]);
+    $(`ba${licznik}`).html(bilans[kopiaLicznika] -= cenyDomow[liczbaOczek[kopiaLicznika]]);
     targ.removeEventListener("click", postawHotel);
     $('#targ').removeClass('klik').html('');
 }
@@ -221,7 +219,7 @@ function postawDom() {
     }
     if(cenyDomow[liczbaOczek[kopiaLicznika]] > bilans[kopiaLicznika]) return $('#targ').html('Nie stać cię na dom!').removeClass('klik');
     if (czyDomJestZaDarmo === false) {
-        $(`#ba${kopiaLicznika}`).html(bilans[kopiaLicznika] -= cenyDomow[liczbaOczek[kopiaLicznika]]);
+        $(`ba${licznik}`).html(bilans[kopiaLicznika] -= cenyDomow[liczbaOczek[kopiaLicznika]]);
     }
     $(`#dom${liczbaOczek[kopiaLicznika]}-${ileJestDomowNaDzialce[liczbaOczek[kopiaLicznika]]}`).css('opacity', '1');
     ileJestDomowNaDzialce[liczbaOczek[kopiaLicznika]]++;
@@ -256,7 +254,7 @@ function zajmijDzialke() {
         kopiaLicznika--;
     }
     if(cenyDzialek[liczbaOczek[kopiaLicznika]] > bilans[kopiaLicznika]) return $('#targ').html('Nie stać cię na działke!');
-    $(`#ba${kopiaLicznika}`).html(bilans[kopiaLicznika] -= cenyDzialek[liczbaOczek[kopiaLicznika]]);
+    $(`ba${licznik}`).html(bilans[kopiaLicznika] -= cenyDzialek[liczbaOczek[kopiaLicznika]]);
     $(`#k${liczbaOczek[kopiaLicznika]}`).css('color', koloryDzialek[kopiaLicznika]);
     kupionaPrzezKogo[liczbaOczek[kopiaLicznika]] = kopiaLicznika;
     targ.removeEventListener("click", zajmijDzialke);
@@ -266,24 +264,20 @@ function zajmijDzialke() {
         targ.addEventListener("click", postawDom);
     }
 }
-function czyKtorysGraczWygral(){
-    
-}
 function czyGraczZbankrutowal() {
-    let czyZbankrutowal = false;
     for (let i = 1; i <= ileJestGraczy; i++) {
         if (bilans[i] <= 0){
-            //setTimeout(pudłoZWiadomościami.innerHTML = `zbankrutowało`, 0);//graczowi ${licznik} się 
             $(gracze[i]).removeClass('balans');
             $(gracze[i]).removeClass('klik');
             gracze[i].innerText = '';
-            //czyZbankrutowal = true;
+            gracze[i].id = 'ba99';
             gracze.splice(i, 1);
             bilans.splice(i, 1);
             ileJestGraczy--;
-            //nadajKlikBilansom();
-            gracze[licznik].addEventListener('click', tura);
-            $(gracze[licznik]).addClass('klik');
+            if(gracze.length !== 2){
+                gracze[licznik].addEventListener('click', tura);
+                $(gracze[licznik]).addClass('klik');
+            }
         }
     }
     if(gracze.length === 2){
@@ -291,6 +285,7 @@ function czyGraczZbankrutowal() {
         pudłoZWiadomościami.innerText = 'wygrana';
         kopiaGraczy.forEach(ele => ele.removeEventListener('click', tura));
     }
+    zmianaKlasy();
     return czyZbankrutowal;
 }
 function nadajKlikBilansom() {
@@ -336,7 +331,7 @@ function dom2() {
 function danieLubZabranieInnym(odJednegoGracza) {
     for (let i = 1; i <= ileJestGraczy; i++) {
         if (i === licznik) continue;
-        document.getElementById(`ba${licznik}`).innerHTML = bilans[licznik] -= odJednegoGracza;
+        document.getElementById(`ba${i}`).innerHTML = bilans[licznik] -= odJednegoGracza;
         document.getElementById(`ba${i}`).innerHTML = bilans[i] += odJednegoGracza;
     }
     czyGraczZbankrutowal();
@@ -355,14 +350,9 @@ function udzialy() {
     balansPlusLicznik.innerHTML = bilans[licznik] += 100000;
 }
 function inicjacjaPozewu() {
-    console.log(licznik + " licznik");
     let kopiaLicznika = licznik;
     if (kopiaLicznika === ileJestGraczy + 1) {
         licznik = 1;
-    }
-    console.log(kopiaLicznika + " kopia licznika");
-    for(gracz in gracze){
-        console.log(gracz);
     }
     $(gracze[kopiaLicznika]).removeClass('klik');
     kopiaLicznika--;
@@ -382,6 +372,15 @@ function inicjacjaPozewu() {
     targ.removeEventListener("click", postawDom);
     $(targ).removeClass('klik');
 }
+function zmianaKlasy(){
+    for(i = 1; i < gracze.length; i++){
+        if(gracze[i] === undefined) continue;
+        gracze[i].id = `ba${i}`;
+    }
+    gracze.forEach((ele, index) => {
+        ele.innerHTML = bilans[index];
+    });
+}
 function pozew() {
     let kopiaLicznika = licznik - 1;
     if (kopiaLicznika === ileJestGraczy + 1) {
@@ -390,15 +389,14 @@ function pozew() {
     if(kopiaLicznika === 0) {
         kopiaLicznika = ileJestGraczy;
     }
-    console.log(kopiaLicznika);
-    const numerBilansu = this.id.slice(2, 3);
+    const numerBilansu = this.id[2];
     if (numerBilansu == kopiaLicznika) return;
     if (bilans[numerBilansu] < 50_000) {
         const buforZmiennejGracza = bilans[numerBilansu];
         this.innerHTML = bilans[numerBilansu] -= (50_000 - bilans[numerBilansu]);
-        document.getElementById(`ba${kopiaLicznika}`).innerHTML = bilans[kopiaLicznika] += buforZmiennejGracza;
+        document.getElementById(`ba${licznik}`).innerHTML = bilans[kopiaLicznika] += buforZmiennejGracza;
     } else {
-        document.getElementById(`ba${kopiaLicznika}`).innerHTML = bilans[kopiaLicznika] += 50_000;
+        document.getElementById(`ba${licznik}`).innerHTML = bilans[kopiaLicznika] += 50_000;
         this.innerHTML = bilans[numerBilansu] -= 50_000;
     }
     for (let i = 1; i <= ileJestGraczy; i++) {
@@ -612,12 +610,12 @@ function szansa() {
         if ((poziom[licznik] === 1 && wynikRzutu === 2) || (poziom[licznik] === 2 && wynikRzutu > 7 && wynikRzutu < 13) || (poziom[licznik] === 3 && wynikRzutu > 4 && wynikRzutu < 13)) {
             pudłoZWiadomościami.innerText = ("wygrałeś!");
             if (ktoryTekst === 0) {
-                $(`#ba${licznik}`).html(bilans[licznik] += 50000);
+                $(`ba${licznik}`).html(bilans[licznik] += 50000);
             }
             else if (ktoryTekst > 0 && los < 4) {
-                $(`#ba${licznik}`).html(bilans[licznik] += 100000);
+                $(`ba${licznik}`).html(bilans[licznik] += 100000);
             } else {
-                $(`#ba${licznik}`).html(bilans[licznik] += 150000);
+                $(`ba${licznik}`).html(bilans[licznik] += 150000);
             }
             for (let i = 1; i <= ileJestGraczy; i++) {
                 gracze[i].addEventListener('click', tura);
@@ -631,7 +629,7 @@ function szansa() {
             pudłoZWiadomościami.innerText = (`${tekstySzansy1[Math.floor(Math.random())]} 10000 od 1 poziomu 30000 od 2 poziomu, a od 3 50000`);
             for (let i = 1; i <= ileJestGraczy; i++) {
                 if (i === licznik) continue;
-                document.getElementById(`ba${licznik}`).innerHTML = bilans[licznik] += szansy1[poziom[i]];
+                document.getElementById(`ba${i}`).innerHTML = bilans[licznik] += szansy1[poziom[i]];
                 document.getElementById(`ba${i}`).innerHTML = bilans[i] -= szansy1[poziom[i]];
             }
             nadajKlikBilansom();
@@ -640,7 +638,7 @@ function szansa() {
             pudłoZWiadomościami.innerText = (`${tekstySzansy3[Math.floor(Math.random())]} 5000 od 1 poziomu 15000 od 2 poziomu, a od 3 25000`);
             for (let i = 1; i <= ileJestGraczy; i++) {
                 if (i === licznik) continue;
-                document.getElementById(`ba${licznik}`).innerHTML = bilans[licznik] -= szansy3[poziom[licznik]];
+                document.getElementById(`ba${i}`).innerHTML = bilans[licznik] -= szansy3[poziom[licznik]];
                 document.getElementById(`ba${i}`).innerHTML = bilans[i] += szansy3[poziom[i]];
             }
             break;
@@ -685,8 +683,6 @@ function szansa() {
     czyGraczZbankrutowal();
 }
 function tura() {
-    //if(czyGraczZbankrutowal()) return pudłoZWiadomościami('jaja');
-    //console.log(licznik);
     targ.removeEventListener('click', postawDom);
     targ.removeEventListener('click', postawHotel);
     targ.removeEventListener('click', zajmijDzialke);
@@ -833,7 +829,6 @@ function tura() {
             }
         }
     }
-    //console.log(document.getElementById("ba"+ licznik).innerText);
     if (document.getElementById("ba"+ licznik) >= 1_000_000 || document.getElementById("ba"+ (licznik + 1)) >= 1_000_000) {
         for (let i = 1; i <= ileJestGraczy; i++) {
             gracze[i].removeEventListener('click', tura);
