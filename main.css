@@ -281,12 +281,6 @@ body {
 #podtran {
   bottom: 45rem;
 }
-#zapiszywaniePostepu {
-  bottom: 40rem;
-}
-#przywrocPostep {
-  bottom: 35rem;
-}
 .domek {
   width: 1rem;
   height: 1.1rem;
@@ -431,13 +425,6 @@ noscript {
   #potwierdzenie {
     bottom: 2rem;
     left: 2rem;
-  }
-  #zapiszywaniePostepu {
-    left: 14rem;
-    bottom: 38rem;
-  }
-  #przywrocPostep {
-    left: 14rem;
   }
   .karta {
     left: 14rem;
