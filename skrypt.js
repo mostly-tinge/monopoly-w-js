@@ -107,6 +107,11 @@ function potwierdźWybór(){
         gracze.pop();
         bilans.pop();
     };
+    for(let i = 0; i < ileJestGraczy; i++){
+        const cyfryPionkow = ['a', 'b', 'c', 'e'];
+        console.log(`#${cyfryPionkow[i]}0`);
+        setTimeout(() => $(`#${cyfryPionkow[i]}0`).css('opacity', '1'), 200);
+    }
     gracze.forEach((ele, index) => {
         ele.innerHTML = bilans[index];
         $(ele).addClass('balans');
@@ -140,43 +145,6 @@ let kupionaPrzezKogo = [0, 0, 0, 0, 0, 0, 0, 0, 0,/*8*/0, 0, 0, 0, 0, 0, 0, 0,/*
 
 $('.p1').addClass('normalny1'); $('.p2').addClass('normalny2'); $('.p3').addClass('normalny3'); $('.p4').addClass('normalny4');
 
-const zapiszywaniePostepu = document.getElementById('zapiszywaniePostepu'), przywrocaniePostepu = document.getElementById('przywrocPostep');
-$(zapiszywaniePostepu).addClass('karta').addClass('klik').html('Czy chcesz zapisać postęp?');
-$(przywrocaniePostepu).addClass('karta').addClass('klik').html('Czy chcesz przywrócić postęp?');
-//$(przytr).addClass('karta').addClass('klik');
-//(podtr).addClass('karta').addClass('klik')
-zapiszywaniePostepu.addEventListener("click", zapiszPostep);
-przywrocaniePostepu.addEventListener("click", przywrocPostep);
-
-function zapiszPostep() {
-    localStorage.setItem('liczbaDarmowychDomow', liczbaDarmowychDomow); localStorage.setItem('balanse', bilans); localStorage.setItem('komuPrzekazacDzialke', komuPrzekazacDzialke);
-    localStorage.setItem('licznik', licznik); localStorage.setItem('wiekszaSzansa', wiekszaSzansa);
-    localStorage.setItem('czynsz', czynsz); localStorage.setItem('wydaneNagrody', wydaneNagrody);
-    localStorage.setItem('liczbaOczek', liczbaOczek); localStorage.setItem('poziom', poziom);
-    localStorage.setItem('pionek', pionek); localStorage.setItem('czyDomJestZaDarmo', czyDomJestZaDarmo);
-    localStorage.setItem('ileJestDomowNaDzialce', ileJestDomowNaDzialce);
-    localStorage.setItem('kupionaPrzezKogo', kupionaPrzezKogo);
-    localStorage.setItem('czyJestWWiezieniu', czyJestWWiezieniu); localStorage.setItem('przejscie', przejscie);
-    localStorage.setItem('ileJestPodTranow', ileJestPodTranow); localStorage.setItem('ileJestPrzymTranow', ileJestPrzymTranow);
-    pudłoZWiadomościami.innerText = ("Postęp zapisany");
-}
-function usunPostep() {
-    localStorage.clear();
-    pudłoZWiadomościami.innerText = ("Postęp usunięty");
-}
-function przywrocPostep() {
-    localStorage.getItem('liczbaDarmowychDomow'); localStorage.getItem('balanse');
-    localStorage.getItem('licznik'); localStorage.getItem('wiekszaSzansa');
-    localStorage.getItem('czynsz');
-    localStorage.getItem('wydaneNagrody'); localStorage.getItem('liczbOczek');
-    localStorage.getItem('poziom'); localStorage.getItem('pionek');
-    localStorage.getItem('czyDomJestZaDarmo'); localStorage.getItem('liczbaOdmow');
-    localStorage.getItem('ileJestDomowNaDzialce');
-    localStorage.getItem('kupionaPrzezKogo'); localStorage.getItem('czyJestWWiezieniu');
-    localStorage.getItem('przejscie'); localStorage.getItem('ileJestPodTranow');
-    localStorage.getItem('ileJestPrzymTranow'); localStorage.getItem('ileJestPodTranow');
-    pudłoZWiadomościami.innerText = ("Przywrócono postęp");
-}
 function zmianaPoziomu() {
     if (poziom[licznik] === 3 && liczbaOczek[licznik] > 31) {
         liczbaOczek[licznik] -= 32;
