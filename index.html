@@ -485,23 +485,22 @@
    </div>
      <div id="pudlo-wyboru">
         <input type="number" id="pole-ilosci-graczy" min="2" max="4" disabled="true">
+        <label for="pole-ilosci-graczy">test</label>
         <button id="potwierdzenie" disabled="true">potwiedź</button>
     </div> 
    <noscript>
         <h1>Niby jak Monopoly ma działać bez js'a?</h1>
     </noscript>
     <div id="balanse">
-        <div class="balanse-graczy" id="ba1"></div>
-        <div class="balanse-graczy" id="ba2"></div>
-        <div class="balanse-graczy" id="ba3"></div>
-        <div class="balanse-graczy" id="ba4"></div>
+        <div class="balanse-graczy 1-balans" id="ba1"></div>
+        <div id="ba2" class="balanse-graczy 2-balans"></div>
+        <div id="ba3" class="balanse-graczy 3-balans"></div>
+        <div id="ba4" class="balanse-graczy 4-balans"></div>
     </div>
    <div id="targ" class="karta balans"></div>
    <div id="domy"></div>
    <div id="przymtran"></div>
    <div id="podtran"></div>
-   <div id='zapiszywaniePostepu' class="karta"></div>
-   <div id='przywrocPostep' class="karta"></div>
    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
    <script src="skrypt.js"></script>
 </body>
