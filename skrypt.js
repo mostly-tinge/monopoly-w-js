@@ -660,7 +660,7 @@ function tura() {
     const ceny3 = [20000, 50000, 90000, 140_000, 165_000, 215_000], ceny4 = [25_000, 65_000, 110_000, 170_000, 200_000, 270_000];
     const ceny5 = [35000, 90000, 150_000, 230_000, 270_000, 350_000], ceny6 = [40_000, 100_000, 170_000, 260_000, 305_000, 395_000];
     const ceny7 = [50_000, 125_000, 210_000, 320_000, 375000, 485_000], ceny8 = [65_000, 160_000, 250_000, 370_000, 430_000, 550_000];
-    const rzutKostkami = 3;//Math.floor(Math.random() * 10 + 2);
+    const rzutKostkami = Math.floor(Math.random() * 10 + 2);
     if (ileJestPodTranow[licznik] === 0) {
         $('#podtran').removeClass('klik').removeClass('karta').html('');
         podtr.removeEventListener("click", ukradniecie);
