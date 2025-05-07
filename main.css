@@ -273,6 +273,7 @@ body {
 }
 #domy {
   bottom: 55rem;
+  height: 3.2rem;
 }
 #przymtran {
   bottom: 50rem;
@@ -355,18 +356,6 @@ noscript {
   height: 1.2rem;
   border-radius: 20%;
   font-size: 0.6rem;
-}
-#a23 {
-  opacity: 100;
-}
-#b23 {
-  opacity: 100;
-}
-#c23 {
-  opacity: 100;
-}
-#e23 {
-  opacity: 100;
 }
 @media only screen and (max-width: 800px) {
   #balanse > div {
@@ -459,4 +448,12 @@ noscript {
   #podtran {
     bottom: 47rem;
   }
+}
+.ba1 {
+}
+.ba2 {
+}
+.ba3 {
+}
+.ba4 {
 }
